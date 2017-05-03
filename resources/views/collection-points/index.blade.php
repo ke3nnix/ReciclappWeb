@@ -53,8 +53,8 @@
                                         </td>
                                         <td>
                                             
-                                            <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('ver',['id'=>$row->id])}}'"><span class="glyphicon glyphicon-chevron-left"></span></button>
-                                            <button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button>
+                                            <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('collection-points.show',['id'=>$row->id])}}'"><span class="glyphicon glyphicon-chevron-left"></span></button>
+                                            <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('collection-points.edit',['id'=>$row->id])}}'" ><span class="glyphicon glyphicon-pencil"></span></button>
                                            <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button>
                                         </td>
                                         </tr>                                                     
