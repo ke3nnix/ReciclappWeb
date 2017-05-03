@@ -52,8 +52,10 @@
                                             <p> {{$row->plastico_max}}</p>
                                         </td>
                                         <td>
-                                            <p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p>
-                                            <p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p>
+                                            
+                                            <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('ver',['id'=>$row->id])}}'"><span class="glyphicon glyphicon-chevron-left"></span></button>
+                                            <button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button>
+                                           <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button>
                                         </td>
                                         </tr>                                                     
           @endforeach     
