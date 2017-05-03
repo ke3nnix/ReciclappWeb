@@ -15,8 +15,8 @@ class CollectionPointController extends Controller
      */
     public function index()
     {
-        $collectionPoints = CollectionPoint::orderBy('id', 'DESC')->paginate(5);
-        return view('collection-points.index')->withCollectionPoints($collectionPoints);
+        $collectionPoints = CollectionPoint::orderBy('id', 'ACS')->paginate(5);
+        return view('collection-points.index',compact('collectionPoints'));
     }
 
     /**
@@ -78,7 +78,7 @@ class CollectionPointController extends Controller
     public function show($id)
     {
         $collectionPoint = CollectionPoint::find($id);
-        return view('collection-points.show')->withCollectionPoint($collectionPoint);
+        return view('collection-points.show',compact('collectionPoint'));
     }
 
     /**
@@ -90,7 +90,7 @@ class CollectionPointController extends Controller
     public function edit($id)
     {
         $collectionPoint = CollectionPoint::find($id);
-        return view('collection-points.edit')->withCollectionPoint($collectionPoint);
+        return view('collection-points.edit',compact('collectionPoint'));
     }
 
     /**
