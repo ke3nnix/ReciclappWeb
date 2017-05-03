@@ -16,4 +16,5 @@ Route::get('/', function () {
 });
 
 Route::resource('collection-points', 'CollectionPointController');
+Route::name('ver')->get('collection-points/{id}', 'CollectionPointController@show');
 Route::resource('sponsors', 'SponsorController');

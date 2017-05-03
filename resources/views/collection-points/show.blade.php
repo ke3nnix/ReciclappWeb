@@ -2,7 +2,7 @@
 @section('title', 'Detalle de punto de acopio')
 @section('content')
 
-<div class="row">
+
   <div class="row">
     <div class="col-md-12">
           <div class="row">
