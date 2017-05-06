@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Sponsor;
 
 class SponsorController extends Controller
 {
@@ -13,7 +14,11 @@ class SponsorController extends Controller
      */
     public function index()
     {
-        //
+        // Buscando sponsors
+        $sponsors = Sponsor::orderBy('id', 'DESC')->paginate(10);
+
+        // Retornando vista
+        return view('sponsors.index')->withSponsors($sponsors);
     }
 
     /**
@@ -23,7 +28,8 @@ class SponsorController extends Controller
      */
     public function create()
     {
-        //
+        // Retornando vista
+        return view('sponsors.create');
     }
 
     /**

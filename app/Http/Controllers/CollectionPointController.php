@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\http\Controllers\CollectionPointController;
+use App\CollectionPoint;
+use Session;
 
 class CollectionPointController extends Controller
 {
@@ -14,8 +15,8 @@ class CollectionPointController extends Controller
      */
     public function index()
     {
-        $collectionPoints = CollectionPointController::all()->paginate(5);
-        return view('collection_points.index')->withCollectionPoints($collectionPoints);
+        $collectionPoints = CollectionPoint::orderBy('id', 'DESC')->paginate(5);
+        return view('collection-points.index')->withCollectionPoints($collectionPoints);
     }
 
     /**
@@ -47,7 +48,7 @@ class CollectionPointController extends Controller
             ));
 
         // Almacenamos los datos
-        $collectionPoint = new CollectionPointController;
+        $collectionPoint = new CollectionPoint;
         $collectionPoint->nombre = $request->nombre;
         $collectionPoint->direccion = $request->direccion;
         $collectionPoint->distrito = $request->distrito;
@@ -112,7 +113,7 @@ class CollectionPointController extends Controller
             ));
 
         // Almacenamos los datos
-        $collectionPoint = new CollectionPointController;
+        $collectionPoint = new CollectionPoint;
         $collectionPoint->nombre = $request->nombre;
         $collectionPoint->direccion = $request->direccion;
         $collectionPoint->distrito = $request->distrito;
