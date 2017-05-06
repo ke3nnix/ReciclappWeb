@@ -13,8 +13,11 @@ class CreateWastesTable extends Migration
      */
     public function up()
     {
-        Schema::create('wastes', function (Blueprint $table) {
+        Schema::create('waste', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('descripcion');
+            $table->string('unidad');
+            $table->integer('equivalencia')->unsigned();
             $table->timestamps();
         });
     }
