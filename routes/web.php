@@ -16,4 +16,4 @@ Route::get('/', function () {
 });
 
 Route::resource('collection-points', 'CollectionPointController');
-
+Route::resource('sponsors', 'SponsorController');
