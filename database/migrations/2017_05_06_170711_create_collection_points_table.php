@@ -15,6 +15,15 @@ class CreateCollectionPointsTable extends Migration
     {
         Schema::create('collection_points', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nombre');
+            $table->string('direccion');
+            $table->string('distrito');
+            $table->integer('papel_max')->unsigned();
+            $table->integer('papel_actual')->unsigned();
+            $table->integer('vidrio_max')->unsigned();
+            $table->integer('vidrio_actual')->unsigned();
+            $table->integer('plastico_max')->unsigned();
+            $table->integer('plastico_actual')->unsigned();
             $table->timestamps();
         });
     }
