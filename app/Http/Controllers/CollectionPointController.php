@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\http\Controllers\CollectionPointController;
 
 class CollectionPointController extends Controller
 {
@@ -13,7 +14,8 @@ class CollectionPointController extends Controller
      */
     public function index()
     {
-        //
+        $collectionPoints = CollectionPointController::all()->paginate(5);
+        return view('collection_points.index')->withCollectionPoints($collectionPoints);
     }
 
     /**
@@ -23,7 +25,7 @@ class CollectionPointController extends Controller
      */
     public function create()
     {
-        //
+        return view('collection-points.create');
     }
 
     /**
@@ -34,7 +36,36 @@ class CollectionPointController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validando la data
+        $this->validate($request , array(
+                'nombre' => 'required|max:255',
+                'direccion' => 'required|max:255',
+                'distrito' => 'required|max:255',
+                'papel_max' => 'required|numeric|min:1',
+                'vidrio_max' => 'required|numeric|min:1',
+                'plastico_max' => 'required|numeric|min:1',
+            ));
+
+        // Almacenamos los datos
+        $collectionPoint = new CollectionPointController;
+        $collectionPoint->nombre = $request->nombre;
+        $collectionPoint->direccion = $request->direccion;
+        $collectionPoint->distrito = $request->distrito;
+        $collectionPoint->papel_max = $request->papel_max;
+        $collectionPoint->papel_actual = 0;
+        $collectionPoint->vidrio_max = $request->vidrio_max;
+        $collectionPoint->vidrio_actual = 0;
+        $collectionPoint->plastico_max = $request->plastico_max;
+        $collectionPoint->plastico_actual = 0;
+
+        $collectionPoint->save();
+
+        // Enviando mensaje de estado
+        Session::flash('exito' , 'La entrada fue exitosamente agregada');
+
+        // Redireccionando a otra vista
+        return redirect()->route('collection-points.show', $collectionPoint->id);
+
     }
 
     /**
@@ -45,7 +76,8 @@ class CollectionPointController extends Controller
      */
     public function show($id)
     {
-        //
+        $collectionPoint = CollectionPoint::find($id);
+        return view('collection-points.show')->withCollectionPoint($collectionPoint);
     }
 
     /**
@@ -56,7 +88,8 @@ class CollectionPointController extends Controller
      */
     public function edit($id)
     {
-        //
+        $collectionPoint = CollectionPoint::find($id);
+        return view('collection-points.edit')->withCollectionPoint($collectionPoint);
     }
 
     /**
@@ -68,7 +101,35 @@ class CollectionPointController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+// Validando la data
+        $this->validate($request , array(
+                'nombre' => 'required|max:255',
+                'direccion' => 'required|max:255',
+                'distrito' => 'required|max:255',
+                'papel_max' => 'required|numeric|min:1',
+                'vidrio_max' => 'required|numeric|min:1',
+                'plastico_max' => 'required|numeric|min:1',
+            ));
+
+        // Almacenamos los datos
+        $collectionPoint = new CollectionPointController;
+        $collectionPoint->nombre = $request->nombre;
+        $collectionPoint->direccion = $request->direccion;
+        $collectionPoint->distrito = $request->distrito;
+        $collectionPoint->papel_max = $request->papel_max;
+        $collectionPoint->papel_actual = 0;
+        $collectionPoint->vidrio_max = $request->vidrio_max;
+        $collectionPoint->vidrio_actual = 0;
+        $collectionPoint->plastico_max = $request->plastico_max;
+        $collectionPoint->plastico_actual = 0;
+
+        $collectionPoints->save();
+
+        // Enviando mensaje de estado
+        Session::flash('exito' , 'La entrada fue exitosamente actualizada');
+
+        // Redireccionando a otra vista
+        return redirect()->route('collection-points.show', $collectionPoint->id);
     }
 
     /**
@@ -79,6 +140,12 @@ class CollectionPointController extends Controller
      */
     public function destroy($id)
     {
-        //
+       //ubicar el objeto
+        $collectionPoint = CollectionPoint::find($id);
+        $collectionPoint->delete();
+        //setear el mensaje FLASH de exito
+        Session::flash('exito', 'La entrada fue exitósamente eliminada.');
+        // redirigir hacia collection-points.index
+        return  redirect()->route('collection-points.index');
     }
 }
