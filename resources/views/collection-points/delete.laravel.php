@@ -1,8 +1,8 @@
 @extends('base')
-@section('title', 'Editar punto de acopio')
+@section('title', 'Eliminar punto de acopio')
 @section('content')
    
-   <form action="{{route('collection-points.update', ['id'=>$collectionPoint->id])}}" method="PUT">
+   <form action="{{route('collection-points.destroy', ['id'=>$collectionPoint->id])}}" method="DELETE">
        <div>
            {{csrf_field()}}
             <div class="row">
@@ -14,37 +14,37 @@
              <div class="row">
                 <label class="col-md-4 control-label">Dirección</label>
                   <div class="col-md-6">
-                    <input type="text" class="form-control" name="direccion" value="{{$collectionPoint->direccion}}">
+                    <input type="text" class="form-control" name="direccion" disabled="disabled" value="{{$collectionPoint->direccion}}">
                   </div>
              </div><br>
              <div class="row">
                 <label class="col-md-4 control-label">Distrito</label>
                   <div class="col-md-6">
-                    <input type="text" class="form-control" name="distrito" value="{{ $collectionPoint->distrito}}">
+                    <input type="text" class="form-control" name="distrito" disabled="disabled" value="{{ $collectionPoint->distrito}}">
                   </div>
              </div><br>
              <div class="row">
                 <label class="col-md-4 control-label">Papel maximo</label>
                   <div class="col-md-6">
-                    <input type="text" class="form-control" name="papel_max" value="{{$collectionPoint->papel_max}}">
+                    <input type="text" class="form-control" name="papel_max"  disabled="disabled" value="{{$collectionPoint->papel_max}}">
                   </div>
              </div><br>
             <div class="row">
                 <label class="col-md-4 control-label">Vidrio maximo</label>
                   <div class="col-md-6">
-                    <input type="text" class="form-control" name="vidrio_max" value="{{ $collectionPoint->vidrio_max}}">
+                    <input type="text" class="form-control" name="vidrio_max" disabled="disabled" value="{{ $collectionPoint->vidrio_max}}">
                   </div>
              </div><br>
              <div class="row">
                 <label class="col-md-4 control-label">Plástico maximo</label>
                   <div class="col-md-6">
-                    <input type="text" class="form-control" name="plastico_max" value="{{ $collectionPoint->plastico_max}}">
+                    <input type="text" class="form-control" name="plastico_max" disabled="disabled" value="{{ $collectionPoint->plastico_max}}">
                   </div>
              </div><br>
              <div class="row">
                 <div class="col-md-6 col-md-offset-4">
                     <button type="submit" class="btn btn-primary">
-                      Actualizar
+                      Eliminar
                     </button>
                   </div>
           
