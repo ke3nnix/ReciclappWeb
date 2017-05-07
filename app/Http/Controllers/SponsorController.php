@@ -40,7 +40,30 @@ class SponsorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validando datos
+        $this->validate($Request, array(
+            'razon' => 'required|max:255',
+            'ruc' => 'required|numeric|max:11',
+            'direccion' => 'max:255',
+            'telefono' => 'numeric|max:11',
+            'contacto' => 'max:255',
+        ));
+
+        // Almacenando datos
+        $sponsor = new Sponsor;
+        $sponsor->razon = $request->razon;
+        $sponsor->ruc = $request->razon;
+        $sponsor->direccion = $request->direccion;
+        $sponsor->telefono = $request->telefono;
+        $sponsor->contacto = $request->contacto;
+
+        $sponsor->save();
+
+        // Enviando mensaje de estado
+        Session::flash('exito' , 'El auspiciador fue exitosamente agregado');
+
+        // Retornando vista: sponsors/show.blade.php
+        return redirect()->route('sponsors.show', $sponsors->id);
     }
 
     /**
@@ -51,7 +74,11 @@ class SponsorController extends Controller
      */
     public function show($id)
     {
-        //
+        // Buscando sponsor
+        $sponsor = Sponsors::find($id);
+
+        // Retornando vista: sponsors/show.blade.php
+        return view('sponsors.show')->withSponsor($sponsor);
     }
 
     /**
@@ -62,7 +89,11 @@ class SponsorController extends Controller
      */
     public function edit($id)
     {
-        //
+        // Buscando sponsor
+        $sponsor = Sponsors::find($id);
+
+        // Retornando vista: sponsors/edit.blade.php
+        return view('sponsors.edit')->withSponsor($sponsor);
     }
 
     /**
@@ -74,7 +105,31 @@ class SponsorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Validando datos
+        $this->validate($Request, array(
+            'razon' => 'required|max:255',
+            'ruc' => 'required|numeric|max:11',
+            'direccion' => 'max:255',
+            'telefono' => 'numeric|max:11',
+            'contacto' => 'max:255',
+        ));
+
+        // Almacenando datos
+        $sponsor = Sponsor::find($id);
+        $sponsor->razon = $request->razon;
+        $sponsor->ruc = $request->razon;
+        $sponsor->direccion = $request->direccion;
+        $sponsor->telefono = $request->telefono;
+        $sponsor->contacto = $request->contacto;
+
+        $sponsor->save();
+
+        // Enviando mensaje de estado
+        Session::flash('exito' , 'El auspiciador fue exitosamente actualizado');
+
+        // Retornando vista: sponsors/show.blade.php
+        return redirect()->route('sponsors.show', $sponsors->id);
+
     }
 
     /**
@@ -85,6 +140,14 @@ class SponsorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // ubicando datos
+        $sponsor = Sponsor::find($id);
+        $sponsor->delete();
+
+        //setear el mensaje FLASH de exito
+        Session::flash('exito', 'El sponsor fue exitósamente eliminado');
+
+        // redirigir hacia sponsors/index.blade.php
+        return  redirect()->route('sponsors.index');
     }
 }

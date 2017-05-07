@@ -62,9 +62,9 @@ class CollectionPointController extends Controller
         $collectionPoint->save();
 
         // Enviando mensaje de estado
-        Session::flash('exito' , 'La entrada fue exitosamente agregada');
+        Session::flash('exito' , 'El punto de acopio fue exitosamente agregado');
 
-        // Redireccionando a otra vista
+        // Redireccionando a la vista: collection-points/show.blade.php
         return redirect()->route('collection-points.show', $collectionPoint->id);
 
     }
@@ -113,7 +113,7 @@ class CollectionPointController extends Controller
             ));
 
         // Almacenamos los datos
-        $collectionPoint = new CollectionPoint;
+        $collectionPoint = CollectionPoint::find($id);
         $collectionPoint->nombre = $request->nombre;
         $collectionPoint->direccion = $request->direccion;
         $collectionPoint->distrito = $request->distrito;
@@ -127,7 +127,7 @@ class CollectionPointController extends Controller
         $collectionPoints->save();
 
         // Enviando mensaje de estado
-        Session::flash('exito' , 'La entrada fue exitosamente actualizada');
+        Session::flash('exito' , 'El punto de acopio fue exitosamente actualizado');
 
         // Redireccionando a otra vista
         return redirect()->route('collection-points.show', $collectionPoint->id);
@@ -145,7 +145,7 @@ class CollectionPointController extends Controller
         $collectionPoint = CollectionPoint::find($id);
         $collectionPoint->delete();
         //setear el mensaje FLASH de exito
-        Session::flash('exito', 'La entrada fue exitósamente eliminada.');
+        Session::flash('exito', 'El punto de acopio fue exitósamente eliminado');
         // redirigir hacia collection-points.index
         return  redirect()->route('collection-points.index');
     }
