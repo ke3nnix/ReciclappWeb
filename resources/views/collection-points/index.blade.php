@@ -2,7 +2,7 @@
 @section('title', 'Puntos de acopio')
 @section('content')
 
-<div id="page-wrapper" class="col-lg-10">
+<div class="col-lg-12">
   
   <div class="col-md-12">
     <div class="row">
@@ -11,7 +11,6 @@
           <button type="submit" class="btn btn-primary">Agregar</button>
         </div>
       </form>
-      <h3>Puntos de acopio</h3>
     </div>
     
     <div class="row">           

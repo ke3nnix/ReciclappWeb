@@ -26,9 +26,9 @@
                 <!-- /.col-lg-12 -->
             </div>
 
-            <div>
+            
                 @yield('content')
-            </div>
+        
 
         </div>
         <!-- /#page-wrapper -->

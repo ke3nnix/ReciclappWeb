@@ -2,11 +2,10 @@
 @section('title', 'Agregar punto de acopio')
 @section('content')
    <form action="{{route('collection-points.store')}}" method="POST">
-       <div id="page-wrapper">
+       <div>
            {{csrf_field()}}
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Agregar</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -35,7 +34,7 @@
                     <input type="text" class="form-control" name="papel_max">
                   </div>
              </div><br>
-                          <div class="row">
+            <div class="row">
                 <label class="col-md-4 control-label">Vidrio maximo</label>
                   <div class="col-md-6">
                     <input type="text" class="form-control" name="vidrio_max">
