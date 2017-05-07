@@ -62,8 +62,7 @@ class CollectionPointController extends Controller
         $collectionPoint->save();
 
         // Enviando mensaje de estado
-        Session::flash('exito' , 'El punto de acopio fue exitosamente agregado');
-
+       
         // Redireccionando a la vista: collection-points/show.blade.php
         return redirect()->route('collection-points.show', $collectionPoint->id);
 
@@ -124,7 +123,7 @@ class CollectionPointController extends Controller
         $collectionPoint->plastico_max = $request->plastico_max;
         $collectionPoint->plastico_actual = 0;
 
-        $collectionPoints->save();
+        $collectionPoint->save();
 
         // Enviando mensaje de estado
         Session::flash('exito' , 'El punto de acopio fue exitosamente actualizado');

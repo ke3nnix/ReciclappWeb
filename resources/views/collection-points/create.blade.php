@@ -1,7 +1,9 @@
 @extends('base')
 @section('title', 'Agregar punto de acopio')
 @section('content')
-   <form action="{{route('collection-points.store')}}" method="POST">
+   
+     {{Form::open(['route'=>'collection-points.store'])}}
+
        <div>
            {{csrf_field()}}
               <div class="row">
@@ -51,8 +53,7 @@
              </div>
            
         </div>
-                
-   </form>                      
-    
+     {{Form::close()}}           
+
 
 @stop

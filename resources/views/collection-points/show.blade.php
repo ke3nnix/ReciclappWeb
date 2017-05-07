@@ -5,7 +5,9 @@
 
   <div class="row">
     <div class="col-md-12">
+         
           <div class="row">
+
                 <label class="col-md-4 control-label">Nombre</label>
                   <div class="col-md-6">
                     <label class="col-md-4 control-label"><p>{{$collectionPoint->nombre}}</p></label>

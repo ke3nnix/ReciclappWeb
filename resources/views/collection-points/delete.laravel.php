@@ -2,13 +2,14 @@
 @section('title', 'Eliminar punto de acopio')
 @section('content')
    
-   <form action="{{route('collection-points.destroy', ['id'=>$collectionPoint->id])}}" method="DELETE">
+   
+      {{Form::open(['route'=>['collection-points.destroy',$collectionPoint->id], 'method'=>'DELETE'])}}
        <div>
            {{csrf_field()}}
             <div class="row">
                 <label class="col-md-4 control-label">Nombre</label>
                   <div class="col-md-6">
-                    <input type="text" class="form-control" name="nombre" value="{{ $collectionPoint->nombre }}">
+                    <input type="text" class="form-control" name="nombre"  disabled="disabled" value="{{ $collectionPoint->nombre }}">
                   </div>
             </div><br>
              <div class="row">
@@ -51,8 +52,7 @@
              </div>
            
         </div>
-                
-   </form>                      
+  {{Form::close()}}                
     
 
 @stop

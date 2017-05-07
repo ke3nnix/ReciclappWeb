@@ -2,7 +2,7 @@
 @section('title', 'Editar punto de acopio')
 @section('content')
    
-   <form action="{{route('collection-points.update', ['id'=>$collectionPoint->id])}}" method="PUT">
+     {{Form::open(['route'=>['collection-points.update',$collectionPoint->id], 'method'=>'PUT'])}}
        <div>
            {{csrf_field()}}
             <div class="row">
@@ -52,7 +52,7 @@
            
         </div>
                 
-   </form>                      
+  {{Form::close()}}                     
     
 
 @stop
