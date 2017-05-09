@@ -62,8 +62,7 @@ class CollectionPointController extends Controller
         $collectionPoint->save();
 
         // Enviando mensaje de estado
-        Session::flash('exito' , 'El punto de acopio fue exitosamente agregado');
-
+       
         // Redireccionando a la vista: collection-points/show.blade.php
         return redirect()->route('collection-points.show', $collectionPoint->id);
 
@@ -124,7 +123,7 @@ class CollectionPointController extends Controller
         $collectionPoint->plastico_max = $request->plastico_max;
         $collectionPoint->plastico_actual = 0;
 
-        $collectionPoints->save();
+        $collectionPoint->save();
 
         // Enviando mensaje de estado
         Session::flash('exito' , 'El punto de acopio fue exitosamente actualizado');
@@ -142,11 +141,15 @@ class CollectionPointController extends Controller
     public function destroy($id)
     {
        //ubicar el objeto
-        $collectionPoint = CollectionPoint::find($id);
-        $collectionPoint->delete();
+        $collectionPoint = CollectionPoint::find($id)->delete();
+        
+    
         //setear el mensaje FLASH de exito
         Session::flash('exito', 'El punto de acopio fue exitósamente eliminado');
         // redirigir hacia collection-points.index
+      
         return  redirect()->route('collection-points.index');
+        
     }
+
 }
