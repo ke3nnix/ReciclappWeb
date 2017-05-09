@@ -3,7 +3,7 @@
 @section('content')
    
      {{Form::open(['route'=>['collection-points.update',$collectionPoint->id], 'method'=>'PUT'])}}
-       <div>
+       
            {{csrf_field()}}
             <div class="row">
                 <label class="col-md-4 control-label">Nombre</label>
@@ -41,18 +41,13 @@
                     <input type="text" class="form-control" name="plastico_max" value="{{ $collectionPoint->plastico_max}}">
                   </div>
              </div><br>
-             <div class="row">
-                <div class="col-md-6 col-md-offset-4">
+            
+                <div class="col-md-6 col-md-offset-8" >
                     <button type="submit" class="btn btn-primary">
                       Actualizar
-                    </button>
-                  </div>
-          
-             </div>
-           
-        </div>
-                
-  {{Form::close()}}                     
-    
-
+                    </button>   
+                    <a href="{{route('collection-points.index')}}" class="btn btn-danger">Cancelar</a>
+                </div><br>
+      {{Form::close()}}
+         
 @stop

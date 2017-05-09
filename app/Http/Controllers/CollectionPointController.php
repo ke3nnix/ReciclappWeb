@@ -141,11 +141,15 @@ class CollectionPointController extends Controller
     public function destroy($id)
     {
        //ubicar el objeto
-        $collectionPoint = CollectionPoint::find($id);
-        $collectionPoint->delete();
+        $collectionPoint = CollectionPoint::find($id)->delete();
+        
+    
         //setear el mensaje FLASH de exito
         Session::flash('exito', 'El punto de acopio fue exitósamente eliminado');
         // redirigir hacia collection-points.index
+      
         return  redirect()->route('collection-points.index');
+        
     }
+
 }

@@ -9,6 +9,7 @@
       <form action="{{route('collection-points.create')}}">
         <div class="pull-right">
           <button type="submit" class="btn btn-primary">Agregar</button>
+
         </div>
       </form>
     </div>
@@ -55,9 +56,34 @@
                                             
                                             <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('collection-points.show',['id'=>$row->id])}}'"><span class="glyphicon glyphicon-chevron-left"></span></button>
                                             <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('collection-points.edit',['id'=>$row->id])}}'" ><span class="glyphicon glyphicon-pencil"></span></button>
-                                           <button class="btn btn-danger btn-xs" onclick="window.location.href='{{route('collection-points.destroy',['id'=>$row->id])}}'" ><span class="glyphicon glyphicon-trash"></span></button>
+                                           <button id="elimiar" data-toggle="modal" data-target="#myModal"class="btn btn-danger btn-xs" ><span class="glyphicon glyphicon-trash"></span></button>
+                                                   {{Form::open(['route'=>['collection-points.destroy',$row->id], 'method'=>'DELETE'])}}
+                                                           <div id="myModal" class="modal fade" role="dialog">
+                                                            <div class="modal-dialog ">
+
+                                                              <!-- Modal content-->
+                                                                  <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                      <h4 class="modal-title">Confirmar</h4>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                      <p>Desea eliminar este punto de acopio?</p>
+                                                                      <p>{{$row->nombre}}</p>
+                                                                    </div>
+                                                                   
+                                                                    <div class="modal-footer">
+                                                                    
+                                                                        <button type="submit" class="btn btn-primary">Elimnar</button>
+                                                                        
+                                                            {{Form::close()}}
+                                                              <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                                            </div>
+                                                            </div>
+                                                    </div>
+                                                    </div>
                                         </td>
-                                        </tr>                                                     
+                                      </tr>                                                     
           @endforeach     
       </tbody>
     </table>
@@ -78,7 +104,6 @@
 </div>
 
 </div>
-
 
 
 @stop
