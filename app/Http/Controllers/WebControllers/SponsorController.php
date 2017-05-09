@@ -15,7 +15,7 @@ class SponsorController extends Controller
     public function index()
     {
         // Buscando sponsors
-        $sponsors = Sponsor::orderBy('id', 'DESC')->paginate(10);
+        $sponsors = Sponsor::orderBy('id', 'ASC')->paginate(10);
 
         // Retornando vista
         return view('sponsors.index',compact('sponsors'));

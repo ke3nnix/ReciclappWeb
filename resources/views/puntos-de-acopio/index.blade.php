@@ -6,7 +6,7 @@
   
   <div class="col-md-12">
     <div class="row">
-      <form action="{{route('collection-points.create')}}">
+      <form action="{{route('puntos-de-acopio.create')}}">
         <div class="pull-right">
           <button type="submit" class="btn btn-primary">Agregar</button>
 
@@ -54,10 +54,10 @@
                                         </td>
                                         <td>
                                             
-                                            <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('collection-points.show',['id'=>$row->id])}}'"><span class="glyphicon glyphicon-chevron-left"></span></button>
-                                            <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('collection-points.edit',['id'=>$row->id])}}'" ><span class="glyphicon glyphicon-pencil"></span></button>
+                                            <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('puntos-de-acopio.show',['id'=>$row->id])}}'"><span class="glyphicon glyphicon-chevron-left"></span></button>
+                                            <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('puntos-de-acopio.edit',['id'=>$row->id])}}'" ><span class="glyphicon glyphicon-pencil"></span></button>
                                            <button id="elimiar" data-toggle="modal" data-target="#myModal"class="btn btn-danger btn-xs" ><span class="glyphicon glyphicon-trash"></span></button>
-                                                   {{Form::open(['route'=>['collection-points.destroy',$row->id], 'method'=>'DELETE'])}}
+                                                   {{Form::open(['route'=>['puntos-de-acopio.destroy',$row->id], 'method'=>'DELETE'])}}
                                                            <div id="myModal" class="modal fade" role="dialog">
                                                             <div class="modal-dialog ">
 
@@ -88,17 +88,13 @@
       </tbody>
     </table>
 
-    <ul class="pagination pull-right">
-      <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
-      <li class="active"><a href="#">1</a></li>
-      <li><a href="#">2</a></li>
-      <li><a href="#">3</a></li>
-      <li><a href="#">4</a></li>
-      <li><a href="#">5</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
-    </ul>
+    <div class="text-center">
+      {!! $collectionPoints->links(); !!}
+    </div>
     
   </div>
+  }
+  }
   
 </div>  
 </div>

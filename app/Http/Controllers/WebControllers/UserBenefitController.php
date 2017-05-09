@@ -14,7 +14,7 @@ class UserBenefitController extends Controller
      */
     public function index($sponsorId)
     {
-        return $sponsorId;
+
     }
 
     /**

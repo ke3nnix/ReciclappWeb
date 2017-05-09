@@ -22,5 +22,3 @@ Route::resource('sponsors', 'WebControllers\SponsorController');
 Route::resource('sponsors/{sponsorId}/beneficios', 'WebControllers\SponsorBenefitController');
 
 Route::resource('usuarios', 'WebControllers\UserController');
-
-Route::get('beneficios', 'WebControllers\BenefitController@listAll')->name('beneficios.all');
