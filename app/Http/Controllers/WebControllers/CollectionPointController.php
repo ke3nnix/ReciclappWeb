@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\WebControllers;
 
 use Illuminate\Http\Request;
-use App\CollectionPoint;
+use App\Models\CollectionPoint;
 use Session;
+
 
 class CollectionPointController extends Controller
 {
@@ -15,8 +16,8 @@ class CollectionPointController extends Controller
      */
     public function index()
     {
-        $collectionPoints = CollectionPoint::orderBy('id', 'ACS')->paginate(5);
-        return view('collection-points.index',compact('collectionPoints'));
+        $collectionPoints = CollectionPoint::orderBy('id', 'ACS')->paginate(15);
+        return view('puntos-de-acopio.index',compact('collectionPoints'));
     }
 
     /**
@@ -26,7 +27,7 @@ class CollectionPointController extends Controller
      */
     public function create()
     {
-        return view('collection-points.create');
+        return view('puntos-de-acopio.create');
     }
 
     /**
@@ -65,7 +66,7 @@ class CollectionPointController extends Controller
         Session::flash('exito' , 'El punto de acopio fue exitosamente agregado');
 
         // Redireccionando a la vista: collection-points/show.blade.php
-        return redirect()->route('collection-points.show', $collectionPoint->id);
+        return redirect()->route('puntos-de-acopio.show', $collectionPoint->id);
 
     }
 
@@ -78,7 +79,7 @@ class CollectionPointController extends Controller
     public function show($id)
     {
         $collectionPoint = CollectionPoint::find($id);
-        return view('collection-points.show',compact('collectionPoint'));
+        return view('puntos-de-acopio.show',compact('collectionPoint'));
     }
 
     /**
@@ -90,7 +91,7 @@ class CollectionPointController extends Controller
     public function edit($id)
     {
         $collectionPoint = CollectionPoint::find($id);
-        return view('collection-points.edit',compact('collectionPoint'));
+        return view('puntos-de-acopio.edit',compact('collectionPoint'));
     }
 
     /**
@@ -130,7 +131,7 @@ class CollectionPointController extends Controller
         Session::flash('exito' , 'El punto de acopio fue exitosamente actualizado');
 
         // Redireccionando a otra vista
-        return redirect()->route('collection-points.show', $collectionPoint->id);
+        return redirect()->route('puntos-de-acopio.show', $collectionPoint->id);
     }
 
     /**
@@ -147,6 +148,6 @@ class CollectionPointController extends Controller
         //setear el mensaje FLASH de exito
         Session::flash('exito', 'El punto de acopio fue exitósamente eliminado');
         // redirigir hacia collection-points.index
-        return  redirect()->route('collection-points.index');
+        return  redirect()->route('puntos-de-acopio.index');
     }
 }

@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::resource('collection-points', 'CollectionPointController');
+Route::resource('puntos-de-acopio', 'WebControllers\CollectionPointController');
 
-Route::resource('sponsors', 'SponsorController');
+Route::resource('sponsors', 'WebControllers\SponsorController');
+
+Route::resource('sponsors/{sponsorId}/beneficios', 'WebControllers\SponsorBenefitController');
+
+Route::resource('usuarios', 'WebControllers\UserController');
+
+Route::get('beneficios', 'WebControllers\BenefitController@listAll')->name('beneficios.all');

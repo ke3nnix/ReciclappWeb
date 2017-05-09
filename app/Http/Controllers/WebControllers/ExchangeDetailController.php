@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\WebControllers;
 
 use Illuminate\Http\Request;
 
-class ExchangeController extends Controller
+class ExchangeDetailController extends Controller
 {
     /**
      * Display a listing of the resource.
