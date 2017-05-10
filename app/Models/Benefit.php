@@ -15,6 +15,6 @@ class Benefit extends Model
 
 	public function users()
 	{
-		return $this->belongsToMany('App\Models\User')->using('App\Models\UserBenefit');
+		return $this->belongsToMany('App\Models\User', 'user_benefits', 'beneficio_id', 'colaborador_id')->using('App\Models\UserBenefit');
 	}
 }

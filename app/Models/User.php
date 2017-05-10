@@ -30,12 +30,12 @@ class User extends Authenticatable
 
     public function benefits()
     {
-        return $this->belongsToMany('App\Models\Benefit')->using('App\Models\UserBenefit');
+        return $this->belongsToMany('App\Models\Benefit', 'user_benefits', 'colaborador_id', 'beneficio_id')->using('App\Models\UserBenefit');
     }
 
-    public function colelctionPoints()
+    public function collectionPoints()
     {
-        return $this->belongsToMany('App\Models\CollectionPoint')->using('App\Models\Exchange');
+        return $this->belongsToMany('App\Models\CollectionPoint', 'exchanges', 'colaborador_id', 'acopio_id')->using('App\Models\Exchange');
     }
 
 }

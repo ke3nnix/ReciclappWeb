@@ -11,6 +11,6 @@ class Exchange extends Pivot
 
 	public function waste()
 	{
-		return $this->belongToMany('App\Models\Waste')->withTimestamps()->using('App\Models\ExchangeDetail');
+		return $this->belongToMany('App\Models\Waste', 'exchange_details', 'entrega_id', 'desecho_id')->withTimestamps()->using('App\Models\ExchangeDetail');
 	}
 }
