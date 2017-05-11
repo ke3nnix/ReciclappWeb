@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\WebControllers;
 
 use Illuminate\Http\Request;
-use App\Http\Sponsor;
+use App\Models\Sponsor;
 
 class SponsorController extends Controller
 {
@@ -15,10 +15,10 @@ class SponsorController extends Controller
     public function index()
     {
         // Buscando sponsors
-        $sponsors = Sponsor::orderBy('id', 'DESC')->paginate(10);
+        $sponsors = Sponsor::orderBy('id', 'ASC')->paginate(10);
 
         // Retornando vista
-        return view('sponsors.index')->withSponsors($sponsors);
+        return view('sponsors.index',compact('sponsors'));
     }
 
     /**
@@ -41,7 +41,7 @@ class SponsorController extends Controller
     public function store(Request $request)
     {
         // Validando datos
-        $this->validate($Request, array(
+        $this->validate($request, array(
             'razon' => 'required|max:255',
             'ruc' => 'required|numeric|max:11',
             'direccion' => 'max:255',
@@ -75,10 +75,10 @@ class SponsorController extends Controller
     public function show($id)
     {
         // Buscando sponsor
-        $sponsor = Sponsors::find($id);
+        $sponsor = Sponsor::find($id);
 
         // Retornando vista: sponsors/show.blade.php
-        return view('sponsors.show')->withSponsor($sponsor);
+        return view('sponsors.show',compact('$sponsor'));
     }
 
     /**
@@ -90,10 +90,10 @@ class SponsorController extends Controller
     public function edit($id)
     {
         // Buscando sponsor
-        $sponsor = Sponsors::find($id);
+        $sponsor = Sponsor::find($id);
 
         // Retornando vista: sponsors/edit.blade.php
-        return view('sponsors.edit')->withSponsor($sponsor);
+        return view('sponsors.edit',compact('sponsor'));
     }
 
     /**
@@ -106,7 +106,7 @@ class SponsorController extends Controller
     public function update(Request $request, $id)
     {
         // Validando datos
-        $this->validate($Request, array(
+        $this->validate($request, array(
             'razon' => 'required|max:255',
             'ruc' => 'required|numeric|max:11',
             'direccion' => 'max:255',
@@ -128,7 +128,7 @@ class SponsorController extends Controller
         Session::flash('exito' , 'El auspiciador fue exitosamente actualizado');
 
         // Retornando vista: sponsors/show.blade.php
-        return redirect()->route('sponsors.show', $sponsors->id);
+        return redirect()->route('sponsors.show', $sponsor->id);
 
     }
 

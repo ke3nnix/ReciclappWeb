@@ -1,19 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\WebControllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
-class ExchangeDetailController extends Controller
+class UserBenefitController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($sponsorId)
     {
-        //
+
     }
 
     /**

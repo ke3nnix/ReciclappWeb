@@ -1,9 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Benefit;
 
 class User extends Authenticatable
 {
@@ -26,4 +27,15 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function benefits()
+    {
+        return $this->belongsToMany('App\Models\Benefit', 'user_benefits', 'colaborador_id', 'beneficio_id')->using('App\Models\UserBenefit');
+    }
+
+    public function collectionPoints()
+    {
+        return $this->belongsToMany('App\Models\CollectionPoint', 'exchanges', 'colaborador_id', 'acopio_id')->using('App\Models\Exchange');
+    }
+
 }

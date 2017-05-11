@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -18,7 +18,7 @@ class CreateSponsorsTable extends Migration
             $table->string('razon');
             $table->string('ruc');
             $table->string('direccion');
-            $table->integer('telefono');
+            $table->string('telefono');
             $table->string('contacto');
             $table->timestamps();
         });

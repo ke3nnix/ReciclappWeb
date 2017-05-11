@@ -3,7 +3,7 @@
                     <ul class="nav" id="side-menu">
                         
                         <li>
-                            <a href="{{ route("collection-points.index") }}"><i class="fa fa-dashboard fa-fw"></i> Puntos de acopio</a>
+                            <a href="{{ route("puntos-de-acopio.index") }}"><i class="fa fa-dashboard fa-fw"></i> Puntos de acopio</a>
                         </li>
                         <li>{{-- 
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>

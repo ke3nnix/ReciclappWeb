@@ -24,6 +24,9 @@ class CreateBenefitsTable extends Migration
             $table->integer('sponsor_id')->unsigned();
             $table->integer('status');
             $table->timestamps();
+
+            // FOREIGNS
+            $table->foreign('sponsor_id')->references('id')->on('sponsors');
         });
     }
 

@@ -19,11 +19,11 @@ class CreateCollectionPointsTable extends Migration
             $table->string('direccion');
             $table->string('distrito');
             $table->integer('papel_max')->unsigned();
-            $table->integer('papel_actual')->unsigned();
+            $table->integer('papel_actual')->unsigned()->default(0);
             $table->integer('vidrio_max')->unsigned();
-            $table->integer('vidrio_actual')->unsigned();
+            $table->integer('vidrio_actual')->unsigned()->default(0);
             $table->integer('plastico_max')->unsigned();
-            $table->integer('plastico_actual')->unsigned();
+            $table->integer('plastico_actual')->unsigned()->default(0);
             $table->timestamps();
         });
     }

@@ -2,7 +2,7 @@
 @section('title', 'Detalle de punto de acopio')
 @section('content')
 
-{{Form::open(['route'=>['collection-points.destroy',$collectionPoint->id], 'method'=>'DELETE'])}}
+{{Form::open(['route'=>['puntos-de-acopio.destroy',$collectionPoint->id], 'method'=>'DELETE'])}}
   <div class="row">
     <div class="col-md-12">
          
@@ -47,7 +47,7 @@
                     <button type="submit" class="btn btn-primary">
                       Eliminar
                     </button>   
-                    <a href="{{route('collection-points.index')}}" class="btn btn-danger">Cancelar</a>
+                    <a href="{{route('puntos-de-acopio.index')}}" class="btn btn-danger">Cancelar</a>
               </div><br>
               </div>
                {{Form::close()}}

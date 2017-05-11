@@ -2,7 +2,7 @@
 @section('title', 'Agregar punto de acopio')
 @section('content')
    
-     {{Form::open(['route'=>'collection-points.store', 'method'=>'post'])}}
+     {{Form::open(['route'=>'puntos-de-acopio.store', 'method'=>'post'])}}
 
        <div>
            {{csrf_field()}}
@@ -48,7 +48,7 @@
                     <button type="submit" class="btn btn-primary">
                       Agregar
                     </button>
-                     <a href="{{route('collection-points.index')}}" class="btn btn-danger">Cancelar</a>
+                     <a href="{{route('puntos-de-acopio.index')}}" class="btn btn-danger">Cancelar</a>
                   </div>
                
 

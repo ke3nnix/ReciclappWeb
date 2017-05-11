@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\WebControllers;
 
 use Illuminate\Http\Request;
 
-class UserBenefitController extends Controller
+class WasteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,8 @@ class UserBenefitController extends Controller
      */
     public function index()
     {
-        //
+        $waste = Waste::orderBy('id', 'ASC')->paginate(10);
+
     }
 
     /**
