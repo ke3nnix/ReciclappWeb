@@ -16,7 +16,8 @@ class SponsorBenefitController extends Controller
      */
     public function index($sponsorId)
     {
-        return $sponsor = Sponsor::find($sponsorId)->load('benefits');
+        $sponsor = Sponsor::find($sponsorId)->load('benefits');
+        return view('beneficios.index', compact($sponsor));
     }
 
     /**

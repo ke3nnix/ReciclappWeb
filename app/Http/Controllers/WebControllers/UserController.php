@@ -16,9 +16,9 @@ class UserController extends Controller
     public function index(Request $request)
     {
 
-    // USO: https://github.com/selahattinunlu/laravel-api-query-builder/wiki/Other-Examples
-    $users = new QueryBuilder(new User, $request);
-    return view('usuarios.index', compact($users->build()->paginate()));
+        $users = User:: paginate(15);
+        return $users->load('benefits');
+        return view('usuarios.index', compact($users));
     }
 
     /**
@@ -40,7 +40,41 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validando la data 
+        $this->validate($request , array( 
+                'nombre' => 'required|max:255', 
+                'apellido' => 'required|max:255', 
+                'email' => 'required|email', 
+                // en la vista debe haber otro campo 'password_confirmation' para validar password
+                'password' => 'required|string|min:6|confirmed', 
+                'tipo' => 'required|numeric|min:1|max:3', 
+                'dni' => 'required|size:8', 
+                'status' => 'required|boolean', 
+                'puntos' => 'required|numeric|min:0', 
+                // <-- validación de imagen (?)
+                'direccion' => 'required|max:255', 
+                'distrito' => 'required|max:255', 
+                'nacimiento' => 'date', 
+            )); 
+
+        // Guardando data
+        $user = new User;
+        $user->nombre = $request->nombre;
+        $user->apellido = $request->apellido;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->tipo = $request->tipo;
+        $user->dni = $request->dni;
+        if (!$request->status) { $user->status = $request->status; }
+        if($request->tipo == 1) { $user->puntos = $request->puntos; }
+        $user->imagen = 'imagen.jpg';
+        $user->direccion = $request->direcion;
+        $user->nacimiento = $request->date;
+
+        $user->save();
+
+        // Retornar vista
+        return view('usuarios.show', $user->id);                
     }
 
     /**
@@ -51,7 +85,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        return $user;
     }
 
     /**
@@ -62,7 +97,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('usuarios.edit', compact($user));
     }
 
     /**
@@ -74,7 +110,41 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Validando la data 
+        $this->validate($request , array( 
+                'nombre' => 'required|max:255', 
+                'apellido' => 'required|max:255', 
+                'email' => 'required|email', 
+                // en la vista debe haber otro campo 'password_confirmation' para validar password
+                'password' => 'required|string|min:6|confirmed', 
+                'tipo' => 'required|numeric|min:1|max:3', 
+                'dni' => 'required|size:8', 
+                'status' => 'required|boolean', 
+                'puntos' => 'required|numeric|min:0', 
+                // <-- validación de imagen (?)
+                'direccion' => 'required|max:255', 
+                'distrito' => 'required|max:255', 
+                'nacimiento' => 'date', 
+            )); 
+
+        // Guardando data
+        $user = User::find($id);
+        $user->nombre = $request->nombre;
+        $user->apellido = $request->apellido;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->tipo = $request->tipo;
+        $user->dni = $request->dni;
+        if (!$request->status) { $user->status = $request->status; }
+        if($request->tipo == 1) { $user->puntos = $request->puntos; }
+        $user->imagen = 'imagen.jpg';
+        $user->direccion = $request->direcion;
+        $user->nacimiento = $request->date;
+
+        $user->save();
+
+        // Retornar vista
+        return view('usuarios.show', $user->id); 
     }
 
     /**
@@ -85,6 +155,20 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+
+        return redirect()->route('usuarios.index');
+    }
+
+    public function changeStatus($id)
+    {
+        $user = User::find($id);
+        if ($user->status == 1){ $user->status = 0; }
+        else { $user->status = 1; }
+
+        $user->save();
+
+        return redirect()->route('usuarios.index');
     }
 }

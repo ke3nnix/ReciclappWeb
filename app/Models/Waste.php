@@ -10,4 +10,9 @@ class Waste extends Model
 	{
 	    return $this->belongToMany('App\Models\Exchange', 'exchange_details', 'desecho_id', 'entrega_id')->withTimestamps()->using('App\Models\ExchangeDetail');
 	}
+
+  public function waste()
+  {
+    return $this->hasMany('App\Models\Waste', 'desecho_id');
+  }
 }

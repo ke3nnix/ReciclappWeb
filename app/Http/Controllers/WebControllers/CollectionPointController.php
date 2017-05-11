@@ -78,7 +78,7 @@ class CollectionPointController extends Controller
      */ 
     public function show($id) 
     { 
-        $collectionPoint = CollectionPoint::find($id); 
+        $collectionPoint = CollectionPoint::find($id);
         return view('puntos-de-acopio.show',compact('collectionPoint')); 
     } 
  
@@ -103,7 +103,7 @@ class CollectionPointController extends Controller
      */ 
     public function update(Request $request, $id) 
     { 
-// Validando la data 
+        // Validando la data 
         $this->validate($request , array( 
                 'nombre' => 'required|max:255', 
                 'direccion' => 'required|max:255', 
@@ -129,9 +129,11 @@ class CollectionPointController extends Controller
  
         // Enviando mensaje de estado 
         Session::flash('exito' , 'El punto de acopio fue exitosamente actualizado'); 
+
  
         // Redireccionando a otra vista 
         return redirect()->route('puntos-de-acopio.show', $collectionPoint->id); 
+        //return back(); retorna a la ubicación previa
     } 
  
     /** 
