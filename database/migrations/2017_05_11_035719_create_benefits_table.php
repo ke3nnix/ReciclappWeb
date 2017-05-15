@@ -28,8 +28,8 @@ class CreateBenefitsTable extends Migration
             // FOREIGNS
             $table->foreign('sponsor_id')->references('id')->on('sponsors');
         });
-    }
 
+    }
 
     /**
      * Reverse the migrations.

@@ -15,9 +15,9 @@ class CreateTransfersTable extends Migration
     {
       Schema::create('transfers', function (Blueprint $table) {
           $table->increments('id');
-          $table->integer('desecho_id');
+          $table->integer('desecho_id')->unsigned();
           $table->string('descripcion');
-          $table->integer('cantidad');
+          $table->integer('cantidad')->unsigned();
           $table->timestamps();
 
           // FOREIGNS
