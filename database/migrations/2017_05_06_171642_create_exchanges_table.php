@@ -25,7 +25,10 @@ class CreateExchangesTable extends Migration
             // FOREIGNS
             $table->foreign('colaborador_id')->references('id')->on('users');
             $table->foreign('empleado_id')->references('id')->on('users');
-            $table->foreign('acopio_id')->references('id')->on('collection_points');
+            $table->foreign('acopio_id')
+                        ->references('id')
+                        ->on('collection_points')
+                        ->onDelete('cascade');
         });
     }
 
