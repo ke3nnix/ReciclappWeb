@@ -14,7 +14,7 @@ class CreateWasteTable extends Migration
     public function up()
     {
         Schema::create('waste', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('desecho_id');
             $table->string('descripcion');
             $table->string('unidad');
             $table->integer('equivalencia')->unsigned();

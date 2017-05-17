@@ -12,7 +12,7 @@ class UserBenefitsTableSeeder extends Seeder
     public function run()
     {
         // Fetch the Benefit ids
-        $benefit_ids = App\Models\Benefit::all('id')->pluck('id')->toArray();
+        $benefit_ids = App\Models\Benefit::all('beneficio_id')->pluck('beneficio_id')->toArray();
 
         // Create random users
         factory(App\Models\User::class, 30)->create()->each(function ($user) use ($benefit_ids) {
@@ -43,7 +43,7 @@ class UserBenefitsTableSeeder extends Seeder
 
             foreach($keys as $key) {
                 DB::table('user_benefits')->insert([
-                    'colaborador_id' => $user_id,
+                    'usuario_id' => $user_id,
                     'beneficio_id' => $benefit_ids[$key],
                 ]);
             }

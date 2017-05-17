@@ -14,7 +14,7 @@ class CreateExchangeDetailsTable extends Migration
     public function up()
     {
         Schema::create('exchange_details', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('detalle_entrega_id');
             $table->integer('entrega_id')->unsigned();
             $table->integer('desecho_id')->unsigned();
             $table->integer('cantidad')->unsigned();
@@ -22,8 +22,8 @@ class CreateExchangeDetailsTable extends Migration
             $table->timestamps();
 
             // FOREIGNS
-            $table->foreign('entrega_id')->references('id')->on('exchanges');
-            $table->foreign('desecho_id')->references('id')->on('waste');
+            $table->foreign('entrega_id')->references('entrega_id')->on('exchanges');
+            $table->foreign('desecho_id')->references('desecho_id')->on('waste');
         });
     }
 

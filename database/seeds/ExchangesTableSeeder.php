@@ -12,7 +12,7 @@ class ExchangesTableSeeder extends Seeder
     public function run()
     {
      // Fetch the User ids
-        $User_ids = App\Models\User::all('id')->pluck('id')->toArray();
+        $User_ids = App\Models\User::all('usuario_id')->pluck('usuario_id')->toArray();
 
         // Create random CollectionPoints
         factory(App\Models\CollectionPoint::class, 18)->create()->each(function ($CollectionPoint) use ($User_ids) {
@@ -43,7 +43,7 @@ class ExchangesTableSeeder extends Seeder
                     'colaborador_id' => $User_ids[$key],
                     'empleado_id' => 1,
                     'acopio_id' => $CollectionPoint_id,
-                    'puntos' => 370,
+                    'total_puntos' => 370,
                 ]);
             }
         }

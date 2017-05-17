@@ -15,14 +15,14 @@ class CreateUserBenefitsTable extends Migration
     {
         Schema::create('user_benefits', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id');
-            $table->integer('colaborador_id')->unsigned();
+            $table->increments('usuario_beneficio_id');
+            $table->integer('usuario_id')->unsigned();
             $table->integer('beneficio_id')->unsigned();
             $table->timestamps();
 
             // FOREIGNS
-            $table->foreign('colaborador_id')->references('id')->on('users');
-            $table->foreign('beneficio_id')->references('id')->on('benefits');
+            $table->foreign('usuario_id')->references('usuario_id')->on('users');
+            $table->foreign('beneficio_id')->references('beneficio_id')->on('benefits');
 
         });
     }
