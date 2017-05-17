@@ -15,19 +15,17 @@ class CreateExchangesTable extends Migration
     {
         Schema::create('exchanges', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id');
+            $table->increments('entrega_id');
             $table->integer('colaborador_id')->unsigned();
             $table->integer('empleado_id')->unsigned();
             $table->integer('acopio_id')->unsigned();
-            $table->integer('puntos')->unsigned();
+            $table->integer('total_puntos')->unsigned();
             $table->timestamps();
 
             // FOREIGNS
-            $table->foreign('colaborador_id')->references('id')->on('users');
-            $table->foreign('empleado_id')->references('id')->on('users');
-            $table->foreign('acopio_id')
-                        ->references('id')
-                        ->on('collection_points')
+            $table->foreign('colaborador_id')->references('usuario_id')->on('users');
+            $table->foreign('empleado_id')->references('usuario_id')->on('users');
+            $table->foreign('acopio_id')->references('acopio_id')->on('collection_points')
                         ->onDelete('cascade');
         });
     }

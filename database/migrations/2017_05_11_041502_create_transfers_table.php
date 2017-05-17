@@ -14,14 +14,14 @@ class CreateTransfersTable extends Migration
     public function up()
     {
       Schema::create('transfers', function (Blueprint $table) {
-          $table->increments('id');
+          $table->increments('transferencia_id');
           $table->integer('desecho_id')->unsigned();
           $table->string('descripcion');
           $table->integer('cantidad')->unsigned();
           $table->timestamps();
 
           // FOREIGNS
-          $table->foreign('desecho_id')->references('id')->on('waste');
+          $table->foreign('desecho_id')->references('desecho_id')->on('waste');
       });
     }
 

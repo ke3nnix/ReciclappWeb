@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Pivot;
 
 class Exchange extends Pivot
 {
-
+	protected $table = 'exchanges';
+	protected $primaryKey = 'entrega_id';
+	
 	public $timestamps = true;
 
 	public function waste()

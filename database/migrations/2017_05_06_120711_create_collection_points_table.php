@@ -14,10 +14,12 @@ class CreateCollectionPointsTable extends Migration
     public function up()
     {
         Schema::create('collection_points', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('acopio_id');
             $table->string('nombre');
             $table->string('direccion');
             $table->string('distrito');
+            $table->string('latitud');
+            $table->string('longitud');
             $table->integer('papel_max')->unsigned();
             $table->integer('papel_actual')->unsigned()->default(0);
             $table->integer('vidrio_max')->unsigned();
