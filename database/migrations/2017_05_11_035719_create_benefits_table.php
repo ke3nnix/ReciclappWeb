@@ -15,21 +15,23 @@ class CreateBenefitsTable extends Migration
     {
         Schema::create('benefits', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id');
+            $table->increments('beneficio_id');
             $table->string('nombre');
             $table->string('descripcion');
-            $table->integer('puntos')->unsigned();
+            $table->integer('req_puntos')->unsigned();
             $table->string('tipo');
             $table->integer('cantidad');
             $table->integer('sponsor_id')->unsigned();
-            $table->integer('status');
+            $table->integer('estado');
+            $table->dateTime('fecha_entrada');
+            $table->dateTime('fecha_salida');
             $table->timestamps();
 
             // FOREIGNS
-            $table->foreign('sponsor_id')->references('id')->on('sponsors');
+            $table->foreign('sponsor_id')->references('sponsor_id')->on('sponsors');
         });
-    }
 
+    }
 
     /**
      * Reverse the migrations.

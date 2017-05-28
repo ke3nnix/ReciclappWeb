@@ -12,13 +12,13 @@ class UserBenefitsTableSeeder extends Seeder
     public function run()
     {
         // Fetch the Benefit ids
-        $benefit_ids = App\Models\Benefit::all('id')->pluck('id')->toArray();
+        $benefit_ids = App\Models\Benefit::all('beneficio_id')->pluck('beneficio_id')->toArray();
 
         // Create random users
         factory(App\Models\User::class, 30)->create()->each(function ($user) use ($benefit_ids) {
 
             // Example: Many-to-many relations
-            $this->attachRandomBenefitsToUser($user->id, $benefit_ids);
+            $this->attachRandomBenefitsToUser($user->usuario_id, $benefit_ids);
 
             // Example: Many-to-one relations
             // $this->createNotesForUserId( $user->id );
@@ -33,17 +33,17 @@ class UserBenefitsTableSeeder extends Seeder
      * @param $benefit_ids
      * @return void
      */
-    private function attachRandomBenefitsToUser($user_id, $benefit_ids)
+    private function attachRandomBenefitsToUser($usuario_id, $benefit_ids)
     {
         $amount = 5; // The amount of Benefits for this user
-        echo "Agregando " . $amount . " beneficios para el usuario " . $user_id . "\n";
+        echo "Agregando " . $amount . " beneficios para el usuario " . $usuario_id . "\n";
 
         if($amount > 0) {
             $keys = (array)array_rand($benefit_ids, $amount); // Random Benefits
 
             foreach($keys as $key) {
                 DB::table('user_benefits')->insert([
-                    'colaborador_id' => $user_id,
+                    'usuario_id' => $usuario_id,
                     'beneficio_id' => $benefit_ids[$key],
                 ]);
             }

@@ -14,12 +14,13 @@ class CreateSponsorsTable extends Migration
     public function up()
     {
         Schema::create('sponsors', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('razon');
+            $table->increments('sponsor_id');
+            $table->string('razon_social');
             $table->string('ruc');
             $table->string('direccion');
             $table->string('telefono');
             $table->string('contacto');
+            $table->string('distrito');
             $table->timestamps();
         });
     }
