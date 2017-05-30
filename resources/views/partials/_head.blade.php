@@ -23,6 +23,12 @@
     <!-- Custom Fonts -->
     <link href="{{asset('../vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
 
+    <link href="{{asset('../vendor/Modal-estilo/modal-estilo.css')}}" rel="stylesheet" type="text/css">
+
+    
+  <link rel="stylesheet" href="{{asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')}}">
+
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
