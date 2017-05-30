@@ -1,4 +1,4 @@
-@extends('base')
+@extends('base') 
 @section('title', 'Puntos de acopio')
 @section('content')
 
@@ -53,13 +53,12 @@
                 <p> {{$row->plastico_actual}}</p>
               </td>
               <td>
-                <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('puntos-de-acopio.show',['id'=>$row->id])}}'"><span class="glyphicon glyphicon-chevron-left"></span></button>
-                <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('puntos-de-acopio.edit',['id'=>$row->id])}}'" ><span class="glyphicon glyphicon-pencil"></span></button>
-                <button id="elimiar" data-toggle="modal" data-target="#myModal"class="btn btn-danger btn-xs" ><span class="glyphicon glyphicon-trash"></span></button>
-                {{Form::open(['route'=>['puntos-de-acopio.destroy',$row->id], 'method'=>'DELETE'])}}
+                <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('puntos-de-acopio.show',['id'=>$row->acopio_id])}}'"><span class="glyphicon glyphicon-eye-open"></span></button>
+                <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('puntos-de-acopio.edit',['id'=>$row->acopio_id])}}'" ><span class="glyphicon glyphicon-pencil"></span></button>
+                <button id="elimiar" data-toggle="modal" data-target="#myModal" class="btn btn-danger btn-xs" ><span class="glyphicon glyphicon-trash"></span></button>
+                {{Form::open(['route'=>['puntos-de-acopio.destroy',$row->acopio_id], 'method'=>'DELETE'])}}
                 <div id="myModal" class="modal fade" role="dialog">
                   <div class="modal-dialog ">
-
                     <!-- Modal content-->
                     <div class="modal-content">
                       <div class="modal-header">

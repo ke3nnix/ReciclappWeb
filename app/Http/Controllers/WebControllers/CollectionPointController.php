@@ -1,5 +1,5 @@
 <?php 
- 
+
 namespace App\Http\Controllers\WebControllers; 
  
 use Illuminate\Http\Request; 
@@ -16,7 +16,7 @@ class CollectionPointController extends Controller
      */ 
     public function index() 
     { 
-        $collectionPoints = CollectionPoint::orderBy('id', 'ACS')->paginate(15); 
+        $collectionPoints = CollectionPoint::orderBy('acopio_id', 'ACS')->paginate(15); 
         return view('puntos-de-acopio.index',compact('collectionPoints')); 
     } 
  
@@ -59,14 +59,16 @@ class CollectionPointController extends Controller
         $collectionPoint->vidrio_actual = 0; 
         $collectionPoint->plastico_max = $request->plastico_max; 
         $collectionPoint->plastico_actual = 0; 
- 
+         //lo puse por defeco ya que aun no sale. 
+        $collectionPoint->latitud = -12.0563604; 
+        $collectionPoint->longitud = -77.0856249;
         $collectionPoint->save(); 
  
         // Enviando mensaje de estado 
         Session::flash('exito' , 'El punto de acopio fue exitosamente agregado'); 
  
         // Redireccionando a la vista: collection-points/show.blade.php 
-        return redirect()->route('puntos-de-acopio.show', $collectionPoint->id); 
+        return redirect()->route('puntos-de-acopio.show', $collectionPoint->acopio_id); 
  
     } 
  
@@ -123,8 +125,10 @@ class CollectionPointController extends Controller
         $collectionPoint->vidrio_max = $request->vidrio_max; 
         $collectionPoint->vidrio_actual = 0; 
         $collectionPoint->plastico_max = $request->plastico_max; 
-        $collectionPoint->plastico_actual = 0; 
- 
+        $collectionPoint->plastico_actual = 0;
+        //lo puse por defeco ya que aun no sale. 
+        $collectionPoint->latitud = -12.0563604; 
+        $collectionPoint->longitud = -77.0856249; 
         $collectionPoint->save(); 
  
         // Enviando mensaje de estado 
@@ -132,7 +136,7 @@ class CollectionPointController extends Controller
 
  
         // Redireccionando a otra vista 
-        return redirect()->route('puntos-de-acopio.show', $collectionPoint->id); 
+        return redirect()->route('puntos-de-acopio.show', $collectionPoint->acopio_id); 
         //return back(); retorna a la ubicación previa
     } 
  
@@ -152,4 +156,5 @@ class CollectionPointController extends Controller
         // redirigir hacia collection-points.index 
         return  redirect()->route('puntos-de-acopio.index'); 
     } 
+
 } 
