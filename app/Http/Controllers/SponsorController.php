@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\WebControllers;
+namespace App\Http\Controllers; 
 
 use Illuminate\Http\Request;
 use App\Models\Sponsor;
@@ -63,7 +63,7 @@ class SponsorController extends Controller
         Session::flash('exito' , 'El auspiciador fue exitosamente agregado');
 
         // Retornando vista: sponsors/show.blade.php
-        return redirect()->route('sponsors.show', $sponsors->id);
+        return redirect()->route('sponsors.show', $sponsors->sponsor_id);
     }
 
     /**
@@ -128,7 +128,7 @@ class SponsorController extends Controller
         Session::flash('exito' , 'El auspiciador fue exitosamente actualizado');
 
         // Retornando vista: sponsors/show.blade.php
-        return redirect()->route('sponsors.show', $sponsor->id);
+        return redirect()->route('sponsors.show', $sponsor->sponsor_id);
 
     }
 
