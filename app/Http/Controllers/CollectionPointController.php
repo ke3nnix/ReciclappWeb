@@ -1,6 +1,6 @@
 <?php 
-
-namespace App\Http\Controllers\WebControllers; 
+ 
+namespace App\Http\Controllers; 
  
 use Illuminate\Http\Request; 
 use App\Models\CollectionPoint; 
@@ -17,6 +17,9 @@ class CollectionPointController extends Controller
     public function index() 
     { 
         $collectionPoints = CollectionPoint::orderBy('acopio_id', 'ACS')->paginate(15); 
+        if (request()->isJson()) {
+            return $collectionPoints;
+        }
         return view('puntos-de-acopio.index',compact('collectionPoints')); 
     } 
  
@@ -59,10 +62,14 @@ class CollectionPointController extends Controller
         $collectionPoint->vidrio_actual = 0; 
         $collectionPoint->plastico_max = $request->plastico_max; 
         $collectionPoint->plastico_actual = 0; 
-         //lo puse por defeco ya que aun no sale. 
-        $collectionPoint->latitud = -12.0563604; 
-        $collectionPoint->longitud = -77.0856249;
+        $collectionPoint->latitud = -12.054267;
+        $collectionPoint->longitud = -77.088244;
+ 
         $collectionPoint->save(); 
+
+        if (request()->isJson()) {
+            return $collectionPoint;
+        }
  
         // Enviando mensaje de estado 
         Session::flash('exito' , 'El punto de acopio fue exitosamente agregado'); 
@@ -81,6 +88,11 @@ class CollectionPointController extends Controller
     public function show($id) 
     { 
         $collectionPoint = CollectionPoint::find($id);
+
+        if (request()->isJson()) {
+            return $collectionPoint;
+        }
+
         return view('puntos-de-acopio.show',compact('collectionPoint')); 
     } 
  
@@ -126,10 +138,14 @@ class CollectionPointController extends Controller
         $collectionPoint->vidrio_actual = 0; 
         $collectionPoint->plastico_max = $request->plastico_max; 
         $collectionPoint->plastico_actual = 0;
-        //lo puse por defeco ya que aun no sale. 
-        $collectionPoint->latitud = -12.0563604; 
-        $collectionPoint->longitud = -77.0856249; 
+        $collectionPoint->latitud = -12.054267;
+        $collectionPoint->longitud = -77.088244;
+ 
         $collectionPoint->save(); 
+
+        if (request()->isJson()) {
+            return $collectionPoint;
+        }
  
         // Enviando mensaje de estado 
         Session::flash('exito' , 'El punto de acopio fue exitosamente actualizado'); 
@@ -150,11 +166,64 @@ class CollectionPointController extends Controller
     { 
        //ubicar el objeto 
         $collectionPoint = CollectionPoint::find($id); 
-        $collectionPoint->delete(); 
+
+        if (is_null($collectionPoint)) {
+            abort(404, "El punto de acopio no existe ");
+        }
+        
+        $collectionPoint->delete();
+
         //setear el mensaje FLASH de exito 
         Session::flash('exito', 'El punto de acopio fue exitósamente eliminado'); 
         // redirigir hacia collection-points.index 
         return  redirect()->route('puntos-de-acopio.index'); 
     } 
+
+    /**
+     * Acción para resetear a 0 el contador de desechos de los puntos de venta seleccionados.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+     public function collect(Request $request)
+    {
+        $collectionPoints = DB::table('collection_points')
+                            ->whereIn('id', $request->ids)
+                            ->get();
+
+        if (is_null($collectionPoints)) {
+            abort(406, 'No se seleccionó ningún punto de acopio');
+        }
+
+        foreach ($collectionPoints as $collectioPoint) {
+          // acumulando
+          $acumpapel = $acumpapel + $collectioPoint->papel_actual;
+          $acumvidrio = $acumvidrio + $collectioPoint->vidrio_actual;
+          $acumplastico = $acumplastico + $collectioPoint->plastico_actual;
+
+          // reseteando valores
+          $collectioPoint->papel_actual = 0;
+          $collectioPoint->plastico_actual = 0;
+          $collectioPoint->vidrio_actual = 0;
+
+          // guardando objetos
+          $collectioPoint->save();
+        }
+
+        // actualizando datos
+        $papel = Waste::where('descripcion','like','papel');
+        $papel->total = $papel->total + $acumpapel;
+        $vidrio = Waste::where('descripcion','like','vidrio');
+        $vidrio->total = $vidrio->total + $acumvidrio;
+        $plastico = Waste::where('descripcion','like','plastico');
+        $plastico->total = $plastico->total + $acumplastico;
+
+        // salvando datos
+        $papel->save();
+        $vidrio->save();
+        $plastico->save();
+
+        return  redirect()->route('puntos-de-acopio.index');
+    }
 
 } 
