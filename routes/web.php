@@ -15,10 +15,10 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::resource('puntos-de-acopio', 'WebControllers\CollectionPointController');
+Route::resource('puntos-de-acopio', 'CollectionPointController');
 
-Route::resource('sponsors', 'WebControllers\SponsorController');
+Route::resource('sponsors', 'SponsorController');
 
-Route::resource('sponsors/{sponsorId}/beneficios', 'WebControllers\SponsorBenefitController');
+Route::resource('sponsors/{sponsor}/beneficios', 'SponsorBenefitController');
 
-Route::resource('usuarios', 'WebControllers\UserController');
+Route::resource('usuarios', 'UserController');

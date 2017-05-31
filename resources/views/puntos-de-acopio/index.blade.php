@@ -20,16 +20,29 @@
 
         <table id="mytable" class="table table-bordred table-striped">
 
-         <thead>
-
+          <!--<thead>
           <th>Nombre</th>
-          <th>Direccion</th>
+          <th>Dirección</th>
           <th>Distrito</th>
           <th>Papel</th>
           <th>Vidrio</th>
           <th>Plástico</th>
           <th>Acciones</th>
+        </thead>-->
 
+        <thead>
+          <tr>
+                <th rowspan="2" scope="rowgroup" style="vertical-align:middle">Nombre</th>
+                <th rowspan="2" scope="rowgroup" style="vertical-align:middle">Dirección</th>
+                <th rowspan="2" scope="rowgroup" style="vertical-align:middle">Distrito</th>
+                <th colspan="3" scope="colgroup"style="text-align:center">Cantidades actuales</th>
+                <th rowspan="2" scope="rowgroup" style="vertical-align:middle">Acciones</th>
+          </tr>
+          <tr>
+                <th scope="row">Papel</th>
+                <th>Vidrio</th>
+                <th>Plástico</th>
+          </tr>
         </thead>
         <tbody>
          @foreach($collectionPoints as $row)
@@ -66,13 +79,12 @@
                         <h4 class="modal-title">Confirmar</h4>
                       </div>
                       <div class="modal-body">
-                        <p>Desea eliminar este punto de acopio?</p>
-                        <p>{{$row->nombre}}</p>
+                        <p>Punto de acopio a eliminar: <b>{{$row->nombre}}</b></p>
                       </div>
 
                       <div class="modal-footer">
 
-                        <button type="submit" class="btn btn-primary">Elimnar</button>
+                        <button type="submit" class="btn btn-primary">Eliminar</button>
 
                         {{Form::close()}}
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
