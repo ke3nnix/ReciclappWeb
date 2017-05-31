@@ -10,22 +10,16 @@ class Benefit extends Model
 	protected $table = 'benefits';
 	protected $primaryKey = 'beneficio_id';
 
-	// protected $fillable = [
-    //     'nombre', 'descripcion', 'req_puntos', 'tipo', 'cantidad', 'sponsor_id', ''
-    // ];
-
-	// protected $hidden = [
-
-    // ];
+	public $timestamps = true;
 
 	public function sponsor()
 	{
-		return $this->belongsTo('App\Models\Sponsor');
+		return $this->belongsTo('App\Models\Sponsor', 'sponsor_id', 'sponsor_id');
 	}
 
 
 	public function users()
 	{
-		return $this->belongsToMany('App\Models\User', 'user_benefits', 'beneficio_id', 'colaborador_id')->using('App\Models\UserBenefit');
+		return $this->belongsToMany('App\Models\User', 'user_benefits', 'beneficio_id', 'usuario_id')->withTimestamps()->using('App\Models\UserBenefit');
 	}
 }

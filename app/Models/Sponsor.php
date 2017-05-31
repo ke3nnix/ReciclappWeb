@@ -12,6 +12,6 @@ class Sponsor extends Model
 
     public function benefits()
     {
-    	return $this->hasMany('App\Models\Benefit');
+    	return $this->hasMany('App\Models\Benefit', 'sponsor_id', 'sponsor_id');
     }
 }

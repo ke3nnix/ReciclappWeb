@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\WebControllers;
+namespace App\Http\Controllers; 
 
 use Illuminate\Http\Request;
 use App\Models\User;
 use Unlu\Laravel\Api\QueryBuilder;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -67,14 +68,16 @@ class UserController extends Controller
         $user->dni = $request->dni;
         if (!$request->status) { $user->status = $request->status; }
         if($request->tipo == 1) { $user->puntos = $request->puntos; }
-        $user->imagen = 'imagen.jpg';
-        $user->direccion = $request->direcion;
+        if($request->hasFile('imagen')) {
+                $user->imagen = Storage::putFile('pictures', $request->file('imagen'));
+        }
+        $user->direccion = $request->direccion;
         $user->nacimiento = $request->date;
 
         $user->save();
 
         // Retornar vista
-        return view('usuarios.show', $user->id);                
+        return view('usuarios.show', $user->usuario_id);                
     }
 
     /**
@@ -108,7 +111,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id, Request $request)
     {
         // Validando la data 
         $this->validate($request , array( 
@@ -144,7 +147,7 @@ class UserController extends Controller
         $user->save();
 
         // Retornar vista
-        return view('usuarios.show', $user->id); 
+        return view('usuarios.show', $user->usuario_id); 
     }
 
     /**

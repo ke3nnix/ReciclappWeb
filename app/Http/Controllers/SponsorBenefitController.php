@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\WebControllers;
+namespace App\Http\Controllers; 
 
 use Illuminate\Http\Request;
 use App\Models\Sponsor;
 use App\Models\Benefit;
+use Unlu\Laravel\Api\QueryBuilder;
 
-class BenefitAPIController extends Controller
+class SponsorBenefitController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +17,7 @@ class BenefitAPIController extends Controller
     public function index($sponsorId)
     {
         $sponsor = Sponsor::find($sponsorId)->load('benefits');
-        return $sponsor;
+        return view('beneficios.index', compact($sponsor));
     }
 
     /**
@@ -54,7 +55,7 @@ class BenefitAPIController extends Controller
         Session::flash('exito' , 'El beneficio fue exitósamente agregado al sponsor ');
 
         // Retornando vista: sponsorsbeneficios/show.blade.php
-        return redirect()->route('beneficios.show', $benefit->id);
+        return redirect()->route('beneficios.show', $benefit->beneficio_id);
     }
 
     /**
@@ -107,7 +108,7 @@ class BenefitAPIController extends Controller
         Session::flash('exito' , 'El beneficio fue exitósamente actualizado ');
 
         // Retornando vista: beneficios/show.blade.php
-        return redirect()->route('beneficios.show', $benefit->id);
+        return redirect()->route('beneficios.show', $benefit->beneficio_id);
     }
 
     /**
