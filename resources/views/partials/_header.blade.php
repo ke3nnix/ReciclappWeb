@@ -5,6 +5,6 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Reciclapp</a>
+                <a class="navbar-brand" style="color: #FDFDFD" href="index.html"><font face="Roboto">Reciclapp</font></a>
             </div>
             <!-- /.navbar-header -->

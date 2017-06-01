@@ -74,9 +74,20 @@
                 </div>
               </div>
              </div><br>
-              <div class="row" >
-                <label class="col-md-4 control-label">Ubica tu punto de acopio</label>
-              </div>      
+
+             <div class="row">
+                <div class="form-group">
+              <label class="col-md-4 control-label">Ubica tu punto de acopio</label>  
+                <div class="col-md-6 inputGroupContainer">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pushpin"></i></span>
+                    <input type="label" id="latitudScript" name="latitud" class="form-control" readonly="readonly">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pushpin"></i></span>
+                    <input type="label" id="longitudScript" name="longitud" class="form-control" readonly="readonly" >
+                  </div>
+                </div>
+              </div>
+             </div><br>
             
       </dir>
                          
@@ -86,43 +97,63 @@
             
              <div class="row"  style="margin-left: 10px;">
                 <div class="col-md-6 col-md-offset-8">
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-success">
                       Agregar
                     </button>
                      <a href="{{route('puntos-de-acopio.index')}}" class="btn btn-danger">Cancelar</a>
+
                   </div>
              </div>
             <script>
-                var map;  
-                var markers = [];  
-                  
-                function myMap() {  
-                  var lat_lng = {lat:-12.0563604, lng: -77.0856249};  
-                  
-                  map = new google.maps.Map(document.getElementById('map'), {  
+
+              var map = null;
+              var infoWindow = null;
+
+              function openInfoWindow(marker) {
+                var markerLatLng = marker.getPosition();
+                infoWindow.setContent([
+                  '<strong>La posicion del marcador es:</strong><br/>',
+                  markerLatLng.lat(),
+                  ', ',
+                  markerLatLng.lng(),
+                  '<br/>Arrástrame para actualizar la posición.'
+                  ].join(''));
+                //mandar a un label latitud
+                var latText=markerLatLng.lat(); 
+                document.getElementById("latitudScript").value=latText;
+                var logText=markerLatLng.lng();
+                document.getElementById("longitudScript").value=logText;
+
+                infoWindow.open(map, marker);
+              }
+
+              function myMap() {
+               
+
+                var lat_lng = {lat:-12.0563604, lng: -77.0856249};  
+                 map = new google.maps.Map(document.getElementById('map'), {  
                     zoom: 17,  
                     center: lat_lng,  
                     mapTypeId: google.maps.MapTypeId.TERRAIN  
                   });  
-                  
-                  // This event listener will call addMarker() when the map is clicked.  
-                  map.addListener('click', function(event) {  
-                    addMarker(event.latLng);  
-                  });  
-                  
-                  // Adds a marker at the center of the map.  
-                  addMarker(lat_lng);  
-                }  
-                  
-                // Adds a marker to the map and push to the array.  
-                function addMarker(location) {  
-                  var marker = new google.maps.Marker({  
-                    position: location,  
-                    map: map  
-                  });  
-                  markers.push(marker);  
-                }  
-              </script>
+                infoWindow = new google.maps.InfoWindow();
+
+                var marker = new google.maps.Marker({
+                  position: lat_lng,
+                  draggable: true,
+                  map: map,
+                  title:"Ejemplo marcador arrastrable"
+                }); 
+
+                google.maps.event.addListener(marker, 'dragend', function(){ openInfoWindow(marker); });
+                google.maps.event.addListener(marker, 'click', function(){ openInfoWindow(marker); });
+                
+              }
+
+              $(document).ready(function() {
+                myMap();
+                gmaps_ads();
+              });        </script>
 
               <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBB4ZIAHHHpeAmS-khq5zqLWWmTosyIrAg&callback=myMap"></script>
 
