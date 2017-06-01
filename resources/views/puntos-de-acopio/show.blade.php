@@ -60,7 +60,7 @@
                               </div>
                             </div>
                            </div><br>
-                           <div class="row">
+                          <div class="row">
                               <div class="form-group">
                               <div class="col-md-12 inputGroupContainer">
                                 <div class="input-group">
@@ -69,56 +69,93 @@
                                 </div>
                               </div>
                             </div>
-                           </div>
+                          </div><br>
                     </div>
                  </div>
+
                  <div class="col-sm-6">
                    <div>
                       <div id="map"  style="width:400px;height:342px"></div>
                     </div><br>
-                    <script>
-                        var map;  
-                        var markers = [];  
-                          
-                        function myMap() {  
-                          var lat_lng = {lat:-12.0563604, lng: -77.0856249};  
-                          
-                          map = new google.maps.Map(document.getElementById('map'), {  
-                            zoom: 17,  
-                            center: lat_lng,  
-                            mapTypeId: google.maps.MapTypeId.TERRAIN  
-                          });  
-                          
-                          // This event listener will call addMarker() when the map is clicked.  
-                          map.addListener('click', function(event) {  
-                            addMarker(event.latLng);  
-                          });  
-                          
-                          // Adds a marker at the center of the map.  
-                          addMarker(lat_lng);  
-                        }  
-                          
-                        // Adds a marker to the map and push to the array.  
-                        function addMarker(location) {  
-                          var marker = new google.maps.Marker({  
-                            position: location,  
-                            map: map  
-                          });  
-                          markers.push(marker);  
-                        }  
-                    </script>
-
-                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBB4ZIAHHHpeAmS-khq5zqLWWmTosyIrAg&callback=myMap"></script>
-
                  </div>
           </div>   
    </div>
                      <div class="col-md-6 col-md-offset-8" >
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-warning">
                               Eliminar
                             </button>   
                             <a href="{{route('puntos-de-acopio.index')}}" class="btn btn-danger">Cancelar</a>
                       </div><br>
+                      <!-- latitud y longitud-->
+                      <div class="row">
+                      <div class="form-group">
+                        <div class="col-md-12 inputGroupContainer">
+                          <div class="input-group">
+                           
+                            <input id="latitudScript" name="latitud" class="form-control"  type="text" value="{{$collectionPoint->latitud}}"  style="visibility:hidden"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div><br>
+
+                    <div class="row">
+                      <div class="form-group">
+                        <div class="col-md-12 inputGroupContainer">
+                          <div class="input-group">
+                            <input id="longitudScript" name="longitud" class="form-control"  type="text" value="{{$collectionPoint->longitud}}"  style="visibility:hidden"/>
+                          </div>
+                        </div>
+                      </div>        
+
+            <script>
+
+              var map = null;
+              var infoWindow = null;
+
+              function openInfoWindow(marker) {
+                var markerLatLng = marker.getPosition();
+                infoWindow.setContent([
+                  '<strong>La posicion del marcador es:</strong><br/>',
+                  markerLatLng.lat(),
+                  ', ',
+                  markerLatLng.lng(),
+                  
+                  ].join(''));
+                infoWindow.open(map, marker);
+              }
+
+              function myMap() {
+                
+                var LAT= document.getElementById("latitudScript").value;
+                var LOG= document.getElementById("longitudScript").value;
+                
+                var lat_lng = {lat:parseFloat(LAT), lng: parseFloat(LOG)}; 
+                 map = new google.maps.Map(document.getElementById('map'), {  
+                    zoom: 17,  
+                    center: lat_lng,  
+                    mapTypeId: google.maps.MapTypeId.TERRAIN  
+                  });  
+                infoWindow = new google.maps.InfoWindow();
+
+                var marker = new google.maps.Marker({
+                  position: lat_lng,
+                  draggable: false,
+                  map: map,
+                  title:"Ejemplo marcador arrastrable"
+                }); 
+
+                google.maps.event.addListener(marker, 'dragend', function(){ openInfoWindow(marker); });
+                google.maps.event.addListener(marker, 'click', function(){ openInfoWindow(marker); });
+                
+              }
+
+              $(document).ready(function() {
+                myMap();
+                gmaps_ads();
+              });        
+            </script>
+
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBB4ZIAHHHpeAmS-khq5zqLWWmTosyIrAg&callback=myMap"></script>
 
                {{Form::close()}}
 

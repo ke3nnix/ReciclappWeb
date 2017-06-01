@@ -8,7 +8,7 @@
     <div class="row">
       <form action="{{route('puntos-de-acopio.create')}}">
         <div class="pull-right">
-          <button type="submit" class="btn btn-primary">Agregar</button>
+          <button type="submit" class="btn btn-success">Agregar</button>
 
         </div>
       </form>

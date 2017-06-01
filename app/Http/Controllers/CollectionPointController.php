@@ -45,7 +45,9 @@ class CollectionPointController extends Controller
         $this->validate($request , array( 
                 'nombre' => 'required|max:255', 
                 'direccion' => 'required|max:255', 
-                'distrito' => 'required|max:255', 
+                'distrito' => 'required|max:255',
+        //        'latitud' => 'required|max:255',
+          //      'longitud' => 'required|max:255',
                 'papel_max' => 'required|numeric|min:1', 
                 'vidrio_max' => 'required|numeric|min:1', 
                 'plastico_max' => 'required|numeric|min:1', 
@@ -56,15 +58,15 @@ class CollectionPointController extends Controller
         $collectionPoint->nombre = $request->nombre; 
         $collectionPoint->direccion = $request->direccion; 
         $collectionPoint->distrito = $request->distrito; 
+        $collectionPoint->latitud = $request->latitud;
+        $collectionPoint->longitud = $request->longitud;
         $collectionPoint->papel_max = $request->papel_max; 
         $collectionPoint->papel_actual = 0; 
         $collectionPoint->vidrio_max = $request->vidrio_max; 
         $collectionPoint->vidrio_actual = 0; 
         $collectionPoint->plastico_max = $request->plastico_max; 
         $collectionPoint->plastico_actual = 0; 
-        $collectionPoint->latitud = -12.054267;
-        $collectionPoint->longitud = -77.088244;
- 
+        
         $collectionPoint->save(); 
 
         if (request()->isJson()) {
@@ -138,8 +140,8 @@ class CollectionPointController extends Controller
         $collectionPoint->vidrio_actual = 0; 
         $collectionPoint->plastico_max = $request->plastico_max; 
         $collectionPoint->plastico_actual = 0;
-        $collectionPoint->latitud = -12.054267;
-        $collectionPoint->longitud = -77.088244;
+        $collectionPoint->latitud = $request->latitud;
+        $collectionPoint->longitud = $request->longitud;
  
         $collectionPoint->save(); 
 
