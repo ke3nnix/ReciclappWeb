@@ -27,6 +27,7 @@
     <link href="{{asset('../vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
 
     <link href="{{asset('../vendor/Modal-estilo/modal-estilo.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('../vendor/Etilo-estilo/etiloReciclap.css')}}" rel="stylesheet" type="text/css">
 
     
     <link rel="stylesheet" href="{{asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')}}">
@@ -41,7 +42,25 @@
         label{
             font-family: 'Roboto'; 
         }
-    </style>
+        .cortar{
+          width:120px;
+          height:20px;
+          padding:0px;
+          text-overflow:ellipsis;
+          white-space:nowrap; 
+          overflow:hidden;
+          -webkit-transition: all 1s;
+          -moz-transition: all 1s;
+          transition: all 1s;
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+      }
+      .cortar:hover {
+          width: 100%;
+          overflow:visible;
+          cursor: pointer;
+}    </style>
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

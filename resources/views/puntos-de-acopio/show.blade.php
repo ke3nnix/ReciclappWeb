@@ -128,7 +128,6 @@
                 
                 var LAT= document.getElementById("latitudScript").value;
                 var LOG= document.getElementById("longitudScript").value;
-                
                 var lat_lng = {lat:parseFloat(LAT), lng: parseFloat(LOG)}; 
                  map = new google.maps.Map(document.getElementById('map'), {  
                     zoom: 17,  
