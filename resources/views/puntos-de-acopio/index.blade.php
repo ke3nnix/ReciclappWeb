@@ -32,10 +32,11 @@
 
         <thead>
           <tr>
+                <th rowspan="2" scope="rowgroup" style="vertical-align:middle"><input type="checkbox" id="checkMain" onclick="marcar(this);" /></th> 
                 <th rowspan="2" scope="rowgroup" style="vertical-align:middle">Nombre</th>
                 <th rowspan="2" scope="rowgroup" style="vertical-align:middle">Dirección</th>
                 <th rowspan="2" scope="rowgroup" style="vertical-align:middle">Distrito</th>
-                <th colspan="3" scope="colgroup"style="text-align:center">Cantidades actuales</th>
+                <th colspan="3" scope="colgroup" style="text-align:center">Cantidades actuales</th>
                 <th rowspan="2" scope="rowgroup" style="vertical-align:middle">Acciones</th>
           </tr>
           <tr>
@@ -46,31 +47,35 @@
         </thead>
         <tbody>
          @foreach($collectionPoints as $row)
-           <tr>
+           <tr id="{{$row->acopio_id}}"> 
+              <td> 
+                <p><input type="checkbox" class="checkAll"/></p> 
+              </td> 
+              <td style="width: 150px"> 
+                <p>{{$row->nombre}}</p> 
+              </td> 
+               <td style="width: 80px"> 
+                <div class="cortar"> {{$row->direccion}}</div> 
+              </td> 
+              <td style="width: 100px"> 
+                <div > {{$row->distrito}}</div> 
+              </td> 
               <td>
-                <p>{{$row->nombre}}</p>
+                <p> <b>{{$row->papel_actual}}</b>/{{$row->papel_max}}</p> 
               </td>
               <td>
-                <p> {{$row->direccion}}</p>
+                <p> <b>{{$row->vidrio_actual}}</b>/{{$row->vidrio_max}}</p> 
               </td>
               <td>
-                <p> {{$row->distrito}}</p>
-              </td>
-              <td>
-                <p> {{$row->papel_actual}}</p>
-              </td>
-              <td>
-                <p> {{$row->vidrio_actual}}</p>
-              </td>
-              <td>
-                <p> {{$row->plastico_actual}}</p>
+                <p> <b>{{$row->plastico_actual}}</b>/{{$row->plastico_max}}</p> 
               </td>
               <td>
                 <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('puntos-de-acopio.show',['id'=>$row->acopio_id])}}'"><span class="glyphicon glyphicon-eye-open"></span></button>
-                <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('puntos-de-acopio.edit',['id'=>$row->acopio_id])}}'" ><span class="glyphicon glyphicon-pencil"></span></button>
-                <button id="elimiar" data-toggle="modal" data-target="#myModal" class="btn btn-danger btn-xs" ><span class="glyphicon glyphicon-trash"></span></button>
+                <button class="btn btn-success btn-xs" onclick="window.location.href='{{route('puntos-de-acopio.edit',['id'=>$row->acopio_id])}}'" ><span class="glyphicon glyphicon-pencil"></span></button> 
+                <button id="elimiar" data-toggle="modal" data-target="#myModal{{$row->acopio_id}}" class="btn btn-danger btn-xs" ><span class="glyphicon glyphicon-trash"></span></button> 
+
                 {{Form::open(['route'=>['puntos-de-acopio.destroy',$row->acopio_id], 'method'=>'DELETE'])}}
-                <div id="myModal" class="modal fade" role="dialog">
+                <div id="myModal{{$row->acopio_id}}" class="modal fade" role="dialog"> 
                   <div class="modal-dialog ">
                     <!-- Modal content-->
                     <div class="modal-content">
@@ -106,7 +111,20 @@
 </div>
 
 </div>
-
+<script type="text/javascript"> 
+  function marcar(source)  
+  { 
+    checkboxes=document.getElementsByTagName('input'); //obtenemos todos los controles del tipo Input 
+    for(i=0;i<checkboxes.length;i++) //recoremos todos los controles 
+    { 
+      if(checkboxes[i].type == "checkbox") //solo si es un checkbox entramos 
+      { 
+        checkboxes[i].checked=source.checked; //si es un checkbox le damos el valor del checkbox que lo llamó (Marcar/Desmarcar Todos) 
+      } 
+    } 
+  } 
+  
+</script>
 
 @stop
 
