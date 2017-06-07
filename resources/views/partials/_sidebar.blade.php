@@ -3,7 +3,7 @@
                     <ul class="nav" id="side-menu">
                         
                         <li>
-                            <a style="background-color: #287F22; color: #FDFDFD; font-family: 'Roboto';" onMouseOver="this.style.backgroundColor='#2EAB26'" onMouseOut="this.style.backgroundColor='#287F22'" href="{{ route("puntos-de-acopio.index") }}"><i style="font-size:16px" class="fa fa-globe fa-fw"></i>Puntos de acopio</a>
+                            <a style="background-color: #2EAB26; color: #FDFDFD; font-family: 'Roboto';" onMouseOver="this.style.backgroundColor='#287F22'" onMouseOut="this.style.backgroundColor='#2EAB26'" href="{{ route("puntos-de-acopio.index") }}"><i style="font-size:16px" class="fa fa-globe fa-fw"></i>Puntos de acopio</a>
                         </li>
                         <li>{{-- 
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
