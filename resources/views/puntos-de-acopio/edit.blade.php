@@ -139,7 +139,7 @@
                 
                 var lat_lng = {lat:parseFloat(LAT), lng: parseFloat(LOG)}; 
                  map = new google.maps.Map(document.getElementById('map'), {  
-                    zoom: 17,  
+                    zoom: 15,  
                     center: lat_lng,  
                     mapTypeId: google.maps.MapTypeId.TERRAIN  
                   });  

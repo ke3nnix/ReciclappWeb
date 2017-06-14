@@ -1,41 +1,41 @@
 @extends('base')
-@section('title', 'Agregar punto de acopio')
+@section('title', 'Editar punto de acopio')
 @section('content')
    
-     {{Form::open(['route'=>'puntos-de-acopio.store', 'method'=>'post'])}}
-
-       <div>
+     {{Form::open(['route'=>['sponsors.update',$sponsor->acopio_id], 'method'=>'PUT'])}}
+       
            {{csrf_field()}}
-      <dir style="margin-left: 100px;">
+
+           <div style="margin-left: 100px;">
           <div class="row">
            <div class="form-group">
-            <label  class="col-md-4 control-label">Nombre</label>  
+            <label  class="col-md-4 control-label">Contacto</label>  
             <div class="col-md-6 inputGroupContainer">
               <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input  name="nombre" class="form-control"  type="text">
+                <input  name="nombre" class="form-control"  type="text" value="{{$sponsor->contacto}}">
               </div>
             </div>
           </div>
         </div> <br>
              <div class="row">
                <div class="form-group">
-                <label class="col-md-4 control-label">Dirección</label>  
+                <label class="col-md-4 control-label">Razón Social</label>  
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                    <input name="direccion" class="form-control" type="text">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
+                    <input name="direccion" class="form-control" type="text" value="{{$sponsor->razon_social}}">
                   </div>
                 </div>
               </div>
              </div><br>
              <div class="row">
                <div class="form-group">
-                <label class="col-md-4 control-label">Distrito</label>  
+                <label class="col-md-4 control-label">RUC</label>  
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                    <input name="distrito" class="form-control"  type="text">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
+                    <input name="distrito" class="form-control"  type="text" value="{{ $sponsor->ruc}}">
                   </div>
                 </div>
               </div>
@@ -43,68 +43,48 @@
 
              <div class="row">
               <div class="form-group">
-              <label class="col-md-4 control-label">Papel maximo</label>  
+              <label class="col-md-4 control-label">Dirección</label>  
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
-                    <input name="papel_max" class="form-control"  type="text">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+                    <input name="papel_max" class="form-control"  type="text" value="{{$sponsor->direccion}}">
                   </div>
                 </div>
               </div>
              </div><br>
             <div class="row">
             <div class="form-group">
-              <label class="col-md-4 control-label">Vidrio maximo</label>  
+              <label class="col-md-4 control-label">Distrito</label>  
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-fire"></i></span>
-                    <input name="vidrio_max" class="form-control"  type="text">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pushpin"></i></span>
+                    <input name="vidrio_max" class="form-control"  type="text" value="{{ $sponsor->distrito}}">
                   </div>
                 </div>
               </div>
              </div><br>
              <div class="row">
                 <div class="form-group">
-              <label class="col-md-4 control-label">Plástico maximo</label>  
+              <label class="col-md-4 control-label">Télefono</label>  
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-retweet"></i></span>
-                    <input name="plastico_max" class="form-control"  type="text">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                    <input name="plastico_max" class="form-control"  type="text" value="{{ $sponsor->telefono}}">
                   </div>
                 </div>
               </div>
-             </div><br>
-
-             <div class="row">
-                <div class="form-group">
-              <label class="col-md-4 control-label">Ubica tu punto de acopio</label>  
-                <div class="col-md-6 inputGroupContainer">
-                  <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-pushpin"></i></span>
-                    <input type="label" id="latitudScript" name="latitud" class="form-control" readonly="readonly">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-pushpin"></i></span>
-                    <input type="label" id="longitudScript" name="longitud" class="form-control" readonly="readonly" >
-                  </div>
-                </div>
-              </div>
-             </div><br>
+             </div><br>            
+      </div>
             
-      </dir>
-                         
-            <div class="row" style="margin-left: 160px;"" >
-              <div id="map"  style="width:700px;height:300px"></div>
-            </div><br>
             
-             <div class="row"  style="margin-left: 10px;">
-                <div class="col-md-6 col-md-offset-8">
+                <div class="col-md-6 col-md-offset-8" >
                     <button type="submit" class="btn btn-success">
-                      Agregar
-                    </button>
-                     <a href="{{route('puntos-de-acopio.index')}}" class="btn btn-danger">Cancelar</a>
-
-                  </div>
-             </div>
-            <script>
+                      Actualizar
+                    </button>   
+                    <a href="{{route('puntos-de-acopio.index')}}" class="btn btn-danger">Cancelar</a>
+                </div><br>
+        
+    <!--script>
 
               var map = null;
               var infoWindow = null;
@@ -116,21 +96,21 @@
                   markerLatLng.lat(),
                   ', ',
                   markerLatLng.lng(),
-                  '<br/>Arrástrame para actualizar la posición.'
+                  
                   ].join(''));
-                //mandar a un label latitud
                 var latText=markerLatLng.lat(); 
                 document.getElementById("latitudScript").value=latText;
                 var logText=markerLatLng.lng();
                 document.getElementById("longitudScript").value=logText;
-
                 infoWindow.open(map, marker);
               }
 
               function myMap() {
-               
-
-                var lat_lng = {lat:-12.0563604, lng: -77.0856249};  
+                
+                var LAT= document.getElementById("latitudScript").value;
+                var LOG= document.getElementById("longitudScript").value;
+                
+                var lat_lng = {lat:parseFloat(LAT), lng: parseFloat(LOG)}; 
                  map = new google.maps.Map(document.getElementById('map'), {  
                     zoom: 15,  
                     center: lat_lng,  
@@ -153,12 +133,11 @@
               $(document).ready(function() {
                 myMap();
                 gmaps_ads();
-              });        </script>
+              });        
+          </script>
 
-              <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBB4ZIAHHHpeAmS-khq5zqLWWmTosyIrAg&callback=myMap"></script>
-
-        </div>
-     {{Form::close()}}
-
-
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBB4ZIAHHHpeAmS-khq5zqLWWmTosyIrAg&callback=myMap"></script>
+-->
+      {{Form::close()}}
+         
 @stop

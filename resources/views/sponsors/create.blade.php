@@ -2,40 +2,40 @@
 @section('title', 'Agregar punto de acopio')
 @section('content')
    
-     {{Form::open(['route'=>'puntos-de-acopio.store', 'method'=>'post'])}}
+     {{Form::open(['route'=>'sponsors.store', 'method'=>'post'])}}
 
        <div>
            {{csrf_field()}}
       <dir style="margin-left: 100px;">
           <div class="row">
            <div class="form-group">
-            <label  class="col-md-4 control-label">Nombre</label>  
+            <label  class="col-md-4 control-label">Contacto</label>  
             <div class="col-md-6 inputGroupContainer">
               <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input  name="nombre" class="form-control"  type="text">
+                <input  name="contacto" class="form-control"  type="text">
               </div>
             </div>
           </div>
         </div> <br>
              <div class="row">
                <div class="form-group">
-                <label class="col-md-4 control-label">Dirección</label>  
+                <label class="col-md-4 control-label">Razón Social</label>  
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                    <input name="direccion" class="form-control" type="text">
+                    <input name="razon_social" class="form-control" type="text">
                   </div>
                 </div>
               </div>
              </div><br>
              <div class="row">
                <div class="form-group">
-                <label class="col-md-4 control-label">Distrito</label>  
+                <label class="col-md-4 control-label">Ruc</label>  
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                    <input name="distrito" class="form-control"  type="text">
+                    <input name="ruc" class="form-control"  type="text">
                   </div>
                 </div>
               </div>
@@ -43,39 +43,39 @@
 
              <div class="row">
               <div class="form-group">
-              <label class="col-md-4 control-label">Papel maximo</label>  
+              <label class="col-md-4 control-label">Direccion</label>  
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
-                    <input name="papel_max" class="form-control"  type="text">
+                    <input name="direccion" class="form-control"  type="text">
                   </div>
                 </div>
               </div>
              </div><br>
             <div class="row">
-            <div class="form-group">
-              <label class="col-md-4 control-label">Vidrio maximo</label>  
+                <div class="form-group">
+              <label class="col-md-4 control-label">Distrito</label>  
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-fire"></i></span>
-                    <input name="vidrio_max" class="form-control"  type="text">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-retweet"></i></span>
+                    <input name="distrito" class="form-control"  type="text">
                   </div>
                 </div>
               </div>
              </div><br>
              <div class="row">
                 <div class="form-group">
-              <label class="col-md-4 control-label">Plástico maximo</label>  
+              <label class="col-md-4 control-label">Telefono</label>  
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-retweet"></i></span>
-                    <input name="plastico_max" class="form-control"  type="text">
+                    <input name="telefono" class="form-control"  type="text">
                   </div>
                 </div>
               </div>
              </div><br>
 
-             <div class="row">
+             <!--div class="row">
                 <div class="form-group">
               <label class="col-md-4 control-label">Ubica tu punto de acopio</label>  
                 <div class="col-md-6 inputGroupContainer">
@@ -87,20 +87,20 @@
                   </div>
                 </div>
               </div>
-             </div><br>
+             </div><br-->
             
       </dir>
                          
-            <div class="row" style="margin-left: 160px;"" >
+            <!--div class="row" style="margin-left: 160px;"" >
               <div id="map"  style="width:700px;height:300px"></div>
-            </div><br>
+            </div><br-->
             
              <div class="row"  style="margin-left: 10px;">
                 <div class="col-md-6 col-md-offset-8">
                     <button type="submit" class="btn btn-success">
                       Agregar
                     </button>
-                     <a href="{{route('puntos-de-acopio.index')}}" class="btn btn-danger">Cancelar</a>
+                     <a href="{{route('sponsors.index')}}" class="btn btn-danger">Cancelar</a>
 
                   </div>
              </div>
