@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () {
+Route::name('Inicio')->get('/', function () {
     return view('index');
 });
 

@@ -3,9 +3,14 @@
                     <ul class="nav" id="side-menu">
                         
                         <li>
-                            <a style="background-color: #287F22; color: #FDFDFD; font-family: 'Roboto';" onMouseOver="this.style.backgroundColor='#2EAB26'" onMouseOut="this.style.backgroundColor='#287F22'" href="{{ route("puntos-de-acopio.index") }}"><i style="font-size:16px" class="fa fa-globe fa-fw"></i>Puntos de acopio</a> 
+                            <a style="background-color: #287F22; color: #FDFDFD; font-family: 'Roboto';" onMouseOver="this.style.backgroundColor='#2EAB26'" onMouseOut="this.style.backgroundColor='#287F22'" href="{{ route("puntos-de-acopio.index") }}"><i style="font-size:15px" class="glyphicon glyphicon-globe"></i> Puntos de acopio</a> 
                         </li>
-                        <li>{{-- 
+                         <li>
+                            <a style="background-color: #287F22; color: #FDFDFD; font-family: 'Roboto';" onMouseOver="this.style.backgroundColor='#2EAB26'" onMouseOut="this.style.backgroundColor='#287F22'" href="{{ route("sponsors.index") }}"><i style="font-size:16px" class="glyphicon glyphicon-user fa-fw"></i>Sponsors</a> 
+                        </li>
+                           
+                        
+                        {{-- 
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>

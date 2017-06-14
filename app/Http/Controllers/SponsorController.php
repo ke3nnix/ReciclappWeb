@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Sponsor;
+use Session; 
+
 
 class SponsorController extends Controller
 {
@@ -15,7 +17,7 @@ class SponsorController extends Controller
     public function index()
     {
         // Buscando sponsors
-        $sponsors = Sponsor::orderBy('id', 'ASC')->paginate(10);
+        $sponsors = Sponsor::orderBy('sponsor_id', 'ASC')->paginate(10);
 
         // Retornando vista
         return view('sponsors.index',compact('sponsors'));
@@ -42,19 +44,20 @@ class SponsorController extends Controller
     {
         // Validando datos
         $this->validate($request, array(
-            'razon' => 'required|max:255',
+            /*'razon_social' => 'required|max:255',
             'ruc' => 'required|numeric|max:11',
-            'direccion' => 'max:255',
-            'telefono' => 'numeric|max:11',
-            'contacto' => 'max:255',
+            'direccion' => 'required|max:255',
+            'telefono' => 'required|numeric|max:11',
+            'contacto' => 'required|max:255',*/
         ));
 
         // Almacenando datos
         $sponsor = new Sponsor;
-        $sponsor->razon = $request->razon;
-        $sponsor->ruc = $request->razon;
+        $sponsor->razon_social = $request->razon_social;
+        $sponsor->ruc = $request->ruc;
         $sponsor->direccion = $request->direccion;
         $sponsor->telefono = $request->telefono;
+        $sponsor->distrito = $request->distrito;
         $sponsor->contacto = $request->contacto;
 
         $sponsor->save();
@@ -63,7 +66,7 @@ class SponsorController extends Controller
         Session::flash('exito' , 'El auspiciador fue exitosamente agregado');
 
         // Retornando vista: sponsors/show.blade.php
-        return redirect()->route('sponsors.show', $sponsors->sponsor_id);
+        return redirect()->route('sponsors.show', $sponsor->sponsor_id);
     }
 
     /**
@@ -78,7 +81,7 @@ class SponsorController extends Controller
         $sponsor = Sponsor::find($id);
 
         // Retornando vista: sponsors/show.blade.php
-        return view('sponsors.show',compact('$sponsor'));
+        return view('sponsors.show',compact('sponsor'));
     }
 
     /**
