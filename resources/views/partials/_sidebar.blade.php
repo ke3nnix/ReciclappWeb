@@ -8,7 +8,8 @@
                          <li>
                             <a style="background-color: #287F22; color: #FDFDFD; font-family: 'Roboto';" onMouseOver="this.style.backgroundColor='#2EAB26'" onMouseOut="this.style.backgroundColor='#287F22'" href="{{ route("sponsors.index") }}"><i style="font-size:16px" class="glyphicon glyphicon-user fa-fw"></i>Sponsors</a> 
                         </li>
-                           
+                        
+                        
                         
                         {{-- 
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
@@ -93,8 +94,8 @@
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
-                        </li>
-                    </ul> --}}
+                        </li>--}}
+                    </ul> 
                 </div>
                 <!-- /.sidebar-collapse -->
             </div>
