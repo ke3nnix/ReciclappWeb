@@ -133,10 +133,11 @@ class SponsorController extends Controller
 
         // Almacenando datos
         $sponsor = Sponsor::find($id);
-        $sponsor->razon = $request->razon;
-        $sponsor->ruc = $request->razon;
+        $sponsor->razon_social = $request->razon_social;
+        $sponsor->ruc = $request->ruc;
         $sponsor->direccion = $request->direccion;
         $sponsor->telefono = $request->telefono;
+        $sponsor->distrito = $request->distrito;
         $sponsor->contacto = $request->contacto;
         $sponsos->estado = 1; // activo - 0: inactivo        
 
