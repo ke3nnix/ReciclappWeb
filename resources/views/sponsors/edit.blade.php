@@ -1,8 +1,8 @@
 @extends('base')
-@section('title', 'Editar punto de acopio')
+@section('title', 'Editar Sponsor')
 @section('content')
    
-     {{Form::open(['route'=>['sponsors.update',$sponsor->acopio_id], 'method'=>'PUT'])}}
+     {{Form::open(['route'=>['sponsors.update',$sponsor->sponsor_id], 'method'=>'PUT'])}}
        
            {{csrf_field()}}
 
@@ -13,7 +13,7 @@
             <div class="col-md-6 inputGroupContainer">
               <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input  name="nombre" class="form-control"  type="text" value="{{$sponsor->contacto}}">
+                <input  name="contacto" class="form-control"  type="text" value="{{$sponsor->contacto}}">
               </div>
             </div>
           </div>
@@ -24,7 +24,7 @@
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
-                    <input name="direccion" class="form-control" type="text" value="{{$sponsor->razon_social}}">
+                    <input name="razon_social" class="form-control" type="text" value="{{$sponsor->razon_social}}">
                   </div>
                 </div>
               </div>
@@ -35,7 +35,7 @@
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
-                    <input name="distrito" class="form-control"  type="text" value="{{ $sponsor->ruc}}">
+                    <input name="ruc" class="form-control"  type="text" value="{{ $sponsor->ruc}}">
                   </div>
                 </div>
               </div>
@@ -47,7 +47,7 @@
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
-                    <input name="papel_max" class="form-control"  type="text" value="{{$sponsor->direccion}}">
+                    <input name="direccion" class="form-control"  type="text" value="{{$sponsor->direccion}}">
                   </div>
                 </div>
               </div>
@@ -58,7 +58,7 @@
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-pushpin"></i></span>
-                    <input name="vidrio_max" class="form-control"  type="text" value="{{ $sponsor->distrito}}">
+                    <input name="distrito" class="form-control"  type="text" value="{{ $sponsor->distrito}}">
                   </div>
                 </div>
               </div>
@@ -69,7 +69,7 @@
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
-                    <input name="plastico_max" class="form-control"  type="text" value="{{ $sponsor->telefono}}">
+                    <input name="telefono" class="form-control"  type="text" value="{{ $sponsor->telefono}}">
                   </div>
                 </div>
               </div>
@@ -81,7 +81,7 @@
                     <button type="submit" class="btn btn-success">
                       Actualizar
                     </button>   
-                    <a href="{{route('puntos-de-acopio.index')}}" class="btn btn-danger">Cancelar</a>
+                    <a href="{{route('sponsors.index')}}" class="btn btn-danger">Cancelar</a>
                 </div><br>
         
     <!--script>

@@ -44,11 +44,11 @@ class SponsorController extends Controller
     {
         // Validando datos
         $this->validate($request, array(
-            /*'razon_social' => 'required|max:255',
+            'razon_social' => 'required|max:255',
             'ruc' => 'required|numeric|max:11',
             'direccion' => 'required|max:255',
             'telefono' => 'required|numeric|max:11',
-            'contacto' => 'required|max:255',*/
+            'contacto' => 'required|max:255',
         ));
 
         // Almacenando datos
@@ -110,21 +110,22 @@ class SponsorController extends Controller
     {
         // Validando datos
         $this->validate($request, array(
-            'razon' => 'required|max:255',
-            'ruc' => 'required|numeric|max:11',
-            'direccion' => 'max:255',
-            'telefono' => 'numeric|max:11',
-            'contacto' => 'max:255',
+            'razon_social' => 'required|max:255',
+            //'ruc' => 'required|numeric|max:11',
+            'direccion' => 'required|max:255',
+            //'telefono' => 'required|numeric|max:11',
+            'contacto' => 'required|max:255',
+            'distrito' => 'required|max:255',
         ));
 
         // Almacenando datos
         $sponsor = Sponsor::find($id);
-        $sponsor->razon = $request->razon;
-        $sponsor->ruc = $request->razon;
+        $sponsor->razon_social = $request->razon_social;
+        $sponsor->ruc = $request->ruc;
         $sponsor->direccion = $request->direccion;
         $sponsor->telefono = $request->telefono;
-        $sponsor->contacto = $request->contacto;
-
+        $sponsor->distrito = $request->distrito;
+        $sponsor->contacto = $request->contacto;        
         $sponsor->save();
 
         // Enviando mensaje de estado
