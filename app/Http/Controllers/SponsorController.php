@@ -16,8 +16,8 @@ class SponsorController extends Controller
      */
     public function index()
     {
-        // Buscando sponsors
-        $sponsors = Sponsor::orderBy('sponsor_id', 'ASC')->paginate(10);
+        // Buscando sponsors ACTIVOS: $sponsor->estado = 1 (inactivo = 0)
+        $sponsors = Sponsor::where('estado', 1)->paginate(10);
 
         // Retornando vista
         return view('sponsors.index',compact('sponsors'));
@@ -48,19 +48,32 @@ class SponsorController extends Controller
             'ruc' => 'required|numeric|max:11',
             'direccion' => 'required|max:255',
             'telefono' => 'required|numeric|max:11',
+            'distrito' => 'required|max:255',
             'contacto' => 'required|max:255',
         ));
 
-        // Almacenando datos
-        $sponsor = new Sponsor;
-        $sponsor->razon_social = $request->razon_social;
-        $sponsor->ruc = $request->ruc;
-        $sponsor->direccion = $request->direccion;
-        $sponsor->telefono = $request->telefono;
-        $sponsor->distrito = $request->distrito;
-        $sponsor->contacto = $request->contacto;
+        // Verificando si sponsor ya existe en el sistema
+        $sponsor = Sponsor::where('razon_social', $request->razon_social)->get();
 
-        $sponsor->save();
+        if(!is_null($sponsor)) {
+            $sponsor->estado = 1;
+        }
+        else {
+            // Almacenando datos
+            $sponsor = new Sponsor;
+            $sponsor->razon_social = $request->razon_social;
+            $sponsor->ruc = $request->ruc;
+            $sponsor->direccion = $request->direccion;
+            $sponsor->telefono = $request->telefono;
+            $sponsor->distrito = $request->distrito;
+            $sponsor->contacto = $request->contacto;
+            $sponsor->estado = 1; // activo - 0: inactivo
+
+            $sponsor->save();
+
+            // Enviando mensaje de estado
+            Session::flash('exito' , 'El auspiciador fue exitosamente re-activado');
+        }
 
         // Enviando mensaje de estado
         Session::flash('exito' , 'El auspiciador fue exitosamente agregado');
@@ -111,11 +124,11 @@ class SponsorController extends Controller
         // Validando datos
         $this->validate($request, array(
             'razon_social' => 'required|max:255',
-            //'ruc' => 'required|numeric|max:11',
+            'ruc' => 'required|numeric|max:11',
             'direccion' => 'required|max:255',
-            //'telefono' => 'required|numeric|max:11',
-            'contacto' => 'required|max:255',
+            'telefono' => 'required|numeric|max:11',
             'distrito' => 'required|max:255',
+            'contacto' => 'required|max:255',
         ));
 
         // Almacenando datos
@@ -125,7 +138,9 @@ class SponsorController extends Controller
         $sponsor->direccion = $request->direccion;
         $sponsor->telefono = $request->telefono;
         $sponsor->distrito = $request->distrito;
-        $sponsor->contacto = $request->contacto;        
+        $sponsor->contacto = $request->contacto;
+        $sponsos->estado = 1; // activo - 0: inactivo        
+
         $sponsor->save();
 
         // Enviando mensaje de estado
@@ -146,10 +161,12 @@ class SponsorController extends Controller
     {
         // ubicando datos
         $sponsor = Sponsor::find($id);
-        $sponsor->delete();
+        $sponsor->estado = 0;
+
+        $sponsor->save();
 
         //setear el mensaje FLASH de exito
-        Session::flash('exito', 'El sponsor fue exitósamente eliminado');
+        Session::flash('exito', 'El sponsor fue exitósamente desactivado');
 
         // redirigir hacia sponsors/index.blade.php
         return  redirect()->route('sponsors.index');

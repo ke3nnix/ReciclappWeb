@@ -28,7 +28,7 @@ Route::get('v1/puntos-de-acopio/{acopio}', 'CollectionPointController@show')->na
 
 // BENEFICIOS 
 // Listar todos los beneficios disponibles
-Route::get('v1/beneficios', 'BenefitController@index')->name('beneficios.index');
+Route::get('v1/beneficios', 'SponsorBenefitController@indexAll')->name('beneficios.todos');
 // Beneficios de usuario X
 Route::get('v1/usuarios/{usuario}/beneficios', 'UserBenefitController@index')->name('usuario-beneficio.index');
 // Beneficios Y de usuario X

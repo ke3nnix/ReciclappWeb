@@ -21,6 +21,7 @@ class CreateSponsorsTable extends Migration
             $table->string('telefono');
             $table->string('contacto');
             $table->string('distrito');
+            $table->integer('estado');
             $table->timestamps();
         });
     }

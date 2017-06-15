@@ -70,8 +70,6 @@ $factory->define(App\Models\Benefit::class, function (Faker\Generator $faker) {
         'cantidad' => $faker->numberBetween($min = 20, $max = 200),
         'sponsor_id' => $faker->numberBetween($min = 1, $max = 19),
         'estado' => $faker->numberBetween($min = 0, $max = 1),
-        'fecha_entrada' => $faker->dateTime(),
-         'fecha_salida' => $faker->dateTime(),
          'created_at' => $faker->dateTime(),
          'updated_at' => $faker->dateTime(),
     ];

@@ -92,7 +92,14 @@ class CollectionPointController extends Controller
         $collectionPoint = CollectionPoint::find($id);
 
         if (request()->isJson()) {
+            if (is_null($collectionPoint)) {
+                return response()->json(['error' => 'El punto de acopio no existe.'], 404);
+            }
             return $collectionPoint;
+        }
+
+        if(is_null($collectionPoint)){
+            abort(404, "El punto de acopio no existe ");
         }
 
         return view('puntos-de-acopio.show',compact('collectionPoint')); 

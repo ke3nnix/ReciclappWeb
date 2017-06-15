@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Sponsor;
 use App\Models\Benefit;
-use Unlu\Laravel\Api\QueryBuilder;
 
 class SponsorBenefitController extends Controller
 {
@@ -14,9 +13,18 @@ class SponsorBenefitController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index($sponsorId)
     {
         $sponsor = Sponsor::find($sponsorId)->load('benefits');
+        if (request()->isJson()) {
+            if (is_null($sponsor)) {
+                return response()->json(['mensaje' => 'El usuario no existe.'], 404);
+            }
+            else {
+                return $sponsor;
+            }
+        }
         return view('beneficios.index', compact($sponsor));
     }
 
@@ -40,19 +48,30 @@ class SponsorBenefitController extends Controller
     {
         // Validando datos
         $this->validate($Request, array(
-            'colaborador_id' => 'numeric|min:1',
-            'beneficio_id' => 'numeric|min:1',
+            'nombre' => 'required|max:255',
+            'descripcion' => 'required|max:255',
+            'req_puntos' => 'numeric|min:1',
+            'tipo' => 'numeric|min:1|max:3', // 1: - 2: - 3:
+            'cantidad' => 'numeric|min:1',
+            'sponsor_id' => 'numeric|min:1',
         ));
 
         // Almacenando datos
         $benefit = new Benefit;
-        $benefit->colaborador_id = $request->colaborador_id;
-        $benefit->beneficio_id = $request->beneficio_id;
+        $benefit->nombre = $request->nombre;
+        $benefit->descripcion = $request->descripcion;
+        $benefit->req_puntos = $request->req_puntos;
+        $benefit->tipo = $request->tipo;
+        $benefit->cantidad = $request->cantidad;
+        $benefit->sponsor_id = $request->sponsor_id;
+        $benefit->estado = 1;
 
         $benefit->save();
 
+        $sponsor = Sponsor::find($request->sponsor_id);
+
         // Enviando mensaje de estado
-        Session::flash('exito' , 'El beneficio fue exitósamente agregado al sponsor ');
+        Session::flash('exito' , 'El beneficio fue exitósamente agregado a ' + $sponsor->razon_social);
 
         // Retornando vista: sponsorsbeneficios/show.blade.php
         return redirect()->route('beneficios.show', $benefit->beneficio_id);
@@ -66,7 +85,18 @@ class SponsorBenefitController extends Controller
      */
     public function show($id)
     {
-        $benefit = Benefit::find($id)->load('sponsor');
+        $benefit = Benefit::find($id);
+        if (request()->isJson()) {
+            if (is_null($benefit)) {
+                return response()->json(['mensaje' => 'El beneficio no existe.'], 404);
+            }
+            else {
+                return $benefit;
+            }
+        }
+            if (is_null($benefit)) {
+                abort(404, "El beneficio no existe");
+            }
         return view('beneficios.show', compact($benefit));
     }
 
@@ -123,5 +153,11 @@ class SponsorBenefitController extends Controller
         $sponsorId = $benefit->sponsor()->id;
         $benefit->delete();
         return redirect()->route('beneficios.index', [$sponsorId]);
+    }
+
+    public function indexAll()
+    {
+        $benefits = Sponsor::with('benefits')->paginate(15);
+        return $benefits;
     }
 }
