@@ -23,8 +23,6 @@ class CreateBenefitsTable extends Migration
             $table->integer('cantidad');
             $table->integer('sponsor_id')->unsigned();
             $table->integer('estado');
-            $table->dateTime('fecha_entrada');
-            $table->dateTime('fecha_salida');
             $table->timestamps();
 
             // FOREIGNS
