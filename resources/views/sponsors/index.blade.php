@@ -33,7 +33,6 @@
         <thead>
           <tr>
                 <th rowspan="2" scope="rowgroup" style="vertical-align:middle"><input type="checkbox" id="checkMain" onclick="marcar(this);" /></th>
-                <th rowspan="2" scope="rowgroup" style="vertical-align:middle">Contacto</th>
                 <th rowspan="2" scope="rowgroup" style="vertical-align:middle">Razón</th>
                 <th rowspan="2" scope="rowgroup" style="vertical-align:middle">RUC</th>
                 <th rowspan="2" scope="rowgroup" style="vertical-align:middle">Telefono</th>
@@ -48,9 +47,6 @@
               <td style="width: 5px"> 
                 <p><input type="checkbox" class="checkAll"/></p> 
               </td> 
-              <td style="width: 100px">
-                <p> {{$row->contacto}}</p> 
-              </td>
               <td style="width: 150px"> 
                 <div >{{$row->razon_social}}</div> 
               </td> 
@@ -61,7 +57,7 @@
                 <p > {{$row->telefono}}</p> 
               </td>
               <td> 
-                <div class="cortar" > {{$row->direccion}}</div> 
+                <div > {{$row->direccion}}</div> 
               </td> 
                             
               <td style="width: 100px">
