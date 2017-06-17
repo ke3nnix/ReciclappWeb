@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
+use App\Models\CollectionPoint;
+use App\Models\Exchange;
+use App\Models\Waste;
+// use Illuminate\Support\Facades\DB;
 
 class ExchangeController extends Controller
 {
@@ -15,37 +18,26 @@ class ExchangeController extends Controller
      */
     public function index($usuario_id, Request $request)
     {
-        $user = User::find($usuario_id);
+        $usuario = User::find($usuario_id);
         if(request()->expectsJson()){
-                if(is_null($user)){
+                if(is_null($usuario)){
                     return response()->json(['mensaje' => 'el usuario no existe'], 404);
                 }
         }
 
-        if(is_null($request->acopio_id)) {
-                $entregas = DB::table('users')
-                                    ->join('exchanges', 'users.usuario_id', '=', 'exchanges.colaborador_id')
-                                    ->join('collection_points', 'exchanges.acopio_id','=','collection_points.acopio_id')
-                                    ->select(DB::raw('exchanges.created_at as fecha'), 'collection_points.acopio_id', 'collection_points.nombre', 'exchanges.total_cantidad', 'exchanges.total_puntos')
-                                    ->where('users.usuario_id', '=', $usuario_id)
-                                    ->orderBy('exchanges.created_at', 'desc')
-                                    ->get();
+        if(is_null($request->paginate)){
+            $entrega = Exchange::where('colaborador_id', $usuario->usuario_id)
+                                                ->with('acopio')
+                                                ->get();
         }
         else {
-                $entregas = DB::table('users')
-                                    ->join('exchanges', 'users.usuario_id', '=', 'exchanges.colaborador_id')
-                                    ->join('collection_points', 'exchanges.acopio_id','=','collection_points.acopio_id')
-                                    ->select(DB::raw('exchanges.created_at as fecha'), 'collection_points.acopio_id', 'collection_points.nombre', 'exchanges.total_cantidad', 'exchanges.total_puntos')
-                                    ->where([
-                                        ['users.usuario_id', '=', $usuario_id],
-                                        ['collection_points.acopio_id','=', $request->acopio_id]
-                                    ])
-                                    ->orderBy('exchanges.created_at', 'desc')
-                                    ->get();
+            $entrega = Exchange::where('colaborador_id', $usuario->usuario_id)
+                                                ->orderBy('entrega_id','desc')
+                                                ->paginate($request->paginate);
         }
-                    
-        return $entregas;
         
+        return $entrega;
+       
     }
 
     /**
@@ -66,7 +58,29 @@ class ExchangeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $entrega = new Exchange;
+        
+        $entrega->colaborador_id = $request->colaborador_id;
+        $entrega->empleado_id = $request->empleado_id;
+        $entrega->acopio_id = $request->acopio_id;
+        $entrega->total_cantidad = $entrega->cantidad_papel + $entrega->cantidad_vidrio + $entrega->cantidad_plastico;
+
+        $eq_plastico = (Waste::where('descripcion', 'plastico')->first())->equivalencia;
+        $eq_vidrio = (Waste::where('descripcion', 'vidrio')->first())->equivalencia;
+        $eq_papel = (Waste::where('descripcion', 'papel')->first())->equivalencia;
+
+        $entrega->total_cantidad = $request->cantidad_papel +
+                                                    $request->cantidad_vidrio + 
+                                                    $request->cantidad_plastico;
+
+        $entrega->total_puntos = $eq_papel*$request->cantidad_papel + 
+                                                    $eq_vidrio*$request->cantidad_vidrio + 
+                                                    $eq_plastico*$request->cantidad_plastico;
+
+        $entrega->save();
+
+       return response()->json(['mensaje' => 'La entrega fue registrada.'], 201);
+
     }
 
     /**
@@ -112,20 +126,6 @@ class ExchangeController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function details($usuario_id, $entrega_id)
-    {
-        $detalle = DB::table('users')
-                                    ->join('exchanges', 'users.usuario_id', '=', 'exchanges.colaborador_id')
-                                    ->join('collection_points', 'exchanges.acopio_id','=','collection_points.acopio_id')
-                                    ->select(DB::raw('exchanges.created_at as fecha'), 'collection_points.acopio_id', 'collection_points.nombre', 'exchanges.total_cantidad', 'exchanges.total_puntos')
-                                    ->where([
-                                        ['users.usuario_id', '=', $usuario_id],
-                                        ['collection_points.acopio_id','=', $request->acopio_id]
-                                    ])
-                                    ->orderBy('exchanges.created_at', 'desc')
-                                    ->get();
     }
 
 }

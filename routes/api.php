@@ -34,14 +34,14 @@ Route::group(['middleware' => 'auth:api'], function() {
     // ENTREGAS -COLABORADOR-
     // Listar todas las entregas hechas por el usuario X con opción para filtrar por Punto de acopio
     Route::get('v1/usuarios/{usuario}/entregas', 'ExchangeController@index');
-    // Ver detalle de entrega realizada por el usuario X <<
-    Route::get('v1/usuarios/{usuario}/entregas/{entrega}', 'ExchangeController@details');
+    // Ver detalle de entrega realizada por el usuario X
+    Route::get('v1/usuarios/{usuario}/entregas/{entrega}', 'ExchangeDetailController@index');
     // Listar entregas por punto de acopio
     
 
     // ENTREGAS -EMPLEADO-
-    // Registrar una nueva entrega del usuario X <<
-    Route::post('v1/usuarios/{usuario}/entregas', 'ExchangeController@store');
+    // Registrar una nueva entrega del usuario X
+    Route::post('v1/registrar-entrega', 'ExchangeController@store');
     // Listar entregas gestionadas por el empleado X [por punto de entrega] <<
     Route::get('v1/empleado/{empleado}/entregas', 'ExchangeController@empDetails');
 

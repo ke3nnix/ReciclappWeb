@@ -3,6 +3,8 @@
 namespace App\Http\Controllers; 
 
 use Illuminate\Http\Request;
+use App\Models\CollectionPoint;
+use App\Models\Exchange;
 
 class ExchangeDetailController extends Controller
 {
@@ -11,9 +13,9 @@ class ExchangeDetailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($usuario_id, $entrega_id)
     {
-        //
+        return $detalles = Exchange::where('entrega_id',$entrega_id)->with('acopio','supervisor', 'detalles', 'detalles.desecho')->get();
     }
 
     /**
