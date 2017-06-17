@@ -47,33 +47,34 @@ class ExchangesTableSeeder extends Seeder
                     'colaborador_id' => $User_ids[$key],
                     'empleado_id' => 1,
                     'acopio_id' => $acopio_id,
+                    'total_cantidad' => 63,
                     'total_puntos' => 370,
                     'created_at' => '2003-08-20 18:31:00',
                     'updated_at' => '2003-08-20 18:31:00'
                 ]);
 
-                $entrega = DB::table('exchanges')
-                                    ->orderBy('entrega_id', 'desc')
-                                    ->limit(1)
-                                    ->get();
-                 $entrega = $entrega->toArray();
+                // $entrega = DB::table('exchanges')
+                //                     ->orderBy('entrega_id', 'desc')
+                //                     ->limit(1)
+                //                     ->get();
+                //  $entrega = $entrega->toArray();
 
-                $cantidad = 20;
-                $puntos = 120;
+                // $cantidad = 20;
+                // $puntos = 120;
 
-                for ($desecho=1; $desecho <= 3; $desecho++) { 
-                    echo "----- Detalle de entrega " . $desecho . "\n";
-                    DB::table('exchange_details')->insert([
-                        'entrega_id' => $entrega[0]->entrega_id,
-                        'desecho_id' => $desecho,
-                        'cantidad' => $cantidad,
-                        'puntos' => $puntos,
-                        'created_at' => '2003-08-20 18:31:00',
-                        'updated_at' => '2003-08-20 18:31:00'
-                    ]);
-                    $cantidad += 15;
-                    $puntos += 85;
-                }
+                // for ($desecho=1; $desecho <= 3; $desecho++) { 
+                //     echo "----- Detalle de entrega " . $desecho . "\n";
+                //     DB::table('exchange_details')->insert([
+                //         'entrega_id' => $entrega[0]->entrega_idd,
+                //         'desecho_id' => $desecho,
+                //         'cantidad' => $cantidad,
+                //         'puntos' => $puntos,
+                //         'created_at' => '2003-08-20 18:31:00',
+                //         'updated_at' => '2003-08-20 18:31:00'
+                //     ]);
+                //     $cantidad += 15;
+                //     $puntos += 85;
+                // }
             }
         }
     }

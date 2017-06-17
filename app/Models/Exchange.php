@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Pivot;
+use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Database\Eloquent\Model;
 
 class Exchange extends Pivot
 {
+	use Model;
+	
 	protected $table = 'exchanges';
 	protected $primaryKey = 'entrega_id';
 	

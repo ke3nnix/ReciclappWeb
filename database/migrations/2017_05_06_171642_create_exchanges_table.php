@@ -19,6 +19,7 @@ class CreateExchangesTable extends Migration
             $table->integer('colaborador_id')->unsigned();
             $table->integer('empleado_id')->unsigned();
             $table->integer('acopio_id')->unsigned();
+            $table->integer('total_cantidad')->unsigned();
             $table->integer('total_puntos')->unsigned();
             $table->timestamps();
 
