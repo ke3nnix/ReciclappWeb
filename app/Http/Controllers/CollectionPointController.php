@@ -17,7 +17,7 @@ class CollectionPointController extends Controller
     public function index() 
     { 
         $collectionPoints = CollectionPoint::orderBy('acopio_id', 'ACS')->paginate(15); 
-        if (request()->isJson()) {
+        if (request()->expectsJson()) {
             return $collectionPoints;
         }
         return view('puntos-de-acopio.index',compact('collectionPoints')); 
@@ -69,7 +69,7 @@ class CollectionPointController extends Controller
         
         $collectionPoint->save(); 
 
-        if (request()->isJson()) {
+        if (request()->expectsJson()) {
             return $collectionPoint;
         }
  
@@ -91,7 +91,7 @@ class CollectionPointController extends Controller
     { 
         $collectionPoint = CollectionPoint::find($id);
 
-        if (request()->isJson()) {
+        if (request()->expectsJson()) {
             if (is_null($collectionPoint)) {
                 return response()->json(['error' => 'El punto de acopio no existe.'], 404);
             }
@@ -152,7 +152,7 @@ class CollectionPointController extends Controller
  
         $collectionPoint->save(); 
 
-        if (request()->isJson()) {
+        if (request()->expectsJson()) {
             return $collectionPoint;
         }
  

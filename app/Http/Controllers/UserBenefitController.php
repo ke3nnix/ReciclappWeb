@@ -34,23 +34,23 @@ class UserBenefitController extends Controller
 
         $usuario = User::find($usuario_id);
         if (is_null($usuario)) {
-            return response()->json(['error' => 'El usuario no existe.'], 404);
+            return response()->json(['mensaje' => 'El usuario no existe.'], 404);
         }
         
         $beneficio = Benefit::find($beneficio_id);
         if (is_null($beneficio)) {
-            return response()->json(['error' => 'El beneficio no existe.'], 404);
+            return response()->json(['mensaje' => 'El beneficio no existe.'], 404);
         }
 
         // Comprobando disponibilidad del beneficio
         if ($beneficio->estado == 0 || $beneficio->cantidad <1) {
-            return response()->json(['error' => 'El beneficio no está disponible.'], 403);
+            return response()->json(['mensaje' => 'El beneficio no está disponible.'], 403);
         }
 
 
         // Comprobando requisitos
         if ($usuario->puntos < $beneficio->req_puntos) {
-            return response()->json(['error' => 'El usuario no tiene los puntos requeridos.'], 403);
+            return response()->json(['mensaje' => 'El usuario no tiene los puntos requeridos.'], 403);
         }
 
         // Almacenando datos
@@ -69,10 +69,7 @@ class UserBenefitController extends Controller
 
 
         // exito
-        return [
-        'errors' => false,
-        'message'   => "El beneficio fue asignado ",
-        ];
+        return response()->json(['mensaje' => 'El beneficio fue registrado.'], 201);
 
     }
 
@@ -87,13 +84,13 @@ class UserBenefitController extends Controller
         // Validando usuario
         $usuario = User::find($usuario_id);
         if(is_null($usuario)) {
-            return response()->json(['error' => 'El usuario no existe.'], 404);
+            return response()->json(['mensaje' => 'El usuario no existe.'], 404);
         }
 
         // Validando beneficios
         $beneficio = Benefit::find($beneficio_id);
         if(is_null($beneficio)) {
-            return response()->json(['error' => 'El beneficio no existe.'], 404);
+            return response()->json(['mensaje' => 'El beneficio no existe.'], 404);
         }
 
         // Ubicando registros

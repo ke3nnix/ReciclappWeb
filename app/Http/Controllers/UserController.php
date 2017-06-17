@@ -42,21 +42,25 @@ class UserController extends Controller
     public function store(Request $request)
     {
         // Validando la data 
-        $this->validate($request , array( 
+        if (request()->isJson()) {
+            if (User::where('email', '=', $request->email)->exists()) {
+                return response()->json(['mensaje' => 'El usuario ya existe.'], 403);
+            }
+        }
+        else {
+            $this->validate($request , array( 
                 'nombre' => 'required|max:255', 
                 'apellido' => 'required|max:255', 
-                'email' => 'required|email', 
-                // en la vista debe haber otro campo 'password_confirmation' para validar password
-                'password' => 'required|string|min:6|confirmed', 
-                'tipo' => 'required|numeric|min:1|max:3', 
-                'dni' => 'required|size:8', 
-                'status' => 'required|boolean', 
-                'puntos' => 'required|numeric|min:0', 
-                // <-- validación de imagen (?)
-                'direccion' => 'required|max:255', 
-                'distrito' => 'required|max:255', 
+                'email' => 'required|email|unique', 
+                'password' => 'required|string|min:6', 
+                'tipo' => 'numeric|min:1|max:3', 
+                'dni' => 'size:8', 
+                'estado' => 'required|boolean', 
+                'direccion' => 'max:255', 
+                'distrito' => 'max:255', 
                 'nacimiento' => 'date', 
             )); 
+        }
 
         // Guardando data
         $user = new User;
@@ -66,8 +70,10 @@ class UserController extends Controller
         $user->password = bcrypt($request->password);
         $user->tipo = $request->tipo;
         $user->dni = $request->dni;
-        if (!$request->status) { $user->status = $request->status; }
-        if($request->tipo == 1) { $user->puntos = $request->puntos; }
+        $user->estado = $request->estado;
+        $user->tipo = $request->tipo;
+        $user->puntos = $request->puntos;
+        $user->api_token = str_random(60);
         if($request->hasFile('imagen')) {
                 $user->imagen = Storage::putFile('pictures', $request->file('imagen'));
         }
@@ -75,6 +81,10 @@ class UserController extends Controller
         $user->nacimiento = $request->date;
 
         $user->save();
+
+        if(request()->isJson()) {
+            return response()->json(['mensaje' => 'El usuario se añadió exisotamente'], 201);
+        }
 
         // Retornar vista
         return view('usuarios.show', $user->usuario_id);                
@@ -111,40 +121,39 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id, Request $request)
+    public function update(Request $request)
     {
         // Validando la data 
         $this->validate($request , array( 
-                'nombre' => 'required|max:255', 
-                'apellido' => 'required|max:255', 
-                'email' => 'required|email', 
-                // en la vista debe haber otro campo 'password_confirmation' para validar password
-                'password' => 'required|string|min:6|confirmed', 
-                'tipo' => 'required|numeric|min:1|max:3', 
-                'dni' => 'required|size:8', 
-                'status' => 'required|boolean', 
-                'puntos' => 'required|numeric|min:0', 
-                // <-- validación de imagen (?)
-                'direccion' => 'required|max:255', 
-                'distrito' => 'required|max:255', 
+                'nombre' => 'max:255', 
+                'apellido' => 'max:255',
+                'password' => 'string|min:6', 
+                'tipo' => 'numeric|min:1|max:3', 
+                'dni' => 'size:8', 
+                'estado' => 'boolean', 
+                'direccion' => 'max:255', 
+                'distrito' => 'max:255', 
                 'nacimiento' => 'date', 
             )); 
 
         // Guardando data
-        $user = User::find($id);
-        $user->nombre = $request->nombre;
-        $user->apellido = $request->apellido;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        $user->tipo = $request->tipo;
-        $user->dni = $request->dni;
-        if (!$request->status) { $user->status = $request->status; }
-        if($request->tipo == 1) { $user->puntos = $request->puntos; }
-        $user->imagen = 'imagen.jpg';
-        $user->direccion = $request->direcion;
-        $user->nacimiento = $request->date;
+        $user = User::find($request->user()->usuario_id);
+        if(!is_null( $request->nombre )){ $user->nombre = $request->nombre; }
+        if(!is_null( $request->apellido )){ $user->apellido = $request->apellido; }
+        if(!is_null( $request->password )){$user->password = bcrypt($request->password);}
+        if(!is_null( $request->dni )){ $user->dni = $request->dni; }
+        if(!is_null( $request->estado )){ $user->estado = $request->estado; }
+        if($request->hasFile('imagen')) {
+                $user->imagen = Storage::putFile('pictures', $request->file('imagen'));
+        }
+        if(!is_null( $request->direccion )){ $user->direccion = $request->direccion; }
+        if(!is_null( $request->nacimiento )){ $user->nacimiento = $request->nacimiento; }
 
         $user->save();
+
+        if(request()->isjson()){
+            return response()->json(['mensaje' => 'El usuario ha sido actualizado.', 'data' => $user], 202);
+        }
 
         // Retornar vista
         return view('usuarios.show', $user->usuario_id); 
@@ -167,8 +176,8 @@ class UserController extends Controller
     public function changeStatus($id)
     {
         $user = User::find($id);
-        if ($user->status == 1){ $user->status = 0; }
-        else { $user->status = 1; }
+        if ($user->estado == 1){ $user->estado = 0; }
+        else { $user->estado = 1; }
 
         $user->save();
 
