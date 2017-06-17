@@ -37,9 +37,13 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Models\Benefit', 'user_benefits', 'usuario_id', 'beneficio_id')->withTimestamps()->using('App\Models\UserBenefit');
     }
 
-    public function collectionPoints()
+    // public function collectionPoints()
+    // {
+    //     return $this->belongsToMany('App\Models\CollectionPoint', 'exchanges', 'colaborador_id', 'acopio_id')->withTimestamps()->using('App\Models\Exchange')->withPivot('total_puntos', 'created_at');
+    // }
+    public function entregas()
     {
-        return $this->belongsToMany('App\Models\CollectionPoint', 'exchanges', 'colaborador_id', 'acopio_id')->withTimestamps()->using('App\Models\Exchange')->withPivot('total_puntos', 'created_at');
+        return $this->hasMany('App\Models\Exchange', 'colaborador_id', 'usuario_id');
     }
 
 }
