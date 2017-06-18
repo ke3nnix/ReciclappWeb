@@ -28,6 +28,7 @@ class ExchangeController extends Controller
         if(is_null($request->paginate)){
             $entrega = Exchange::where('colaborador_id', $usuario->usuario_id)
                                                 ->with('acopio')
+                                                ->orderBy('entrega_id', 'desc')
                                                 ->get();
         }
         else {
@@ -35,6 +36,7 @@ class ExchangeController extends Controller
                                                 ->orderBy('entrega_id','desc')
                                                 ->paginate($request->paginate);
         }
+
         
         return $entrega;
        
@@ -63,21 +65,34 @@ class ExchangeController extends Controller
         $entrega->colaborador_id = $request->colaborador_id;
         $entrega->empleado_id = $request->empleado_id;
         $entrega->acopio_id = $request->acopio_id;
-        $entrega->total_cantidad = $entrega->cantidad_papel + $entrega->cantidad_vidrio + $entrega->cantidad_plastico;
+        $entrega->total_cantidad = $request->cantidad_papel + $request->cantidad_vidrio + $request->cantidad_plastico;
 
-        $eq_plastico = (Waste::where('descripcion', 'plastico')->first())->equivalencia;
-        $eq_vidrio = (Waste::where('descripcion', 'vidrio')->first())->equivalencia;
-        $eq_papel = (Waste::where('descripcion', 'papel')->first())->equivalencia;
+        $plastico = Waste::where('descripcion', 'plástico')->first();
+        $vidrio = Waste::where('descripcion', 'vidrio')->first();
+        $papel = Waste::where('descripcion', 'papel')->first();
 
         $entrega->total_cantidad = $request->cantidad_papel +
                                                     $request->cantidad_vidrio + 
                                                     $request->cantidad_plastico;
 
-        $entrega->total_puntos = $eq_papel*$request->cantidad_papel + 
-                                                    $eq_vidrio*$request->cantidad_vidrio + 
-                                                    $eq_plastico*$request->cantidad_plastico;
+        $entrega->total_puntos = $papel->equivalencia * $request->cantidad_papel + 
+                                                    $vidrio->equivalencia * $request->cantidad_vidrio + 
+                                                    $plastico->equivalencia * $request->cantidad_plastico;
 
         $entrega->save();
+
+        $controlador = new ExchangeDetailController;
+
+        if(!is_null($request->cantidad_plastico) && $request->cantidad_plastico>0) {
+            $controlador->store($entrega->entrega_id, $plastico->descripcion, $request->cantidad_plastico);    
+        }
+        if(!is_null($request->cantidad_vidrio) && $request->cantidad_vidrio>0) {
+            $controlador->store($entrega->entrega_id, $vidrio->descripcion, $request->cantidad_vidrio);    
+        }
+        if(!is_null($request->cantidad_papel) && $request->cantidad_papel>0) {
+            $controlador->store($entrega->entrega_id, $papel->descripcion, $request->cantidad_papel);    
+        }
+
 
        return response()->json(['mensaje' => 'La entrega fue registrada.'], 201);
 
