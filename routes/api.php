@@ -45,4 +45,8 @@ Route::group(['middleware' => 'auth:api'], function() {
     // Listar entregas gestionadas por el empleado X [por punto de entrega] <<
     Route::get('v1/empleado/{empleado}/entregas', 'ExchangeController@empDetails');
 
+    // DESECHOS
+    // Registrar desechos
+    Route::post('v1/registrar-desecho', 'WasteController@store');
+
 });

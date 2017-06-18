@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers; 
 
+use App\Models\Waste;
 use Illuminate\Http\Request;
 
 class WasteController extends Controller
@@ -35,7 +36,13 @@ class WasteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $desecho = new Waste;
+        $desecho->descripcion = $request->descripcion;
+        $desecho->equivalencia = $request->equivalencia;
+        $desecho->unidad = $request->unidad;
+        $desecho->save();
+
+        return $desecho;
     }
 
     /**
