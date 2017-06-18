@@ -14,7 +14,8 @@ class WasteController extends Controller
      */
     public function index()
     {
-        $waste = Waste::orderBy('id', 'ASC')->paginate(10);
+        $waste = Waste::orderBy('desecho_id', 'asc')->get();
+        return $waste;
 
     }
 

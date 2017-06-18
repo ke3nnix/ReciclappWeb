@@ -48,5 +48,7 @@ Route::group(['middleware' => 'auth:api'], function() {
     // DESECHOS
     // Registrar desechos
     Route::post('v1/desechos', 'WasteController@store');
+    // Listar desechos
+    Route::get('v1/desechos', 'WasteController@index');
 
 });
