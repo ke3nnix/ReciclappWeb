@@ -35,14 +35,20 @@ class WasteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $desecho = new Waste;
-        $desecho->descripcion = $request->descripcion;
-        $desecho->equivalencia = $request->equivalencia;
-        $desecho->unidad = $request->unidad;
-        $desecho->save();
+    {   
+        if(is_null(Waste::where('descripcion', $request->descripcion)->first())) {
+            $desecho = new Waste;
+            $desecho->descripcion = $request->descripcion;
+            $desecho->equivalencia = $request->equivalencia;
+            $desecho->unidad = $request->unidad;
+            $desecho->save();
 
-        return $desecho;
+            return $desecho;
+        }
+        else {
+            return response()->json(['mensaje' => 'El desecho ya existe.'], 409);
+        }
+        
     }
 
     /**
