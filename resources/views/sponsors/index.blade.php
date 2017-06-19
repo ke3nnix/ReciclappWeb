@@ -32,7 +32,6 @@
 
         <thead>
           <tr>
-                <th rowspan="2" scope="rowgroup" style="vertical-align:middle"><input type="checkbox" id="checkMain" onclick="marcar(this);" /></th>
                 <th rowspan="2" scope="rowgroup" style="vertical-align:middle">Razón</th>
                 <th rowspan="2" scope="rowgroup" style="vertical-align:middle">RUC</th>
                 <th rowspan="2" scope="rowgroup" style="vertical-align:middle">Telefono</th>
@@ -44,46 +43,42 @@
         <tbody>
          @foreach($sponsors as $row)
            <tr id="{{$row->sponsor_id}}"> 
-              <td style="width: 5px"> 
-                <p><input type="checkbox" class="checkAll"/></p> 
-              </td> 
-              <td style="width: 150px"> 
+              
+              <td > 
                 <div >{{$row->razon_social}}</div> 
               </td> 
-               <td style="width: 140px"> 
+               <td > 
                 <p> {{$row->ruc}}</p> 
               </td> 
-              <td style="width:100px">
+              <td >
                 <p > {{$row->telefono}}</p> 
               </td>
               <td> 
-                <div > {{$row->direccion}}</div> 
+                <div > {{$row->direccion}} </div> 
               </td> 
                             
-              <td style="width: 100px">
-                <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('sponsors.show',['id'=>$row->sponsor_id])}}'"><span class="glyphicon glyphicon-eye-open"></span></button>
+              <td>
+                <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('beneficios.index',['id'=>$row->sponsor_id])}}'"><span class="glyphicon glyphicon-eye-open"></span></button>
                 <button class="btn btn-success btn-xs" onclick="window.location.href='{{route('sponsors.edit',['id'=>$row->sponsor_id])}}'" ><span class="glyphicon glyphicon-pencil"></span></button> 
-                <button id="elimiar" data-toggle="modal" data-target="#myModal{{$row->sponsor_id}}" class="btn btn-danger btn-xs" ><span class="glyphicon glyphicon-trash"></span></button> 
+                <button id="desactivar" data-toggle="modal" data-target="#myModal{{$row->sponsor_id}}" class="btn btn-danger btn-xs" ><span class="glyphicon glyphicon-trash"></span></button> 
 
-                {{Form::open(['route'=>['puntos-de-acopio.destroy',$row->sponsor_id], 'method'=>'DELETE'])}}
                 <div id="myModal{{$row->sponsor_id}}" class="modal fade" role="dialog"> 
                   <div class="modal-dialog ">
                     <!-- Modal content-->
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Confirmar</h4>
+                        <h4 class="modal-title">¿Desea desactivar a?</h4>
                       </div>
                       <div class="modal-body">
-                        <p>Sponsor a elminar: <b>{{$row->razon_social}}</b></p>
+                        <p> <b>{{$row->razon_social}}</b></p>
                       </div>
 
                       <div class="modal-footer">
 
-                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                      <button type="submit" class="btn btn-danger">SI</button>
 
-                        {{Form::close()}}
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                      <button type="button" class="btn btn-primary" onclick="window.location.href='{{route('sponsors.index')}}'" >NO</button>
                       </div>
                     </div>
                   </div>

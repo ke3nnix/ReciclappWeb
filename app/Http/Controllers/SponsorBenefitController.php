@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Sponsor;
 use App\Models\Benefit;
+use Session;
 
 class SponsorBenefitController extends Controller
 {
@@ -25,7 +26,8 @@ class SponsorBenefitController extends Controller
                 return $sponsor;
             }
         }
-        return view('beneficios.index', compact($sponsor));
+        return view('beneficios.index', compact('sponsor'));
+        //return ($sponsor);
     }
 
     /**
@@ -47,7 +49,7 @@ class SponsorBenefitController extends Controller
     public function store(Request $request)
     {
         // Validando datos
-        $this->validate($Request, array(
+        $this->validate($request, array(
             'nombre' => 'required|max:255',
             'descripcion' => 'required|max:255',
             'req_puntos' => 'numeric|min:1',
@@ -74,7 +76,7 @@ class SponsorBenefitController extends Controller
         Session::flash('exito' , 'El beneficio fue exitósamente agregado a ' + $sponsor->razon_social);
 
         // Retornando vista: sponsorsbeneficios/show.blade.php
-        return redirect()->route('beneficios.show', $benefit->beneficio_id);
+        return redirect()->route('beneficios.index', compact('sponsor'));
     }
 
     /**
@@ -97,7 +99,7 @@ class SponsorBenefitController extends Controller
             if (is_null($benefit)) {
                 abort(404, "El beneficio no existe");
             }
-        return view('beneficios.show', compact($benefit));
+        return view('beneficios.show', compact('benefit'));
     }
 
     /**

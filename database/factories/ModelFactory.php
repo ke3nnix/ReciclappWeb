@@ -85,6 +85,7 @@ $factory->define(App\Models\Sponsor::class, function (Faker\Generator $faker) {
         'telefono' => '987654321',
         'contacto' => $faker->name($gender = null|'male'|'female'),
         'distrito' =>$faker->state,
+        'estado'=>1,
          'created_at' => $faker->dateTime(),
          'updated_at' => $faker->dateTime(),
     ];
