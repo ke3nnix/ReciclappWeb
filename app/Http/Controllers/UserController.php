@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use Unlu\Laravel\Api\QueryBuilder;
 use Illuminate\Support\Facades\Storage;
+use File;
+use Auth;
+use Riverline\MultiPartParser\Part;
 
 class UserController extends Controller
 {
@@ -56,9 +58,10 @@ class UserController extends Controller
                 'tipo' => 'numeric|min:1|max:3', 
                 'dni' => 'size:8', 
                 'estado' => 'required|boolean', 
+                'imagen' => 'image',
                 'direccion' => 'max:255', 
-                'distrito' => 'max:255', 
-                'nacimiento' => 'date', 
+                'distrito' => 'max:255',
+                'nacimiento' => 'date',
             )); 
         }
 
@@ -68,17 +71,16 @@ class UserController extends Controller
         $user->apellido = $request->apellido;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
-        $user->tipo = $request->tipo;
+        if(!is_null( $request->tipo )){ $user->tipo = $request->tipo; } else { $user->tipo = 1; };
         $user->dni = $request->dni;
-        $user->estado = $request->estado;
-        $user->tipo = $request->tipo;
-        $user->puntos = $request->puntos;
+        $user->estado = 1;
+        $user->puntos = 0;
         $user->api_token = str_random(60);
-        if($request->hasFile('imagen')) {
-                $user->imagen = Storage::putFile('pictures', $request->file('imagen'));
-        }
+        // if($request->hasFile('imagen')) {
+        //         $user->imagen = Storage::putFile('pictures', $request->file('imagen'));
+        // }
         $user->direccion = $request->direccion;
-        $user->nacimiento = $request->date;
+        $user->nacimiento = $request->nacimiento;
 
         $user->save();
 
@@ -123,7 +125,8 @@ class UserController extends Controller
      */
     public function update(Request $request)
     {
-        // Validando la data 
+        
+
         $this->validate($request , array( 
                 'nombre' => 'max:255', 
                 'apellido' => 'max:255',
@@ -136,6 +139,7 @@ class UserController extends Controller
                 'nacimiento' => 'date', 
             )); 
 
+
         // Guardando data
         $user = User::find($request->user()->usuario_id);
         if(!is_null( $request->nombre )){ $user->nombre = $request->nombre; }
@@ -143,18 +147,30 @@ class UserController extends Controller
         if(!is_null( $request->password )){$user->password = bcrypt($request->password);}
         if(!is_null( $request->dni )){ $user->dni = $request->dni; }
         if(!is_null( $request->estado )){ $user->estado = $request->estado; }
+              
+
         if($request->hasFile('imagen')) {
-                $user->imagen = Storage::putFile('pictures', $request->file('imagen'));
+
+                $imagen = $request->file('imagen');
+                $filename = time() . '.' . $imagen->getClientOriginalExtension();
+                Image::make($avatar)->resize(300,300)->save( public_path('/uploads/avatars/' . $filename ) );
+                // if ($user->imagen != "default.jpg") {
+                //     $path = '/storage/pictures/';
+                //     $lastpath= $user->imagen;
+                //     File::Delete(public_path( $path . $lastpath) );        
+                // }
+                $user->imagen = $filename;
         }
         if(!is_null( $request->direccion )){ $user->direccion = $request->direccion; }
         if(!is_null( $request->nacimiento )){ $user->nacimiento = $request->nacimiento; }
 
         $user->save();
 
-        if(request()->isjson()){
+        if(request()->expectsJson()){
             return response()->json(['mensaje' => 'El usuario ha sido actualizado.', 'data' => $user], 202);
         }
 
+        return $user;
         // Retornar vista
         return view('usuarios.show', $user->usuario_id); 
     }
