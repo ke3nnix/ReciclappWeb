@@ -13,3 +13,5 @@
     
     {!!Html::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')!!}
 
+    {!!Html::script('../js/menu.js')!!}
+

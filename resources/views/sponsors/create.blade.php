@@ -6,7 +6,7 @@
 
        <div>
            {{csrf_field()}}
-      <dir style="margin-left: 100px;">
+      <dir style="position: relative;right: 80px">
           <div class="row">
            <div class="form-group">
             <label  class="col-md-4 control-label">Contacto</label>  

@@ -18,7 +18,7 @@
       <div class="table-responsive">
 
 
-        <table id="mytable" class="table table-bordred table-striped">
+        <table id="mytable" class="table table-bordred">
 
           <!--<thead>
           <th>Nombre</th>
