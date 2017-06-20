@@ -1,13 +1,14 @@
-     .page-header{    
-        font-family: 'Roboto';  
-        } 
-        .fa{ 
-            color: #FFFFFF; 
-        } 
-        label{ 
-            font-family: 'Roboto';  
-        } 
-        .cortar{ 
+       .page-header{
+            margin: 0px 0px 20px;
+            font-family: 'Roboto'; 
+        }
+        .fa{
+            color: #FFFFFF;
+        }
+        label{
+            font-family: 'Roboto'; 
+        }
+     .cortar{ 
           width:120px; 
           height:20px; 
           padding:0px; 
@@ -24,5 +25,17 @@
       .cortar:hover { 
           width: 100%; 
           overflow:visible; 
-          cursor: pointer;
-      }
+          cursor: pointer; 
+        }
+        body {
+            overflow-x: hidden;
+        }
+       div ul li a:active{
+          background:red;
+
+       }    
+       div ul li:hover{
+        transition: linear all 0.40s;
+        margin-left: 20px;
+
+       }

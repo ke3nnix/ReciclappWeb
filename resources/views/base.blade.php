@@ -18,17 +18,20 @@
 
         </nav>
 
-        <div id="page-wrapper">
+        <div id="page-wrapper" style="background-color:rgba(51, 51, 51, 1); position: relative; right: 190px">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">@yield('title')</h1>
+                    <center>
+                    <h1 class="page-header" style="color:white; position: relative; right: -70px">@yield('title')</h1>
+                    </center>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
 
-            
+
+            <div  style="position: relative; right: -70px">
                 @yield('content')
-        
+            </div>
 
         </div>
         <!-- /#page-wrapper -->

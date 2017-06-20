@@ -6,7 +6,7 @@
        
            {{csrf_field()}}
 
-           <div style="margin-left: 100px;">
+           <div style="position: relative;right: 100px">
           <div class="row">
            <div class="form-group">
             <label  class="col-md-4 control-label">Nombre</label>  

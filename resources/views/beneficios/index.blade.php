@@ -5,8 +5,7 @@
   <div class="container">
           <div class="row">
                  
-                 <div class="col-sm-5">
-                    <div class="well">
+                 <div class="col-sm-5"><br>
                           <div class="row">
                                  <div class="form-group">
                                   <div class="col-md-12 inputGroupContainer">
@@ -69,18 +68,17 @@
                               </div>
                             </div>
                           </div>
-                    </div>
                  </div>
                 
-                 <div class="col-sm-6">
-                   <div>
-                      <div id="beneficio-contenido" class="well" style="width:400px;height:342px;overflow: scroll;">
+                 <div class="col-sm-6" >
+                   <div style="position: relative; left: 150px">
+                      <div id="beneficio-contenido" style="width:400px;height:342px;overflow: scroll;">
                           <div class="text-center" >
-                            <b>Beneficios</b>
+                            <b style="color: white">Beneficios</b>
                           </div><br>
                           <div>
                             <center>
-                            <table class="table table-bordred table-striped">
+                            <table class="table table-bordred">
                               <thead>
                                 <th>Nombre</th>
                                 <th><center>Cantidad actual</center></th>
@@ -107,7 +105,32 @@
                                 <td>
                                   <center>
                                     <div class="input-group">
-                                      <span class="input-group"><a class="glyphicon glyphicon-trash btn btn-danger btn-xs"></a></span>
+                                      <a id="elimiar" data-toggle="modal" data-target="#myModal{{$sponsor->sponsor_id}}" class="btn btn-danger btn-xs" ><span class="glyphicon glyphicon-trash"></span></a> 
+                                      <!-- aun no puede eliminar ya que esta amarrado con USERBENEFIT-->
+                                      {{Form::open(['route'=>['beneficios.destroy',$sponsor->sponsor_id,$beneficio->beneficio_id], 'method'=>'DELETE'])}}
+                                      <div id="myModal{{$sponsor->sponsor_id}}" class="modal fade" role="dialog"> 
+                                        <div class="modal-dialog ">
+                                          <!-- Modal content-->
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                              <h4 class="modal-title">Confirmar</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                              <p>Beneficio a eliminar: <b>{{$beneficio->nombre}}</b></p>
+                                              <p>Cantidad:<b>{{$beneficio->cantidad}}</b></p>
+                                            </div>
+
+                                            <div class="modal-footer">
+
+                                              <button type="submit" class="btn btn-danger">Eliminar</button>
+
+                                              {{Form::close()}}
+                                              <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
                                   </center>
                                 </td>
@@ -215,7 +238,7 @@
                  </div>
           </div>   
    </div>
-                     <div class="col-md-6 col-md-offset-8" >
+                     <div class="col-md-6 col-md-offset-10" >
                             <button type="submit" class="btn btn-warning">
                               Eliminar
                             </button>   

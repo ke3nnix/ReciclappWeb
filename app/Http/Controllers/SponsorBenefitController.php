@@ -151,8 +151,8 @@ class SponsorBenefitController extends Controller
      */
     public function destroy($id)
     {
-        $benefit = Benefit::find($id);
-        $sponsorId = $benefit->sponsor()->id;
+        $benefit = Benefit::find($id);  
+       // $sponsorId = $benefit->sponsor()->id;
         $benefit->delete();
         return redirect()->route('beneficios.index', [$sponsorId]);
     }

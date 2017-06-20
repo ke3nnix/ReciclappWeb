@@ -6,74 +6,74 @@
        
            {{csrf_field()}}
 
-           <div style="margin-left: 100px;">
-          <div class="row">
-           <div class="form-group">
-            <label  class="col-md-4 control-label">Contacto</label>  
-            <div class="col-md-6 inputGroupContainer">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input  name="contacto" class="form-control"  type="text" value="{{$sponsor->contacto}}">
-              </div>
-            </div>
-          </div>
-        </div> <br>
-             <div class="row">
-               <div class="form-group">
-                <label class="col-md-4 control-label">Razón Social</label>  
-                <div class="col-md-6 inputGroupContainer">
-                  <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
-                    <input name="razon_social" class="form-control" type="text" value="{{$sponsor->razon_social}}">
+           <div style="position: relative;right: 80px">
+                <div class="row">
+                 <div class="form-group">
+                  <label  class="col-md-4 control-label">Contacto</label>  
+                  <div class="col-md-6 inputGroupContainer">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input  name="contacto" class="form-control"  type="text" value="{{$sponsor->contacto}}">
+                    </div>
                   </div>
                 </div>
-              </div>
-             </div><br>
-             <div class="row">
-               <div class="form-group">
-                <label class="col-md-4 control-label">RUC</label>  
-                <div class="col-md-6 inputGroupContainer">
-                  <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
-                    <input name="ruc" class="form-control"  type="text" value="{{ $sponsor->ruc}}">
-                  </div>
-                </div>
-              </div>
-             </div><br>
+              </div> <br>
+                   <div class="row">
+                     <div class="form-group">
+                      <label class="col-md-4 control-label">Razón Social</label>  
+                      <div class="col-md-6 inputGroupContainer">
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
+                          <input name="razon_social" class="form-control" type="text" value="{{$sponsor->razon_social}}">
+                        </div>
+                      </div>
+                    </div>
+                   </div><br>
+                   <div class="row">
+                     <div class="form-group">
+                      <label class="col-md-4 control-label">RUC</label>  
+                      <div class="col-md-6 inputGroupContainer">
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
+                          <input name="ruc" class="form-control"  type="text" value="{{ $sponsor->ruc}}">
+                        </div>
+                      </div>
+                    </div>
+                   </div><br>
 
-             <div class="row">
-              <div class="form-group">
-              <label class="col-md-4 control-label">Dirección</label>  
-                <div class="col-md-6 inputGroupContainer">
-                  <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
-                    <input name="direccion" class="form-control"  type="text" value="{{$sponsor->direccion}}">
-                  </div>
-                </div>
-              </div>
-             </div><br>
-            <div class="row">
-            <div class="form-group">
-              <label class="col-md-4 control-label">Distrito</label>  
-                <div class="col-md-6 inputGroupContainer">
-                  <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-pushpin"></i></span>
-                    <input name="distrito" class="form-control"  type="text" value="{{ $sponsor->distrito}}">
-                  </div>
-                </div>
-              </div>
-             </div><br>
-             <div class="row">
-                <div class="form-group">
-              <label class="col-md-4 control-label">Télefono</label>  
-                <div class="col-md-6 inputGroupContainer">
-                  <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
-                    <input name="telefono" class="form-control"  type="text" value="{{ $sponsor->telefono}}">
-                  </div>
-                </div>
-              </div>
-             </div><br>            
+                   <div class="row">
+                    <div class="form-group">
+                    <label class="col-md-4 control-label">Dirección</label>  
+                      <div class="col-md-6 inputGroupContainer">
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+                          <input name="direccion" class="form-control"  type="text" value="{{$sponsor->direccion}}">
+                        </div>
+                      </div>
+                    </div>
+                   </div><br>
+                  <div class="row">
+                  <div class="form-group">
+                    <label class="col-md-4 control-label">Distrito</label>  
+                      <div class="col-md-6 inputGroupContainer">
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-pushpin"></i></span>
+                          <input name="distrito" class="form-control"  type="text" value="{{ $sponsor->distrito}}">
+                        </div>
+                      </div>
+                    </div>
+                   </div><br>
+                   <div class="row">
+                      <div class="form-group">
+                    <label class="col-md-4 control-label">Télefono</label>  
+                      <div class="col-md-6 inputGroupContainer">
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                          <input name="telefono" class="form-control"  type="text" value="{{ $sponsor->telefono}}">
+                        </div>
+                      </div>
+                    </div>
+                   </div><br>            
       </div>
             
             
