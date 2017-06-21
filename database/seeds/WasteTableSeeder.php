@@ -35,6 +35,8 @@ class WasteTableSeeder extends Seeder
                 'desecho_id' => 1,
                 'cantidad' => 6,
                 'puntos' => 120,
+                'created_at' => '2003-08-20 18:31:00',
+                'updated_at' => '2003-08-20 18:31:00'
             ]);
 
             DB::table('exchange_details')->insert([
@@ -42,6 +44,8 @@ class WasteTableSeeder extends Seeder
                 'desecho_id' => 2,
                 'cantidad' => 21,
                 'puntos' => 210,
+                'created_at' => '2003-08-20 18:31:00',
+                'updated_at' => '2003-08-20 18:31:00'
             ]);
 
             DB::table('exchange_details')->insert([
@@ -49,6 +53,8 @@ class WasteTableSeeder extends Seeder
                 'desecho_id' => 3,
                 'cantidad' => 36,
                 'puntos' => 360,
+                'created_at' => '2003-08-20 18:31:00',
+                'updated_at' => '2003-08-20 18:31:00'
             ]);
         }
     }

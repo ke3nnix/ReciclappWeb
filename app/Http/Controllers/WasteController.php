@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers; 
 
+use App\Models\Waste;
 use Illuminate\Http\Request;
 
 class WasteController extends Controller
@@ -13,7 +14,8 @@ class WasteController extends Controller
      */
     public function index()
     {
-        $waste = Waste::orderBy('id', 'ASC')->paginate(10);
+        $waste = Waste::orderBy('desecho_id', 'asc')->get();
+        return $waste;
 
     }
 
@@ -34,8 +36,20 @@ class WasteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        if(is_null(Waste::where('descripcion', $request->descripcion)->first())) {
+            $desecho = new Waste;
+            $desecho->descripcion = $request->descripcion;
+            $desecho->equivalencia = $request->equivalencia;
+            $desecho->unidad = $request->unidad;
+            $desecho->save();
+
+            return $desecho;
+        }
+        else {
+            return response()->json(['mensaje' => 'El desecho ya existe.'], 409);
+        }
+        
     }
 
     /**

@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use HasApiTokens, Notifiable;
 
 	protected $table = 'users';
 	protected $primaryKey = 'usuario_id';
@@ -36,9 +37,13 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Models\Benefit', 'user_benefits', 'usuario_id', 'beneficio_id')->withTimestamps()->using('App\Models\UserBenefit');
     }
 
-    public function collectionPoints()
+    // public function collectionPoints()
+    // {
+    //     return $this->belongsToMany('App\Models\CollectionPoint', 'exchanges', 'colaborador_id', 'acopio_id')->withTimestamps()->using('App\Models\Exchange')->withPivot('total_puntos', 'created_at');
+    // }
+    public function entregas()
     {
-        return $this->belongsToMany('App\Models\CollectionPoint', 'exchanges', 'colaborador_id', 'acopio_id')->withTimestamps()->using('App\Models\Exchange');
+        return $this->hasMany('App\Models\Exchange', 'colaborador_id', 'usuario_id');
     }
 
 }

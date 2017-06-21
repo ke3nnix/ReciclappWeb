@@ -17,17 +17,25 @@ class SponsorBenefitController extends Controller
 
     public function index($sponsorId)
     {
-        $sponsor = Sponsor::find($sponsorId)->load('benefits');
+        $sponsor = Sponsor::find($sponsorId);
+
         if (request()->isJson()) {
             if (is_null($sponsor)) {
+                $sponsor->load('benefits');
                 return response()->json(['mensaje' => 'El usuario no existe.'], 404);
             }
             else {
                 return $sponsor;
             }
         }
-        return view('beneficios.index', compact('sponsor'));
-        //return ($sponsor);
+
+        if (!is_null($sponsor)) {
+            $sponsor->load('benefits');
+            return view('beneficios.index', compact($sponsor));    
+        }
+        else {
+            return view('beneficios.index', compact($sponsor));    
+        }        
     }
 
     /**
