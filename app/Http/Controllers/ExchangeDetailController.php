@@ -3,6 +3,10 @@
 namespace App\Http\Controllers; 
 
 use Illuminate\Http\Request;
+use App\Models\CollectionPoint;
+use App\Models\Exchange;
+use App\Models\Waste;
+use App\Models\ExchangeDetail;
 
 class ExchangeDetailController extends Controller
 {
@@ -11,9 +15,9 @@ class ExchangeDetailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($usuario_id, $entrega_id)
     {
-        //
+        return $detalles = Exchange::where('entrega_id',$entrega_id)->with('acopio','supervisor', 'detalles', 'detalles.desecho')->get();
     }
 
     /**
@@ -32,9 +36,30 @@ class ExchangeDetailController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($entrega_id, $descripcion, $cantidad)
     {
-        //
+        $desecho = Waste::where('descripcion', $descripcion)->first();
+
+        switch ($descripcion) {
+            case "papel": 
+                $equivalencia = (Waste::where('descripcion', 'papel')->first())->equivalencia;
+                break;
+            case "vidrio":
+                $equivalencia = (Waste::where('descripcion', 'vidrio')->first())->equivalencia;
+                break;
+            case "plástico":
+                $equivalencia = (Waste::where('descripcion', 'plastico')->first())->equivalencia;
+        }
+
+        // Escribiendo datos
+        $detalle = new ExchangeDetail;
+        $detalle->entrega_id = $entrega_id;
+        $detalle->desecho_id = $desecho->desecho_id;
+        $detalle->cantidad = $cantidad;
+        $detalle->puntos = $equivalencia*$cantidad;
+
+        // Salvando datos
+        $detalle->save();
     }
 
     /**
@@ -44,17 +69,6 @@ class ExchangeDetailController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
     {
         //
     }
