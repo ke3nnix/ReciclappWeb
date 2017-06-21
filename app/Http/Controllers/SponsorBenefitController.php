@@ -31,10 +31,10 @@ class SponsorBenefitController extends Controller
 
         if (!is_null($sponsor)) {
             $sponsor->load('benefits');
-            return view('beneficios.index', compact($sponsor));    
+            return view('beneficios.index', compact('sponsor'));    
         }
         else {
-            return view('beneficios.index', compact($sponsor));    
+            return view('beneficios.index', compact('sponsor'));    
         }        
     }
 
@@ -84,7 +84,7 @@ class SponsorBenefitController extends Controller
         Session::flash('exito' , 'El beneficio fue exitósamente agregado a ' + $sponsor->razon_social);
 
         // Retornando vista: sponsorsbeneficios/show.blade.php
-        return redirect()->route('beneficios.index', compact('sponsor'));
+        return redirect()->route('beneficios.index', $sponsor->sponsor_id);
     }
 
     /**
@@ -119,7 +119,7 @@ class SponsorBenefitController extends Controller
     public function edit($id)
     {
         $benefit = Benefit::find($id)->load('sponsor');
-        return view('beneficios.edit', compact($benefit));
+        return view('beneficios.edit', compact('benefit'));
     }
 
     /**

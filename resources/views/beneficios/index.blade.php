@@ -72,7 +72,7 @@
                 
                  <div class="col-sm-6" >
                    <div style="position: relative; left: 150px">
-                      <div id="beneficio-contenido" style="width:400px;height:342px;overflow: scroll;">
+                      <div id="beneficio-contenido" style="width:400px;height:342px;overflow-y: auto;">
                           <div class="text-center" >
                             <b style="color: white">Beneficios</b>
                           </div><br>
@@ -137,14 +137,6 @@
 
                               </tr>
                               @endforeach
-                              
-                            </table>
-                            </center><br>
-                            <div class="text-center" >
-                                <a  data-toggle="modal" data-target="#myModal{{$sponsor->sponsor_id}}" class="btn btn-success btn-xs " >Añadir <span class="glyphicon glyphicon-plus"></span></a>
-                            </div>
-                          </div>
-                      </div>
                       <!--Mi modal-->
                       {{Form::open(['route'=>['beneficios.store', $sponsor->sponsor_id], 'method'=>'POST'])}}
 
@@ -234,6 +226,14 @@
                        </div>
                        {{Form::close()}}
                        <!--fin del modal-->
+                            </table>
+                            </center><br>
+                            <div class="text-center" >
+                                <a  data-toggle="modal" data-target="#myModal{{$sponsor->sponsor_id}}" class="btn btn-success btn-xs " >Añadir <span class="glyphicon glyphicon-plus"></span></a>
+                            </div>
+                          </div>
+                      </div>
+
                     </div><br>
                  </div>
           </div>   
