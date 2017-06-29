@@ -6,7 +6,7 @@
 
        <div>
            {{csrf_field()}}
-      <dir style="position: relative;right: 80px">
+      <dir style="position: relative;right: -100px">
           <div class="row">
            <div class="form-group">
             <label  class="col-md-4 control-label">Contacto</label>  
@@ -75,28 +75,12 @@
               </div>
              </div><br>
 
-             <!--div class="row">
-                <div class="form-group">
-              <label class="col-md-4 control-label">Ubica tu punto de acopio</label>  
-                <div class="col-md-6 inputGroupContainer">
-                  <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-pushpin"></i></span>
-                    <input type="label" id="latitudScript" name="latitud" class="form-control" readonly="readonly">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-pushpin"></i></span>
-                    <input type="label" id="longitudScript" name="longitud" class="form-control" readonly="readonly" >
-                  </div>
-                </div>
-              </div>
-             </div><br-->
+         
             
-      </dir>
-                         
-            <!--div class="row" style="margin-left: 160px;"" >
-              <div id="map"  style="width:700px;height:300px"></div>
-            </div><br-->
+      </dir>                
             
              <div class="row"  style="margin-left: 10px;">
-                <div class="col-md-6 col-md-offset-8">
+                <div class="col-md-6 col-md-offset-9">
                     <button type="submit" class="btn btn-success">
                       Agregar
                     </button>
