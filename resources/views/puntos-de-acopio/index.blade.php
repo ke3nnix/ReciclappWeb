@@ -12,10 +12,32 @@
         </div>
       </form>
         <div class="pull-right">
-          <button type="submit" data-toggle="modal" data-target="#myModal" class="btn btn-danger btn-xs">Recoger</button>
+          <button type="submit" id="enviar" data-toggle="modal" data-target="#myModal" class="btn btn-danger btn-xs">Recoger</button>
         </div>
     </div>
-    
+     <!--modal para recojo-->
+                <div id="myModal" class="modal fade" role="dialog"> 
+                  <div class="modal-dialog ">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Confirmar</h4>
+                      </div>
+                      <div class="modal-body">
+                        <p>Punto de acopio a eliminar: <b id="test"></b></p>
+                      </div>
+
+                      <div class="modal-footer">
+
+                        <button type="submit" class="btn btn-danger">Recoger</button>
+
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--fin del modal--> 
     <div class="row">           
       <div class="table-responsive">
 
@@ -51,8 +73,10 @@
          @foreach($collectionPoints as $row)
            <tr id="{{$row->acopio_id}}"> 
               <td style="width: 20px"> 
-                <p><input type="checkbox" class="checkAll" name="array-id[]"/></p> 
+              <form id="formid" action="#" method="post">
+                <p><input type="checkbox" class="checkAll" value="{{$row->nombre}}" name="array-id[]"/></p> 
               </td> 
+              </form>
               <td style="width: 100px"> 
                 <p>{{$row->nombre}}</p> 
               </td> 
@@ -99,30 +123,7 @@
                     </div>
                   </div>
                 </div>
-                <!--modal para recojo-->
-                <div id="myModal" class="modal fade" role="dialog"> 
-                  <div class="modal-dialog ">
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Confirmar</h4>
-                      </div>
-                      <div class="modal-body">
-                        <p>Punto de acopio a eliminar: <b>{{$row->nombre}}</b></p>
-                      </div>
-
-                      <div class="modal-footer">
-
-                        <button type="submit" class="btn btn-danger">Recoger</button>
-
-                        {{Form::close()}}
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!--fin del modal--> 
+               
 
               </td>
             </tr>                                                     
@@ -152,26 +153,26 @@
   } 
   
 </script>
-<?php
-if (isset($_POST['enviar'])) {
-    if (is_array($_POST['array-id'])) {
-        $selected = '';
-        $num_countries = count($_POST['array-id']);
-        $current = 0;
-        foreach ($_POST['array-id'] as $key => $value) {
-            if ($current != $num_countries-1)
-                $selected .= $value.', ';
-            else
-                $selected .= $value.'.';
-            $current++;
-        }
-    }
-    else {
-        $selected = 'Debes seleccionar un país';
-    }
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#enviar').click(function(){
+        var selected = '';    
+        $('#formid input[type=checkbox]').each(function(){
+            if (this.checked) {
+                selected += $(this).val()+'; ';
+            }
+        }); 
 
-    echo '<div>Has seleccionado: '.$selected.'</div>';
-}    
-?>
+        if (selected != ''){ 
+            document.getElementById("test").innerHTML=selected;
+            $('#myModal').modal('show');
+            }  
+        else
+            alert('Debes seleccionar al menos una opción.');
+
+        return false;
+    });         
+});
+</script>
 @stop
 

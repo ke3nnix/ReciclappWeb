@@ -55,23 +55,13 @@
                                                 <ul class="nav navbar-nav">
 
                                                        <li>
-                                                        <a href="{{ route("usuarios.index") }}" target="_self">
+                                                        <a href="#" target="_self">
                                                             <span class="icon voyager-key"></span>
                                                             <span class="title">Admnistradores</span>
                                                         </a>
                                                     </li>
-
-
                                                     <li>
-                                                        <a href="http://localhost:8000/admin/menus" target="_self">
-                                                            <span class="icon voyager-group"></span>
-                                                            <span class="title">Colaboradores</span>
-                                                        </a>
-                                                    </li>
-
-
-                                                    <li>
-                                                        <a href="http://localhost:8000/admin/database" target="_self">
+                                                        <a href="#" target="_self">
                                                             <span class="icon voyager-smile"></span>
                                                             <span class="title">Empleados</span>
                                                         </a>
