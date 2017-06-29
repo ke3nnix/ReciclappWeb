@@ -12,7 +12,7 @@
         </div>
       </form>
         <div class="pull-right col-lg-1 " >
-          <button type="submit" id="enviar" data-toggle="modal" data-target="#myModal" class="btn btn-danger btn-xs">Recoger</button>
+          <button type="submit" id="enviar" data-toggle="modal" data-target="#myModal" class="btn btn-danger">Recoger</button>
         </div>
     </div>
 

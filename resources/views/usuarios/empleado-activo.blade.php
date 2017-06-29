@@ -14,7 +14,7 @@
       </form>
     </div>
     <div class="container">
-      <ul class="nav nav-tabs">
+      <ul class="nav nav-tabs" style="width: 1000px">
         <li class="active"><a  href="#">Activos</a></li>
         <li><a  href="/usuarios?tipo=empleados&estado=inactivo">Inactivos</a></li>
       </ul>

@@ -15,9 +15,9 @@
     </div>  
     
     <div class="container">
-      <ul class="nav nav-tabs">
+      <ul class="nav nav-tabs" style="width: 1000px">
         <li><a href="/usuarios?tipo=administradores&estado=activo">Activos</a></li>
-        <li class="active"><a  href="#">Inactivos</a></li>
+        <li class="active"><a href="#">Inactivos</a></li>
       </ul>
 
       
@@ -39,7 +39,7 @@
         </thead>
         <tbody>
          @foreach($users as $row)
-           <tr id="{{$row->acopio_id}}"> 
+           <tr id="{{$row->usuario_id}}"> 
               <td style="width: 100px"> 
                 <p>{{$row->nombre}}</p> 
               </td> 
@@ -50,17 +50,11 @@
                 <p> {{$row->distrito}}</p> 
               </td> 
               <td style="width: 80px">
-              @if($row->estado==0)
-                  <p>Inactivo</p>
-              @endif
-              @if($row->estado==1)
-
-                <p>Activo</p>
-              @endif
+                  <button type="submit" class="btn btn-default btn-xs" onMouseOver="this.style.backgroundColor='#1ABC9C'" onMouseOut="this.style.backgroundColor='#F3F1F1'">Activar</button>
               </td>
               <td style="width: 100px">
-                <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('usuarios.show',['id'=>$row->acopio_id])}}'"><span class="glyphicon glyphicon-eye-open"></span></button>
-                <button class="btn btn-success btn-xs" onclick="window.location.href='{{route('usuarios.edit',['id'=>$row->acopio_id])}}'" ><span class="glyphicon glyphicon-pencil"></span></button> 
+                <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('usuarios.show',['id'=>$row->usuario_id])}}'"><span class="glyphicon glyphicon-eye-open"></span></button>
+                <button class="btn btn-success btn-xs" onclick="window.location.href='{{route('usuarios.edit',['id'=>$row->usuario_id])}}'" ><span class="glyphicon glyphicon-pencil"></span></button> 
                 <button id="elimiar" data-toggle="modal" data-target="#myModal{{$row->usuario_id}}" class="btn btn-danger btn-xs" ><span class="glyphicon glyphicon-trash"></span></button> 
 
                 {{Form::open(['route'=>['puntos-de-acopio.destroy',$row->usuario_id], 'method'=>'DELETE'])}}

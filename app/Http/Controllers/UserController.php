@@ -136,10 +136,10 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        if(response()->expectsJson()) {
+        if(request()->expectsJson()) {
             return $user;
         }
-        return view('usuarios.show','user');
+        return view('usuarios.show',compact('user'));
     }
 
     /**

@@ -62,8 +62,8 @@
  
     <style type="text/css">
         .flat-blue .side-menu .navbar-header, .widget .btn-primary, .widget .btn-primary:focus, .widget .btn-primary:hover, .widget .btn-primary:active, .widget .btn-primary.active, .widget .btn-primary:active:focus{
-            background:#287F22;
-            border-color:#287F22;
+            background:#1ABC9C;
+            border-color:#1ABC9C;
         }
         .breadcrumb a{
             color:#22A7F0;

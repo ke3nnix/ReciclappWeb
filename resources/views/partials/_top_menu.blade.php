@@ -7,7 +7,7 @@
                                             <li class="profile-img">
                                                 <img src="../vendor/imagenReciclaap/users/June2017/cgJcIwVDlZTDhRDGaW92.jpg" class="profile-img">
                                                 <div class="profile-body">
-                                                    <h5>. {{ Auth::user()->nombre }}</h5>
+                                                    <h5>{{ Auth::user()->nombre }}</h5>
                                                     <h6>{{ Auth::user()->email }}</h6>
                                                 </div>
                                             </li>
