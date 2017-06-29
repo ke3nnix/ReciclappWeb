@@ -6,7 +6,7 @@
                                                 <div class="logo-icon-container">
                                                     <img src="../vendor/imagenReciclaap/settings/June2017/logotipoBlanco.png" alt="Logo Icon">
                                                 </div>
-                                                <div class="title">Reciclaap</div>
+                                                <div class="title"><img style="width: 150px; height: 42px" src="../vendor/imagenReciclaap/settings/June2017/ReciclaapBlanco.png"></div>
                                             </a>
                                         </div><!-- .navbar-header -->
 
@@ -30,15 +30,15 @@
 
 
 
-                                    <li class="active">
-                                        <a href="{{ route("puntos-de-acopio.index") }}" target="_self">
+                                    <li>
+                                        <a href="{{ route("puntos-de-acopio.index") }}"  target="_self">
                                             <span class="icon voyager-world"></span>
                                             <span class="title">Puntos de Acopio</span>
                                         </a>
                                     </li>
 
 
-                                    <li class="">
+                                    <li>
                                         <a href="{{ route("sponsors.index") }}" target="_self">
                                             <span class="icon voyager-people"></span>
                                             <span class="title">Sponsors</span>
@@ -50,27 +50,33 @@
                                             <span class="icon voyager-person"></span>
                                             <span class="title">Usuarios</span>
                                         </a>
-                                        <div id="tools-dropdown-element" class="panel-collapse collapse ">
+                                        <div id="tools-dropdown-element" class="panel-collapse collapse">
                                             <div class="panel-body">
                                                 <ul class="nav navbar-nav">
 
+                                                       <li>
+                                                        <a href="{{ route("usuarios.index") }}" target="_self">
+                                                            <span class="icon voyager-key"></span>
+                                                            <span class="title">Admnistradores</span>
+                                                        </a>
+                                                    </li>
 
 
-
-                                                    <li class="">
+                                                    <li>
                                                         <a href="http://localhost:8000/admin/menus" target="_self">
-                                                            <span class="icon voyager-list"></span>
-                                                            <span class="title">Menu Builder</span>
+                                                            <span class="icon voyager-group"></span>
+                                                            <span class="title">Colaboradores</span>
                                                         </a>
                                                     </li>
 
 
-                                                    <li class="">
+                                                    <li>
                                                         <a href="http://localhost:8000/admin/database" target="_self">
-                                                            <span class="icon voyager-data"></span>
-                                                            <span class="title">Database</span>
+                                                            <span class="icon voyager-smile"></span>
+                                                            <span class="title">Empleados</span>
                                                         </a>
                                                     </li>
+                                                  
 
                                                 </ul>
                                             </div>

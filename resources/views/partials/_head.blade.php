@@ -67,7 +67,9 @@
         }
     </style>
       <style type="text/css">
-        
+        th{
+            font-weight: bold;
+        }
         .page-header{
             margin: 0px 0px 20px;
             font-family: 'Roboto'; 

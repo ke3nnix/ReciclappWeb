@@ -19,8 +19,8 @@ class UserController extends Controller
     {
 
         $users = User:: paginate(15);
-        return $users->load('benefits');
-        return view('usuarios.index', compact($users));
+       
+        return view('usuarios.index', compact('users'));
     }
 
     /**

@@ -44,7 +44,14 @@
                         </div>
             </div>
         </div>
-        
+          <script type="text/javascript">
+            $(document).ready(function(){
+                $('ul li').click(function(){
+                $('li').removeClass("active");
+                $(this).addClass("active");
+            });
+          });
+        </script>
       
         <script>
             (function(){
@@ -77,7 +84,7 @@
             })();
         </script>
 
-
+      
 
         @include('partials._javascripts')
 
