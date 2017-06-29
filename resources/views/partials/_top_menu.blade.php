@@ -25,13 +25,16 @@
                                                 </a>
                                             </li>
                                             <li >
-                                                <form action="http://localhost:8000/admin/logout" method="POST">
+                                                {{-- <form action="http://localhost:8000/logout" method="POST">
                                                     <input type="hidden" name="_token" value="a04gIM2pLD52IVwRn4cF2AQjU9zE98plx37IbLeH">
                                                     <button type="submit" class="btn btn-danger btn-block">
                                                         <i class="voyager-power"></i>
                                                         Logout
                                                     </button>
-                                                </form>
+                                                </form> --}}
+
+                                                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
                                             </li>
                                         </ul>
                                     </li>
