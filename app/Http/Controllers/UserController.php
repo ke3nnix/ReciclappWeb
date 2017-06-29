@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Support\Facades\Storage;
+use Image;
 use File;
-use Auth;
-use Riverline\MultiPartParser\Part;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -76,9 +75,7 @@ class UserController extends Controller
         $user->estado = 1;
         $user->puntos = 0;
         $user->api_token = str_random(60);
-        // if($request->hasFile('imagen')) {
-        //         $user->imagen = Storage::putFile('pictures', $request->file('imagen'));
-        // }
+        $user->imagen = "default.png";
         $user->direccion = $request->direccion;
         $user->nacimiento = $request->nacimiento;
 
@@ -125,7 +122,6 @@ class UserController extends Controller
      */
     public function update(Request $request)
     {
-        
 
         $this->validate($request , array( 
                 'nombre' => 'max:255', 
@@ -141,7 +137,8 @@ class UserController extends Controller
 
 
         // Guardando data
-        $user = User::find($request->user()->usuario_id);
+        $user = Auth::user();
+
         if(!is_null( $request->nombre )){ $user->nombre = $request->nombre; }
         if(!is_null( $request->apellido )){ $user->apellido = $request->apellido; }
         if(!is_null( $request->password )){$user->password = bcrypt($request->password);}
@@ -153,12 +150,12 @@ class UserController extends Controller
 
                 $imagen = $request->file('imagen');
                 $filename = time() . '.' . $imagen->getClientOriginalExtension();
-                Image::make($avatar)->resize(300,300)->save( public_path('/uploads/avatars/' . $filename ) );
-                // if ($user->imagen != "default.jpg") {
-                //     $path = '/storage/pictures/';
-                //     $lastpath= $user->imagen;
-                //     File::Delete(public_path( $path . $lastpath) );        
-                // }
+                Image::make($imagen)->resize(300,300)->save( public_path('/uploads/avatars/' . $filename ) );
+                if ($user->imagen != "default.png") {
+                    $path = '/uploads/avatars/';
+                    $lastpath= $user->imagen;
+                    File::Delete(public_path( $path . $lastpath) );
+                }
                 $user->imagen = $filename;
         }
         if(!is_null( $request->direccion )){ $user->direccion = $request->direccion; }
@@ -199,4 +196,11 @@ class UserController extends Controller
 
         return redirect()->route('usuarios.index');
     }
+
+    public function subir_imagen(Request $request)
+    {
+        echo $request->nombre;
+        return dd($request->hasFile('imagen'));
+    }
+
 }
