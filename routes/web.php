@@ -14,17 +14,37 @@
     return view('login.login');
 });*/
 
-Route::name('Inicio')->get('/', function () {
-    return view('index');
+
+
+// Auth::routes();
+
+
+
+Route::post('login', 'Auth\LoginController@authenticate')->name('login');
+
+Route::get('login', 'Auth\LoginController@Login');
+
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+Route::group(['middleware' => 'auth'], function() {
+
+    Route::name('inicio')->get('/', function () {
+        return view('index');
+    });
+
+    // Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::name('perfil')->get('perfil',function(){
+        return view('perfil-admin.perfil-admin');
+    });
+
+    Route::resource('puntos-de-acopio', 'CollectionPointController');
+
+    Route::resource('sponsors', 'SponsorController');
+
+    Route::resource('sponsors/{sponsor}/beneficios', 'SponsorBenefitController');
+
+    Route::resource('usuarios', 'UserController');
+
+
 });
-
-Route::name('perfil')->get('perfil',function(){
-	return view('perfil-admin.perfil-admin');
-});
-Route::resource('puntos-de-acopio', 'CollectionPointController');
-
-Route::resource('sponsors', 'SponsorController');
-
-Route::resource('sponsors/{sponsor}/beneficios', 'SponsorBenefitController');
-
-Route::resource('usuarios', 'UserController');
