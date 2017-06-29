@@ -32,7 +32,6 @@ class UserController extends Controller
                             $users = User::where('tipo',2)
                                             ->where('estado', 0)
                                             ->paginate(15);
-                            return $users;
                             return view('usuarios.empleado-inactivo', compact('users'));
                     }
                 }
@@ -50,7 +49,6 @@ class UserController extends Controller
                                             ->where('estado', 0)
                                             ->paginate(15);
                             return view('usuarios.administrador-inactivo', compact('users'));
-                            break;
                     }
                 }
 

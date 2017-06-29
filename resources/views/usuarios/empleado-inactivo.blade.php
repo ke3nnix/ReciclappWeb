@@ -15,8 +15,8 @@
     </div>
     <div class="container">
       <ul class="nav nav-tabs">
-        <li class="active"><a  " href="#">Activos</a></li>
-        <li><a  href="#">Inactivos</a></li>
+        <li><a href="/usuarios?tipo=empleados&estado=activo">Activos</a></li>
+        <li class="active"><a href="#">Inactivos</a></li>
       </ul>
 
     <div class="row tab-content">           

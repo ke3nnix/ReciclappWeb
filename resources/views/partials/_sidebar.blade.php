@@ -55,13 +55,13 @@
                                                 <ul class="nav navbar-nav">
 
                                                        <li>
-                                                        <a href="/usuarios?tipo=administradores" target="_self">
+                                                        <a href="/usuarios?tipo=administradores&estado=activo" target="_self">
                                                             <span class="icon voyager-key"></span>
                                                             <span class="title">administradores</span>
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="/usuarios?tipo=empleados" target="_self">
+                                                        <a href="/usuarios?tipo=empleados&estado=activo" target="_self">
                                                             <span class="icon voyager-smile"></span>
                                                             <span class="title">Empleados</span>
                                                         </a>
