@@ -10,11 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+/*Route::name('Login')->get('/', function () {
+    return view('login.login');
+});*/
 
 Route::name('Inicio')->get('/', function () {
     return view('index');
 });
 
+Route::name('perfil')->get('perfil',function(){
+	return view('perfil-admin.perfil-admin');
+});
 Route::resource('puntos-de-acopio', 'CollectionPointController');
 
 Route::resource('sponsors', 'SponsorController');

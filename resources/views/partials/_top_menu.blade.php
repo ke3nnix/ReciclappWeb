@@ -1,20 +1,38 @@
-<ul class="nav navbar-top-links navbar-right">
-
-                <li class="dropdown">
-                    <a class="dropdown-toggle" onMouseOver="this.style.backgroundColor='#2EAB26'" onMouseOut="this.style.backgroundColor='#287F22'" data-toggle="dropdown" href="#"> 
-                        <i class="fa fa-user fa-fw" ></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Ajustes</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Cerrar sesión</a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
-                <!-- /.dropdown -->
-            </ul>
-            <!-- /.navbar-top-links -->
+<ul class="nav navbar-nav navbar-right">
+                                    <li class="dropdown profile">
+                                        <a href="#" class="dropdown-toggle text-right" data-toggle="dropdown" role="button"
+                                        aria-expanded="false"><img src="../vendor/imagenReciclaap/users/June2017/cgJcIwVDlZTDhRDGaW92.jpg" class="profile-img"> <span
+                                        class="caret"></span></a>
+                                        <ul class="dropdown-menu dropdown-menu-animated">
+                                            <li class="profile-img">
+                                                <img src="../vendor/imagenReciclaap/users/June2017/cgJcIwVDlZTDhRDGaW92.jpg" class="profile-img">
+                                                <div class="profile-body">
+                                                    <h5>gus</h5>
+                                                    <h6>gustavo@gmail.com</h6>
+                                                </div>
+                                            </li>
+                                            <li class="divider"></li>
+                                            <li class="class-full-of-rum">
+                                                <a href="{{route('perfil')}}" >
+                                                    <i class="voyager-person"></i>
+                                                    Profile
+                                                </a>
+                                            </li>
+                                            <li >
+                                                <a href="/" target="_blank">
+                                                    <i class="voyager-home"></i>
+                                                    Home
+                                                </a>
+                                            </li>
+                                            <li >
+                                                <form action="http://localhost:8000/admin/logout" method="POST">
+                                                    <input type="hidden" name="_token" value="a04gIM2pLD52IVwRn4cF2AQjU9zE98plx37IbLeH">
+                                                    <button type="submit" class="btn btn-danger btn-block">
+                                                        <i class="voyager-power"></i>
+                                                        Logout
+                                                    </button>
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    </li>
+</ul>

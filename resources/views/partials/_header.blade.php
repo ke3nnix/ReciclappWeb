@@ -1,10 +1,21 @@
-            <div class="navbar-header" style=" position: relative;left: 50px">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" style="color: #FDFDFD;" href="{{route('Inicio')}}"><img src="../imagen/Reciclapp-logo-web.png" width="100px"></a>
-            </div>
+        <nav class="navbar navbar-default navbar-fixed-top navbar-top">
+                            <div class="container-fluid">
+                                <div class="navbar-header">
+                                    <button class="hamburger btn-link">
+                                        <span class="hamburger-inner"></span>
+                                    </button>
+                                    <a id="sidebar-anchor" class="glyphicon glyphicon-eye-open btn-link navbar-link hidden-xs" 
+                                    title="Yarr! Drop the anchors! (and keep the sidebar open)" 
+                                    data-unstick="Unstick the sidebar" 
+                                    data-toggle="tooltip" data-placement="bottom"></a>
+
+                                    <ol class="breadcrumb hidden-xs">
+                                        <li class="active"><i class="voyager-world"></i> @yield('title')</li>
+                                    </ol>
+                                </div>
+                                
+                                @include('partials._top_menu') 
+
+                            </div>
+        </nav> 
             <!-- /.navbar-header --> 

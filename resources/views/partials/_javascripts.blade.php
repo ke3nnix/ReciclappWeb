@@ -1,17 +1,33 @@
-    <!-- jQuery -->
-    {!!Html::script('../vendor/jquery/jquery.min.js')!!}
-    <!-- Bootstrap Core JavaScript -->
-    {!!Html::script('../vendor/bootstrap/js/bootstrap.min.js')!!}
-    <!-- Metis Menu Plugin JavaScript -->
-    {!!Html::script('../vendor/metisMenu/metisMenu.min.js')!!}
-    <!-- Custom Theme JavaScript -->
-    {!!Html::script('../dist/js/sb-admin-2.js')!!}
-    
-    {!!Html::script('http://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js')!!}
-    
-    {!!Html::script('https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')!!}
-    
-    {!!Html::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')!!}
+<!-- Javascript Libs -->
+{!!Html::script('../vendor/tcg/voyager/publishable/assets/lib/js/bootstrap.min.js')!!}
 
-    {!!Html::script('../js/menu.js')!!}
+{!!Html::script('../vendor/tcg/voyager/publishable/assets/lib/js/bootstrap-switch.min.js')!!}
 
+{!!Html::script('../vendor/tcg/voyager/publishable/assets/lib/js/jquery.matchHeight-min.js')!!}
+
+{!!Html::script('../vendor/tcg/voyager/publishable/assets/lib/js/jquery.dataTables.min.js')!!}
+
+{!!Html::script('../vendor/tcg/voyager/publishable/assets/lib/js/dataTables.bootstrap.min.js')!!}
+
+{!!Html::script('../vendor/tcg/voyager/publishable/assets/lib/js/toastr.min.js')!!}
+
+{!!Html::script('../vendor/tcg/voyager/publishable/assets/lib/js/perfect-scrollbar.jquery.min.js')!!}
+
+{!!Html::script('../vendor/tcg/voyager/publishable/assets/js/select2/select2.min.js')!!}
+
+{!!Html::script('../vendor/tcg/voyager/publishable/assets/js/bootstrap-toggle.min.js')!!}
+
+{!!Html::script('../vendor/tcg/voyager/publishable/assets/js/jquery.cookie.js')!!}
+
+{!!Html::script('../vendor/tcg/voyager/publishable/assets/js/moment-with-locales.min.js')!!}
+
+{!!Html::script('../vendor/tcg/voyager/publishable/assets/js/datetimepicker/bootstrap-datetimepicker.min.js')!!}
+<!-- Javascript -->
+
+{!!Html::script('../vendor/tcg/voyager/publishable/assets/js/readmore.min.js')!!}
+
+{!!Html::script('../vendor/tcg/voyager/publishable/assets/js/val.js')!!}
+
+{!!Html::script('../vendor/tcg/voyager/publishable/assets/js/app.js')!!}
+
+{!!Html::script('../vendor/tcg/voyager/publishable/assets/js/helpers.js')!!}
