@@ -6,7 +6,7 @@
        
            {{csrf_field()}}
 
-           <div style="position: relative;right: 80px">
+           <div style="position: relative;right: -100px">
                 <div class="row">
                  <div class="form-group">
                   <label  class="col-md-4 control-label">Contacto</label>  
@@ -77,7 +77,7 @@
       </div>
             
             
-                <div class="col-md-6 col-md-offset-8" >
+                <div class="col-md-6 col-md-offset-9" >
                     <button type="submit" class="btn btn-success">
                       Actualizar
                     </button>   

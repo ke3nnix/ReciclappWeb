@@ -12,9 +12,16 @@
 
         </div>
       </form>
-    </div>
+    </div>  
     
-    <div class="row">           
+    <div class="container">
+      <ul class="nav nav-tabs">
+        <li class="active"><a  " href="#">Activos</a></li>
+        <li><a  href="#">Inactivos</a></li>
+      </ul>
+
+      
+    <div class="row tab-content">           
       <div class="table-responsive">
 
 
@@ -43,7 +50,13 @@
                 <p> {{$row->distrito}}</p> 
               </td> 
               <td style="width: 80px">
-                <p>{{$row->estado}}</p>
+              @if($row->estado==0)
+                  <p>Inactivo</p>
+              @endif
+              @if($row->estado==1)
+
+                <p>Activo</p>
+              @endif
               </td>
               <td style="width: 100px">
                 <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('usuarios.show',['id'=>$row->acopio_id])}}'"><span class="glyphicon glyphicon-eye-open"></span></button>

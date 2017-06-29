@@ -6,7 +6,7 @@
 
        <div>
            {{csrf_field()}}
-      <dir style="position: relative;right: 100px">
+      <dir style="position: relative;right: -100px" >
           <div class="row">
            <div class="form-group">
             <label  class="col-md-4 control-label">Nombre</label>  
@@ -91,7 +91,7 @@
             
       </dir>
                          
-            <div class="row" style="margin-left: 160px;"" >
+            <div class="row" style="margin-left: 160px;position: relative;right: -100px" >
               <div id="map"  style="width:700px;height:300px"></div>
             </div><br>
             

@@ -56,7 +56,10 @@
     {!!Html::style('../vendor/Modal-estilo/modal-estilo.css')!!}
      
     {!!Html::style('../vendor/EstiloReciclap/etiloReciclap.css')!!} 
-    
+    {!!Html::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')!!} 
+    {!!Html::script('https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')!!}
+    {!!Html::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')!!}
+ 
     <style type="text/css">
         .flat-blue .side-menu .navbar-header, .widget .btn-primary, .widget .btn-primary:focus, .widget .btn-primary:hover, .widget .btn-primary:active, .widget .btn-primary.active, .widget .btn-primary:active:focus{
             background:#287F22;
