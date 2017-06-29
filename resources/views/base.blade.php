@@ -2,7 +2,7 @@
 <html> 
 @include('partials._head') 
  
-<body class="flat-blue"> 
+<body class="flat-blue" style="overflow-x: hidden;"> 
  
     <div id="voyager-loader"> 
                 <img src="../vendor/imagenReciclaap/settings/June2017/a11c5SbQJJZ9cDF0nnPd.gif" alt="Voyager Loader"> 

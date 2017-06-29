@@ -2,22 +2,21 @@
                             <nav class="navbar navbar-default" role="navigation">
                                     <div class="side-menu-container">
                                         <div class="navbar-header">
-                                            <a class="navbar-brand" href="http://localhost:8000/admin">
+                                            <a class="navbar-brand" href="{{route('inicio')}}">
                                                 <div class="logo-icon-container">
                                                     <img src="../vendor/imagenReciclaap/settings/June2017/logotipoBlanco.png" alt="Logo Icon">
                                                 </div>
-                                                <div class="title"><img style="width: 150px; height: 42px" src="../vendor/imagenReciclaap/settings/June2017/ReciclaapBlanco.png"></div>
+                                                <div class="title"><p>Reciclapp</p></div>
                                             </a>
                                         </div><!-- .navbar-header -->
 
-                                        <div class="panel widget center bgimage"
-                                        style="background-image:url(../vendor/imagenReciclaap/settings/June2017/crdTg7CUs8yTVJS6JeNL.jpg);">
+                                        <div class="panel widget center bgimage "
+                                        style="background-image:url(../vendor/imagenReciclaap/settings/June2017/crdTg7CUs8yTVJS6JeNL.jpg); ">
                                         <div class="dimmer"></div>
-                                        <div class="panel-content">
-                                            <img src="../vendor/imagenReciclaap/users/June2017/cgJcIwVDlZTDhRDGaW92.jpg" class="avatar" alt="gus avatar">
-                                            <h4>Gus</h4>
-                                            <p>gustavo@gmail.com</p>
-
+                                        <div class="panel-content" style=" position: relative; float: center;">
+                                            <center>
+                                            <img style="height: 45px; width: 45px" src="../vendor/imagenReciclaap/users/June2017/cgJcIwVDlZTDhRDGaW92.jpg" class="avatar" alt="{{ Auth::user()->nombre }} avatar"></center>
+                                            <h4>{{ Auth::user()->nombre }} </h4>
                                             <a href="http://localhost:8000/admin/profile" class="btn btn-primary">Profile</a>
                                             <div style="clear:both"></div>
                                         </div>

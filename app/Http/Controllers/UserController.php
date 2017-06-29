@@ -139,7 +139,7 @@ class UserController extends Controller
         if(request()->expectsJson()) {
             return $user;
         }
-        return view('usuarios.show','user');
+        return view('usuarios.show',compact('user'));
     }
 
     /**
