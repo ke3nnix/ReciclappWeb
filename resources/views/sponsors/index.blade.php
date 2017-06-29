@@ -18,7 +18,7 @@
       <div class="table-responsive">
 
 
-        <table id="mytable" class="table table-bordred">
+        <table id="mytable" class="table table-bordred table-striped">
 
           <!--<thead>
           <th>Nombre</th>
@@ -45,7 +45,7 @@
            <tr id="{{$row->sponsor_id}}"> 
               
               <td > 
-                <div >{{$row->razon_social}}</div> 
+                <p>{{$row->razon_social}}</p> 
               </td> 
                <td > 
                 <p> {{$row->ruc}}</p> 
@@ -54,7 +54,7 @@
                 <p > {{$row->telefono}}</p> 
               </td>
               <td> 
-                <div > {{$row->direccion}} </div> 
+                <p > {{$row->direccion}} </p> 
               </td> 
                             
               <td>

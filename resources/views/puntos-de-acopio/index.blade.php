@@ -18,7 +18,7 @@
       <div class="table-responsive">
 
 
-        <table id="mytable" class="table table-bordred">
+        <table id="mytable" class="table table-bordred table-striped">
 
           <!--<thead>
           <th>Nombre</th>
@@ -51,22 +51,22 @@
               <td style="width: 20px"> 
                 <p><input type="checkbox" class="checkAll"/></p> 
               </td> 
-              <td style="width: 150px"> 
+              <td style="width: 100px"> 
                 <p>{{$row->nombre}}</p> 
               </td> 
                <td style="width: 80px"> 
                 <div class="cortar"> {{$row->direccion}}</div> 
               </td> 
-              <td style="width: 100px"> 
-                <div > {{$row->distrito}}</div> 
+              <td style="width: 80px"> 
+                <p> {{$row->distrito}}</p> 
               </td> 
-              <td>
+              <td style="width: 80px">
                 <p> <b>{{$row->papel_actual}}</b>/{{$row->papel_max}}</p> 
               </td>
-              <td>
+              <td style="width: 80px">
                 <p> <b>{{$row->vidrio_actual}}</b>/{{$row->vidrio_max}}</p> 
               </td>
-              <td>
+              <td style="width: 80px">
                 <p> <b>{{$row->plastico_actual}}</b>/{{$row->plastico_max}}</p> 
               </td>
               <td style="width: 100px">

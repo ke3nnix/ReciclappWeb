@@ -2,6 +2,7 @@
 @section('title', 'Detalle de punto de acopio')
 @section('content')
 
+<div style="position: relative; left: 70px;>
 {{Form::open(['route'=>['puntos-de-acopio.destroy',$collectionPoint->acopio_id], 'method'=>'DELETE'])}}
   <div class="container">
           <div class="row">
@@ -69,7 +70,7 @@
                                 </div>
                               </div>
                             </div>
-                          </div><br>
+                          </div>
                     </div>
                  </div>
 
@@ -85,27 +86,13 @@
                               Eliminar
                             </button>   
                             <a href="{{route('puntos-de-acopio.index')}}" class="btn btn-danger">Cancelar</a>
-                      </div><br>
-                      <!-- latitud y longitud-->
-                      <div class="row">
-                      <div class="form-group">
-                        <div class="col-md-12 inputGroupContainer">
-                          <div class="input-group">
-                           
-                            <input id="latitudScript" name="latitud" class="form-control"  type="text" value="{{$collectionPoint->latitud}}"  style="visibility:hidden"/>
-                          </div>
-                        </div>
                       </div>
-                    </div><br>
-
-                    <div class="row">
-                      <div class="form-group">
-                        <div class="col-md-12 inputGroupContainer">
-                          <div class="input-group">
-                            <input id="longitudScript" name="longitud" class="form-control"  type="text" value="{{$collectionPoint->longitud}}"  style="visibility:hidden"/>
-                          </div>
-                        </div>
-                      </div>        
+                      <!-- latitud y longitud-->
+                            <div style="visibility:hidden">                  
+                                  <input id="latitudScript" name="latitud" class="form-control"  type="text" value="{{$collectionPoint->latitud}}"  />
+                                  <input id="longitudScript" name="longitud" class="form-control"  type="text" value="{{$collectionPoint->longitud}}"  />
+                            </div>
+                                                    
 
             <script>
 
@@ -158,7 +145,7 @@
                     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBB4ZIAHHHpeAmS-khq5zqLWWmTosyIrAg&callback=myMap"></script>
 
                {{Form::close()}}
-
+</div>
       
 
    
