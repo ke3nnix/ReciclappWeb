@@ -1,5 +1,5 @@
 @extends('base') 
-@section('title', 'Administradores')
+@section('title', 'Administradores Activos')
 @section('content')
 
 <div class="col-lg-12">
