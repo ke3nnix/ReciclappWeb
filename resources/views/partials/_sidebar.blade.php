@@ -57,7 +57,7 @@
                                                        <li>
                                                         <a href="/usuarios?tipo=administradores" target="_self">
                                                             <span class="icon voyager-key"></span>
-                                                            <span class="title">Admnistradores</span>
+                                                            <span class="title">administradores</span>
                                                         </a>
                                                     </li>
                                                     <li>

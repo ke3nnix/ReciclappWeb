@@ -16,7 +16,7 @@ class CollectionPointController extends Controller
      */ 
     public function index() 
     { 
-        $collectionPoints = CollectionPoint::orderBy('acopio_id', 'ACS')->paginate(15); 
+        $collectionPoints = CollectionPoint::where('estado', 1)->orderBy('acopio_id', 'ACS')->paginate(15); 
         if (request()->expectsJson()) {
             return $collectionPoints;
         }
@@ -60,6 +60,7 @@ class CollectionPointController extends Controller
         $collectionPoint->distrito = $request->distrito; 
         $collectionPoint->latitud = $request->latitud;
         $collectionPoint->longitud = $request->longitud;
+        $collectionPoint->estado = 1;
         $collectionPoint->papel_max = $request->papel_max; 
         $collectionPoint->papel_actual = 0; 
         $collectionPoint->vidrio_max = $request->vidrio_max; 

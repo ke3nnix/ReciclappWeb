@@ -7,33 +7,19 @@
                                             <li class="profile-img">
                                                 <img src="../vendor/imagenReciclaap/users/June2017/cgJcIwVDlZTDhRDGaW92.jpg" class="profile-img">
                                                 <div class="profile-body">
-                                                    <h5>gus</h5>
-                                                    <h6>gustavo@gmail.com</h6>
+                                                    <h5>. {{ Auth::user()->nombre }}</h5>
+                                                    <h6>{{ Auth::user()->email }}</h6>
                                                 </div>
                                             </li>
                                             <li class="divider"></li>
                                             <li class="class-full-of-rum">
                                                 <a href="{{route('perfil')}}" >
                                                     <i class="voyager-person"></i>
-                                                    Profile
+                                                    Perfil
                                                 </a>
                                             </li>
                                             <li >
-                                                <a href="/" target="_blank">
-                                                    <i class="voyager-home"></i>
-                                                    Home
-                                                </a>
-                                            </li>
-                                            <li >
-                                                {{-- <form action="http://localhost:8000/logout" method="POST">
-                                                    <input type="hidden" name="_token" value="a04gIM2pLD52IVwRn4cF2AQjU9zE98plx37IbLeH">
-                                                    <button type="submit" class="btn btn-danger btn-block">
-                                                        <i class="voyager-power"></i>
-                                                        Logout
-                                                    </button>
-                                                </form> --}}
-
-                                                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                                                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar sesión</a>
                                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
                                             </li>
                                         </ul>

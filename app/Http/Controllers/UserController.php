@@ -16,25 +16,51 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
-        if(!is_null( $request->tipo ))
-        {
+    { 
+
+        if (!is_null( $request->tipo ))
             switch ($request->tipo) {
-                case 'empleados':
-                    $users = User::where('tipo',2)->paginate(15);
-                    return view('usuarios.empleado', compact('users'));
-                
-                case 'administradores':
-                    $users = User::where('tipo',3)->paginate(15);
-                    return view('usuarios.administrador', compact('users'));
+                case 'empleados': {
+                    switch ($request->estado) {
+                        case 'activo':
+                            $users = User::where('tipo',2)
+                                            ->where('estado', 1)
+                                            ->paginate(15);
+                            return view('usuarios.empleado-activo', compact('users'));
+                            
+                        case 'inactivo':
+                            $users = User::where('tipo',2)
+                                            ->where('estado', 0)
+                                            ->paginate(15);
+                            return $users;
+                            return view('usuarios.empleado-inactivo', compact('users'));
+                    }
+                }
+
+                case 'administradores': {
+                    switch ($request->estado) {
+                        case 'activo':
+                            $users = User::where('tipo',3)
+                                            ->where('estado', 1)
+                                            ->paginate(15);
+                            return view('usuarios.administrador-activo', compact('users'));
+                            
+                        case 'inactivo':
+                            $users = User::where('tipo',3)
+                                            ->where('estado', 0)
+                                            ->paginate(15);
+                            return view('usuarios.administrador-inactivo', compact('users'));
+                            break;
+                    }
+                }
+
                 default:
                     abort(404, "La página a la que está intentando ingresar no existe.");
             }
-        }
         else {
             $users = User:: paginate(15);
             return view('usuarios');
-        }        
+        }   
     }
 
     /**

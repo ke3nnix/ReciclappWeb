@@ -56,6 +56,7 @@ $factory->define(App\Models\CollectionPoint::class, function (Faker\Generator $f
         'papel_actual' => $faker->numberBetween($min = 500, $max = 1000),
         'vidrio_actual' => $faker->numberBetween($min = 500, $max = 1000),
         'plastico_actual' => $faker->numberBetween($min = 500, $max = 1000),
+        'estado' => 1,
     ];
 });
 
