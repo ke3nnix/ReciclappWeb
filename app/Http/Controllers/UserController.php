@@ -22,11 +22,11 @@ class UserController extends Controller
             switch ($request->tipo) {
                 case 'empleados':
                     $users = User::where('tipo',2)->paginate(15);
-                    return view('usuarios.empleados');
+                    return view('usuarios.empleado', compact('users'));
                 
                 case 'administradores':
                     $users = User::where('tipo',3)->paginate(15);
-                    return view('usuarios.administradores');
+                    return view('usuarios.administrador', compact('users'));
                 default:
                     abort(404, "La página a la que está intentando ingresar no existe.");
             }
@@ -112,7 +112,10 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return $user;
+        if(response()->expectsJson()) {
+            return $user;
+        }
+        return view('usuarios.show','user');
     }
 
     /**
@@ -124,7 +127,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('usuarios.edit', compact($user));
+        return view('usuarios.edit', compact('user'));
     }
 
     /**
