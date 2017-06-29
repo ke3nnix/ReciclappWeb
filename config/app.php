@@ -170,6 +170,7 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
       //  Intervention\Image\ImageServiceProvider::class,
 
         /*
@@ -232,6 +233,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
         //'Image' => Intervention\Image\ImageManagerStatic::class,
 
     ],

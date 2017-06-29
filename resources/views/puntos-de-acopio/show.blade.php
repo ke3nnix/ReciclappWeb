@@ -2,7 +2,7 @@
 @section('title', 'Detalle de punto de acopio')
 @section('content')
 
-<div style="position: relative; left: 70px;>
+<div style="position: relative; left: 70px;">
 {{Form::open(['route'=>['puntos-de-acopio.destroy',$collectionPoint->acopio_id], 'method'=>'DELETE'])}}
   <div class="container">
           <div class="row">
@@ -92,7 +92,6 @@
                                   <input id="latitudScript" name="latitud" class="form-control"  type="text" value="{{$collectionPoint->latitud}}"  />
                                   <input id="longitudScript" name="longitud" class="form-control"  type="text" value="{{$collectionPoint->longitud}}"  />
                             </div>
-                                                    
 
             <script>
 

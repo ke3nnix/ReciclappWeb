@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request; 
 use App\Models\CollectionPoint; 
 use Session; 
+use Charts;
  
  
 class CollectionPointController extends Controller 
@@ -103,7 +104,18 @@ class CollectionPointController extends Controller
             abort(404, "El punto de acopio no existe ");
         }
 
-        return view('puntos-de-acopio.show',compact('collectionPoint')); 
+        // $porcentaje_papel = $collectionPoint->papel_actual / $collectionPoint->papel_max;
+
+        $chart = Charts::create('percentage', 'justgage')
+                        ->title('Capacidad de papel')
+                        ->elementLabel('% usado')
+                        ->values([$collectionPoint->papel_actual,0,$collectionPoint->papel_max])
+                        ->responsive(false)
+                        ->height(300)
+                        ->width(0);
+
+
+        return view('puntos-de-acopio.show',compact(['collectionPoint', 'chart'])); 
     } 
  
     /** 

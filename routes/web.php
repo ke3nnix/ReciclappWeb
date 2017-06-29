@@ -46,6 +46,6 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::resource('usuarios', 'UserController');
 
-    Route::get('puntos-de-acopio/recoger', 'CollectionPoints@collect');
+    Route::get('puntos-de-acopio/recoger', 'CollectionPointController@collect');
 
 });

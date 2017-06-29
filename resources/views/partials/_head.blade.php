@@ -4,6 +4,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="a04gIM2pLD52IVwRn4cF2AQjU9zE98plx37IbLeH"/>
 
+    {{-- Laravel Charts --}}
+    {!! Charts::assets() !!}
+
     
     <!-- Fonts -->
     {!!Html::style('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400|Lato:300,400,700,900')!!}
