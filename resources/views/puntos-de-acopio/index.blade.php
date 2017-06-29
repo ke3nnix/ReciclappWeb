@@ -11,11 +11,11 @@
           <button type="submit" class="btn btn-success">Agregar</button>
         </div>
       </form>
-     
-          <div class="pull-right">
-            <button type="submit" id="enviar" data-toggle="modal" data-target="#myModal" class="btn btn-danger btn-xs">Recoger</button>
-          </div>
-          <!--modal para recojo-->
+        <div class="pull-right">
+          <button type="submit" id="enviar" data-toggle="modal" data-target="#myModal" class="btn btn-danger btn-xs">Recoger</button>
+        </div>
+    </div>
+     <!--modal para recojo-->
                 <div id="myModal" class="modal fade" role="dialog"> 
                   <div class="modal-dialog ">
                     <!-- Modal content-->
@@ -25,22 +25,19 @@
                         <h4 class="modal-title">Confirmar</h4>
                       </div>
                       <div class="modal-body">
-                        <p>Punto de acopio a recoger: <p><b id="test"></b><p></p>
+                        <p>Punto de acopio a eliminar: <b id="test"></b></p>
                       </div>
 
                       <div class="modal-footer">
 
                         <button type="submit" class="btn btn-danger">Recoger</button>
 
-                        {{Form::close()}}
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
                       </div>
                     </div>
                   </div>
                 </div>
                 <!--fin del modal--> 
-    </div>
-    
     <div class="row">           
       <div class="table-responsive">
 
@@ -75,12 +72,11 @@
         <tbody>
          @foreach($collectionPoints as $row)
            <tr id="{{$row->acopio_id}}"> 
-              <td style="width: 20px">
-               <form id="formid" action="#" method="post"> 
-                <p><input type="checkbox" value="{{$row->nombre}}" class="checkAll" name="countries[]"/></p>
-               </form>    
- 
+              <td style="width: 20px"> 
+              <form id="formid" action="#" method="post">
+                <p><input type="checkbox" class="checkAll" value="{{$row->nombre}}" name="array-id[]"/></p> 
               </td> 
+              </form>
               <td style="width: 100px"> 
                 <p>{{$row->nombre}}</p> 
               </td> 
@@ -127,11 +123,11 @@
                     </div>
                   </div>
                 </div>
-                
+               
 
               </td>
             </tr>                                                     
-          @endforeach 
+          @endforeach     
         </tbody>
       </table>
 
@@ -163,20 +159,20 @@
         var selected = '';    
         $('#formid input[type=checkbox]').each(function(){
             if (this.checked) {
-                selected += $(this).val()+', ';
+                selected += $(this).val()+'; ';
             }
         }); 
 
-        if (selected != ''){
-          document.getElementById("test").innerHTML=selected; 
-           $('#myModal').modal('show');
-         }
+        if (selected != ''){ 
+            document.getElementById("test").innerHTML=selected;
+            $('#myModal').modal('show');
+            }  
         else
             alert('Debes seleccionar al menos una opción.');
 
         return false;
     });         
-});    
+});
 </script>
 @stop
 

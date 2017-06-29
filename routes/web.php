@@ -38,11 +38,6 @@ Route::group(['middleware' => 'auth'], function() {
         return view('perfil-admin.perfil-admin');
     });
 
-  /*  Route::name('administrador')->get('administrador',function(){
-    });
-    Route::name('empleado')->get('empleado',function(){
-    });
-*/
     Route::resource('puntos-de-acopio', 'CollectionPointController');
 
     Route::resource('sponsors', 'SponsorController');
