@@ -17,10 +17,24 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-
-        $users = User:: paginate(15);
-       
-        return view('usuarios.index', compact('users'));
+        if(!is_null( $request->tipo ))
+        {
+            switch ($request->tipo) {
+                case 'empleados':
+                    $users = User::where('tipo',2)->paginate(15);
+                    return view('usuarios.empleados');
+                
+                case 'administradores':
+                    $users = User::where('tipo',3)->paginate(15);
+                    return view('usuarios.administradores');
+                default:
+                    abort(404, "La página a la que está intentando ingresar no existe.");
+            }
+        }
+        else {
+            $users = User:: paginate(15);
+            return view('usuarios');
+        }        
     }
 
     /**
