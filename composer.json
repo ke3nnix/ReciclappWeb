@@ -10,8 +10,7 @@
         "laravel/passport": "^2.0",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
-        "unlu/laravel-api-query-builder": "~1.0",
-        "intervention/image": "1.*"
+        "unlu/laravel-api-query-builder": "~1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "^1.6",
