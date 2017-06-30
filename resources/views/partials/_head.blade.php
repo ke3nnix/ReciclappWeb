@@ -58,7 +58,7 @@
 
     {!!Html::style('../vendor/Modal-estilo/modal-estilo.css')!!}
      
-    {!!Html::style('../vendor/EstiloReciclap/etiloReciclap.css')!!} 
+    {!!Html::style('../vendor/EstiloReciclap/estiloReciclap.css')!!} 
     {!!Html::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')!!} 
     {!!Html::script('https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')!!}
     {!!Html::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')!!}
@@ -96,7 +96,7 @@
            
         } 
         .perfil-admin{
-            background-size:cover; background: url(../vendor/imagenReciclaap/settings/June2017/crdTg7CUs8yTVJS6JeNL.jpg) center center;
+            background-size:cover; background: url(URL::to('/') . "/resources/wallpaper-reciclapp.jpg") center center;
             position:absolute; 
             top:0; 
             left:0; 

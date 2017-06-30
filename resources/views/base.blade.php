@@ -5,7 +5,7 @@
 <body class="flat-blue" style="overflow-x: hidden;"> 
  
     <div id="voyager-loader"> 
-                <img src="../vendor/imagenReciclaap/settings/June2017/a11c5SbQJJZ9cDF0nnPd.gif" alt="Voyager Loader"> 
+                <img src="{{ URL::to('/') }}/resources/loader-reciclapp.gif" alt="Reciclapp loader"> 
     </div> 
  
  

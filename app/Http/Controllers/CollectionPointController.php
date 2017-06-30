@@ -104,18 +104,33 @@ class CollectionPointController extends Controller
             abort(404, "El punto de acopio no existe ");
         }
 
-        // $porcentaje_papel = $collectionPoint->papel_actual / $collectionPoint->papel_max;
-
-        $chart = Charts::create('percentage', 'justgage')
-                        ->title('Capacidad de papel')
+        $chartPapel = Charts::create('percentage', 'justgage')
+                        ->title('Papel')
                         ->elementLabel('% usado')
-                        ->values([$collectionPoint->papel_actual,0,$collectionPoint->papel_max])
-                        ->responsive(false)
+                        ->values([($collectionPoint->papel_actual / $collectionPoint->papel_max * 100),0,100])
+                        ->responsive(true)
                         ->height(300)
                         ->width(0);
 
+        $chartPlastico = Charts::create('percentage', 'justgage')
+                        ->title('Plástico')
+                        ->elementLabel('% usado')
+                        ->values([($collectionPoint->plastico_actual / $collectionPoint->plastico_max * 100),0,100])
+                        ->responsive(true)
+                        ->height(300)
+                        ->width(0);
 
-        return view('puntos-de-acopio.show',compact(['collectionPoint', 'chart'])); 
+        $chartVidrio = Charts::create('percentage', 'justgage')
+                        ->title('Vidrio')
+                        ->elementLabel('% usado')
+                        ->values([($collectionPoint->vidrio_actual / $collectionPoint->vidrio_max * 100),0,100])
+                        ->responsive(true)
+                        ->height(300)
+                        ->width(0);
+                        
+
+
+        return view('puntos-de-acopio.show',compact(['collectionPoint', 'chartPapel', 'chartVidrio', 'chartPlastico'])); 
     } 
  
     /** 

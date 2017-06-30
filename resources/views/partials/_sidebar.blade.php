@@ -4,20 +4,20 @@
                                         <div class="navbar-header">
                                             <a class="navbar-brand" href="{{route('inicio')}}">
                                                 <div class="logo-icon-container">
-                                                    <img src="../vendor/imagenReciclaap/settings/June2017/logotipoBlanco.png" alt="Logo Icon">
+                                                    <img src=" {{ URL::to('/') }}/resources/isotipo-reciclapp.png " alt="Reciclapp">
                                                 </div>
-                                                <div class="title"><p>Reciclapp</p></div>
+                                                <div class="title"><h2 style="margin-top:10px;text-transform: none;">Reciclapp</h2></div>
                                             </a>
                                         </div><!-- .navbar-header -->
 
                                         <div class="panel widget center bgimage "
-                                        style="background-image:url(../vendor/imagenReciclaap/settings/June2017/crdTg7CUs8yTVJS6JeNL.jpg); ">
+                                        style="background-image:url( {{ URL::to('/') }}/resources/backgroud-titulo-panel-de-control.jpg ); ">
                                         <div class="dimmer"></div>
                                         <div class="panel-content" style=" position: relative; float: center;">
                                             <center>
-                                            <img style="height: 45px; width: 45px" src="../vendor/imagenReciclaap/users/June2017/cgJcIwVDlZTDhRDGaW92.jpg" class="avatar" alt="{{ Auth::user()->nombre }} avatar"></center>
-                                            <h4>{{ Auth::user()->nombre }} </h4>
-                                            <a href="http://localhost:8000/admin/profile" class="btn btn-primary">Profile</a>
+                                            <img style="height: 36px; width: 36px" src=" {{ URL::to('/') }}/uploads/avatars/{{ Auth::user()->imagen }} " class="avatar" alt="{{ Auth::user()->nombre }} avatar" style="margin-right:10px;"></center>
+                                            <h4 style="margin:16px 16px 16px 16px;">Panel de control </h4>
+                                            {{-- <a href="http://localhost:8000/admin/profile" class="btn btn-primary">Profile</a> --}}
                                             <div style="clear:both"></div>
                                         </div>
                                     </div>

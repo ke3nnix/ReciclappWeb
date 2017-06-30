@@ -15,6 +15,8 @@
 
 // GENERADOR DE USUARIOS
 $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
+    $faker = Faker\Factory::create('es_PE');
+
     static $password;
 
     return [
@@ -41,6 +43,7 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
 
 // GENERADOR DE PUNTOS DE ACOPIO
 $factory->define(App\Models\CollectionPoint::class, function (Faker\Generator $faker) {
+    $faker = Faker\Factory::create('es_PE');
 
     $nombre = 'Punto de acopio ' . str_random(1);
 
@@ -62,6 +65,7 @@ $factory->define(App\Models\CollectionPoint::class, function (Faker\Generator $f
 
 // GENERADOR DE BENEFICIOS
 $factory->define(App\Models\Benefit::class, function (Faker\Generator $faker) {
+    $faker = Faker\Factory::create('es_PE');
 
     return [
         'nombre' => 'Producto '.$faker->numberBetween($min = 10, $max = 100),
@@ -78,6 +82,7 @@ $factory->define(App\Models\Benefit::class, function (Faker\Generator $faker) {
 
 // GENERADOR DE SPONSORS
 $factory->define(App\Models\Sponsor::class, function (Faker\Generator $faker) {
+    $faker = Faker\Factory::create('es_PE');
 
     return [
         'razon_social' => $faker->company,
