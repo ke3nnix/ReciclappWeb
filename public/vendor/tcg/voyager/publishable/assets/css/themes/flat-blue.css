@@ -22,7 +22,8 @@
         height:1px;
     }
     .flat-blue .navbar .navbar-header .navbar-brand, .flat-blue .navbar.navbar-default .navbar-header .navbar-brand {
-      color: #F9F9F9; }
+      color: #F9F9F9;
+      background-color: #29a72b }
     .flat-blue .navbar .navbar-header .navbar-expand-toggle, .flat-blue .navbar.navbar-default .navbar-header .navbar-expand-toggle {
       color: #353d47; }
     .flat-blue .navbar .navbar-header .navbar-right-expand-toggle, .flat-blue .navbar.navbar-default .navbar-header .navbar-right-expand-toggle {
@@ -303,10 +304,10 @@
     border-color: #EAEAEA; }
   .flat-blue .btn.btn-default:hover {
     background-color: #EAEAEA; }
-  .flat-blue .btn.btn-success {
+  /*.flat-blue .btn.btn-success {
     background-color: #1ABC9C;
     color: #FFF;
-    border-color: #1ABC9C; }
+    border-color: #1ABC9C; }*/
   .flat-blue .btn.btn-warning {
     background-color: #FABE28;
     color: #FFF;

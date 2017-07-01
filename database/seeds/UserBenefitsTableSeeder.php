@@ -49,34 +49,4 @@ class UserBenefitsTableSeeder extends Seeder
             }
         }
     }
-
-    /**
-     * @param $user_id
-     * @return void
-     */
-    // private function createNotesForUserId($user_id)
-    // {
-    //     $amount = random_int(10, 50);
-    //     factory(App\Note::class, $amount)->create([
-    //         'user_id' => $user_id
-    //     ]);
-    // }
-
-    /**
-     * @param $email
-     * @param $name
-     * @param $password
-     * @return void
-     */
-    // private function updateCredentialsForTestLogin($email, $name, $password)
-    // {
-    //     $user = App\Models\User::where('email', $email)->first();
-    //     if(!$user) {
-    //         $user = App\Models\User::find(1);
-    //     }
-    //     $user->name = $name;
-    //     $user->email = $email;
-    //     $user->password = bcrypt($password); // Or whatever you use for password encryption
-    //     $user->save();
-    // }
 }

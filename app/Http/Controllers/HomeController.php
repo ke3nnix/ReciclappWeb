@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Charts;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $chartPapel = Charts::create('percentage', 'justgage')
+                        ->title('Papel')
+                        ->elementLabel('% usado')
+                        ->values([($collectionPoint->papel_actual / $collectionPoint->papel_max * 100),0,100])
+                        ->responsive(true)
+                        ->height(300)
+                        ->width(0)
+        ;
+
+
+        return view('home', compact([]));
     }
 }

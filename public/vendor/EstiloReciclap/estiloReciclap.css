@@ -21,7 +21,7 @@
           transition: all 1s; 
           -webkit-box-sizing: border-box; 
           -moz-box-sizing: border-box; 
-          box-sizing: border-box; 
+          box-sizing: border-box;
       } 
       .cortar:hover { 
           width: 100%; 
@@ -35,8 +35,8 @@
           background:red;
 
        }    
-       div ul li:hover{
+       /*div ul li:hover{
         transition: linear all 0.40s;
         margin-left: 20px;
 
-       }
+       }*/

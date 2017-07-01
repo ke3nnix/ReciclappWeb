@@ -29,7 +29,8 @@
                 <p>{{$row->nombre}}</p> 
               </td> 
                <td style="width: 80px"> 
-                <div class="cortar"> {{$row->direccion}}</div> 
+                {{-- <div class="cortar"> {{$row->direccion}}</div>  --}}
+                <p> {{$row->direccion}}</p> 
               </td> 
               <td style="width: 80px"> 
                 <p> {{$row->distrito}}</p> 

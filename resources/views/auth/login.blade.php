@@ -13,7 +13,7 @@
 
     <style>
         body {
-            background-image:url('{{ URL::to('/') }}/resources/backgroud-titulo-panel-de-control.jpg');
+            background-image:url('{{ URL::to('/') }}/resources/wallpaper-reciclapp.jpg');
             background-color: #FFFFFF;
         }
         .login-sidebar:after {
@@ -21,8 +21,9 @@
             background: -webkit-linear-gradient(-135deg, #ffffff, #ffffff);
         }
         .login-button, .bar:before, .bar:after{
-            background:#22A7F0;
+            background:#29a72b;
         }
+        
 
     </style>
 

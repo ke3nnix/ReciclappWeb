@@ -221,10 +221,20 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-        $user->delete();
+        $t = (User::find($id))->tipo;
 
-        return redirect()->route('usuarios.index');
+        switch ($t) {
+            case 3:
+                $tipo = "administradores";
+                break;
+            case 2:
+                $tipo = "empleados";
+                break;
+        }
+
+        $this->changeStatus($id);
+
+        return redirect()->route('usuarios.index', ['tipo' => $tipo , 'estado' => 'activo' ]);
     }
 
     public function changeStatus($id)

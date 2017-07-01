@@ -5,16 +5,23 @@
 <div class="col-lg-12">
 
   <div class="col-md-12">
-    <div class="row">
-      <form action="{{route('usuarios.create')}}">
-        <div class="pull-right">
-          <button type="submit" class="btn btn-success">Agregar</button>
+    
 
-        </div>
-      </form>
+    <div class="container" style="background-color:#F8F8F8;margin-bottom:20px;">
+      <div class="col-md-10">
+        <br>
+      </div>
+      <div class="col-md-2">
+        <form action="{{route('usuarios.create')}}">
+          <div>
+            <button type="submit" class="btn btn-success pull-right">Agregar</button>
+          </div>
+        </form>
+      </div>
     </div>
+    
     <div class="container">
-      <ul class="nav nav-tabs" style="width: 1000px">
+      <ul class="nav nav-tabs">
         <li><a href="/usuarios?tipo=empleados&estado=activo">Activos</a></li>
         <li class="active"><a href="#">Inactivos</a></li>
       </ul>
@@ -37,7 +44,7 @@
         </thead>
         <tbody>
          @foreach($users as $row)
-           <tr id="{{$row->acopio_id}}"> 
+           <tr id="{{$row->usuario_id}}"> 
               <td style="width: 100px"> 
                 <p>{{$row->nombre}}</p> 
               </td> 
@@ -56,33 +63,9 @@
                @endif
               </td>
               <td style="width: 100px">
-                <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('usuarios.show',['id'=>$row->acopio_id])}}'"><span class="glyphicon glyphicon-eye-open"></span></button>
-                <button class="btn btn-success btn-xs" onclick="window.location.href='{{route('usuarios.edit',['id'=>$row->acopio_id])}}'" ><span class="glyphicon glyphicon-pencil"></span></button> 
-                <button id="elimiar" data-toggle="modal" data-target="#myModal{{$row->usuario_id}}" class="btn btn-danger btn-xs" ><span class="glyphicon glyphicon-trash"></span></button> 
+                <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('usuarios.show',['id'=>$row->usuario_id])}}'"><span class="glyphicon glyphicon-eye-open"></span></button>
+                <button class="btn btn-success btn-xs" onclick="window.location.href='{{route('usuarios.edit',['id'=>$row->usuario_id])}}'" ><span class="glyphicon glyphicon-pencil"></span></button> 
 
-                {{Form::open(['route'=>['puntos-de-acopio.destroy',$row->usuario_id], 'method'=>'DELETE'])}}
-                <div id="myModal{{$row->usuario_id}}" class="modal fade" role="dialog"> 
-                  <div class="modal-dialog ">
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Confirmar</h4>
-                      </div>
-                      <div class="modal-body">
-                        <p>Eliminar a: <b>{{$row->nombre}}</b></p>
-                      </div>
-
-                      <div class="modal-footer">
-
-                        <button type="submit" class="btn btn-danger">Eliminar</button>
-
-                        {{Form::close()}}
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </td>
             </tr>                                                     
           @endforeach     

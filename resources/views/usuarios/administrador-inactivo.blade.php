@@ -15,7 +15,7 @@
     </div>  
     
     <div class="container">
-      <ul class="nav nav-tabs" style="width: 1000px">
+      <ul class="nav nav-tabs">
         <li><a href="/usuarios?tipo=administradores&estado=activo">Activos</a></li>
         <li class="active"><a href="#">Inactivos</a></li>
       </ul>
@@ -55,31 +55,6 @@
               <td style="width: 100px">
                 <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('usuarios.show',['id'=>$row->usuario_id])}}'"><span class="glyphicon glyphicon-eye-open"></span></button>
                 <button class="btn btn-success btn-xs" onclick="window.location.href='{{route('usuarios.edit',['id'=>$row->usuario_id])}}'" ><span class="glyphicon glyphicon-pencil"></span></button> 
-                <button id="elimiar" data-toggle="modal" data-target="#myModal{{$row->usuario_id}}" class="btn btn-danger btn-xs" ><span class="glyphicon glyphicon-trash"></span></button> 
-
-                {{Form::open(['route'=>['puntos-de-acopio.destroy',$row->usuario_id], 'method'=>'DELETE'])}}
-                <div id="myModal{{$row->usuario_id}}" class="modal fade" role="dialog"> 
-                  <div class="modal-dialog ">
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Confirmar</h4>
-                      </div>
-                      <div class="modal-body">
-                        <p>Eliminar a: <b>{{$row->nombre}}</b></p>
-                      </div>
-
-                      <div class="modal-footer">
-
-                        <button type="submit" class="btn btn-danger">Eliminar</button>
-
-                        {{Form::close()}}
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </td>
             </tr>                                                     
           @endforeach     

@@ -1,6 +1,6 @@
 <head>
 
-    <title>Reciclaap - Centro de Control</title>
+    <title>Reciclapp - Centro de Control</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="a04gIM2pLD52IVwRn4cF2AQjU9zE98plx37IbLeH"/>
 
