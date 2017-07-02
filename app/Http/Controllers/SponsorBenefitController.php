@@ -167,16 +167,15 @@ class SponsorBenefitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($sponsor_id, $beneficio_id)
     {
-        $benefit = Benefit::find($id);
-        $sponsorId = $benefit->sponsor()->sponsor_id;
+        $benefit = Benefit::find($beneficio_id);
+        $sponsorId = $sponsor_id;
         
         if ($benefit->estado == 1){ $benefit->estado = 0; }
         else { $benefit->estado = 1; }
 
         $benefit->save();
-       
        
         return redirect()->route('beneficios.index', $sponsorId);
     }

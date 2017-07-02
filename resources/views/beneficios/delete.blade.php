@@ -3,7 +3,7 @@
   <div class="input-group">
     <a id="desactivar" data-toggle="modal" data-target="#myModaldesactivar{{$beneficio->beneficio_id}}" class="btn btn-danger btn-xs" ><span class="glyphicon glyphicon-ban-circle"></span></a> 
     <!-- MODAL DE BENEFICIO DESCACTIVAR-->
-    {{Form::open(['route'=>['beneficios.destroy',$sponsor->sponsor_id,$beneficio->beneficio_id], 'method'=>'DELETE'])}}
+    {{Form::open(['route'=>['beneficios.destroy','sponsor_id' => $sponsor->sponsor_id, 'beneficio_id' => $beneficio->beneficio_id], 'method'=>'DELETE'])}}
     <div id="myModaldesactivar{{$beneficio->beneficio_id}}" class="modal fade" role="dialog"> 
       <div class="modal-dialog ">
         <!-- Modal content-->

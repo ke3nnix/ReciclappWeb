@@ -30,8 +30,7 @@ class HomeController extends Controller
                         ->values([($collectionPoint->papel_actual / $collectionPoint->papel_max * 100),0,100])
                         ->responsive(true)
                         ->height(300)
-                        ->width(0)
-        ;
+                        ->width(0);
 
 
         return view('home', compact([]));
