@@ -208,10 +208,10 @@ class CollectionPointController extends Controller
             abort(404, "El punto de acopio no existe ");
         }
         
-        $collectionPoint->delete();
+        $this->changeStatus($collectionPoint->acopio_id);
 
         //setear el mensaje FLASH de exito 
-        Session::flash('exito', 'El punto de acopio fue exitósamente eliminado'); 
+        Session::flash('exito', 'El punto de acopio fue exitósamente desactivado'); 
         // redirigir hacia collection-points.index 
         return  redirect()->route('puntos-de-acopio.index'); 
     } 
@@ -261,6 +261,16 @@ class CollectionPointController extends Controller
         $plastico->save();
 
         return  redirect()->route('puntos-de-acopio.index');
+    }
+
+    public function changeStatus($id)
+    {
+        $collectionPoint = CollectionPoint::find($id);
+        if ($collectionPoint->estado == 1){ $collectionPoint->estado = 0; }
+        else { $collectionPoint->estado = 1; }
+
+        $collectionPoint->save();
+        return;
     }
 
 } 

@@ -13,7 +13,7 @@ class BenefitsTableSeeder extends Seeder
     {
         $faker = Faker\Factory::create('es_PE');
 
-        $fecha = $faker->dateTimeBetween($startDate = '-2 years', $endDate = '-1 years', $timezone = date_default_timezone_get());
+        $fecha = $faker->dateTimeBetween($startDate = '-14 months', $endDate = '-13 months', $timezone = date_default_timezone_get());
 
         for ($i=0; $i < 50; $i++) { 
             DB::table('benefits')->insert([

@@ -221,7 +221,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $t = (User::find($id))->tipo;
+        $user = User::find($id);
+        $t = $user->tipo;
 
         switch ($t) {
             case 3:

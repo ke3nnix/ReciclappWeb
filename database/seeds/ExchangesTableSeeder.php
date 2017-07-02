@@ -7,50 +7,81 @@ class ExchangesTableSeeder extends Seeder
 
     public function run()
     {
-     // Fetch the User ids
-        $User_ids = App\Models\User::all('usuario_id')->pluck('usuario_id')->toArray();
-
-        // Create random CollectionPoints
-        factory(App\Models\CollectionPoint::class, 18)->create()->each(function ($CollectionPoint) use ($User_ids) {
-
-            // Example: Many-to-many relations
-            $this->attachRandomUsersToCollectionPoint($CollectionPoint->acopio_id, $User_ids);
-
-            // Example: Many-to-one relations
-            // $this->createNotesForCollectionPointId( $CollectionPoint->id );
-        });
-    }
-
-    /**
-     * @param $CollectionPoint_id
-     * @param $User_ids
-     * @return void
-     */
-    private function attachRandomUsersToCollectionPoint($acopio_id, $User_ids)
-    {
+        // Fetch the colaborators ids
+        // $benefit_ids = App\Models\Benefit::all('beneficio_id')->pluck('beneficio_id')->toArray();
+        // instanciando al faker
         $faker = Faker\Factory::create('es_PE');
-        $amount = 18; // The amount of Users for this CollectionPoint
-        echo "Agregando " . $amount . " entregas de desperdicios para el punto de acopio " . $acopio_id . "\n";
+        $entrega_id = 1;
+        // añadiendo entregas para todos los usuarios colaboradores
+        for ($usuario_id=16; $usuario_id <=115; $usuario_id++) { 
+            $amount = $faker->numberBetween($min = 1, $max =20);
+            echo "Registrando " . $amount . " entregas para el usuario " . $usuario_id . "\n";
+            // añadiendo $AMOUNT entregas para el usuario $USUARIO_ID
+            for ($e=0; $e < $amount; $e++) { 
 
-        if($amount > 0) {
-            $keys = (array)array_rand($User_ids, $amount); // Random Users
-            $num = 1;
-            foreach($keys as $key) {
+                $cpa = $faker->numberBetween($min = 0, $max =15);
+                $ppa = $cpa * 5;
 
-                echo "-- Entrega " . $num . "\n";
-                $num += 1;
+                $cvi = $faker->numberBetween($min = 0, $max =15);
+                $pvi = $cvi * 8;
 
-                $fecha = $faker->dateTimeThisMonth($max = '-3 days', $timezone = date_default_timezone_get());
+                $cpl = $faker->numberBetween($min = 0, $max =15);
+                $ppl = $cpl * 20;
 
+                $cant_total = $cpa + $cvi + $cpl;
+                $punt_total = $ppa + $pvi + $ppl;
+
+                $fecha = $faker->dateTimeBetween($startDate = '-12 months', $endDate = 'now', $timezone = date_default_timezone_get());
+
+                // Añadiendo la entrega
                 DB::table('exchanges')->insert([
-                    'colaborador_id' => $User_ids[$key],
-                    'empleado_id' => 1,
-                    'acopio_id' => $acopio_id,
-                    'total_cantidad' => 63,
-                    'total_puntos' => 370,
+                    'colaborador_id' => $usuario_id,
+                    'empleado_id' => $faker->numberBetween($min = 6, $max = 15),
+                    'acopio_id' => $faker->numberBetween($min = 1, $max = 15),
+                    'total_cantidad' => $cant_total,
+                    'total_puntos' => $punt_total,
                     'created_at' => $fecha,
                     'updated_at' => $fecha
                 ]);
+
+                // Añadiendo papel
+                if ($cpa>0) {
+                    DB::table('exchange_details')->insert([
+                        'entrega_id' => $entrega_id,
+                        'desecho_id' => 1,
+                        'cantidad' => $cpa,
+                        'puntos' => $ppa,
+                        'created_at' => $fecha,
+                        'updated_at' => $fecha
+                    ]);
+                }
+
+                // Añadiendo vidrio
+                if ($cvi>0) {
+                    DB::table('exchange_details')->insert([
+                        'entrega_id' => $entrega_id,
+                        'desecho_id' => 2,
+                        'cantidad' => $cvi,
+                        'puntos' => $pvi,
+                        'created_at' => $fecha,
+                        'updated_at' => $fecha
+                    ]);
+                }
+
+                // Añadiendo plastico
+                if ($cpl>0) {
+                    DB::table('exchange_details')->insert([
+                        'entrega_id' => $entrega_id,
+                        'desecho_id' => 3,
+                        'cantidad' => $cpl,
+                        'puntos' => $ppl,
+                        'created_at' => $fecha,
+                        'updated_at' => $fecha
+                    ]);
+                }
+
+                $entrega_id = $entrega_id + 1;
+
             }
         }
     }

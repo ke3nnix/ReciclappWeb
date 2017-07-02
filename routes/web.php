@@ -16,7 +16,7 @@
 
 
 
-// Auth::routes();
+Auth::routes();
 
 
 
@@ -49,3 +49,4 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('puntos-de-acopio/recoger', 'CollectionPointController@collect');
 
 });
+

@@ -21,7 +21,9 @@ class SponsorBenefitController extends Controller
 
         if (request()->isJson()) {
             if (is_null($sponsor)) {
-                $sponsor->load('benefits');
+                $sponsor->load(['benefits'=> function ($query) {
+                    $query->where('estado', 1);
+                }]);
                 return response()->json(['mensaje' => 'El usuario no existe.'], 404);
             }
             else {
@@ -34,7 +36,7 @@ class SponsorBenefitController extends Controller
             return view('beneficios.index', compact('sponsor'));    
         }
         else {
-            return view('beneficios.index', compact('sponsor'));    
+            return abort(404, "El Sponsor indicado no existe");    
         }        
     }
 
@@ -139,9 +141,17 @@ class SponsorBenefitController extends Controller
 
         // Almacenando datos
         $benefit = Benefit::find($id);
-        $benefit->colaborador_id = $request->colaborador_id;
-        $benefit->beneficio_id = $request->beneficio_id;
 
+        if (!is_null($request->nombre)) { $benefit->nombre = $request->nombre; };
+        if (!is_null($request->descripcion)) { $benefit->descripcion = $request->descripcion; };
+        if (!is_null($request->req_puntos)) { $benefit->req_puntos = $request->req_puntos; };
+        if (!is_null($request->tipo)) { $benefit->tipo = $request->tipo; };
+        if (!is_null($request->cantidad)) 
+        { 
+            if ($request->cantidad > $benefit->cantidad) {   $benefit->estado = 1; } 
+            $benefit->cantidad = $request->cantidad; 
+        }
+        
         $benefit->save();
 
         // Enviando mensaje de estado
@@ -159,15 +169,24 @@ class SponsorBenefitController extends Controller
      */
     public function destroy($id)
     {
-        $benefit = Benefit::find($id);  
-       // $sponsorId = $benefit->sponsor()->id;
-        $benefit->delete();
-        return redirect()->route('beneficios.index', [$sponsorId]);
+        $benefit = Benefit::find($id);
+        $sponsorId = $benefit->sponsor()->sponsor_id;
+        
+        if ($benefit->estado == 1){ $benefit->estado = 0; }
+        else { $benefit->estado = 1; }
+
+        $benefit->save();
+       
+       
+        return redirect()->route('beneficios.index', $sponsorId);
     }
 
     public function indexAll()
     {
-        $benefits = Sponsor::with('benefits')->paginate(15);
+        $benefits = Sponsor::with(['benefits' => function ($query) {
+            $query->where('estado', '=', 1);
+        }])->paginate(15);
+
         return $benefits;
     }
 }

@@ -161,7 +161,9 @@ class SponsorController extends Controller
     {
         // ubicando datos
         $sponsor = Sponsor::find($id);
-        $sponsor->estado = 0;
+        
+        if ($sponsor->estado == 1){ $sponsor->estado = 0; }
+        else { $sponsor->estado = 1; }
 
         $sponsor->save();
 

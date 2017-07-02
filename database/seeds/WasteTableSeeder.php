@@ -29,33 +29,32 @@ class WasteTableSeeder extends Seeder
             'equivalencia' => 20,
         ]);
 
-        for ($exchange_id=1; $exchange_id <15; $exchange_id++) { 
-            DB::table('exchange_details')->insert([
-                'entrega_id' => $exchange_id,
-                'desecho_id' => 1,
-                'cantidad' => 6,
-                'puntos' => 120,
-                'created_at' => '2003-08-20 18:31:00',
-                'updated_at' => '2003-08-20 18:31:00'
-            ]);
+        // for ($exchange_id=1; $exchange_id <15; $exchange_id++) { 
+        //     DB::table('exchange_details')->insert([
+        //         'entrega_id' => $exchange_id,
+        //         'desecho_id' => 1,
+        //         'cantidad' => 6,
+        //         'puntos' => 120,
+        //         'created_at' => '2003-08-20 18:31:00',
+        //         'updated_at' => '2003-08-20 18:31:00'
+        //     ]);
 
-            DB::table('exchange_details')->insert([
-                'entrega_id' => $exchange_id,
-                'desecho_id' => 2,
-                'cantidad' => 21,
-                'puntos' => 210,
-                'created_at' => '2003-08-20 18:31:00',
-                'updated_at' => '2003-08-20 18:31:00'
-            ]);
+        //     DB::table('exchange_details')->insert([
+        //         'entrega_id' => $exchange_id,
+        //         'desecho_id' => 2,
+        //         'cantidad' => 21,
+        //         'puntos' => 210,
+        //         'created_at' => '2003-08-20 18:31:00',
+        //         'updated_at' => '2003-08-20 18:31:00'
+        //     ]);
 
-            DB::table('exchange_details')->insert([
-                'entrega_id' => $exchange_id,
-                'desecho_id' => 3,
-                'cantidad' => 36,
-                'puntos' => 360,
-                'created_at' => '2003-08-20 18:31:00',
-                'updated_at' => '2003-08-20 18:31:00'
-            ]);
-        }
+        //     DB::table('exchange_details')->insert([
+        //         'entrega_id' => $exchange_id,
+        //         'desecho_id' => 3,
+        //         'cantidad' => 36,
+        //         'puntos' => 360,
+        //         'created_at' => '2003-08-20 18:31:00',
+        //         'updated_at' => '2003-08-20 18:31:00'
+        //     ]);
     }
 }
