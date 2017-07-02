@@ -55,12 +55,9 @@
                 <p> {{$row->distrito}}</p> 
               </td> 
               <td style="width: 80px">
-               @if($row->estado=='0')
-               <p>Inactivo</p>
-               @endif
-               @if($row->estado=='1')
-               <p>Activo</p>
-               @endif
+               {{Form::open(['route'=>['usuarios.destroy',$row->usuario_id], 'method'=>'DELETE'])}}
+                  <button type="submit" class="btn btn-default btn-xs" onMouseOver="this.style.backgroundColor='#1ABC9C'" onMouseOut="this.style.backgroundColor='#F3F1F1'">Activar</button>
+                {{Form::close()}}
               </td>
               <td style="width: 100px">
                 <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('usuarios.show',['id'=>$row->usuario_id])}}'"><span class="glyphicon glyphicon-eye-open"></span></button>
