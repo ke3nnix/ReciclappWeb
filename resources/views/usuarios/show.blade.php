@@ -1,5 +1,5 @@
 @extends('base')
-@section('title', 'Detalle del Administrador activo')
+@section('title', 'Detalle del Administrador')
 @section('content')
 
 <div style="position: relative; left: 325px;">
@@ -95,10 +95,14 @@
           </div>   
    </div>
                      <div class="col-md-6 col-md-offset-6" >
-                            <button type="submit" class="btn btn-warning">
-                              Desactivar
-                            </button>   
-                            <a href="/usuarios?tipo=administradores&estado=activo" class="btn btn-danger">Cancelar</a>
+                     @if($user->estado==1)
+                         <button type="submit" class="btn btn-danger">Desactivar</button>
+                     @endif
+                     @if($user->estado==0)
+                        <button type="submit" class="btn btn-success">Activar</button>   
+                     @endif
+                            
+                            <a href="/usuarios?tipo=administradores&estado=activo" class="btn btn-primary">Cancelar</a>
                       </div>
                {{Form::close()}}
 </div>

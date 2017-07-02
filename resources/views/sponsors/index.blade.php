@@ -60,8 +60,8 @@
               <td>
                 <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('beneficios.index',['id'=>$row->sponsor_id])}}'"><span class="glyphicon glyphicon-eye-open"></span></button>
                 <button class="btn btn-success btn-xs" onclick="window.location.href='{{route('sponsors.edit',['id'=>$row->sponsor_id])}}'" ><span class="glyphicon glyphicon-pencil"></span></button> 
-                <button id="desactivar" data-toggle="modal" data-target="#myModal{{$row->sponsor_id}}" class="btn btn-danger btn-xs" ><span class="glyphicon glyphicon-trash"></span></button> 
-
+                <button id="desactivar" data-toggle="modal" data-target="#myModal{{$row->sponsor_id}}" class="btn btn-danger btn-xs" ><span class="glyphicon glyphicon-trash"></span></button>
+                {{Form::open(['route'=>['sponsors.destroy', $row->sponsor_id], 'method'=>'DELETE'])}} 
                 <div id="myModal{{$row->sponsor_id}}" class="modal fade" role="dialog"> 
                   <div class="modal-dialog ">
                     <!-- Modal content-->
@@ -77,7 +77,7 @@
                       <div class="modal-footer">
 
                       <button type="submit" class="btn btn-danger">SI</button>
-
+                      {{Form::close()}}
                       <button type="button" class="btn btn-primary" onclick="window.location.href='{{route('sponsors.index')}}'" >NO</button>
                       </div>
                     </div>

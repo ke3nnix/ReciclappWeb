@@ -5,15 +5,19 @@
 <div class="col-lg-12">
 
   <div class="col-md-12">
-    <div class="row">
-      <form action="{{route('usuarios.create')}}">
-        <div class="pull-right">
-          <button type="submit" class="btn btn-success">Agregar</button>
+    <div class="container" style="background-color:#F8F8F8;margin-bottom:20px;">
+      <div class="col-md-10">
+        <br>
+      </div>
+      <div class="col-md-2">
+        <form action="{{route('usuarios.create')}}">
+          <div class="pull-right">
+            <button type="submit" class="btn btn-success">Agregar</button>
+          </div>
+        </form>
+      </div>  
+    </div>
 
-        </div>
-      </form>
-    </div>  
-    
     <div class="container">
       <ul class="nav nav-tabs">
         <li><a href="/usuarios?tipo=administradores&estado=activo">Activos</a></li>
@@ -50,7 +54,9 @@
                 <p> {{$row->distrito}}</p> 
               </td> 
               <td style="width: 80px">
+                {{Form::open(['route'=>['usuarios.destroy',$row->usuario_id], 'method'=>'DELETE'])}}
                   <button type="submit" class="btn btn-default btn-xs" onMouseOver="this.style.backgroundColor='#1ABC9C'" onMouseOut="this.style.backgroundColor='#F3F1F1'">Activar</button>
+                {{Form::close()}}
               </td>
               <td style="width: 100px">
                 <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('usuarios.show',['id'=>$row->usuario_id])}}'"><span class="glyphicon glyphicon-eye-open"></span></button>

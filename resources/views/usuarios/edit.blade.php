@@ -47,7 +47,7 @@
                       <div class="col-md-6 inputGroupContainer">
                         <div class="input-group">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
-                          <input name="password" class="form-control"  type="password" value="{{$user->password}}">
+                          <input name="password" class="form-control"  type="password">
                         </div>
                       </div>
                     </div>
@@ -58,7 +58,18 @@
                       <div class="col-md-6 inputGroupContainer">
                         <div class="input-group">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-pushpin"></i></span>
-                          <input name="tipo" class="form-control"  type="text" value="{{ $user->tipo}}">
+                          <select name="tipo" class="form-control">
+                            @if($user->tipo==3)
+                              <option value="0">--Seleccionar--</option>
+                              <option value="3" selected>Adminsitrador</option>
+                              <option value="2">Empleado</option>
+                            @endif
+                            @if($user->tipo==2)
+                              <option value="0">--Seleccionar--</option>
+                              <option value="3">Administrador</option>
+                              <option value="2" selected>Empleado</option>
+                            @endif
+                          </select>
                         </div>
                       </div>
                     </div>
