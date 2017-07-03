@@ -8,7 +8,7 @@
 		{{-- reportes por fecha --}}
 		<div class="row">
 			<div class="col-lg-12">
-				<h3>Reporte de entregas</h3>
+				<h3>Reporte de entregas por fecha</h3>
 				<hr>
 			</div>
 		</div>
@@ -22,22 +22,31 @@
 		</div>
 		{{-- fin reportes por fecha --}}
 
-		{{-- reportes por punto de acopio --}}
-		<div class="row">
-			<div class="col-lg-12">
-				<h3>Entregas por punto de acopio</h3>
-				<hr>
-			</div>
-		</div>
+		{{-- reportes secundarios --}}
 		<div class="row">
 			<div class="col-lg-6">
-				{!! $puntoDeAcopioSemana->render() !!}
+				{{-- reporte de entregas por punto de acopio --}}
+				<div class="row">
+					<h3>Entregas por punto de acopio</h3>
+				</div>
+				<div class="row">
+					{!! $puntoDeAcopioAnho->render() !!}
+				</div>
+				{{-- fin reporte de entregas por punto de acopio --}}
 			</div>
-			<div class="col-lg-6">
-				{!! $puntoDeAcopioAnho->render() !!}
-			</div>
-		</div>
 
+			<div class="col-lg-6">
+				{{-- beneficios reclamados --}}
+				<div class="row">
+					<h3>Beneficios reclamados</h3>
+				</div>
+				<div class="row">
+					{!! $beneficiosAnho->render() !!}
+				</div>
+				{{-- fin de beneficios reclamados --}}
+			</div>
+		</div>
+		{{-- fin reportes secundarios --}}
 	</div>
 
 @endsection

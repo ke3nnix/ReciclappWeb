@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Charts;
 use App\Models\Exchange;
+use App\Models\UserBenefit;
 
 class HomeController extends Controller
 {
@@ -26,9 +27,10 @@ class HomeController extends Controller
     public function index()
     {   
         $entregas = Exchange::orderBy('acopio_id')->get();
-
+        
+        // Entregas por fecha
         $entregasDelAnho = Charts::database($entregas, 'bar', 'highcharts')
-                        ->title('Entregas del último año')
+                        ->title('Últimos 12 meses')
                         ->elementLabel("Entregas")
                         ->dimensions(1000, 300)
                         ->responsive(true)
@@ -42,28 +44,30 @@ class HomeController extends Controller
                         ->lastByDay(7)
                         ->dateFormat('dd-mm-YYYY');
 
-        $puntoDeAcopioSemana = Charts::database($entregas, 'bar', 'highcharts')
-                        ->title('Últimos 30 días')
+        // Entregas por punto de acopio
+        $puntoDeAcopioAnho = Charts::database($entregas, 'bar', 'highcharts')
+                        ->title('Últimos 12 meses')
                         ->elementLabel("Entregas")
                         ->dimensions(500, 200)
                         ->responsive(true)
-                        ->lastByDay(30)
+                        ->lastByMonth(30)
                         ->groupBy('acopio_id');
 
-        $puntoDeAcopioAnho = Charts::database($entregas, 'bar', 'highcharts')
-                        ->title('Entregas del último año')
-                        ->elementLabel("Entregas")
+        // Beneficios reclamados
+        $beneficios = UserBenefit::all();
+        $puntoDeAcopioAnho = Charts::database($beneficios, 'bar', 'highcharts')
+                        ->title('Últimos 12 meses')
+                        ->elementLabel("Beneficios reclamados")
                         ->dimensions(1000, 300)
                         ->responsive(true)
-                        ->lastByMonth(12, true)
-                        ->groupBy('acopio_id');
+                        ->lastByMonth(12, true);
 
 
         return view('index', compact([
             'entregasDelAnho',
             'entregasDeLaSemana',
             'puntoDeAcopioAnho',
-            'puntoDeAcopioSemana'
+            'beneficiosAnho'
         ]));
     }
 }
