@@ -19,17 +19,17 @@ class CollectionPointController extends Controller
     { 
         
         if (request()->expectsJson()) {
-            $collectionPoints = CollectionPoint::where('estado', 1)->orderBy('acopio_id', 'ACS')->paginate(15); 
+            $collectionPoints = CollectionPoint::where('estado', 1)->orderBy('acopio_id', 'ACS')->paginate(10); 
             return $collectionPoints;
         }
         else {
             switch ($request->estado) {
                 case 'activo':
-                    $collectionPoints = CollectionPoint::where('estado', 1)->orderBy('acopio_id', 'ACS')->paginate(15); 
+                    $collectionPoints = CollectionPoint::where('estado', 1)->orderBy('acopio_id', 'ACS')->paginate(10); 
                     return view('puntos-de-acopio.punto-de-acopio-activo',compact('collectionPoints')); 
                 
                 case 'inactivo':
-                    $collectionPoints = CollectionPoint::where('estado', 0)->orderBy('acopio_id', 'ACS')->paginate(15); 
+                    $collectionPoints = CollectionPoint::where('estado', 0)->orderBy('acopio_id', 'ACS')->paginate(10); 
                     return view('puntos-de-acopio.punto-de-acopio-inactivo',compact('collectionPoints')); 
                 default:
                     abort(404, 'La página no existe');
