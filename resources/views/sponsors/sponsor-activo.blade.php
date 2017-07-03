@@ -84,7 +84,7 @@
       </table>
 
       <div class="text-center">
-        {!! $sponsors->links(); !!}
+        {!! $sponsors->appends(request()->input())->links(); !!}
       </div>
     </div>
   </div>  

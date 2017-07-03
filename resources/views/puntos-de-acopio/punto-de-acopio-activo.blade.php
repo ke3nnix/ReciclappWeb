@@ -59,7 +59,7 @@
       </table>
 
       <div class="text-center">
-        {!! $collectionPoints->links(); !!}
+        {!! $collectionPoints->appends(request()->input())->links(); !!}
       </div>
     </div>
   </div>  

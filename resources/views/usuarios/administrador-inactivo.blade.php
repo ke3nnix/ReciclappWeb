@@ -84,7 +84,7 @@
       </table>
 
       <div class="text-center">
-        {!! $users->links(); !!}
+        {!! $users->appends(request()->input())->links(); !!}
       </div>
     </div>
   </div>  
