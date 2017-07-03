@@ -1,7 +1,7 @@
 @extends('base')
 
 
-@section('title','Panel de control')
+@section('title','Reportes')
 
 @section('content')
 	<div class="container">
