@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Charts;
+use App\Models\ExchangeDetail;
 use App\Models\Exchange;
+use DB;
 
 class HomeController extends Controller
 {
@@ -26,44 +28,81 @@ class HomeController extends Controller
     public function index()
     {   
         $entregas = Exchange::orderBy('acopio_id')->get();
-
+        
+        // Entregas por fecha
         $entregasDelAnho = Charts::database($entregas, 'bar', 'highcharts')
-                        ->title('Entregas del último año')
-                        ->elementLabel("Entregas")
-                        ->dimensions(1000, 300)
+                        ->colors(['#00C853', '#00E676', '#69F0AE'])
+                        ->title('Últimos 12 meses')
+                        ->elementLabel("Cantidad de entregas")
+                        ->dimensions(600, 200)
                         ->responsive(true)
+                        ->dateFormat('F Y')
                         ->lastByMonth(12, true);
-
+        
         $entregasDeLaSemana = Charts::database($entregas, 'bar', 'highcharts')
                         ->title('Últimos 7 días')
-                        ->elementLabel("Entregas")
+                        ->colors(['#00C853', '#00E676', '#69F0AE'])
+                        ->elementLabel("Cantidad de entregas")
                         ->dimensions(500, 200)
                         ->responsive(true)
                         ->lastByDay(7)
                         ->dateFormat('dd-mm-YYYY');
 
-        $puntoDeAcopioSemana = Charts::database($entregas, 'bar', 'highcharts')
-                        ->title('Últimos 30 días')
-                        ->elementLabel("Entregas")
+        // Entregas por punto de acopio
+        $puntoDeAcopioAnho = Charts::database($entregas, 'area', 'highcharts')
+                        ->title('Registradas en el último año')
+                        ->colors(['#00C853', '#00E676'])
+                        ->elementLabel("Cantidad de entregas")
                         ->dimensions(500, 200)
                         ->responsive(true)
-                        ->lastByDay(30)
+                        ->lastByMonth(30)
                         ->groupBy('acopio_id');
 
-        $puntoDeAcopioAnho = Charts::database($entregas, 'bar', 'highcharts')
-                        ->title('Entregas del último año')
-                        ->elementLabel("Entregas")
-                        ->dimensions(1000, 300)
+        // Beneficios reclamados
+        $beneficios = DB::table('user_benefits')->select('*')->get();
+        $beneficiosAnho = Charts::database($beneficios, 'area', 'highcharts')
+                        ->title('Registradas en el último año')
+                        ->colors(['#00C853', '#00E676'])
+                        ->elementLabel("Cantidad de beneficios reclamados")
+                        ->dimensions(500, 300)
                         ->responsive(true)
-                        ->lastByMonth(12, true)
-                        ->groupBy('acopio_id');
+                        ->lastByMonth(12, true);
+        
+        // ------------------------
+        $cant_papel = ExchangeDetail::where('desecho_id', 1)->get();
+        $cant_vidrio = ExchangeDetail::where('desecho_id', 2)->get();
+        $cant_plastico = ExchangeDetail::where('desecho_id', 3)->get();
 
+        $pesoDeLaSemana = Charts::multiDatabase('bar', 'highcharts')
+                        ->title('Últimos 7 días')
+                        ->dataset('Papel', $cant_papel)
+                        ->dataset('Vidrio', $cant_vidrio)
+                        ->dataset('Plástico', $cant_plastico)
+                        ->colors(['#00C853', '#00E676', '#69F0AE'])
+                        ->elementLabel("Kilogramos")
+                        ->dimensions(500, 300)
+                        ->responsive(true)
+                        ->lastByDay(7)
+                        ->dateFormat('dd-mm-YYYY');
+
+        $pesoAnho = Charts::multiDatabase('bar', 'highcharts')
+                        ->title('Últimos 12 meses')
+                        ->dataset('Papel', $cant_papel)
+                        ->dataset('Vidrio', $cant_vidrio)
+                        ->dataset('Plástico', $cant_plastico)
+                        ->colors(['#00C853', '#00E676', '#69F0AE'])
+                        ->dimensions(500, 300)
+                        ->elementLabel("Kilogramos")
+                        ->responsive(true)
+                        ->lastByMonth(12, true);
 
         return view('index', compact([
             'entregasDelAnho',
             'entregasDeLaSemana',
             'puntoDeAcopioAnho',
-            'puntoDeAcopioSemana'
+            'beneficiosAnho',
+            'pesoDeLaSemana',
+            'pesoAnho'
         ]));
     }
 }

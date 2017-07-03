@@ -24,7 +24,7 @@ class WasteTableSeeder extends Seeder
         ]);
 
         DB::table('waste')->insert([
-            'descripcion' => 'plastico',
+            'descripcion' => 'plástico',
             'unidad' => 'KG',
             'equivalencia' => 20,
         ]);

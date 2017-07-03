@@ -42,13 +42,13 @@ class ExchangeDetailController extends Controller
 
         switch ($descripcion) {
             case "papel": 
-                //$equivalencia = (Waste::where('descripcion', 'papel')->first())->equivalencia;
+                $equivalencia = (Waste::where('descripcion', 'papel')->first())->equivalencia;
                 break;
             case "vidrio":
-               // $equivalencia = (Waste::where('descripcion', 'vidrio')->first())->equivalencia;
+                $equivalencia = (Waste::where('descripcion', 'vidrio')->first())->equivalencia;
                 break;
             case "plástico":
-               // $equivalencia = (Waste::where('descripcion', 'plastico')->first())->equivalencia;
+                $equivalencia = (Waste::where('descripcion', 'plástico')->first())->equivalencia;
         }
 
         // Escribiendo datos
