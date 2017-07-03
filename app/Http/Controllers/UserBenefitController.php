@@ -18,8 +18,10 @@ class UserBenefitController extends Controller
     public function index($usuario_id)
     {
         $beneficios = User::find($usuario_id);
+        
         if(!is_null($beneficios)){
             $beneficios->load('benefits');
+            return $beneficios;
         }
         return response()->json(['mensaje' => 'El usuario no existe.'], 404);
     }
