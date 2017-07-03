@@ -26,6 +26,8 @@ class SponsorController extends Controller
                 case 'inactivo':
                     $sponsors = Sponsor::where('estado', 0)->paginate(10);
                     return view('sponsors.sponsor-inactivo',compact('sponsors'));
+                default:
+                    return "error";
             }
         }
         abort(404, 'La página no existe');   

@@ -49,6 +49,8 @@ class ExchangeDetailController extends Controller
                 break;
             case "plástico":
                 $equivalencia = (Waste::where('descripcion', 'plástico')->first())->equivalencia;
+            default:
+                return "error";
         }
 
         // Escribiendo datos

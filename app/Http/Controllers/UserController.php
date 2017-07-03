@@ -27,12 +27,16 @@ class UserController extends Controller
                                             ->where('estado', 1)
                                             ->paginate(15);
                             return view('usuarios.empleado-activo', compact('users'));
+                            break;
                             
                         case 'inactivo':
                             $users = User::where('tipo',2)
                                             ->where('estado', 0)
                                             ->paginate(15);
                             return view('usuarios.empleado-inactivo', compact('users'));
+                            break;
+                        default:
+                            return "error";
                     }
                 }
 
@@ -43,12 +47,15 @@ class UserController extends Controller
                                             ->where('estado', 1)
                                             ->paginate(15);
                             return view('usuarios.administrador-activo', compact('users'));
+                            break;
                             
                         case 'inactivo':
                             $users = User::where('tipo',3)
                                             ->where('estado', 0)
                                             ->paginate(15);
                             return view('usuarios.administrador-inactivo', compact('users'));
+                        default:
+                            return "error";
                     }
                 }
 
@@ -232,6 +239,8 @@ class UserController extends Controller
             case 2:
                 $tipo = "empleados";
                 break;
+            default:
+                return "error";
         }
 
         $this->changeStatus($id);
@@ -246,8 +255,6 @@ class UserController extends Controller
         else { $user->estado = 1; }
 
         $user->save();
-
-        return redirect()->route('usuarios.index');
     }
 
     public function subir_imagen(Request $request)
