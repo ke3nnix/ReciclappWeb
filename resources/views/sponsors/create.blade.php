@@ -1,5 +1,5 @@
 @extends('base')
-@section('title', 'Agregar punto de acopio')
+@section('title', 'Agregar Sponsor')
 @section('content')
    
      {{Form::open(['route'=>'sponsors.store', 'method'=>'post'])}}

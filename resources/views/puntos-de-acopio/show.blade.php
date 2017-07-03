@@ -90,7 +90,7 @@
    </div>
                      <div class="col-md-6 col-md-offset-8" >
                             <button type="submit" style="background-color: #FC5C5C;color: white" class="btn">
-                              Eliminar
+                              Desactivar
                             </button>   
                             <a href="/puntos-de-acopio?estado=activo" class="btn btn-success">Cancelar</a>
                       </div>
