@@ -1,10 +1,10 @@
 @extends('base') 
-@section('title', 'Puntos de acopio')
+@section('title', 'Puntos de acopio inactivos')
 @section('content')
-
 <div class="col-lg-12">
 
   <div class="col-md-12">
+    
     <div class="row">
       <form action="{{route('puntos-de-acopio.create')}}">
         <div class="pull-right">
@@ -15,24 +15,15 @@
           <button type="submit" id="enviar" data-toggle="modal" data-target="#myModal" class="btn btn-danger">Recoger</button>
         </div>
     </div>
-
-
-    <div class="row">           
+    <div class="row">
+      <ul class="nav nav-tabs">
+        <li><a href="puntos-de-acopio?estado=activo">Activos</a></li>
+        <li class="active"><a href="#">Inactivos</a></li>
+      </ul>           
       <div class="table-responsive">
 
 
         <table id="mytable" class="table table-bordred table-striped">
-
-          <!--<thead>
-          <th>Nombre</th>
-          <th>Dirección</th>
-          <th>Distrito</th>
-          <th>Papel</th>
-          <th>Vidrio</th>
-          <th>Plástico</th>
-          <th>Acciones</th>
-        </thead>-->
-
         <thead>
           <tr>
                 <th rowspan="2" scope="rowgroup" style="vertical-align:middle"><input type="checkbox" id="checkMain" onclick="marcar(this);" /></th> 

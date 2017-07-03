@@ -1,5 +1,5 @@
 @extends('base') 
-@section('title', 'Sponsors')
+@section('title', 'Sponsors activos')
 @section('content')
 
 <div class="col-lg-12">
@@ -14,21 +14,15 @@
       </form>
     </div>
     
-    <div class="row">           
+    <div class="row">
+      <ul class="nav nav-tabs">
+        <li class="active"><a  href="#">Activos</a></li>
+        <li><a href="//sponsors?estado=inactivo">Inactivos</a></li>
+      </ul>                 
       <div class="table-responsive">
 
 
         <table id="mytable" class="table table-bordred table-striped">
-
-          <!--<thead>
-          <th>Nombre</th>
-          <th>Dirección</th>
-          <th>Distrito</th>
-          <th>Papel</th>
-          <th>Vidrio</th>
-          <th>Plástico</th>
-          <th>Acciones</th>
-        </thead>-->
 
         <thead>
           <tr>
