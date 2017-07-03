@@ -1,5 +1,5 @@
 <!-- Javascript Libs -->
-{!!Html::script('../vendor/tcg/voyager/publishable/assets/lib/js/bootstrap.min.js')!!}
+{{-- {!!Html::script('../vendor/tcg/voyager/publishable/assets/lib/js/bootstrap.min.js')!!}
 
 {!!Html::script('../vendor/tcg/voyager/publishable/assets/lib/js/bootstrap-switch.min.js')!!}
 
@@ -15,14 +15,20 @@
 
 {!!Html::script('../vendor/tcg/voyager/publishable/assets/js/select2/select2.min.js')!!}
 
-{!!Html::script('../vendor/tcg/voyager/publishable/assets/js/bootstrap-toggle.min.js')!!}
+
 
 {!!Html::script('../vendor/tcg/voyager/publishable/assets/js/jquery.cookie.js')!!}
 
 {!!Html::script('../vendor/tcg/voyager/publishable/assets/js/moment-with-locales.min.js')!!}
 
-{!!Html::script('../vendor/tcg/voyager/publishable/assets/js/datetimepicker/bootstrap-datetimepicker.min.js')!!}
+{!!Html::script('../vendor/tcg/voyager/publishable/assets/js/datetimepicker/bootstrap-datetimepicker.min.js')!!} --}}
 <!-- Javascript -->
+
+
+
+{!!Html::script('../vendor/tcg/voyager/publishable/assets/lib/js/bootstrap-switch.min.js')!!}
+
+{!!Html::script('../vendor/tcg/voyager/publishable/assets/js/bootstrap-toggle.min.js')!!}
 
 {!!Html::script('../vendor/tcg/voyager/publishable/assets/js/readmore.min.js')!!}
 

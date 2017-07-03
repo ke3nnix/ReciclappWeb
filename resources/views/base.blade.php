@@ -4,9 +4,9 @@
  
 <body class="flat-blue" style="overflow-x: hidden;"> 
  
-    <div id="voyager-loader"> 
+    {{-- <div id="voyager-loader"> 
                 <img src="{{ URL::to('/') }}/resources/loader-reciclapp.gif" alt="Reciclapp loader"> 
-    </div> 
+    </div>  --}}
  
  
         <div class="app-container"> 

@@ -10,30 +10,7 @@
     
     <!-- Fonts -->
     {!!Html::style('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400|Lato:300,400,700,900')!!}
-    <!-- CSS Libs -->
-    {!!Html::style('../vendor/tcg/voyager/publishable/assets/lib/css/bootstrap.min.css')!!}
-  
-    {!!Html::style('../vendor/tcg/voyager/publishable/assets/lib/css/animate.min.css')!!}
-    
-    {!!Html::style('../vendor/tcg/voyager/publishable/assets/lib/css/bootstrap-switch.min.css')!!}
-    
-    {!!Html::style('../vendor/tcg/voyager/publishable/assets/lib/css/checkbox3.min.css')!!}
-    
-    {!!Html::style('../vendor/tcg/voyager/publishable/assets/lib/css/jquery.dataTables.min.css')!!}
-    
-    {!!Html::style('../vendor/tcg/voyager/publishable/assets/lib/css/dataTables.bootstrap.css')!!}
-    
-    {!!Html::style('../vendor/tcg/voyager/publishable/assets/lib/css/select2.min.css')!!}
-    
-    {!!Html::style('../vendor/tcg/voyager/publishable/assets/lib/css/toastr.min.css')!!}
-    
-    {!!Html::style('../vendor/tcg/voyager/publishable/assets/lib/css/perfect-scrollbar.min.css')!!}
-    
-    {!!Html::style('../vendor/tcg/voyager/publishable/assets/css/bootstrap-toggle.min.css')!!}
-    
-    {!!Html::style('../vendor/tcg/voyager/publishable/assets/js/icheck/icheck.css')!!}
-    
-    {!!Html::style('../vendor/tcg/voyager/publishable/assets/js/datetimepicker/bootstrap-datetimepicker.min.css')!!}
+
     <!-- CSS App -->
     {!!Html::style('../vendor/tcg/voyager/publishable/assets/css/style.css')!!}
     

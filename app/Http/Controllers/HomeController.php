@@ -46,7 +46,7 @@ class HomeController extends Controller
                         ->dimensions(500, 200)
                         ->responsive(true)
                         ->lastByDay(7)
-                        ->dateFormat('dd-mm-YYYY');
+                        ->dateFormat('l j');
 
         // Entregas por punto de acopio
         $puntoDeAcopioAnho = Charts::database($entregas, 'area', 'highcharts')
