@@ -28,11 +28,11 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::group(['middleware' => 'auth'], function() {
 
-    Route::name('inicio')->get('/', function () {
-        return view('index');
-    });
+    // Route::name('inicio')->get('/', function () {
+    //     return view('index');
+    // });
 
-    // Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/', 'HomeController@index')->name('inicio');
 
     Route::name('perfil')->get('perfil',function(){
         return view('perfil-admin.perfil-admin');

@@ -226,7 +226,7 @@ class CollectionPointController extends Controller
         //setear el mensaje FLASH de exito 
         Session::flash('exito', 'El punto de acopio fue exitósamente desactivado'); 
         // redirigir hacia collection-points.index 
-        return  redirect()->route('puntos-de-acopio.index'); 
+        return  redirect()->route('puntos-de-acopio.p'); 
     } 
 
     /**
@@ -273,7 +273,7 @@ class CollectionPointController extends Controller
         $vidrio->save();
         $plastico->save();
 
-        return  redirect()->route('puntos-de-acopio.index');
+        return  redirect()->route('puntos-de-acopio.index', [ 'estado' => 'activo' ]);
     }
 
     public function changeStatus($id)

@@ -21,11 +21,11 @@ class SponsorController extends Controller
             switch ($request->estado) {
                 case 'activo':
                     $sponsors = Sponsor::where('estado', 1)->paginate(10);
-                    return view('sponsor.sponsor-activo',compact('sponsors'));
+                    return view('sponsors.sponsor-activo',compact('sponsors'));
 
                 case 'inactivo':
                     $sponsors = Sponsor::where('estado', 0)->paginate(10);
-                    return view('sponsor.sponsor-inactivo',compact('sponsors'));
+                    return view('sponsors.sponsor-inactivo',compact('sponsors'));
             }
         }
         abort(404, 'La página no existe');   
@@ -179,6 +179,6 @@ class SponsorController extends Controller
         Session::flash('exito', 'El sponsor fue exitósamente desactivado');
 
         // redirigir hacia sponsors/index.blade.php
-        return  redirect()->route('sponsors.index');
+        return  redirect()->route('sponsors.index', [ 'estado' => 'activo' ]);
     }
 }
