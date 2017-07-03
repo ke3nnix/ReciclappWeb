@@ -1,17 +1,35 @@
         <nav class="navbar navbar-default navbar-fixed-top navbar-top">
                             <div class="container-fluid">
                                 <div class="navbar-header">
-                                    <button class="hamburger btn-link">
-                                        <span class="hamburger-inner"></span>
-                                    </button>
-                                    <a id="sidebar-anchor" class="glyphicon glyphicon-eye-open btn-link navbar-link hidden-xs" 
-                                    title="Desplegar Barra lateral" 
-                                    data-unstick="Anular la barra lateral" 
-                                    data-toggle="tooltip" data-placement="bottom"></a>
+                                        @php 
+                                               $hidden0='hidden';
+                                               $hidden1='hidden'; 
+                                               $hidden2='hidden'; 
+                                               $hidden3='hidden'; 
+                                               $url= $_SERVER["REQUEST_URI"]; 
 
-                                    <ol class="breadcrumb hidden-xs">
-                                        <li class="active">@yield('title')</li>
-                                    </ol>
+                                               if(strncmp($url,"/puntos-de-acopio",7)===0){ 
+                                                    $hidden1=' '; 
+                                                } 
+                                                if(strncmp($url,"/sponsors",9)===0){ 
+                                                    $hidden2=' '; 
+                                                } 
+                                                if(strncmp($url,'/usuarios',9)===0){ 
+                                                    $hidden3=' '; 
+                                                }
+                                                if(strncmp($url,'/',9)===0){ 
+                                                    $hidden0=' '; 
+                                                }                                    
+                                            @endphp
+                                    <ol class="breadcrumb {{$hidden0}}">                 
+                                        <li><samp class="glyphicon glyphicon-stats"></samp> @yield('title')</li></ol>
+                                    <ol class="breadcrumb {{$hidden1}}">                 
+                                        <li><samp class="icon voyager-world"></samp> @yield('title')</li></ol>
+                                    <ol class="breadcrumb {{$hidden2}}">
+                                        <li ><samp class="icon voyager-people"></samp> @yield('title')</li></ol>
+                                    <ol class="breadcrumb {{$hidden3}}">
+                                        <li ><samp class="icon voyager-person"></samp> @yield('title')</li></ol>
+
                                 </div>
                                 
                                 @include('partials._top_menu') 
