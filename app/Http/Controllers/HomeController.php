@@ -25,33 +25,45 @@ class HomeController extends Controller
      */
     public function index()
     {   
-        $entregas = Exchange::all();
+        $entregas = Exchange::orderBy('acopio_id')->get();
 
         $entregasDelAnho = Charts::database($entregas, 'bar', 'highcharts')
                         ->title('Entregas del último año')
                         ->elementLabel("Entregas")
                         ->dimensions(1000, 300)
                         ->responsive(true)
-                        ->lastByMonth(12)
-                        ->dateFormat('F Y');
+                        ->lastByMonth(12, true);
 
         $entregasDeLaSemana = Charts::database($entregas, 'bar', 'highcharts')
                         ->title('Últimos 7 días')
                         ->elementLabel("Entregas")
-                        ->dimensions(500, 300)
+                        ->dimensions(500, 200)
                         ->responsive(true)
                         ->lastByDay(7)
-                        ->dateFormat('j F');
+                        ->dateFormat('dd-mm-YYYY');
 
-        $entregasDelMes = Charts::database($entregas, 'bar', 'highcharts')
+        $puntoDeAcopioSemana = Charts::database($entregas, 'bar', 'highcharts')
                         ->title('Últimos 30 días')
                         ->elementLabel("Entregas")
-                        ->dimensions(500, 300)
+                        ->dimensions(500, 200)
                         ->responsive(true)
                         ->lastByDay(30)
-                        ->dateFormat('j F');
+                        ->groupBy('acopio_id');
+
+        $puntoDeAcopioAnho = Charts::database($entregas, 'bar', 'highcharts')
+                        ->title('Entregas del último año')
+                        ->elementLabel("Entregas")
+                        ->dimensions(1000, 300)
+                        ->responsive(true)
+                        ->lastByMonth(12, true)
+                        ->groupBy('acopio_id');
 
 
-        return view('index', compact(['entregasDelAnho', 'entregasDeLaSemana', 'entregasDelMes']));
+        return view('index', compact([
+            'entregasDelAnho',
+            'entregasDeLaSemana',
+            'puntoDeAcopioAnho',
+            'puntoDeAcopioSemana'
+        ]));
     }
 }
