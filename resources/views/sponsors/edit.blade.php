@@ -12,7 +12,7 @@
                   <label  class="col-md-4 control-label">Contacto</label>  
                   <div class="col-md-6 inputGroupContainer">
                     <div class="input-group">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <span class="input-group-addon"></span>
                       <input  name="contacto" class="form-control"  type="text" value="{{$sponsor->contacto}}">
                     </div>
                   </div>
@@ -23,7 +23,7 @@
                       <label class="col-md-4 control-label">Razón Social</label>  
                       <div class="col-md-6 inputGroupContainer">
                         <div class="input-group">
-                          <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
+                          <span class="input-group-addon"></span>
                           <input name="razon_social" class="form-control" type="text" value="{{$sponsor->razon_social}}">
                         </div>
                       </div>
@@ -34,7 +34,7 @@
                       <label class="col-md-4 control-label">RUC</label>  
                       <div class="col-md-6 inputGroupContainer">
                         <div class="input-group">
-                          <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
+                          <span class="input-group-addon"></span>
                           <input name="ruc" class="form-control"  type="text" value="{{ $sponsor->ruc}}">
                         </div>
                       </div>
@@ -46,7 +46,7 @@
                     <label class="col-md-4 control-label">Dirección</label>  
                       <div class="col-md-6 inputGroupContainer">
                         <div class="input-group">
-                          <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+                          <span class="input-group-addon"></span>
                           <input name="direccion" class="form-control"  type="text" value="{{$sponsor->direccion}}">
                         </div>
                       </div>
@@ -57,7 +57,7 @@
                     <label class="col-md-4 control-label">Distrito</label>  
                       <div class="col-md-6 inputGroupContainer">
                         <div class="input-group">
-                          <span class="input-group-addon"><i class="glyphicon glyphicon-pushpin"></i></span>
+                          <span class="input-group-addon"></span>
                           <input name="distrito" class="form-control"  type="text" value="{{ $sponsor->distrito}}">
                         </div>
                       </div>
@@ -68,7 +68,7 @@
                     <label class="col-md-4 control-label">Télefono</label>  
                       <div class="col-md-6 inputGroupContainer">
                         <div class="input-group">
-                          <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                          <span class="input-group-addon"></span>
                           <input name="telefono" class="form-control"  type="text" value="{{ $sponsor->telefono}}">
                         </div>
                       </div>
@@ -81,63 +81,9 @@
                     <button type="submit" class="btn btn-success">
                       Actualizar
                     </button>   
-                    <a href="{{route('sponsors.index')}}" class="btn btn-danger">Cancelar</a>
+                    <a href="/sponsors?estado=activo" style="background-color: #FC5C5C;color: white" class="btn">Cancelar</a>
                 </div><br>
         
-    <!--script>
-
-              var map = null;
-              var infoWindow = null;
-
-              function openInfoWindow(marker) {
-                var markerLatLng = marker.getPosition();
-                infoWindow.setContent([
-                  '<strong>La posicion del marcador es:</strong><br/>',
-                  markerLatLng.lat(),
-                  ', ',
-                  markerLatLng.lng(),
-                  
-                  ].join(''));
-                var latText=markerLatLng.lat(); 
-                document.getElementById("latitudScript").value=latText;
-                var logText=markerLatLng.lng();
-                document.getElementById("longitudScript").value=logText;
-                infoWindow.open(map, marker);
-              }
-
-              function myMap() {
-                
-                var LAT= document.getElementById("latitudScript").value;
-                var LOG= document.getElementById("longitudScript").value;
-                
-                var lat_lng = {lat:parseFloat(LAT), lng: parseFloat(LOG)}; 
-                 map = new google.maps.Map(document.getElementById('map'), {  
-                    zoom: 15,  
-                    center: lat_lng,  
-                    mapTypeId: google.maps.MapTypeId.TERRAIN  
-                  });  
-                infoWindow = new google.maps.InfoWindow();
-
-                var marker = new google.maps.Marker({
-                  position: lat_lng,
-                  draggable: true,
-                  map: map,
-                  title:"Ejemplo marcador arrastrable"
-                }); 
-
-                google.maps.event.addListener(marker, 'dragend', function(){ openInfoWindow(marker); });
-                google.maps.event.addListener(marker, 'click', function(){ openInfoWindow(marker); });
-                
-              }
-
-              $(document).ready(function() {
-                myMap();
-                gmaps_ads();
-              });        
-          </script>
-
-          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBB4ZIAHHHpeAmS-khq5zqLWWmTosyIrAg&callback=myMap"></script>
--->
       {{Form::close()}}
          
 @stop

@@ -12,12 +12,12 @@
 
         </div>
       </form>
-    </div>
+    </div><br>
     
     <div class="row">
       <ul class="nav nav-tabs">
         <li class="active"><a  href="#">Activos</a></li>
-        <li><a href="//sponsors?estado=inactivo">Inactivos</a></li>
+        <li><a href="/sponsors?estado=inactivo">Inactivos</a></li>
       </ul>                 
       <div class="table-responsive">
 
@@ -52,11 +52,11 @@
               </td> 
                             
               <td>
-                <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('beneficios.index',['id'=>$row->sponsor_id])}}'"><span class="glyphicon glyphicon-eye-open"></span></button>
-                <button class="btn btn-success btn-xs" onclick="window.location.href='{{route('sponsors.edit',['id'=>$row->sponsor_id])}}'" ><span class="glyphicon glyphicon-pencil"></span></button> 
-                <button id="desactivar" data-toggle="modal" data-target="#myModal{{$row->sponsor_id}}" class="btn btn-danger btn-xs" ><span class="glyphicon glyphicon-trash"></span></button>
+                <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('beneficios.index',['id'=>$row->sponsor_id])}}'"> Ver</button>
+                <button class="btn btn-success btn-xs" onclick="window.location.href='{{route('sponsors.edit',['id'=>$row->sponsor_id])}}'" > Editar</button> 
+                <button id="desactivar" data-toggle="modal" data-target="#myModalactivo{{$row->sponsor_id}}" style="background-color: #FC5C5C;color: white" class="btn btn-xs" > Desactivar</button>
                 {{Form::open(['route'=>['sponsors.destroy', $row->sponsor_id], 'method'=>'DELETE'])}} 
-                <div id="myModal{{$row->sponsor_id}}" class="modal fade" role="dialog"> 
+                <div id="myModalactivo{{$row->sponsor_id}}" class="modal fade" role="dialog"> 
                   <div class="modal-dialog ">
                     <!-- Modal content-->
                     <div class="modal-content">
@@ -72,7 +72,7 @@
 
                       <button type="submit" class="btn btn-danger">SI</button>
                       {{Form::close()}}
-                      <button type="button" class="btn btn-primary" onclick="window.location.href='{{route('sponsors.index')}}'" >NO</button>
+                      <button type="button" class="btn btn-primary" data-dismiss="modal"s>NO</button>
                       </div>
                     </div>
                   </div>

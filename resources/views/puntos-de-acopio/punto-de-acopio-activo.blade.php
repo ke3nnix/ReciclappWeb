@@ -12,9 +12,9 @@
         </div>
       </form>
         <div class="pull-right col-lg-1 " >
-          <button type="submit" id="enviar" data-toggle="modal" data-target="#myModal" class="btn btn-danger">Recoger</button>
+          <button type="submit" id="enviar" data-toggle="modal" data-target="#myModal" style="background-color: #FC5C5C;color: white" class="btn">Recoger</button>
         </div>
-    </div>
+    </div><br>
 
 
     <div class="row">
@@ -26,16 +26,6 @@
 
 
         <table id="mytable" class="table table-bordred table-striped">
-
-          <!--<thead>
-          <th>Nombre</th>
-          <th>Dirección</th>
-          <th>Distrito</th>
-          <th>Papel</th>
-          <th>Vidrio</th>
-          <th>Plástico</th>
-          <th>Acciones</th>
-        </thead>-->
 
         <thead>
           <tr>
@@ -56,12 +46,12 @@
          @foreach($collectionPoints as $row)
           @if($row->papel_actual>=0.8*$row->papel_max || $row->vidrio_actual>=0.8*$row->vidrio_max || $row->plastico_actual>=0.8*$row->plastico_max )
             <tr id="{{$row->acopio_id}}" style="background-color: #E5B3B3">
-              @include('puntos-de-acopio.tabla-acopio')
+              @include('puntos-de-acopio.tabla-acopio-activo')
             </tr>
           @endif
          @if($row->papel_actual<0.8*$row->papel_max && $row->vidrio_actual<0.8*$row->vidrio_max && $row->plastico_actual<0.8*$row->plastico_max)
            <tr id="{{$row->acopio_id}}"> 
-           @include('puntos-de-acopio.tabla-acopio')
+           @include('puntos-de-acopio.tabla-acopio-activo')
             </tr>
           @endif                                                    
           @endforeach     

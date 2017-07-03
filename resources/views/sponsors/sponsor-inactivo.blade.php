@@ -12,7 +12,7 @@
 
         </div>
       </form>
-    </div>
+    </div><br>
     
     <div class="row">
       <ul class="nav nav-tabs">
@@ -29,7 +29,7 @@
                 <th rowspan="2" scope="rowgroup" style="vertical-align:middle">RUC</th>
                 <th rowspan="2" scope="rowgroup" style="vertical-align:middle">Telefono</th>
                 <th rowspan="2" scope="rowgroup" style="vertical-align:middle">Dirección</th> 
-                <th rowspan="2" scope="rowgroup" style="vertical-align:middle">Acciones</th>
+                <th rowspan="2" scope="rowgroup" style="vertical-align:middle">Activar</th>
 
           </tr>
         </thead>
@@ -49,19 +49,17 @@
               <td> 
                 <p > {{$row->direccion}} </p> 
               </td> 
-                            
               <td>
-                <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('beneficios.index',['id'=>$row->sponsor_id])}}'"><span class="glyphicon glyphicon-eye-open"></span></button>
-                <button class="btn btn-success btn-xs" onclick="window.location.href='{{route('sponsors.edit',['id'=>$row->sponsor_id])}}'" ><span class="glyphicon glyphicon-pencil"></span></button> 
-                <button id="desactivar" data-toggle="modal" data-target="#myModal{{$row->sponsor_id}}" class="btn btn-danger btn-xs" ><span class="glyphicon glyphicon-trash"></span></button>
-                {{Form::open(['route'=>['sponsors.destroy', $row->sponsor_id], 'method'=>'DELETE'])}} 
-                <div id="myModal{{$row->sponsor_id}}" class="modal fade" role="dialog"> 
+                <button id="desactivar" data-toggle="modal" data-target="#myModaldesactivar{{$row->sponsor_id}}" class="btn btn-primary btn-xs" ><span class="glyphicon glyphicon-ok"></span>Activar</button>
+              </td>             
+              {{Form::open(['route'=>['sponsors.destroy', $row->sponsor_id], 'method'=>'DELETE'])}} 
+                <div id="myModaldesactivar{{$row->sponsor_id}}" class="modal fade" role="dialog"> 
                   <div class="modal-dialog ">
                     <!-- Modal content-->
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">¿Desea desactivar a?</h4>
+                        <h4 class="modal-title">¿Desea activar a?</h4>
                       </div>
                       <div class="modal-body">
                         <p> <b>{{$row->razon_social}}</b></p>
@@ -71,12 +69,11 @@
 
                       <button type="submit" class="btn btn-danger">SI</button>
                       {{Form::close()}}
-                      <button type="button" class="btn btn-primary" onclick="window.location.href='{{route('sponsors.index')}}'" >NO</button>
+                      <button type="button" class="btn btn-primary" data-dismiss="modal" >NO</button>
                       </div>
                     </div>
                   </div>
                 </div>
-              </td>
             </tr>                                                     
           @endforeach     
         </tbody>

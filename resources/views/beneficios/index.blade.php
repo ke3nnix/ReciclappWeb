@@ -6,10 +6,10 @@
   <div class="col-md-11">
     {{Form::open(['route'=>['sponsors.destroy', $sponsor->sponsor_id], 'method'=>'DELETE'])}} 
                        <div class="col-md-6 col-md-offset-10" >
-                              <button type="submit" class="btn btn-danger">
+                              <button type="submit" style="background-color: #FC5C5C;color: white" class="btn">
                                 Desactivar
                               </button>   
-                              <a href="{{route('sponsors.index')}}" class="btn btn-primary">Cancelar</a>
+                              <a href="/sponsors?estado=activo" class="btn btn-primary">Cancelar</a>
                         </div><br>
     {{Form::close()}}
   </div>

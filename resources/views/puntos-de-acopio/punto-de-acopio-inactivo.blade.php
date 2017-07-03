@@ -12,12 +12,12 @@
         </div>
       </form>
         <div class="pull-right col-lg-1 " >
-          <button type="submit" id="enviar" data-toggle="modal" data-target="#myModal" class="btn btn-danger">Recoger</button>
+          <button type="submit" id="enviar" data-toggle="modal" data-target="#myModal" style="background-color: #FC5C5C;color: white" class="btn">Recoger</button>
         </div>
     </div>
     <div class="row">
       <ul class="nav nav-tabs">
-        <li><a href="puntos-de-acopio?estado=activo">Activos</a></li>
+        <li><a href="/puntos-de-acopio?estado=activo">Activos</a></li>
         <li class="active"><a href="#">Inactivos</a></li>
       </ul>           
       <div class="table-responsive">
@@ -31,7 +31,7 @@
                 <th rowspan="2" scope="rowgroup" style="vertical-align:middle">Dirección</th>
                 <th rowspan="2" scope="rowgroup" style="vertical-align:middle">Distrito</th>
                 <th colspan="3" scope="colgroup" style="text-align:center">Cantidades actuales</th>
-                <th rowspan="2" scope="rowgroup" style="vertical-align:middle">Acciones</th>
+                <th rowspan="2" scope="rowgroup" style="vertical-align:middle">Acción</th>
           </tr>
           <tr>
                 <th scope="row">Papel</th>
@@ -43,12 +43,12 @@
          @foreach($collectionPoints as $row)
           @if($row->papel_actual>=0.8*$row->papel_max || $row->vidrio_actual>=0.8*$row->vidrio_max || $row->plastico_actual>=0.8*$row->plastico_max )
             <tr id="{{$row->acopio_id}}" style="background-color: #E5B3B3">
-              @include('puntos-de-acopio.tabla-acopio')
+              @include('puntos-de-acopio.tabla-acopio-inactivo')
             </tr>
           @endif
          @if($row->papel_actual<0.8*$row->papel_max && $row->vidrio_actual<0.8*$row->vidrio_max && $row->plastico_actual<0.8*$row->plastico_max)
            <tr id="{{$row->acopio_id}}"> 
-           @include('puntos-de-acopio.tabla-acopio')
+           @include('puntos-de-acopio.tabla-acopio-inactivo')
             </tr>
           @endif                                                    
           @endforeach     

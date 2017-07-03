@@ -1,7 +1,7 @@
 <!--columna de boton desactivar con modal-->
 <center>
   <div class="input-group">
-    <a id="desactivar" data-toggle="modal" data-target="#myModaldesactivar{{$beneficio->beneficio_id}}" class="btn btn-danger btn-xs" ><span class="glyphicon glyphicon-ban-circle"></span></a> 
+    <a id="desactivar" data-toggle="modal" data-target="#myModaldesactivar{{$beneficio->beneficio_id}}" style="background-color: #FC5C5C;color: white" class="btn btn-xs" ><span class="glyphicon glyphicon-ban-circle"></span></a> 
     <!-- MODAL DE BENEFICIO DESCACTIVAR-->
     {{Form::open(['route'=>['beneficios.destroy','sponsor_id' => $sponsor->sponsor_id, 'beneficio_id' => $beneficio->beneficio_id], 'method'=>'DELETE'])}}
     <div id="myModaldesactivar{{$beneficio->beneficio_id}}" class="modal fade" role="dialog"> 
