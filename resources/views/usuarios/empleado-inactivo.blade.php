@@ -39,7 +39,7 @@
                 <th scope="rowgroup" style="vertical-align:middle">Nombre</th>
                 <th scope="rowgroup" style="vertical-align:middle">Apellido</th>
                 <th scope="rowgroup" style="vertical-align:middle">Distrito</th>
-                <th scope="colgroup" style="vertical-align:middle">Estado</th>
+                <th scope="colgroup" style="vertical-align:middle">Acción</th>
           </tr>
         </thead>
         <tbody>
@@ -55,15 +55,31 @@
                 <p> {{$row->distrito}}</p> 
               </td> 
               <td style="width: 80px">
-               {{Form::open(['route'=>['usuarios.destroy',$row->usuario_id], 'method'=>'DELETE'])}}
-                  <button type="submit" class="btn btn-default btn-xs" onMouseOver="this.style.backgroundColor='#1ABC9C'" onMouseOut="this.style.backgroundColor='#F3F1F1'">Activar</button>
-                {{Form::close()}}
-              </td>
-              <td style="width: 100px">
-                <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('usuarios.show',['id'=>$row->usuario_id])}}'"><span class="glyphicon glyphicon-eye-open"></span></button>
-                <button class="btn btn-success btn-xs" onclick="window.location.href='{{route('usuarios.edit',['id'=>$row->usuario_id])}}'" ><span class="glyphicon glyphicon-pencil"></span></button> 
+               <button type="submit" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModaldesactivar{{$row->usuario_id}}"><span class="glyphicon glyphicon-ok"></span>Activar</button>
+                  {{Form::open(['route'=>['usuarios.destroy',$row->usuario_id], 'method'=>'DELETE'])}}
+                   <div id="myModaldesactivar{{$row->usuario_id}}" class="modal fade" role="dialog"> 
+                  <div class="modal-dialog ">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">¿Desea activar a?</h4>
+                      </div>
+                      <div class="modal-body">
+                        <p> <b>{{$row->nombre}} {{$row->apellido}}</b></p>
+                      </div>
 
+                      <div class="modal-footer">
+
+                      <button type="submit" class="btn btn-danger">SI</button>
+                      {{Form::close()}}
+                      <button type="button" class="btn btn-primary" data-dismiss="modal" >NO</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </td>
+              
             </tr>                                                     
           @endforeach     
         </tbody>

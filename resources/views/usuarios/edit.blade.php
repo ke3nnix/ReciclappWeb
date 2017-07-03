@@ -12,7 +12,7 @@
                   <label  class="col-md-4 control-label">Nombre</label>  
                   <div class="col-md-6 inputGroupContainer">
                     <div class="input-group">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <span class="input-group-addon"></span>
                       <input  name="nombre" class="form-control"  type="text" value="{{$user->nombre}}">
                     </div>
                   </div>
@@ -23,7 +23,7 @@
                       <label class="col-md-4 control-label">Apellido</label>  
                       <div class="col-md-6 inputGroupContainer">
                         <div class="input-group">
-                          <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
+                          <span class="input-group-addon"></span>
                           <input name="apellido" class="form-control" type="text" value="{{$user->apellido}}">
                         </div>
                       </div>
@@ -34,7 +34,7 @@
                       <label class="col-md-4 control-label">Email</label>  
                       <div class="col-md-6 inputGroupContainer">
                         <div class="input-group">
-                          <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
+                          <span class="input-group-addon"></span>
                           <input name="email" class="form-control"  type="text" value="{{ $user->email}}">
                         </div>
                       </div>
@@ -46,7 +46,7 @@
                     <label class="col-md-4 control-label">Contraseña</label>  
                       <div class="col-md-6 inputGroupContainer">
                         <div class="input-group">
-                          <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+                          <span class="input-group-addon"></span>
                           <input name="password" class="form-control"  type="password">
                         </div>
                       </div>
@@ -57,7 +57,7 @@
                     <label class="col-md-4 control-label">Tipo</label>  
                       <div class="col-md-6 inputGroupContainer">
                         <div class="input-group">
-                          <span class="input-group-addon"><i class="glyphicon glyphicon-pushpin"></i></span>
+                          <span class="input-group-addon"></span>
                           <select name="tipo" class="form-control">
                             @if($user->tipo==3)
                               <option value="0">--Seleccionar--</option>
@@ -79,7 +79,7 @@
                     <label class="col-md-4 control-label">DNI</label>  
                       <div class="col-md-6 inputGroupContainer">
                         <div class="input-group">
-                          <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                          <span class="input-group-addon"></span>
                           <input name="dni" class="form-control"  type="text" value="{{ $user->dni}}">
                         </div>
                       </div>
@@ -90,7 +90,7 @@
                     <label class="col-md-4 control-label">Dirección</label>  
                       <div class="col-md-6 inputGroupContainer">
                         <div class="input-group">
-                          <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                          <span class="input-group-addon"></span>
                           <input name="direccion" class="form-control"  type="text" value="{{ $user->direccion}}">
                         </div>
                       </div>
@@ -100,7 +100,7 @@
                     <label class="col-md-4 control-label">Distrito</label>  
                       <div class="col-md-6 inputGroupContainer">
                         <div class="input-group">
-                          <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                          <span class="input-group-addon"></span>
                           <input name="distrito" class="form-control"  type="text" value="{{ $user->distrito}}">
                         </div>
                       </div>
@@ -111,7 +111,7 @@
                     <label class="col-md-4 control-label">Fecha de Nacimiento</label>  
                       <div class="col-md-6 inputGroupContainer">
                         <div class="input-group">
-                          <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                          <span class="input-group-addon"></span>
                           <input name="nacimiento" class="form-control"  type="date" value="{{ $user->nacimiento}}">
                         </div>
                       </div>
@@ -124,7 +124,7 @@
                     <button type="submit" class="btn btn-success">
                       Actualizar
                     </button>   
-                    <a href="/usuarios?tipo=administradores&estado=activo" class="btn btn-danger">Cancelar</a>
+                    <a href="/usuarios?tipo=administradores&estado=activo" style="background-color: #FC5C5C;color: white" class="btn">Cancelar</a>
                 </div><br>
         
     

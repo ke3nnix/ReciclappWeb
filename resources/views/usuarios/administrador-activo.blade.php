@@ -39,7 +39,7 @@
                 <th scope="rowgroup" style="vertical-align:middle">Nombre</th>
                 <th scope="rowgroup" style="vertical-align:middle">Apellido</th>
                 <th scope="rowgroup" style="vertical-align:middle">Distrito</th>
-                <th scope="colgroup" style="vertical-align:middle">Estado</th>
+                <th scope="colgroup" style="vertical-align:middle">Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -54,15 +54,34 @@
               <td style="width: 80px"> 
                 <p> {{$row->distrito}}</p> 
               </td> 
-              <td style="width: 80px">
-              {{Form::open(['route'=>['usuarios.destroy',$row->usuario_id], 'method'=>'DELETE'])}}
-                  <button type="submit" class="btn btn-default btn-xs" onMouseOver="this.style.backgroundColor='#FA2A00'" onMouseOut="this.style.backgroundColor='#F3F1F1'">Desactivar</button>
-              {{Form::close()}}
-              </td>
               <td style="width: 100px">
-                <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('usuarios.show',['id'=>$row->usuario_id])}}'"><span class="glyphicon glyphicon-eye-open"></span></button>
-                <button class="btn btn-success btn-xs" onclick="window.location.href='{{route('usuarios.edit',['id'=>$row->usuario_id])}}'" ><span class="glyphicon glyphicon-pencil"></span></button> 
-               
+                <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('usuarios.show',['id'=>$row->usuario_id])}}'">Ver</button>
+                <button class="btn btn-success btn-xs"  onclick="window.location.href='{{route('usuarios.edit',['id'=>$row->usuario_id])}}'" >Editar</button> 
+              
+                  <button type="submit" data-toggle="modal" data-target="#myModalactivar{{$row->usuario_id}}" style="background-color: #FC5C5C;color: white" class="btn btn-default btn-xs">Desactivar</button>
+             
+              {{Form::open(['route'=>['usuarios.destroy',$row->usuario_id], 'method'=>'DELETE'])}}
+                <div id="myModalactivar{{$row->usuario_id}}" class="modal fade" role="dialog"> 
+                  <div class="modal-dialog ">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">¿Desea desactivar a?</h4>
+                      </div>
+                      <div class="modal-body">
+                        <p> <b>{{$row->nombre}} {{$row->apellido}}</b></p>
+                      </div>
+
+                      <div class="modal-footer">
+
+                      <button type="submit" class="btn btn-danger">SI</button>
+                      {{Form::close()}}
+                      <button type="button" class="btn btn-primary" data-dismiss="modal" >NO</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </td>
             </tr>                                                     
           @endforeach     

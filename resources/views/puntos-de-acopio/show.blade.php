@@ -20,7 +20,7 @@
                                  <div class="form-group">
                                   <div class="col-md-12 inputGroupContainer">
                                     <div class="input-group">
-                                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                      <span class="input-group-addon"></i></span>
                                       <label name="nombre" class="form-control"  type="text">{{$collectionPoint->nombre}}</label>
                                     </div>
                                   </div>
@@ -31,7 +31,7 @@
                              <div class="form-group">  
                               <div class="col-md-12 inputGroupContainer">
                                 <div class="input-group">
-                                  <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                  <span class="input-group-addon"></span>
                                   <label name="direccion" class="form-control" type="text">{{$collectionPoint->direccion}}</label>
                                 </div>
                               </div>
@@ -41,7 +41,7 @@
                              <div class="form-group">
                               <div class="col-md-12 inputGroupContainer">
                                 <div class="input-group">
-                                  <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                  <span class="input-group-addon"></span>
                                   <label name="distrito" class="form-control"  type="text">{{$collectionPoint->distrito}}</label>
                                 </div>
                               </div>
@@ -52,7 +52,7 @@
                             <div class="form-group">
                               <div class="col-md-12 inputGroupContainer">
                                 <div class="input-group">
-                                  <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
+                                  <span class="input-group-addon"></span>
                                   <label name="papel_max" class="form-control"  type="text">{{$collectionPoint->papel_max}}</label>
                                 </div>
                               </div>
@@ -62,7 +62,7 @@
                           <div class="form-group">
                               <div class="col-md-12 inputGroupContainer">
                                 <div class="input-group">
-                                  <span class="input-group-addon"><i class="glyphicon glyphicon-fire"></i></span>
+                                  <span class="input-group-addon"></span>
                                   <label name="vidrio_max" class="form-control"  type="text">{{$collectionPoint->vidrio_max}}</label>
                                 </div>
                               </div>
@@ -72,7 +72,7 @@
                               <div class="form-group">
                               <div class="col-md-12 inputGroupContainer">
                                 <div class="input-group">
-                                  <span class="input-group-addon"><i class="glyphicon glyphicon-retweet"></i></span>
+                                  <span class="input-group-addon"></span>
                                   <label name="plastico_max" class="form-control"  type="text">{{$collectionPoint->plastico_max}}</label>
                                 </div>
                               </div>
@@ -89,10 +89,10 @@
           </div>   
    </div>
                      <div class="col-md-6 col-md-offset-8" >
-                            <button type="submit" class="btn btn-warning">
+                            <button type="submit" style="background-color: #FC5C5C;color: white" class="btn">
                               Eliminar
                             </button>   
-                            <a href="{{route('puntos-de-acopio.index')}}" class="btn btn-danger">Cancelar</a>
+                            <a href="/puntos-de-acopio?estado=activo" class="btn btn-success">Cancelar</a>
                       </div>
   <!-- latitud y longitud-->
     <div style="visibility:hidden">                  

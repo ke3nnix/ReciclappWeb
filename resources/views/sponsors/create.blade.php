@@ -12,7 +12,7 @@
             <label  class="col-md-4 control-label">Contacto</label>  
             <div class="col-md-6 inputGroupContainer">
               <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <span class="input-group-addon"></span>
                 <input  name="contacto" class="form-control"  type="text">
               </div>
             </div>
@@ -23,7 +23,7 @@
                 <label class="col-md-4 control-label">Razón Social</label>  
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                    <span class="input-group-addon"></span>
                     <input name="razon_social" class="form-control" type="text">
                   </div>
                 </div>
@@ -34,7 +34,7 @@
                 <label class="col-md-4 control-label">Ruc</label>  
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                    <span class="input-group-addon"></span>
                     <input name="ruc" class="form-control"  type="text">
                   </div>
                 </div>
@@ -46,7 +46,7 @@
               <label class="col-md-4 control-label">Direccion</label>  
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
+                    <span class="input-group-addon"></span>
                     <input name="direccion" class="form-control"  type="text">
                   </div>
                 </div>
@@ -57,7 +57,7 @@
               <label class="col-md-4 control-label">Distrito</label>  
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-retweet"></i></span>
+                    <span class="input-group-addon"></span>
                     <input name="distrito" class="form-control"  type="text">
                   </div>
                 </div>
@@ -68,7 +68,7 @@
               <label class="col-md-4 control-label">Telefono</label>  
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-retweet"></i></span>
+                    <span class="input-group-addon"></span>
                     <input name="telefono" class="form-control"  type="text">
                   </div>
                 </div>
@@ -84,7 +84,7 @@
                     <button type="submit" class="btn btn-success">
                       Agregar
                     </button>
-                     <a href="{{route('sponsors.index')}}" class="btn btn-danger">Cancelar</a>
+                     <a href="/sponsors?estado=activo"  style="background-color: #FC5C5C;color: white" class="btn">Cancelar</a>
 
                   </div>
              </div>
