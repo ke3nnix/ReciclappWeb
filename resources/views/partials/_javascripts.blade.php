@@ -25,15 +25,15 @@
 <!-- Javascript -->
 
 
-
+{{-- 
 {!!Html::script('../vendor/tcg/voyager/publishable/assets/lib/js/bootstrap-switch.min.js')!!}
 
 {!!Html::script('../vendor/tcg/voyager/publishable/assets/js/bootstrap-toggle.min.js')!!}
 
-{!!Html::script('../vendor/tcg/voyager/publishable/assets/js/readmore.min.js')!!}
+{!!Html::script('../vendor/tcg/voyager/publishable/assets/js/readmore.min.js')!!} --}}
 
-{!!Html::script('../vendor/tcg/voyager/publishable/assets/js/val.js')!!}
+{{-- {!!Html::script('../vendor/tcg/voyager/publishable/assets/js/val.js')!!}
 
 {!!Html::script('../vendor/tcg/voyager/publishable/assets/js/app.js')!!}
 
-{!!Html::script('../vendor/tcg/voyager/publishable/assets/js/helpers.js')!!}
+{!!Html::script('../vendor/tcg/voyager/publishable/assets/js/helpers.js')!!} --}}
