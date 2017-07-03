@@ -45,7 +45,7 @@
 
 
                                     <li class="{{ $class1 }}">
-                                        <a href="{{ route("puntos-de-acopio.index") }}"  target="_self">
+                                        <a href="/puntos-de-acopio?estado=activo"  target="_self">
                                             <span class="icon voyager-world"></span>
                                             <span class="title">Puntos de Acopio</span>
                                         </a>
@@ -53,7 +53,7 @@
 
 
                                     <li class="{{ $class2 }}">
-                                        <a href="{{ route("sponsors.index") }}" target="_self">
+                                        <a href="/sponsors?estado=activo" target="_self">
                                             <span class="icon voyager-people"></span>
                                             <span class="title">Sponsors</span>
                                         </a>
@@ -81,7 +81,7 @@
                                                         </a>
                                                     </li>
                                                   
-
+z
                                                 </ul>
                                             </div>
                                         </div>

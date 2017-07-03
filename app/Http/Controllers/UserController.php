@@ -185,6 +185,7 @@ class UserController extends Controller
         if(!is_null( $request->password )){$user->password = bcrypt($request->password);}
         if(!is_null( $request->dni )){ $user->dni = $request->dni; }
         if(!is_null( $request->estado )){ $user->estado = $request->estado; }
+        if(!is_null( $request->tipo )){ $user->tipo = $request->tipo; }
               
 
         if($request->hasFile('imagen')) {

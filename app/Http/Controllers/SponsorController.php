@@ -14,13 +14,21 @@ class SponsorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // Buscando sponsors ACTIVOS: $sponsor->estado = 1 (inactivo = 0)
-        $sponsors = Sponsor::where('estado', 1)->paginate(10);
+        if (!is_null($request->estado))
+        {
+            switch ($request->estado) {
+                case 'activo':
+                    $sponsors = Sponsor::where('estado', 1)->paginate(10);
+                    return view('sponsor.sponsor-activo',compact('sponsors'));
 
-        // Retornando vista
-        return view('sponsors.index',compact('sponsors'));
+                case 'inactivo':
+                    $sponsors = Sponsor::where('estado', 0)->paginate(10);
+                    return view('sponsor.sponsor-inactivo',compact('sponsors'));
+            }
+        }
+        abort(404, 'La página no existe');   
     }
 
     /**
