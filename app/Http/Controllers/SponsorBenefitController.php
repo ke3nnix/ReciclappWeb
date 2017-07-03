@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Sponsor;
 use App\Models\Benefit;
 use Session;
+use DB;
 
 class SponsorBenefitController extends Controller
 {
@@ -148,7 +149,19 @@ class SponsorBenefitController extends Controller
         if (!is_null($request->tipo)) { $benefit->tipo = $request->tipo; };
         if (!is_null($request->cantidad)) 
         { 
-            if ($request->cantidad > $benefit->cantidad) {   $benefit->estado = 1; } 
+            if ($request->cantidad > $benefit->cantidad) 
+            {
+                $benefit->estado = 1;
+                $cant = $request->cantidad - $benefit->cantidad;
+                $fecha = date_default_timezone_get();
+
+                DB::table('supply')->insert([
+                    'beneficio_id' => $benefit->beneficio_id,
+                    'cantidad' => $cant,
+                    'created_at' => $fecha,
+                    'updated_at' => $fecha
+                ]);
+            } 
             $benefit->cantidad = $request->cantidad; 
         }
         
