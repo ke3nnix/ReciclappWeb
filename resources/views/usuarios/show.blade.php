@@ -28,6 +28,14 @@
                           </tr>
                           <tr>
                             <td>
+                              <label class="input-group">DNI: </label>
+                            </td>
+                            <td>
+                              <label name="email" class="form-control"  type="text">{{$user->dni}}</label>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
                               <label class="input-group">Correo: </label>
                             </td>
                             <td>
