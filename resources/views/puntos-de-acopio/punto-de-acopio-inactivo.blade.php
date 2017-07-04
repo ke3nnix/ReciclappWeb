@@ -11,9 +11,6 @@
           <button type="submit" class="btn btn-success">Agregar</button>
         </div>
       </form>
-        <div class="pull-right col-lg-1 " >
-          <button type="submit" id="enviar" data-toggle="modal" data-target="#myModal" style="background-color: #FC5C5C;color: white" class="btn">Recoger</button>
-        </div>
     </div>
     <div class="row">
       <ul class="nav nav-tabs">
@@ -26,7 +23,6 @@
         <table id="mytable" class="table table-bordred table-striped">
         <thead>
           <tr>
-                <th rowspan="2" scope="rowgroup" style="vertical-align:middle"><input type="checkbox" id="checkMain" onclick="marcar(this);" /></th> 
                 <th rowspan="2" scope="rowgroup" style="vertical-align:middle">Nombre</th>
                 <th rowspan="2" scope="rowgroup" style="vertical-align:middle">Dirección</th>
                 <th rowspan="2" scope="rowgroup" style="vertical-align:middle">Distrito</th>

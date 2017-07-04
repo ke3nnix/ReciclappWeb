@@ -3,12 +3,6 @@
 @section('content')
 
 <div style="position: relative; left: 70px;">
-   @if(Session::has('exito'))
-       <div class="alert alert-success pull-right" id="confirmacion" style="width: 200px" role="alert">
-        {{Session::get('exito')}}
-      </div>
-
-    @endif
 {{Form::open(['route'=>['puntos-de-acopio.destroy',$collectionPoint->acopio_id], 'method'=>'DELETE'])}}
   <div class="container">
           <div class="row">
