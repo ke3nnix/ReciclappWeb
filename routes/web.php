@@ -48,5 +48,7 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::post('puntos-de-acopio/{acopio}/recoger', 'CollectionPointController@collect')->name('puntos-de-acopio.recoger');
 
+    Route::get('almacen', 'WasteController@index')->name('desechos.index');
+
 });
 

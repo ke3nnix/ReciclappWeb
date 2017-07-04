@@ -15,7 +15,11 @@ class WasteController extends Controller
     public function index()
     {
         $waste = Waste::orderBy('desecho_id', 'asc')->get();
-        return $waste;
+        if(request()->expectsJson()) {
+            return $waste;
+        }
+        
+        return view('desechos.index', compact('waste'));
 
     }
 
