@@ -7,11 +7,8 @@ class ExchangesTableSeeder extends Seeder
 
     public function run()
     {
-        // Fetch the colaborators ids
-        // $benefit_ids = App\Models\Benefit::all('beneficio_id')->pluck('beneficio_id')->toArray();
-        // instanciando al faker
+        // instanciando al faker y el ID de entrega
         $faker = Faker\Factory::create('es_PE');
-        $entrega_id = 1;
         // añadiendo entregas para todos los usuarios colaboradores
         for ($usuario_id=16; $usuario_id <=115; $usuario_id++) { 
             $amount = $faker->numberBetween($min = 1, $max =20);
@@ -34,7 +31,7 @@ class ExchangesTableSeeder extends Seeder
                 $fecha = $faker->dateTimeBetween($startDate = '-12 months', $endDate = 'now', $timezone = date_default_timezone_get());
 
                 // Añadiendo la entrega
-                DB::table('exchanges')->insert([
+                $entrega_id = DB::table('exchanges')->insertGetId([
                     'colaborador_id' => $usuario_id,
                     'empleado_id' => $faker->numberBetween($min = 6, $max = 15),
                     'acopio_id' => $faker->numberBetween($min = 1, $max = 15),
@@ -79,9 +76,6 @@ class ExchangesTableSeeder extends Seeder
                         'updated_at' => $fecha
                     ]);
                 }
-
-                $entrega_id = $entrega_id + 1;
-
             }
         }
     }
