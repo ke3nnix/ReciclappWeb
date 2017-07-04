@@ -4,12 +4,6 @@
 
 <div class="container">
   <div class="col-md-11">
-  @if(Session::has('exito'))
-       <div class="alert alert-success pull-left" id="confirmacion" role="alert">
-        {{Session::get('exito')}}
-    </div>
-
-    @endif
     {{Form::open(['route'=>['sponsors.destroy', $sponsor->sponsor_id], 'method'=>'DELETE'])}} 
                        <div class="col-md-6 col-md-offset-10" >
                               <button type="submit" style="background-color: #FC5C5C;color: white" class="btn">

@@ -13,7 +13,7 @@
             <div class="col-md-6 inputGroupContainer">
               <div class="input-group">
                 <span class="input-group-addon"></span>
-                <input  name="nombre" class="form-control"  type="text">
+                <input  name="nombre" class="form-control" title="Se necesita un nombre" type="text" required/>
               </div>
             </div>
           </div>
@@ -24,7 +24,7 @@
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon"></span>
-                    <input name="direccion" class="form-control" type="text">
+                    <input name="direccion" class="form-control" title="Se necesita una Dirección" type="text" required />
                   </div>
                 </div>
               </div>
@@ -35,7 +35,7 @@
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon"></span>
-                    <input name="distrito" class="form-control"  type="text">
+                    <input name="distrito" class="form-control" title="Se necesita un Distrito"  type="text" required />
                   </div>
                 </div>
               </div>
@@ -47,7 +47,7 @@
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon"></span>
-                    <input name="papel_max" class="form-control"  type="text">
+                    <input name="papel_max" class="form-control" min="1" type="number" required/>
                   </div>
                 </div>
               </div>
@@ -58,7 +58,7 @@
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon"></span>
-                    <input name="vidrio_max" class="form-control"  type="text">
+                    <input name="vidrio_max" class="form-control" min="1" type="number" required />
                   </div>
                 </div>
               </div>
@@ -69,7 +69,7 @@
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon"></span>
-                    <input name="plastico_max" class="form-control"  type="text">
+                    <input name="plastico_max" class="form-control" min="1" type="number" required/>
                   </div>
                 </div>
               </div>
@@ -81,9 +81,9 @@
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon"></span>
-                    <input type="label" id="latitudScript" name="latitud" class="form-control" readonly="readonly">
+                    <input type="label" id="latitudScript" name="latitud" class="form-control" readonly="readonly" required />
                     <span class="input-group-addon"></span>
-                    <input type="label" id="longitudScript" name="longitud" class="form-control" readonly="readonly" >
+                    <input type="label" id="longitudScript" name="longitud" class="form-control" readonly="readonly" required/>
                   </div>
                 </div>
               </div>

@@ -16,7 +16,7 @@
           <div class="col-md-8 inputGroupContainer">
             <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-ok"></i></span>
-              <input  name="nombre" class="form-control"  type="text">
+              <input  name="nombre" class="form-control" title="Se necesita un Nombre"  type="text" required>
             </div>
           </div>
         </div>
@@ -27,7 +27,7 @@
         <div class="col-md-8 inputGroupContainer">
           <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-align-left"></i></span>
-            <textarea class="form-control" name="descripcion" id="message-text"></textarea>
+            <textarea class="form-control" name="descripcion" title="Se necesita una Descripción" id="message-text" required></textarea>
           </div>
         </div>
       </div>
@@ -38,7 +38,7 @@
       <div class="col-md-8 inputGroupContainer">
         <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-star-empty"></i></span>
-          <input  name="req_puntos" class="form-control"  type="number">
+          <input  name="req_puntos" class="form-control" min="1" type="number">
         </div>
       </div>
     </div>
@@ -51,9 +51,9 @@
         <span class="input-group-addon"><i class="glyphicon glyphicon-th-list"></i></span>
         <select name="tipo" class="form-control">
           <option value="0" selected="">--seleccionar--</option> 
-          <option value="1">Tipo 1</option> 
-          <option value="2">Tipo 2</option>
-          <option value="3">Tipo 3</option>
+          <option value="1">Producto</option> 
+          <option value="2">Beca</option>
+          <option value="3">Descuentos</option>
         </select>
       </div>
     </div>
@@ -65,7 +65,7 @@
   <div class="col-md-8 inputGroupContainer">
     <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-warning-sign"></i></span>
-      <input  name="cantidad" class="form-control"  type="number">
+      <input  name="cantidad" class="form-control" min="1"  type="number">
     </div>
   </div>
 </div>

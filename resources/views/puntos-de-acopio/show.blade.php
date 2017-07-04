@@ -16,68 +16,56 @@
                  
                  <div class="col-sm-5">
                     <div class="well">
-                          <div class="row">
-                                 <div class="form-group">
-                                  <div class="col-md-12 inputGroupContainer">
-                                    <div class="input-group">
-                                      <span class="input-group-addon"></i></span>
-                                      <label name="nombre" class="form-control"  type="text">{{$collectionPoint->nombre}}</label>
-                                    </div>
-                                  </div>
-                                </div>
-                          </div><br>
-
-                          <div class="row">
-                             <div class="form-group">  
-                              <div class="col-md-12 inputGroupContainer">
-                                <div class="input-group">
-                                  <span class="input-group-addon"></span>
-                                  <label name="direccion" class="form-control" type="text">{{$collectionPoint->direccion}}</label>
-                                </div>
-                              </div>
-                            </div>
-                           </div><br>
-                           <div class="row">
-                             <div class="form-group">
-                              <div class="col-md-12 inputGroupContainer">
-                                <div class="input-group">
-                                  <span class="input-group-addon"></span>
-                                  <label name="distrito" class="form-control"  type="text">{{$collectionPoint->distrito}}</label>
-                                </div>
-                              </div>
-                            </div>
-                           </div><br>
-
-                           <div class="row">
-                            <div class="form-group">
-                              <div class="col-md-12 inputGroupContainer">
-                                <div class="input-group">
-                                  <span class="input-group-addon"></span>
-                                  <label name="papel_max" class="form-control"  type="text">{{$collectionPoint->papel_max}}</label>
-                                </div>
-                              </div>
-                            </div>
-                           </div><br>
-                          <div class="row">
-                          <div class="form-group">
-                              <div class="col-md-12 inputGroupContainer">
-                                <div class="input-group">
-                                  <span class="input-group-addon"></span>
-                                  <label name="vidrio_max" class="form-control"  type="text">{{$collectionPoint->vidrio_max}}</label>
-                                </div>
-                              </div>
-                            </div>
-                           </div><br>
-                          <div class="row">
-                              <div class="form-group">
-                              <div class="col-md-12 inputGroupContainer">
-                                <div class="input-group">
-                                  <span class="input-group-addon"></span>
-                                  <label name="plastico_max" class="form-control"  type="text">{{$collectionPoint->plastico_max}}</label>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                          <table style="height: 300px">
+                           <tr>
+                             <td>
+                               <label class="input-group" style="width: 130px">Nombre:</label>
+                             </td>
+                             <td>
+                               <label name="nombre" class="form-control" style="width: 300px" type="text">{{$collectionPoint->nombre}}</label>
+                             </td>
+                           </tr>
+                           <tr>
+                             <td>
+                               <label class="input-group">Dirección: </label>
+                             </td>
+                             <td>
+                               <label name="direccion" class="form-control" type="text">{{$collectionPoint->direccion}}</label>
+                             </td>
+                           </tr>
+                           <tr>
+                             <td>
+                               <label class="input-group">Distrito: </label>
+                             </td>
+                             <td>
+                               <label name="distrito" class="form-control"  type="text">{{$collectionPoint->distrito}}</label>
+                             </td>
+                           </tr>
+                            <tr>
+                              <td>
+                                <label class="input-group">Papel máximo: </label>
+                              </td>
+                              <td>
+                                <label name="papel_max" class="form-control"  type="text">{{$collectionPoint->papel_max}}</label>
+                              </td>
+                            </tr>
+                             <tr>
+                               <td>
+                                  <label class="input-group">Pástico máximo: </label>
+                               </td>
+                               <td>
+                                  <label name="papel_max" class="form-control"  type="text">{{$collectionPoint->plastico_max}}</label>
+                               </td>
+                             </tr> 
+                             <tr>
+                               <td>
+                                    <label class="input-group">Vidrio máximo: </label>
+                               </td>
+                               <td>
+                                    <label name="vidrio_max" class="form-control"  type="text">{{$collectionPoint->vidrio_max}}</label>
+                               </td>
+                             </tr>
+                           </table>
                     </div>
                  </div>
 

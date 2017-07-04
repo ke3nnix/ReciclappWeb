@@ -13,7 +13,7 @@
                   <div class="col-md-6 inputGroupContainer">
                     <div class="input-group">
                       <span class="input-group-addon"></span>
-                      <input  name="nombre" class="form-control"  type="text" value="{{$user->nombre}}">
+                      <input  name="nombre" class="form-control"  type="text" title="Se necesita un Nombre" value="{{$user->nombre}}" required>
                     </div>
                   </div>
                 </div>
@@ -24,7 +24,7 @@
                       <div class="col-md-6 inputGroupContainer">
                         <div class="input-group">
                           <span class="input-group-addon"></span>
-                          <input name="apellido" class="form-control" type="text" value="{{$user->apellido}}">
+                          <input name="apellido" class="form-control" type="text" title="Se necesita un Apellido" value="{{$user->apellido}}" required>
                         </div>
                       </div>
                     </div>
@@ -35,7 +35,7 @@
                       <div class="col-md-6 inputGroupContainer">
                         <div class="input-group">
                           <span class="input-group-addon"></span>
-                          <input name="email" class="form-control"  type="text" value="{{ $user->email}}">
+                          <input name="email" class="form-control"  type="text" value="{{ $user->email}}" required>
                         </div>
                       </div>
                     </div>
@@ -47,7 +47,7 @@
                       <div class="col-md-6 inputGroupContainer">
                         <div class="input-group">
                           <span class="input-group-addon"></span>
-                          <input name="password" class="form-control"  type="password">
+                          <input name="password" class="form-control" minlength="6" maxlength="255" size="255"  type="password" required>
                         </div>
                       </div>
                     </div>
@@ -58,7 +58,7 @@
                       <div class="col-md-6 inputGroupContainer">
                         <div class="input-group">
                           <span class="input-group-addon"></span>
-                          <select name="tipo" class="form-control">
+                          <select name="tipo" class="form-control" required>
                             @if($user->tipo==3)
                               <option value="0">--Seleccionar--</option>
                               <option value="3" selected>Adminsitrador</option>
@@ -80,7 +80,7 @@
                       <div class="col-md-6 inputGroupContainer">
                         <div class="input-group">
                           <span class="input-group-addon"></span>
-                          <input name="dni" class="form-control"  type="text" value="{{ $user->dni}}">
+                          <input name="dni" class="form-control" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" title="Se necesita DNI" placeholder="Número de 8 dígitos" minlength="8" maxlength="8" size="8"  type="text" value="{{ $user->dni}}">
                         </div>
                       </div>
                     </div>
@@ -91,7 +91,7 @@
                       <div class="col-md-6 inputGroupContainer">
                         <div class="input-group">
                           <span class="input-group-addon"></span>
-                          <input name="direccion" class="form-control"  type="text" value="{{ $user->direccion}}">
+                          <input name="direccion" class="form-control" title="Se necesita una Dirección" type="text" value="{{ $user->direccion}}" required>
                         </div>
                       </div>
                     </div>
@@ -101,7 +101,7 @@
                       <div class="col-md-6 inputGroupContainer">
                         <div class="input-group">
                           <span class="input-group-addon"></span>
-                          <input name="distrito" class="form-control"  type="text" value="{{ $user->distrito}}">
+                          <input name="distrito" class="form-control" title="Se necesita una Distrito" type="text" value="{{ $user->distrito}}" required>
                         </div>
                       </div>
                     </div>
@@ -112,7 +112,7 @@
                       <div class="col-md-6 inputGroupContainer">
                         <div class="input-group">
                           <span class="input-group-addon"></span>
-                          <input name="nacimiento" class="form-control"  type="date" value="{{ $user->nacimiento}}">
+                          <input name="nacimiento" class="form-control"  type="date" value="{{ $user->nacimiento}}" required>
                         </div>
                       </div>
                     </div>

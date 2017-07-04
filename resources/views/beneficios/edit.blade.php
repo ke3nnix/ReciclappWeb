@@ -17,7 +17,7 @@
                                             <div class="col-md-8 inputGroupContainer">
                                               <div class="input-group">
                                                 <span class="input-group-addon"><i class="glyphicon glyphicon-ok"></i></span>
-                                                <input  name="nombre" class="form-control"  type="text" value="{{$beneficio->nombre}}">
+                                                <input  name="nombre" class="form-control" title="Se necesita un Nombre"  type="text" value="{{$beneficio->nombre}}" required>
                                               </div>
                                             </div>
                                           </div>
@@ -28,7 +28,7 @@
                                             <div class="col-md-8 inputGroupContainer">
                                               <div class="input-group">
                                                 <span class="input-group-addon"><i class="glyphicon glyphicon-align-left"></i></span>
-                                                <textarea class="form-control" name="descripcion" id="message-text">{{$beneficio->descripcion}}</textarea>
+                                                <textarea class="form-control" name="descripcion" id="message-text" title="Se necesita una Descripción" required>{{$beneficio->descripcion}}</textarea>
                                               </div>
                                             </div>
                                           </div>
@@ -39,7 +39,7 @@
                                             <div class="col-md-8 inputGroupContainer">
                                               <div class="input-group">
                                                 <span class="input-group-addon"><i class="glyphicon glyphicon-star-empty"></i></span>
-                                                <input  name="req_puntos" class="form-control"  type="number" value="{{$beneficio->req_puntos}}">
+                                                <input  name="req_puntos" class="form-control" min="1" type="number" value="{{$beneficio->req_puntos}}" required>
                                               </div>
                                             </div>
                                           </div>
@@ -50,24 +50,24 @@
                                             <div class="col-md-8 inputGroupContainer">
                                               <div class="input-group">
                                                 <span class="input-group-addon"><i class="glyphicon glyphicon-th-list"></i></span>
-                                                <select name="tipo" class="form-control">
+                                                <select name="tipo" class="form-control" required>
                                                 @if($beneficio->tipo==1)
                                                   <option value="0">--Seleccionar--</option>
-                                                  <option value="1" selected>Tipo 1</option>
-                                                  <option value="2">Tipo 2</option>
-                                                  <option value="3">Tipo 3</option>
+                                                  <option value="1" selected>Producto</option>
+                                                  <option value="2">Becas</option>
+                                                  <option value="3">Descuentos</option>
                                                 @endif
                                                 @if($beneficio->tipo==2)
                                                   <option value="0">--Seleccionar--</option>
-                                                  <option value="1">Tipo 1</option>
-                                                  <option value="2" selected>Tipo 2</option>
-                                                  <option value="3">Tipo 3</option>
+                                                  <option value="1">Producto</option>
+                                                  <option value="2" selected>Becas</option>
+                                                  <option value="3">Decuentos</option>
                                                 @endif
                                                 @if($beneficio->tipo==3)
                                                   <option value="0">--Seleccionar--</option>
-                                                  <option value="1">Tipo 1</option>
-                                                  <option value="2">Tipo 2</option>
-                                                  <option value="3" selected>Tipo 3</option>
+                                                  <option value="1">Producto</option>
+                                                  <option value="2">Becas</option>
+                                                  <option value="3" selected>Descuentos</option>
                                                 @endif
                                                 </select>
                                               </div>
@@ -80,7 +80,7 @@
                                             <div class="col-md-8 inputGroupContainer">
                                               <div class="input-group">
                                                 <span class="input-group-addon"><i class="glyphicon glyphicon-warning-sign"></i></span>
-                                                <input  name="cantidad" class="form-control"  type="number" value="{{$beneficio->cantidad}}">
+                                                <input  name="cantidad" class="form-control" min="1" type="number" value="{{$beneficio->cantidad}}" required>
                                               </div>
                                             </div>
                                           </div>

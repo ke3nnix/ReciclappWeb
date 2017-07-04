@@ -38,22 +38,26 @@
                 <th scope="rowgroup" style="vertical-align:middle">Nombre</th>
                 <th scope="rowgroup" style="vertical-align:middle">Apellido</th>
                 <th scope="rowgroup" style="vertical-align:middle">Distrito</th>
+                <th scope="rowgroup" style="vertical-align:middle">Distrito</th>
                 <th scope="colgroup" style="vertical-align:middle">Estado</th>
           </tr>
         </thead>
         <tbody>
          @foreach($users as $row)
            <tr id="{{$row->usuario_id}}"> 
-              <td style="width: 100px"> 
+              <td > 
                 <p>{{$row->nombre}}</p> 
               </td> 
-               <td style="width: 80px"> 
+               <td > 
                 <p>{{$row->apellido}}</p> 
               </td> 
-              <td style="width: 80px"> 
+              <td> 
                 <p> {{$row->distrito}}</p> 
-              </td> 
-              <td style="width: 80px">
+              </td>
+              <td>
+                <p> {{$row->email}}</p>
+              </td>   
+              <td>
                <button class="btn btn-primary btn-xs" onclick="window.location.href='{{route('usuarios.show',['id'=>$row->usuario_id])}}'">Ver</button>
                 <button class="btn btn-success btn-xs"  onclick="window.location.href='{{route('usuarios.edit',['id'=>$row->usuario_id])}}'" >Editar</button> 
               

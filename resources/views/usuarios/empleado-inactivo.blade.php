@@ -39,22 +39,23 @@
                 <th scope="rowgroup" style="vertical-align:middle">Nombre</th>
                 <th scope="rowgroup" style="vertical-align:middle">Apellido</th>
                 <th scope="rowgroup" style="vertical-align:middle">Distrito</th>
+                <th scope="rowgroup" style="vertical-align:middle">Distrito</th>
                 <th scope="colgroup" style="vertical-align:middle">Acción</th>
           </tr>
         </thead>
         <tbody>
          @foreach($users as $row)
            <tr id="{{$row->usuario_id}}"> 
-              <td style="width: 100px"> 
+              <td > 
                 <p>{{$row->nombre}}</p> 
               </td> 
-               <td style="width: 80px"> 
+               <td> 
                 <p>{{$row->apellido}}</p> 
               </td> 
-              <td style="width: 80px"> 
+              <td> 
                 <p> {{$row->distrito}}</p> 
               </td> 
-              <td style="width: 80px">
+              <td >
                <button type="submit" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModaldesactivar{{$row->usuario_id}}"><span class="glyphicon glyphicon-ok"></span>Activar</button>
                   {{Form::open(['route'=>['usuarios.destroy',$row->usuario_id], 'method'=>'DELETE'])}}
                    <div id="myModaldesactivar{{$row->usuario_id}}" class="modal fade" role="dialog"> 

@@ -13,7 +13,7 @@
             <div class="col-md-6 inputGroupContainer">
               <div class="input-group">
                 <span class="input-group-addon"></span>
-                <input  name="nombre" class="form-control"  type="text" value="{{ $collectionPoint->nombre }}">
+                <input  name="nombre" class="form-control" title="Se necesita un Nombre"  type="text" value="{{ $collectionPoint->nombre }}" required>
               </div>
             </div>
           </div>
@@ -24,7 +24,7 @@
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon"></span>
-                    <input name="direccion" class="form-control" type="text" value="{{$collectionPoint->direccion}}">
+                    <input name="direccion" class="form-control" type="text" title="Se necesita una Dirección" value="{{$collectionPoint->direccion}}" required>
                   </div>
                 </div>
               </div>
@@ -35,7 +35,7 @@
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon"></span>
-                    <input name="distrito" class="form-control"  type="text" value="{{ $collectionPoint->distrito}}">
+                    <input name="distrito" class="form-control" title="Se necesita un Distrito" type="text" value="{{ $collectionPoint->distrito}}" required>
                   </div>
                 </div>
               </div>
@@ -47,7 +47,7 @@
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon"></span>
-                    <input name="papel_max" class="form-control"  type="text" value="{{$collectionPoint->papel_max}}">
+                    <input name="papel_max" class="form-control"  type="number" min="1" value="{{$collectionPoint->papel_max}}" required>
                   </div>
                 </div>
               </div>
@@ -58,7 +58,7 @@
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon"></span>
-                    <input name="vidrio_max" class="form-control"  type="text" value="{{ $collectionPoint->vidrio_max}}">
+                    <input name="vidrio_max" class="form-control"  type="number" min="1" value="{{ $collectionPoint->vidrio_max}}" required>
                   </div>
                 </div>
               </div>
@@ -69,7 +69,7 @@
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon"></span>
-                    <input name="plastico_max" class="form-control"  type="text" value="{{ $collectionPoint->plastico_max}}">
+                    <input name="plastico_max" class="form-control"  type="number" min="1"  value="{{ $collectionPoint->plastico_max}}" required>
                   </div>
                 </div>
               </div>
@@ -98,7 +98,7 @@
                         <div class="col-md-12 inputGroupContainer">
                           <div class="input-group">
                            
-                            <input id="latitudScript" name="latitud" class="form-control"  type="text" value="{{$collectionPoint->latitud}}"  style="visibility:hidden"/>
+                            <input id="latitudScript" name="latitud" class="form-control"  type="text" value="{{$collectionPoint->latitud}}"  style="visibility:hidden" required />
                           </div>
                         </div>
                       </div>
@@ -108,7 +108,7 @@
                       <div class="form-group">
                         <div class="col-md-12 inputGroupContainer">
                           <div class="input-group">
-                            <input id="longitudScript" name="longitud" class="form-control"  type="text" value="{{$collectionPoint->longitud}}"  style="visibility:hidden"/>
+                            <input id="longitudScript" name="longitud" class="form-control"  type="text" value="{{$collectionPoint->longitud}}"  style="visibility:hidden" required />
                           </div>
                         </div>
                       </div>        

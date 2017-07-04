@@ -13,7 +13,7 @@
             <div class="col-md-6 inputGroupContainer">
               <div class="input-group">
                 <span class="input-group-addon"></i></span>
-                <input  name="nombre" class="form-control"  type="text">
+                <input  name="nombre" class="form-control" title="Se necesita un Nombre"  type="text" required>
               </div>
             </div>
           </div>
@@ -24,7 +24,7 @@
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon"></span>
-                    <input name="apellido" class="form-control" type="text">
+                    <input name="apellido" class="form-control" title="Se necesita un Apellido" type="text" required>
                   </div>
                 </div>
               </div>
@@ -35,7 +35,7 @@
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon"></span>
-                    <input name="email" class="form-control"  type="email">
+                    <input name="email" class="form-control"  type="email" required>
                   </div>
                 </div>
               </div>
@@ -47,7 +47,7 @@
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon"></span>
-                    <input name="password" class="form-control"  type="password">
+                    <input name="password" class="form-control"  type="password" required>
                   </div>
                 </div>
               </div>
@@ -58,7 +58,7 @@
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon"></span>
-                    <select name="tipo" class="form-control">
+                    <select name="tipo" class="form-control" required>
                       <option value="0" selected="">--Seleccionar--</option>
                       <option value="3" >Adminsitrador</option>
                       <option value="2">Empleado</option>
@@ -73,7 +73,7 @@
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon"></span>
-                    <input name="dni" class="form-control"  type="text">
+                    <input name="dni" class="form-control"  onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" title="Se necesita RUC" placeholder="Número de 8 dígitos" minlength="8" maxlength="8" size="8" type="text" required>
                   </div>
                 </div>
               </div>
@@ -84,7 +84,7 @@
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon"></span>
-                    <input name="direccion" class="form-control"  type="text">
+                    <input name="direccion" class="form-control" title="Se necesita una Dirección" type="text" required>
                   </div>
                 </div>
               </div>
@@ -95,7 +95,7 @@
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon"></span>
-                    <input name="distrito" class="form-control"  type="text">
+                    <input name="distrito" class="form-control" title="Se necesita un Distrito" type="text" required>
                   </div>
                 </div>
               </div>
@@ -106,7 +106,7 @@
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon"></span>
-                    <input name="nacimiento" class="form-control"  type="date">
+                    <input name="nacimiento" class="form-control"  type="date" required>
                   </div>
                 </div>
               </div>

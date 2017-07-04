@@ -8,65 +8,54 @@
           <div class="row">
                  
                  <div class="col-sm-5">
-                    <div class="well">
-                          <div class="row">
-                                 <div class="form-group">
-                                  <div class="col-md-12 inputGroupContainer">
-                                    <div class="input-group">
-                                      <span class="input-group-addon"></span>
-                                      <label name="nombre" class="form-control"  type="text">{{$user->nombre}}</label>
-                                    </div>
-                                  </div>
-                                </div>
-                          </div><br>
-
-                          <div class="row">
-                             <div class="form-group">  
-                              <div class="col-md-12 inputGroupContainer">
-                                <div class="input-group">
-                                  <span class="input-group-addon"></span>
-                                  <label name="apellido" class="form-control" type="text">{{$user->apellido}}</label>
-                                </div>
-                              </div>
-                            </div>
-                           </div><br>
-                           <div class="row">
-                             <div class="form-group">
-                              <div class="col-md-12 inputGroupContainer">
-                                <div class="input-group">
-                                  <span class="input-group-addon"></span>
-                                  <label name="email" class="form-control"  type="text">{{$user->email}}</label>
-                                </div>
-                              </div>
-                            </div>
-                           </div><br>
-
-                           <div class="row">
-                            <div class="form-group">
-                              <div class="col-md-12 inputGroupContainer">
-                                <div class="input-group">
-                                  <span class="input-group-addon"></span>
-                                  <label name="direccion" class="form-control"  type="text">{{$user->direccion}}</label>
-                                </div>
-                              </div>
-                            </div>
-                           </div><br>
-                          <div class="row">
-                          <div class="form-group">
-                              <div class="col-md-12 inputGroupContainer">
-                                <div class="input-group">
-                                  <span class="input-group-addon"></span>
-                                  <label name="distrito" class="form-control"  type="text">{{$user->distrito}}</label>
-                                </div>
-                              </div>
-                            </div>
-                           </div><br>
-                          <div class="row">
-                              <div class="form-group">
-                              <div class="col-md-12 inputGroupContainer">
-                                <div class="input-group">
-                                  <span class="input-group-addon"></span>
-                                  @if($user->tipo==3)
+                    <div class="well" style="width: 550px">
+                        <table style="height: 350px">
+                          <tr>
+                            <td>
+                              <label class="input-group">Nombre: </label>       
+                            </td>
+                            <td>
+                              <label name="nombre" class="form-control" style="width: 400px" type="text">{{$user->nombre}}</label>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label class="input-group">Apellido: </label>
+                            </td>
+                            <td>
+                              <label name="apellido" class="form-control"  type="text">{{$user->apellido}}</label>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label class="input-group">Correo: </label>
+                            </td>
+                            <td>
+                              <label name="email" class="form-control"  type="text">{{$user->email}}</label>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label class="input-group">Dirección: </label>
+                            </td>
+                            <td>
+                              <label name="direccion" class="form-control"  type="text">{{$user->direccion}}</label>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label class="input-group">Distrito: </label>
+                            </td>
+                            <td>
+                              <label name="distrito" class="form-control"  type="text">{{$user->distrito}}</label>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label class="input-group">Tipo: </label>   
+                            </td>
+                            <td>
+                              @if($user->tipo==3)
                                       <label name="tipo" class="form-control"  type="text">Administrador</label>
                                   @endif
                                   @if($user->tipo==2)
@@ -75,20 +64,19 @@
                                   @if($user->tipo==1)
                                       <label name="tipo" class="form-control"  type="text">Colaborador</label>
                                   @endif
-                                </div>
-                              </div>
-                            </div>
-                          </div><br>
-                           <div class="row">
-                          <div class="form-group">
-                              <div class="col-md-12 inputGroupContainer">
-                                <div class="input-group">
-                                  <span class="input-group-addon"></span>
-                                  <label name="nacimiento" class="form-control"  type="text">{{$user->nacimiento}}</label>
-                                </div>
-                              </div>
-                            </div>
-                           </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label class="input-group">Fecha de Nacimento: </label>   
+                            </td>
+                            <td>
+                              <label name="nacimiento" class="form-control"  type="text">{{$user->nacimiento}}</label>
+                            </td>
+                          </tr>
+                          
+                        </table>
+                          
                     </div>
                  </div>
 
