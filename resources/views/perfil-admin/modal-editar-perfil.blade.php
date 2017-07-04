@@ -1,12 +1,5 @@
-@extends('base')
-@section('title', 'Editar usuario')
-@section('content')
-   
-     {{Form::open(['route'=>['usuarios.update',$user->usuario_id], 'method'=>'PUT'])}}
-       
-           {{csrf_field()}}
-
-  <div style="position: relative;right: -100px">
+{{Form::open(['route'=>['usuarios.update',$user->usuario_id], 'method'=>'PUT'])}}
+                            <div style="position: relative;right: -100px">
                 <div class="row">
                  <div class="form-group">
                   <label  class="col-md-4 control-label">Nombre</label>  
@@ -116,18 +109,12 @@
                         </div>
                       </div>
                     </div>
-                   </div><br>                           
+                   </div><br>
+                   <div class="modal-footer">
+                   <button type="submit" class="btn btn-success">Guardar</button>
+                   	{{Form::close()}}
+                   	<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                   </div>                           
       </div>
-            
-            
-                <div class="col-md-6 col-md-offset-9" >
-                    <button type="submit" class="btn btn-success">
-                      Actualizar
-                    </button>   
-                    <a href="/usuarios?tipo=administradores&estado=activo" style="background-color: #FC5C5C;color: white" class="btn">Cancelar</a>
-                </div><br>
-        
-    
-      {{Form::close()}}
-         
-@stop
+                             <!--fin del modal  DE MODIFICAR-->
+										

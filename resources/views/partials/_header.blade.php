@@ -5,7 +5,8 @@
                                                $hidden0='hidden';
                                                $hidden1='hidden'; 
                                                $hidden2='hidden'; 
-                                               $hidden3='hidden'; 
+                                               $hidden3='hidden';
+                                               $hidden4='hidden';
                                                $url= $_SERVER["REQUEST_URI"]; 
 
                                                if(strncmp($url,"/puntos-de-acopio",7)===0){ 
@@ -19,6 +20,9 @@
                                                 }
                                                 if(strncmp($url,'/',9)===0){ 
                                                     $hidden0=' '; 
+                                                }
+                                                if(strncmp($url,'/almacen',9)===0){ 
+                                                    $hidden4=' '; 
                                                 }                                    
                                             @endphp
                                     <ol class="breadcrumb {{$hidden0}}">                 
@@ -29,6 +33,8 @@
                                         <li ><samp class="icon voyager-people"></samp> @yield('title')</li></ol>
                                     <ol class="breadcrumb {{$hidden3}}">
                                         <li ><samp class="icon voyager-person"></samp> @yield('title')</li></ol>
+                                    <ol class="breadcrumb {{$hidden4}}">                 
+                                        <li><samp class="icon voyager-bag"></samp> @yield('title')</li></ol>
 
                                 </div>
                                 
