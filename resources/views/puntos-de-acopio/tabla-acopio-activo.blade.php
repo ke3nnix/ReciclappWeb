@@ -1,5 +1,5 @@
  
-              {{Form::open(['route'=>['puntos-de-acopio.update',$row->acopio_id], 'method'=>'PUT'])}}
+              {{Form::open(['route'=>['puntos-de-acopio.recoger',$row->acopio_id], 'method'=>'POST'])}}
               <!--modal para recojo-->
               <div id="myModalrecoger{{$row->acopio_id}}" class="modal fade" role="dialog"> 
                 <div class="modal-dialog ">

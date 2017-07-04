@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\CollectionPoint; 
 use Session; 
 use Charts;
+use App\Models\Waste;
  
  
 class CollectionPointController extends Controller 
@@ -235,9 +236,9 @@ class CollectionPointController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function collect(Request $request)
+     public function collect($acopio)
     {
-        $collectionPoint = CollectionPoint::find($request->acopio_id);
+        $collectionPoint = CollectionPoint::find($acopio);
 
         // $collectionPoints = DB::table('collection_points')
         //                     ->whereIn('id', $request->ids)
@@ -247,28 +248,23 @@ class CollectionPointController extends Controller
             abort(406, 'No se seleccionó ningún punto de acopio existente');
         }
 
-        foreach ($collectionPoints as $collectioPoint) {
-          // acumulando
-          $acumpapel = $acumpapel + $collectioPoint->papel_actual;
-          $acumvidrio = $acumvidrio + $collectioPoint->vidrio_actual;
-          $acumplastico = $acumplastico + $collectioPoint->plastico_actual;
-
-          // reseteando valores
-          $collectioPoint->papel_actual = 0;
-          $collectioPoint->plastico_actual = 0;
-          $collectioPoint->vidrio_actual = 0;
-
-          // guardando objetos
-          $collectioPoint->save();
-        }
-
         // actualizando datos
-        $papel = Waste::where('descripcion','like','papel');
-        $papel->total = $papel->total + $acumpapel;
-        $vidrio = Waste::where('descripcion','like','vidrio');
-        $vidrio->total = $vidrio->total + $acumvidrio;
-        $plastico = Waste::where('descripcion','like','plastico');
-        $plastico->total = $plastico->total + $acumplastico;
+        $papel = Waste::where('descripcion','like','papel')->first();
+        $papel->total = $papel->total + $collectionPoint->papel_actual;
+        $vidrio = Waste::where('descripcion','like','vidrio')->first();
+        $vidrio->total = $vidrio->total + $collectionPoint->vidrio_actual;
+        $plastico = Waste::where('descripcion','like','plástico')->first();
+        $plastico->total = $plastico->total + $collectionPoint->plastico_actual;
+
+        // reseteando valores
+        $collectionPoint->papel_actual = 0;
+        $collectionPoint->plastico_actual = 0;
+        $collectionPoint->vidrio_actual = 0;
+
+        // guardando objetos
+        $collectionPoint->save();
+
+
 
         // salvando datos
         $papel->save();
