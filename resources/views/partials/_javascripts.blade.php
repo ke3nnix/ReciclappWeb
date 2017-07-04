@@ -37,3 +37,7 @@
 {!!Html::script('../vendor/tcg/voyager/publishable/assets/js/app.js')!!}
 
 {!!Html::script('../vendor/tcg/voyager/publishable/assets/js/helpers.js')!!} --}}
+{!!Html::script('https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')!!}
+{!!Html::script('../js/script-notificacion.js')!!}
+  <script src=""></script>
+

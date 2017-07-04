@@ -6,6 +6,12 @@
 
   <div class="col-md-12">
     <div class="row">
+    @if(Session::has('exito'))
+       <div class="alert alert-danger pull-left" id="confirmacion" role="alert">
+        {{Session::get('exito')}}
+    </div>
+
+    @endif
       <form action="{{route('sponsors.create')}}">
         <div class="pull-right">
           <button type="submit" class="btn btn-success">Agregar</button>
@@ -14,7 +20,7 @@
       </form>
     </div><br>
     
-    <div class="row">
+<div class="row">
       <ul class="nav nav-tabs">
         <li class="active"><a  href="#">Activos</a></li>
         <li><a href="/sponsors?estado=inactivo">Inactivos</a></li>
