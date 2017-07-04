@@ -29,7 +29,8 @@
                                 @php 
                                         $class1=''; 
                                         $class2=''; 
-                                        $class3=''; 
+                                        $class3='';
+                                        $class4=''; 
                                         $url= $_SERVER["REQUEST_URI"]; 
                                         
                                         if(strncmp($url,"/puntos-de-acopio",7)===0){ 
@@ -40,7 +41,10 @@
                                             } 
                                             if(strncmp($url,'/usuarios',9)===0){ 
                                                     $class3='active'; 
-                                            }                                     
+                                            }
+                                            if(strncmp($url,'/almacen',9)===0){ 
+                                                    $class4='active'; 
+                                            }                                         
                                 @endphp
 
 
@@ -81,11 +85,17 @@
                                                         </a>
                                                     </li>
                                                   
-z
                                                 </ul>
                                             </div>
                                         </div>
-                                    </li>-->
+                                    </li>
+
+                                    <li class="{{ $class4 }}">
+                                        <a href="/almacen" target="_self">
+                                            <span class="icon voyager-bag"></span>
+                                            <span class="title">Almacén</span>
+                                        </a>
+                                    </li>
                                 </ul>
                     <!--finish-->
                             </nav>
