@@ -39,8 +39,8 @@
                                         <li ><samp class="icon voyager-person"></samp> @yield('title')</li></ol>
                                     <ol class="breadcrumb {{$hidden4}}">                 
                                         <li><samp class="icon voyager-bag"></samp> @yield('title')</li></ol>
-                                    <ol class="breadcrumb {{$hidden5}}">                 
-                                        <li><img src=" {{ URL::to('/') }}/uploads/avatars/{{ Auth::user()->imagen }} " class="profile-img"> @yield('title')</li></ol>
+                                    {{-- <ol class="breadcrumb {{$hidden5}}">                 
+                                        <li><img src=" {{ URL::to('/') }}/uploads/avatars/{{ Auth::user()->imagen }} " class="profile-img"> @yield('title')</li></ol> --}}
 
                                 </div>
                                 
