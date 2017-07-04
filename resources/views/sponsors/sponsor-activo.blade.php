@@ -14,7 +14,7 @@
       </form>
     </div><br>
     
-    <div class="row">
+<div class="row">
       <ul class="nav nav-tabs">
         <li class="active"><a  href="#">Activos</a></li>
         <li><a href="/sponsors?estado=inactivo">Inactivos</a></li>

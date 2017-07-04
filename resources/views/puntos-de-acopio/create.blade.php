@@ -3,7 +3,7 @@
 @section('content')
    
      {{Form::open(['route'=>'puntos-de-acopio.store', 'method'=>'post'])}}
-
+   
        <div>
            {{csrf_field()}}
       <dir style="position: relative;right: -100px" >
@@ -89,7 +89,7 @@
               </div>
              </div><br>
             
-      </dir>
+      </div>
                          
             <div class="row" style="margin-left: 160px;position: relative;right: -100px" >
               <div id="map"  style="width:700px;height:300px"></div>

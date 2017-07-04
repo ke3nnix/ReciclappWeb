@@ -1,8 +1,7 @@
   <div class="input-group">
   <a id="desactivar" data-toggle="modal" data-target="#myModalmodificar{{$beneficio->beneficio_id}}" class="btn btn-primary btn-xs" ><span class="glyphicon glyphicon-pencil"></span></a> 
     <!-- MODAL DE BENEFICIO MODIFICAR-->
-   {{Form::open(['route'=>['beneficios.update',$sponsor->sponsor_id,$beneficio->beneficio_id], 'method'=>'PUT'])}}
-
+{{Form::open(['route'=>['beneficios.destroy','sponsor_id' => $sponsor->sponsor_id, 'beneficio_id' => $beneficio->beneficio_id], 'method'=>'PUT'])}}
                              <div id="myModalmodificar{{$beneficio->beneficio_id}}" class="modal fade" role="dialog"> 
                                 <div class="modal-dialog ">
                                   <!-- Modal content-->
