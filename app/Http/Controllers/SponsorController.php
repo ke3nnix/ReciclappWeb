@@ -53,34 +53,23 @@ class SponsorController extends Controller
     public function store(Request $request)
     {
 
-        // Verificando si sponsor ya existe en el sistema
-        $sponsor = Sponsor::where('ruc', $request->ruc)->get();
+        // Almacenando datos
+        $sponsor = new Sponsor;
+        $sponsor->razon_social = $request->razon_social;
+        $sponsor->ruc = $request->ruc;
+        $sponsor->direccion = $request->direccion;
+        $sponsor->telefono = $request->telefono;
+        $sponsor->distrito = $request->distrito;
+        $sponsor->contacto = $request->contacto;
+        $sponsor->estado = 1; // activo - 0: inactivo
 
-        if(!is_null($sponsor)) {
-            $sponsor->estado = 1;
-        }
-        else {
-            // Almacenando datos
-            $sponsor = new Sponsor;
-            $sponsor->razon_social = $request->razon_social;
-            $sponsor->ruc = $request->ruc;
-            $sponsor->direccion = $request->direccion;
-            $sponsor->telefono = $request->telefono;
-            $sponsor->distrito = $request->distrito;
-            $sponsor->contacto = $request->contacto;
-            $sponsor->estado = 1; // activo - 0: inactivo
-
-            $sponsor->save();
-
-            // Enviando mensaje de estado
-            Session::flash('exito' , 'El auspiciador fue exitosamente re-activado');
-        }
+        $sponsor->save();
 
         // Enviando mensaje de estado
         Session::flash('exito' , 'El auspiciador fue exitosamente agregado');
 
         // Retornando vista: sponsors/show.blade.php
-        return redirect()->route('sponsors.show', $sponsor->sponsor_id);
+        return redirect()->route('beneficios.index', $sponsor->sponsor_id);
     }
 
     /**
