@@ -119,8 +119,8 @@ class UserController extends Controller
             return response()->json(['mensaje' => 'El usuario se añadió exisotamente'], 201);
         }
 
-        // Retornar vista
-        return view('usuarios.show', $user->usuario_id);                
+       // Retornar vista
+        return redirect()->route('usuarios.show', $user->usuario_id);                
     }
 
     /**
@@ -236,6 +236,29 @@ class UserController extends Controller
     {
         echo $request->nombre;
         return dd($request->hasFile('imagen'));
+    }
+
+    public function update_profile()
+    {
+
+        // Guardando data
+        $user = Auth::user();
+
+        if(!is_null( $request->nombre )){ $user->nombre = $request->nombre; }
+        if(!is_null( $request->apellido )){ $user->apellido = $request->apellido; }
+        if(!is_null( $request->password )){$user->password = bcrypt($request->password);}
+        if(!is_null( $request->dni )){ $user->dni = $request->dni; }
+        if(!is_null( $request->estado )){ $user->estado = $request->estado; }
+        if(!is_null( $request->tipo )){ $user->tipo = $request->tipo; }
+        if(!is_null( $request->direccion )){ $user->direccion = $request->direccion; }
+        if(!is_null( $request->nacimiento )){ $user->nacimiento = $request->nacimiento; }
+
+        $user->save();
+
+        $id = $user->usuario_id;
+
+               // Retornar vista
+        return redirect()->route('perfil');    
     }
 
 }

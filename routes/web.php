@@ -38,6 +38,12 @@ Route::group(['middleware' => 'auth'], function() {
         return view('perfil-admin.perfil-admin');
     });
 
+    Route::name('edit.perfil')->get('perfil/edit', function() {
+        return view('perfil-admin.edit');
+    });
+    
+    Route::post('perfil/edit', 'UserController@update_profile')->name('perfil.edit');
+
     Route::resource('puntos-de-acopio', 'CollectionPointController');
 
     Route::resource('sponsors', 'SponsorController');
@@ -47,6 +53,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('usuarios', 'UserController');
 
     Route::post('puntos-de-acopio/{acopio}/recoger', 'CollectionPointController@collect')->name('puntos-de-acopio.recoger');
+
+    Route::get('almacen', 'WasteController@index')->name('desechos.index');
 
 });
 
