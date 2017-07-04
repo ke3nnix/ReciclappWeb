@@ -64,37 +64,37 @@
 // });
 
 // GENERADOR DE BENEFICIOS
-$factory->define(App\Models\Benefit::class, function (Faker\Generator $faker) {
-    $faker = Faker\Factory::create('es_PE');
+// $factory->define(App\Models\Benefit::class, function (Faker\Generator $faker) {
+//     $faker = Faker\Factory::create('es_PE');
 
-    return [
-        'nombre' => 'Beneficio '.$faker->numberBetween($min = 10, $max = 100),
-        'descripcion' => $faker->realText($maxNbChars = 200, $indexSize = 2),
-        'req_puntos' => $faker->numberBetween($min = 500, $max = 2000),
-        'tipo' => $faker->numberBetween($min = 1, $max = 3),
-        'cantidad' => $faker->numberBetween($min = 20, $max = 200),
-        'sponsor_id' => $faker->numberBetween($min = 1, $max = 19),
-        'estado' => $faker->numberBetween($min = 0, $max = 1),
-         'created_at' => $faker->dateTime(),
-         'updated_at' => $faker->dateTime(),
-    ];
-});
+//     return [
+//         'nombre' => 'Beneficio '.$faker->numberBetween($min = 10, $max = 100),
+//         'descripcion' => $faker->realText($maxNbChars = 200, $indexSize = 2),
+//         'req_puntos' => $faker->numberBetween($min = 500, $max = 2000),
+//         'tipo' => $faker->numberBetween($min = 1, $max = 3),
+//         'cantidad' => $faker->numberBetween($min = 20, $max = 200),
+//         'sponsor_id' => $faker->numberBetween($min = 1, $max = 19),
+//         'estado' => $faker->numberBetween($min = 0, $max = 1),
+//          'created_at' => $faker->dateTime(),
+//          'updated_at' => $faker->dateTime(),
+//     ];
+// });
 
 // GENERADOR DE SPONSORS
-$factory->define(App\Models\Sponsor::class, function (Faker\Generator $faker) {
-    $faker = Faker\Factory::create('es_PE');
+// $factory->define(App\Models\Sponsor::class, function (Faker\Generator $faker) {
+//     $faker = Faker\Factory::create('es_PE');
 
-    $fecha = $faker->dateTimeBetween($startDate = '-2 years', $endDate = '-1 years', $timezone = date_default_timezone_get());
+//     $fecha = $faker->dateTimeBetween($startDate = '-2 years', $endDate = '-1 years', $timezone = date_default_timezone_get());
 
-    return [
-        'razon_social' => $faker->company,
-        'ruc' => $faker->numerify('20#########'),
-        'direccion' => $faker->address,
-        'telefono' => $faker->numerify('+01 ###-####'),
-        'contacto' => $faker->name($gender = null|'male'|'female'),
-        'distrito' =>$faker->state,
-        'estado' => 1,
-         'created_at' => $fecha,
-         'updated_at' => $fecha,
-    ];
-});
+//     return [
+//         'razon_social' => $faker->company,
+//         'ruc' => $faker->numerify('20#########'),
+//         'direccion' => $faker->address,
+//         'telefono' => $faker->numerify('+01 ###-####'),
+//         'contacto' => $faker->name($gender = null|'male'|'female'),
+//         'distrito' =>$faker->state,
+//         'estado' => 1,
+//          'created_at' => $fecha,
+//          'updated_at' => $fecha,
+//     ];
+// });
