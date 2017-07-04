@@ -237,12 +237,14 @@ class CollectionPointController extends Controller
 
      public function collect(Request $request)
     {
-        $collectionPoints = DB::table('collection_points')
-                            ->whereIn('id', $request->ids)
-                            ->get();
+        $collectionPoint = CollectionPoint::find($request->acopio_id);
 
-        if (is_null($collectionPoints)) {
-            abort(406, 'No se seleccionó ningún punto de acopio');
+        // $collectionPoints = DB::table('collection_points')
+        //                     ->whereIn('id', $request->ids)
+        //                     ->get();
+
+        if (is_null($collectionPoint)) {
+            abort(406, 'No se seleccionó ningún punto de acopio existente');
         }
 
         foreach ($collectionPoints as $collectioPoint) {
@@ -273,7 +275,8 @@ class CollectionPointController extends Controller
         $vidrio->save();
         $plastico->save();
 
-        return  redirect()->route('puntos-de-acopio.index', [ 'estado' => 'activo' ]);
+        $collectionPoints = CollectionPoint::where('estado', 1)->orderBy('acopio_id', 'ACS')->paginate(10); 
+        return view('puntos-de-acopio.punto-de-acopio-activo',compact('collectionPoints')); 
     }
 
     public function changeStatus($id)

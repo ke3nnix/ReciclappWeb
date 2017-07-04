@@ -6,7 +6,7 @@
 
        <div>
            {{csrf_field()}}
-      <dir style="position: relative;right: -100px">
+      <div style="position: relative;right: -100px">
           <div class="row">
            <div class="form-group">
             <label  class="col-md-4 control-label">Nombre</label>  
@@ -111,7 +111,7 @@
                 </div>
               </div>
              </div>         
-      </dir>                
+      </div>                
             
              <div class="row"  style="margin-left: 10px;">
                 <div class="col-md-6 col-md-offset-9">

@@ -93,20 +93,9 @@ class UserController extends Controller
                 return response()->json(['mensaje' => 'El usuario ya existe.'], 403);
             }
         }
-        else {
-            $this->validate($request , array( 
-                'nombre' => 'required|max:255', 
-                'apellido' => 'required|max:255', 
-                'email' => 'required|email|unique', 
-                'password' => 'required|string|min:6', 
-                'tipo' => 'numeric|min:1|max:3', 
-                'dni' => 'size:8', 
-                'estado' => 'required|boolean', 
-                'imagen' => 'image',
-                'direccion' => 'max:255', 
-                'distrito' => 'max:255',
-                'nacimiento' => 'date',
-            )); 
+
+        if (User::where('email', '=', $request->email)->exists()) {
+                return abort(404, "Ya existe un usuario con ese nombre");
         }
 
         // Guardando data
@@ -170,20 +159,6 @@ class UserController extends Controller
      */
     public function update(Request $request)
     {
-
-        $this->validate($request , array( 
-                'nombre' => 'max:255', 
-                'apellido' => 'max:255',
-                'password' => 'string|min:6', 
-                'tipo' => 'numeric|min:1|max:3', 
-                'dni' => 'size:8', 
-                'estado' => 'boolean', 
-                'direccion' => 'max:255', 
-                'distrito' => 'max:255', 
-                'nacimiento' => 'date', 
-            )); 
-
-
         // Guardando data
         $user = Auth::user();
 
@@ -212,13 +187,13 @@ class UserController extends Controller
 
         $user->save();
 
+        $id = $user->usuario_id;
+
         if(request()->expectsJson()){
             return response()->json(['mensaje' => 'El usuario ha sido actualizado.', 'data' => $user], 202);
         }
-
-        return $user;
         // Retornar vista
-        return view('usuarios.show', $user->usuario_id); 
+        return redirect()->route('usuarios.show', $id);
     }
 
     /**

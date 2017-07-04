@@ -52,18 +52,9 @@ class SponsorController extends Controller
      */
     public function store(Request $request)
     {
-        // Validando datos
-        $this->validate($request, array(
-            'razon_social' => 'required|max:255',
-            'ruc' => 'required|numeric|max:11',
-            'direccion' => 'required|max:255',
-            'telefono' => 'required|numeric|max:11',
-            'distrito' => 'required|max:255',
-            'contacto' => 'required|max:255',
-        ));
 
         // Verificando si sponsor ya existe en el sistema
-        $sponsor = Sponsor::where('razon_social', $request->razon_social)->get();
+        $sponsor = Sponsor::where('ruc', $request->ruc)->get();
 
         if(!is_null($sponsor)) {
             $sponsor->estado = 1;
@@ -104,7 +95,7 @@ class SponsorController extends Controller
         $sponsor = Sponsor::find($id);
 
         // Retornando vista: sponsors/show.blade.php
-        return view('sponsors.show',compact('sponsor'));
+        return view('beneficios.index',compact('sponsor'));
     }
 
     /**
@@ -131,25 +122,17 @@ class SponsorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Validando datos
-        $this->validate($request, array(
-            'razon_social' => 'required|max:255',
-            'ruc' => 'required|numeric|max:11',
-            'direccion' => 'required|max:255',
-            'telefono' => 'required|numeric|max:11',
-            'distrito' => 'required|max:255',
-            'contacto' => 'required|max:255',
-        ));
 
         // Almacenando datos
         $sponsor = Sponsor::find($id);
+        
         $sponsor->razon_social = $request->razon_social;
         $sponsor->ruc = $request->ruc;
         $sponsor->direccion = $request->direccion;
         $sponsor->telefono = $request->telefono;
         $sponsor->distrito = $request->distrito;
         $sponsor->contacto = $request->contacto;
-        $sponsos->estado = 1; // activo - 0: inactivo        
+        $sponsor->estado = 1; // activo - 0: inactivo        
 
         $sponsor->save();
 

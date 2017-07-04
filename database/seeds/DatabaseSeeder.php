@@ -17,6 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(BenefitsTableSeeder::class);
         $this->call(UserBenefitsTableSeeder::class);
         $this->call(WasteTableSeeder::class);
-        // $this->call(ExchangesTableSeeder::class);
+        $this->call(ExchangesTableSeeder::class);
     }
 }

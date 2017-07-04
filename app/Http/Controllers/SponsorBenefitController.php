@@ -59,16 +59,6 @@ class SponsorBenefitController extends Controller
      */
     public function store(Request $request)
     {
-        // Validando datos
-        $this->validate($request, array(
-            'nombre' => 'required|max:255',
-            'descripcion' => 'required|max:255',
-            'req_puntos' => 'numeric|min:1',
-            'tipo' => 'numeric|min:1|max:3', // 1: - 2: - 3:
-            'cantidad' => 'numeric|min:1',
-            'sponsor_id' => 'numeric|min:1',
-        ));
-
         // Almacenando datos
         $benefit = new Benefit;
         $benefit->nombre = $request->nombre;
@@ -110,7 +100,9 @@ class SponsorBenefitController extends Controller
             if (is_null($benefit)) {
                 abort(404, "El beneficio no existe");
             }
-        return view('beneficios.show', compact('benefit'));
+        $sponsor = Sponsor::find($benefit->sponsor_id);
+        $sponsor->load('benefits');
+        return view('beneficios.index', compact('sponsor'));  
     }
 
     /**
@@ -132,16 +124,10 @@ class SponsorBenefitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        // Validando datos
-        $this->validate($request, array(
-            'colaborador_id' => 'numeric|min:1',
-            'beneficio_id' => 'numeric|min:1',
-        ));
-
         // Almacenando datos
-        $benefit = Benefit::find($id);
+        $benefit = Benefit::find($request->beneficio);
 
         if (!is_null($request->nombre)) { $benefit->nombre = $request->nombre; };
         if (!is_null($request->descripcion)) { $benefit->descripcion = $request->descripcion; };
@@ -153,13 +139,12 @@ class SponsorBenefitController extends Controller
             {
                 $benefit->estado = 1;
                 $cant = $request->cantidad - $benefit->cantidad;
-                $fecha = date_default_timezone_get();
 
                 DB::table('supply')->insert([
                     'beneficio_id' => $benefit->beneficio_id,
                     'cantidad' => $cant,
-                    'created_at' => $fecha,
-                    'updated_at' => $fecha
+                    "created_at" =>  \Carbon\Carbon::now(),
+                    "updated_at" => \Carbon\Carbon::now(),
                 ]);
             } 
             $benefit->cantidad = $request->cantidad; 
@@ -171,7 +156,7 @@ class SponsorBenefitController extends Controller
         Session::flash('exito' , 'El beneficio fue exitósamente actualizado ');
 
         // Retornando vista: beneficios/show.blade.php
-        return redirect()->route('beneficios.show', $benefit->beneficio_id);
+        return redirect()->route('beneficios.index', $request->sponsor);
     }
 
     /**

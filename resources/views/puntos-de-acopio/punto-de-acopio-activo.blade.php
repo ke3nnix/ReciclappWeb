@@ -4,6 +4,15 @@
 
 <div class="col-lg-12">
 
+  @if(Session::has('éxito'))
+      <br>
+      <div class="alert alert-danger" role="alert">
+          <strong>Error:</strong> {{Session::get('éxito')}}
+      </div>
+
+  @endif
+
+
   <div class="col-md-12">
     <div class="row">
       <form action="{{route('puntos-de-acopio.create')}}">

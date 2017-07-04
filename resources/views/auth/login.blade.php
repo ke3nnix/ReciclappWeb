@@ -38,7 +38,7 @@
             <div class="clearfix">
                 <div class="col-sm-12 col-md-10 col-md-offset-2">
                     
-                    @if(Session::has('error'))
+                    @if(Session::has('éxito'))
                         <br>
                         <div class="alert alert-danger" role="alert">
                             <strong>Error:</strong> {{Session::get('error')}}
