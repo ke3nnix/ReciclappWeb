@@ -120,7 +120,7 @@ class UserController extends Controller
         }
 
         // Retornar vista
-        return view('usuarios.show', $user->usuario_id);                
+        return redirect()->route('usuarios.show', $user->usuario_id);               
     }
 
     /**
