@@ -15,24 +15,27 @@ class WasteTableSeeder extends Seeder
             'descripcion' => 'papel',
             'unidad' => 'KG',
             'equivalencia' => 5,
-            'total' => 0
+            'total' => 0,
+            'max' => 10000
         ]);
 
         DB::table('waste')->insert([
             'descripcion' => 'vidrio',
             'unidad' => 'KG',
             'equivalencia' => 8,
-            'total' => 0
+            'total' => 0,
+            'max' => 10000
         ]);
 
         DB::table('waste')->insert([
             'descripcion' => 'plástico',
             'unidad' => 'KG',
             'equivalencia' => 20,
-            'total' => 0
+            'total' => 0,
+            'max' => 10000
         ]);
 
-        // for ($exchange_id=1; $exchange_id <15; $exchange_id++) { 
+        // for ($exchange_id=1; $exchange_id <15; $exchange_id++) {
         //     DB::table('exchange_details')->insert([
         //         'entrega_id' => $exchange_id,
         //         'desecho_id' => 1,

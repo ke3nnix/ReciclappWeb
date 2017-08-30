@@ -8,12 +8,12 @@
         <img src="{{ URL::to('/') }}/uploads/avatars/{{Auth::user()->imagen}}" class="avatar"
              style="border-radius:50%; width:150px; height:150px; border:5px solid #fff;"
              alt="{{ Auth::user()->nombre }} avatar">
-        
+
     </div>
 <br><div style="position: relative; left: 300px;">
 <div class="container">
           <div class="row">
-                 
+
                  <div class="col-sm-4">
                     <div>
                             <table style="height: 250px">
@@ -45,7 +45,7 @@
                                                 <label>Direccón: </label>
                                             </td>
                                             <td>
-                                                <label name="nombre" class="form-control"  type="text">{{Auth::user()->direccion}}</label>         
+                                                <label name="nombre" class="form-control cortar-direcc"  type="text">{{Auth::user()->direccion}}</label>
                                             </td>
                                         </tr>
                                         <tr>
@@ -53,7 +53,7 @@
                                                 <label>Distrito: </label>
                                             </td>
                                             <td>
-                                                <label name="nombre" class="form-control"  type="text">{{Auth::user()->distrito}}</label>         
+                                                <label name="nombre" class="form-control"  type="text">{{Auth::user()->distrito}}</label>
                                             </td>
                                         </tr>
                                         <tr>
@@ -61,17 +61,17 @@
                                                 <label>Fecha de nacimiento: </label>
                                             </td>
                                             <td>
-                                                <label name="nombre" class="form-control"  type="text">{{Auth::user()->nacimiento}}</label>         
+                                                <label name="nombre" class="form-control"  type="text">{{Auth::user()->nacimiento}}</label>
                                             </td>
-                                        </tr>   
+                                        </tr>
                                     </table>
                          </div><br>
                          <div style="position: relative; left: 225px">
                          <a href="{{route('perfil.edit')}}" class="btn btn-primary">Editar Perfil</a>
-                         </div>          
-                     </div>               
+                         </div>
+                     </div>
             </div>
 </div>
-    
-       
+
+
 @stop

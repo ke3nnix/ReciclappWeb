@@ -81,20 +81,20 @@
 // });
 
 // GENERADOR DE SPONSORS
-// $factory->define(App\Models\Sponsor::class, function (Faker\Generator $faker) {
-//     $faker = Faker\Factory::create('es_PE');
+ $factory->define(App\Models\Sponsor::class, function (Faker\Generator $faker) {
+     $faker = Faker\Factory::create('es_PE');
 
-//     $fecha = $faker->dateTimeBetween($startDate = '-2 years', $endDate = '-1 years', $timezone = date_default_timezone_get());
+     $fecha = $faker->dateTimeBetween($startDate = '-2 years', $endDate = '-1 years', $timezone = date_default_timezone_get());
 
-//     return [
-//         'razon_social' => $faker->company,
-//         'ruc' => $faker->numerify('20#########'),
-//         'direccion' => $faker->address,
-//         'telefono' => $faker->numerify('+01 ###-####'),
-//         'contacto' => $faker->name($gender = null|'male'|'female'),
-//         'distrito' =>$faker->state,
-//         'estado' => 1,
-//          'created_at' => $fecha,
-//          'updated_at' => $fecha,
-//     ];
-// });
+     return [
+         'razon_social' => $faker->company,
+         'ruc' => $faker->numerify('20#########'),
+         'direccion' => $faker->address,
+         'telefono' => $faker->numerify('+01 ###-####'),
+         'contacto' => $faker->name($gender = null|'male'|'female'),
+         'distrito' =>$faker->state,
+         'estado' => 1,
+          'created_at' => $fecha,
+          'updated_at' => $fecha,
+     ];
+ });
