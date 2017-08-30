@@ -2,27 +2,25 @@
 @section('title', 'Detalle de punto de acopio')
 @section('content')
 
-<div style="position: relative; left: 70px;">
+<div style="overflow-x: hidden;">
 {{Form::open(['route'=>['puntos-de-acopio.destroy',$collectionPoint->acopio_id], 'method'=>'DELETE'])}}
   <div class="container">
-          <div class="row">
+          <div class="centrado-div1">
             <div class="col-md-3"> {!! $chartPapel->render() !!} </div>
             <div class="col-md-3"> {!! $chartVidrio->render() !!} </div>
             <div class="col-md-3"> {!! $chartPlastico->render() !!} </div>
           </div>
+          <div class="centrado-div2">
 
-
-          <div class="row">
-
-                 <div class="col-sm-5">
-                    <div class="well">
+                 <div class="col-sm-6">
+                    <div>
                           <table style="height: 300px">
                            <tr>
                              <td>
                                <label class="input-group" style="width: 130px">Nombre:</label>
                              </td>
                              <td>
-                               <label name="nombre" class="form-control" style="width: 300px" type="text">{{$collectionPoint->nombre}}</label>
+                               <label name="nombre" class="form-control" type="text">{{$collectionPoint->nombre}}</label>
                              </td>
                            </tr>
                            <tr>
@@ -71,17 +69,19 @@
 
                  <div class="col-sm-6">
                    <div>
-                      <div id="map"  style="width:400px;height:342px"></div>
+                      <div id="map"  style="width:550px;height:290px"></div>
                     </div><br>
                  </div>
           </div>
-   </div>
-                     <div class="col-md-6 col-md-offset-8" >
-                            <button type="submit" style="background-color: #FC5C5C;color: white" class="btn">
-                              Desactivar
-                            </button>
-                            <a href="/puntos-de-acopio?estado=activo" class="btn btn-success">Cancelar</a>
-                      </div>
+ </div>
+
+
+<div class="col-md-6 col-md-offset-10" >
+    <button type="submit" style="background-color: #FC5C5C;color: white" class="btn">
+          Desactivar
+    </button>
+    <a href="/puntos-de-acopio?estado=activo" class="btn btn-success">Cancelar</a>
+</div>
   <!-- latitud y longitud-->
     <div style="visibility:hidden">
           <input id="latitudScript" name="latitud" class="form-control"  type="text" value="{{$collectionPoint->latitud}}"  />

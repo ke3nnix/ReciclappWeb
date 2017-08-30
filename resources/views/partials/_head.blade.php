@@ -72,10 +72,30 @@
             overflow:hidden;
         }
         .cortar-direcc{
-            width:300px;
+            width:380px;
             text-overflow:ellipsis;
             white-space:nowrap;
             overflow:hidden;
+        }
+        .centrado-div1{
+            height: 160px;
+            /*IMPORTANTE*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .centrado-div2{
+            height: 460px;
+            /*IMPORTANTE*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .centrado-div{
+            /*IMPORTANTE*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .perfil-admin{
             background-size:cover; background: url(URL::to('/') . "/resources/wallpaper-reciclapp.jpg") center center;
