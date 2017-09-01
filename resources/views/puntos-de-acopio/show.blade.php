@@ -52,7 +52,7 @@
                                   <label class="input-group">Pástico máximo: </label>
                                </td>
                                <td>
-                                  <label name="papel_max" class="form-control"  type="text">{{$collectionPoint->plastico_max}}</label>
+                                  <label name="plastico_max" class="form-control"  type="text">{{$collectionPoint->plastico_max}}</label>
                                </td>
                              </tr>
                              <tr>

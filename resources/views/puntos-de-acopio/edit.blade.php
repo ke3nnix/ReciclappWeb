@@ -6,98 +6,111 @@
 
            {{csrf_field()}}
 
-    <div style="overflow-x: hidden;">
-      <div class="centrado-div">
-             <div class="col-sm-6">
+        <div class="centrado-div">
+             <div class="col-sm-5">
                 <div>
-                      <table style="height: 300px">
+                      <table>
                        <tr>
                          <td>
-                           <label class="input-group" style="width: 130px">Nombre:</label>
-                         </td>
-                         <td>
-                           <input name="nombre" class="form-control" type="text" value="{{$collectionPoint->nombre}}">
+                           <div class="group">
+                            <input name="nombre" class="form-control" title="Se necesita un nombre" value="{{$collectionPoint->nombre}}" type="text" required/>
+                             <span class="highlight"></span>
+                             <span class="bar"></span>
+                             <label><span class="span-input"> Nombre: </span></label>
+                           </div>
                          </td>
                        </tr>
                        <tr>
                          <td>
-                           <label class="input-group">Dirección: </label>
-                         </td>
-                         <td>
-                           <input name="direccion" class="form-control cortar-direcc" value="{{$collectionPoint->direccion}}" >
+                           <div class="group">
+                            <input name="direccion" class="form-control" title="Se necesita una Dirección" value="{{$collectionPoint->direccion}}" type="text" required />
+                             <span class="highlight"></span>
+                             <span class="bar"></span>
+                             <label><span class="span-input">Dirección: </span></label>
+                           </div>
                          </td>
                        </tr>
                        <tr>
                          <td>
-                           <label class="input-group">Distrito: </label>
-                         </td>
-                         <td>
-                           <input name="distrito" class="form-control" value="{{$collectionPoint->distrito}}">
+                           <div class="group">
+                            <input name="distrito" class="form-control" title="Se necesita un Distrito" value="{{$collectionPoint->distrito}}"  type="text" required />
+                             <span class="highlight"></span>
+                             <span class="bar"></span>
+                             <label><span class="span-input">Distrito: </span></label>
+                           </div>
                          </td>
                        </tr>
                         <tr>
                           <td>
-                            <label class="input-group">Papel máximo: </label>
-                          </td>
-                          <td>
-                            <input name="papel_max" class="form-control"  type="number" value="{{$collectionPoint->papel_max}}">
+                            <div class="group">
+                             <input name="papel_max" class="form-control" min="1" type="number" value="{{$collectionPoint->papel_max}}" required/>
+                              <span class="highlight"></span>
+                              <span class="bar"></span>
+                              <label><span class="span-input">Papel máximo: </span></label>
+                            </div>
                           </td>
                         </tr>
                          <tr>
                            <td>
-                              <label class="input-group">Pástico máximo: </label>
-                           </td>
-                           <td>
-                              <input name="papel_max" class="form-control"  type="number" value="{{$collectionPoint->plastico_max}}">
+                             <div class="group">
+                              <input name="plastico_max" class="form-control" min="1" type="number" value="{{$collectionPoint->plastico_max}}" required/>
+                               <span class="highlight"></span>
+                               <span class="bar"></span>
+                               <label><span class="span-input">Pástico máximo: </span></label>
+                             </div>
                            </td>
                          </tr>
                          <tr>
                            <td>
-                                <label class="input-group">Vidrio máximo: </label>
-                           </td>
-                           <td>
-                                <input name="vidrio_max" class="form-control" type="number" value="{{$collectionPoint->vidrio_max}}">
+                             <div class="group">
+                               <input name="vidrio_max" class="form-control" min="1" type="number" value="{{$collectionPoint->vidrio_max}}" required />
+                               <span class="highlight"></span>
+                               <span class="bar"></span>
+                               <label><span class="span-input">Vidrio máximo: </span></label>
+                             </div>
                            </td>
                          </tr>
                        </table>
                 </div>
-             </div>
-
-      </div>
-
-    </div>
-          <div class="centrado-div2">
-              <div id="map"  style="width:700px;height:300px"></div>
-          </div><br>
-          <div class="row"  style="margin-left: 10px;">
-                <div class="col-md-6 col-md-offset-9" >
-                    <button type="submit" class="btn btn-success">
-                      Actualizar
-                    </button>
-                    <a href="/puntos-de-acopio?estado=activo" style="background-color: #FC5C5C;color: white" class="btn">Cancelar</a>
-                </div><br>
-          </div>
-
-          <!-- latitud y longitud-->
-          <div class="row">
-            <div class="form-group">
-              <div class="col-md-12 inputGroupContainer">
-                <div class="input-group">
-
-                  <input id="latitudScript" name="latitud" class="form-control"  type="text" value="{{$collectionPoint->latitud}}"  style="visibility:hidden" required />
-                </div>
+              </div>
+              <div class="col-sm-5">
+                <table>
+                  <tr>
+                    <td>
+                      <label class="input-group">Editar Ubicación</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div id="map"  style="width:450px;height:230px"></div><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="group">
+                        <input id="latitudScript" name="latitud" class="form-control" readonly="readonly" type="text" value="{{$collectionPoint->latitud}}" required />
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                      </div>
+                      <div class="group">
+                        <input id="longitudScript" name="longitud" class="form-control" readonly="readonly" type="text" value="{{$collectionPoint->longitud}}" required />
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
               </div>
             </div>
-          </div><br>
-
-          <div class="row">
-            <div class="form-group">
-              <div class="col-md-12 inputGroupContainer">
-                <div class="input-group">
-                  <input id="longitudScript" name="longitud" class="form-control"  type="text" value="{{$collectionPoint->longitud}}"  style="visibility:hidden" required />
-                </div>
-              </div>
+            <div class="row"  style="margin-left: 10px;">
+                  <div class="col-md-6 col-md-offset-9" >
+                      <button type="submit" class="btn btn-success">
+                        Actualizar
+                      </button>
+                      <a href="/puntos-de-acopio?estado=activo" style="background-color: #FC5C5C;color: white" class="btn">Cancelar</a>
+                  </div>
             </div>
+
 
     <script>
 

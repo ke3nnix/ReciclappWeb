@@ -1,110 +1,110 @@
-<?php 
- 
-namespace App\Http\Controllers; 
- 
-use Illuminate\Http\Request; 
-use App\Models\CollectionPoint; 
-use Session; 
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\CollectionPoint;
+use Session;
 use Charts;
 use App\Models\Waste;
- 
- 
-class CollectionPointController extends Controller 
-{ 
-    /** 
-     * Display a listing of the resource. 
-     * 
-     * @return \Illuminate\Http\Response 
-     */ 
-    public function index(Request $request) 
-    { 
-        
+
+
+class CollectionPointController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+
         if (request()->expectsJson()) {
-            $collectionPoints = CollectionPoint::where('estado', 1)->orderBy('acopio_id', 'ACS')->paginate(10); 
+            $collectionPoints = CollectionPoint::where('estado', 1)->orderBy('acopio_id', 'ACS')->paginate(10);
             return $collectionPoints;
         }
         else {
             switch ($request->estado) {
                 case 'activo':
-                    $collectionPoints = CollectionPoint::where('estado', 1)->orderBy('acopio_id', 'ACS')->paginate(10); 
-                    return view('puntos-de-acopio.punto-de-acopio-activo',compact('collectionPoints')); 
-                
+                    $collectionPoints = CollectionPoint::where('estado', 1)->orderBy('acopio_id', 'ACS')->paginate(10);
+                    return view('puntos-de-acopio.punto-de-acopio-activo',compact('collectionPoints'));
+
                 case 'inactivo':
-                    $collectionPoints = CollectionPoint::where('estado', 0)->orderBy('acopio_id', 'ACS')->paginate(10); 
-                    return view('puntos-de-acopio.punto-de-acopio-inactivo',compact('collectionPoints')); 
+                    $collectionPoints = CollectionPoint::where('estado', 0)->orderBy('acopio_id', 'ACS')->paginate(10);
+                    return view('puntos-de-acopio.punto-de-acopio-inactivo',compact('collectionPoints'));
                 default:
                     abort(404, 'La página no existe');
             }
-        }        
-    } 
- 
-    /** 
-     * Show the form for creating a new resource. 
-     * 
-     * @return \Illuminate\Http\Response 
-     */ 
-    public function create() 
-    { 
-        return view('puntos-de-acopio.create'); 
-    } 
- 
-    /** 
-     * Store a newly created resource in storage. 
-     * 
-     * @param  \Illuminate\Http\Request  $request 
-     * @return \Illuminate\Http\Response 
-     */ 
-    public function store(Request $request) 
-    { 
-        // Validando la data 
-        $this->validate($request , array( 
-                'nombre' => 'required|max:255', 
-                'direccion' => 'required|max:255', 
+        }
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('puntos-de-acopio.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        // Validando la data
+        $this->validate($request , array(
+                'nombre' => 'required|max:255',
+                'direccion' => 'required|max:255',
                 'distrito' => 'required|max:255',
         //        'latitud' => 'required|max:255',
           //      'longitud' => 'required|max:255',
-                'papel_max' => 'required|numeric|min:1', 
-                'vidrio_max' => 'required|numeric|min:1', 
-                'plastico_max' => 'required|numeric|min:1', 
-            )); 
- 
-        // Almacenamos los datos 
-        $collectionPoint = new CollectionPoint; 
-        $collectionPoint->nombre = $request->nombre; 
-        $collectionPoint->direccion = $request->direccion; 
-        $collectionPoint->distrito = $request->distrito; 
+                'papel_max' => 'required|numeric|min:1',
+                'vidrio_max' => 'required|numeric|min:1',
+                'plastico_max' => 'required|numeric|min:1',
+            ));
+
+        // Almacenamos los datos
+        $collectionPoint = new CollectionPoint;
+        $collectionPoint->nombre = $request->nombre;
+        $collectionPoint->direccion = $request->direccion;
+        $collectionPoint->distrito = $request->distrito;
         $collectionPoint->latitud = $request->latitud;
         $collectionPoint->longitud = $request->longitud;
         $collectionPoint->estado = 1;
-        $collectionPoint->papel_max = $request->papel_max; 
-        $collectionPoint->papel_actual = 0; 
-        $collectionPoint->vidrio_max = $request->vidrio_max; 
-        $collectionPoint->vidrio_actual = 0; 
-        $collectionPoint->plastico_max = $request->plastico_max; 
-        $collectionPoint->plastico_actual = 0; 
-        
-        $collectionPoint->save(); 
+        $collectionPoint->papel_max = $request->papel_max;
+        $collectionPoint->papel_actual = 0;
+        $collectionPoint->vidrio_max = $request->vidrio_max;
+        $collectionPoint->vidrio_actual = 0;
+        $collectionPoint->plastico_max = $request->plastico_max;
+        $collectionPoint->plastico_actual = 0;
+
+        $collectionPoint->save();
 
         if (request()->expectsJson()) {
             return $collectionPoint;
         }
- 
-        // Enviando mensaje de estado 
-        Session::flash('exito' , 'El punto de acopio fue exitosamente agregado'); 
- 
-        // Redireccionando a la vista: collection-points/show.blade.php 
-        return redirect()->route('puntos-de-acopio.show', $collectionPoint->acopio_id); 
- 
-    } 
- 
-    /** 
-     * Display the specified resource. 
-     * 
-     * @param  int  $id 
-     * @return \Illuminate\Http\Response 
-     */ 
-    public function show($id) 
-    { 
+
+        // Enviando mensaje de estado
+        Session::flash('exito' , 'El punto de acopio fue exitosamente agregado');
+
+        // Redireccionando a la vista: collection-points/show.blade.php
+        return redirect()->route('puntos-de-acopio.show', $collectionPoint->acopio_id);
+
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
         $collectionPoint = CollectionPoint::find($id);
 
         if (request()->expectsJson()) {
@@ -141,94 +141,94 @@ class CollectionPointController extends Controller
                         ->responsive(true)
                         ->height(300)
                         ->width(0);
-                        
 
 
-        return view('puntos-de-acopio.show',compact(['collectionPoint', 'chartPapel', 'chartVidrio', 'chartPlastico'])); 
-    } 
- 
-    /** 
-     * Show the form for editing the specified resource. 
-     * 
-     * @param  int  $id 
-     * @return \Illuminate\Http\Response 
-     */ 
-    public function edit($id) 
-    { 
-        $collectionPoint = CollectionPoint::find($id); 
-        return view('puntos-de-acopio.edit',compact('collectionPoint')); 
-    } 
- 
-    /** 
-     * Update the specified resource in storage. 
-     * 
-     * @param  \Illuminate\Http\Request  $request 
-     * @param  int  $id 
-     * @return \Illuminate\Http\Response 
-     */ 
-    public function update(Request $request, $id) 
-    { 
-        // Validando la data 
-        $this->validate($request , array( 
+
+        return view('puntos-de-acopio.show',compact(['collectionPoint', 'chartPapel', 'chartVidrio', 'chartPlastico']));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $collectionPoint = CollectionPoint::find($id);
+        return view('puntos-de-acopio.edit',compact('collectionPoint'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        // Validando la data
+        $this->validate($request , array(
                 'nombre' => 'required|max:255', 
-                'direccion' => 'required|max:255', 
-                'distrito' => 'required|max:255', 
-                'papel_max' => 'required|numeric|min:1', 
-                'vidrio_max' => 'required|numeric|min:1', 
-                'plastico_max' => 'required|numeric|min:1', 
-            )); 
- 
-        // Almacenamos los datos 
-        $collectionPoint = CollectionPoint::find($id); 
-        $collectionPoint->nombre = $request->nombre; 
-        $collectionPoint->direccion = $request->direccion; 
-        $collectionPoint->distrito = $request->distrito; 
-        $collectionPoint->papel_max = $request->papel_max; 
-        $collectionPoint->papel_actual = 0; 
-        $collectionPoint->vidrio_max = $request->vidrio_max; 
-        $collectionPoint->vidrio_actual = 0; 
-        $collectionPoint->plastico_max = $request->plastico_max; 
+                'direccion' => 'required|max:255',
+                'distrito' => 'required|max:255',
+                'papel_max' => 'required|numeric|min:1',
+                'vidrio_max' => 'required|numeric|min:1',
+                'plastico_max' => 'required|numeric|min:1',
+            ));
+
+        // Almacenamos los datos
+        $collectionPoint = CollectionPoint::find($id);
+        $collectionPoint->nombre = $request->nombre;
+        $collectionPoint->direccion = $request->direccion;
+        $collectionPoint->distrito = $request->distrito;
+        $collectionPoint->papel_max = $request->papel_max;
+        $collectionPoint->papel_actual = 0;
+        $collectionPoint->vidrio_max = $request->vidrio_max;
+        $collectionPoint->vidrio_actual = 0;
+        $collectionPoint->plastico_max = $request->plastico_max;
         $collectionPoint->plastico_actual = 0;
         $collectionPoint->latitud = $request->latitud;
         $collectionPoint->longitud = $request->longitud;
- 
-        $collectionPoint->save(); 
+
+        $collectionPoint->save();
 
         if (request()->expectsJson()) {
             return $collectionPoint;
         }
- 
-        // Enviando mensaje de estado 
-        Session::flash('exito' , 'El punto de acopio fue exitosamente actualizado'); 
 
- 
-        // Redireccionando a otra vista 
-        return redirect()->route('puntos-de-acopio.show', $collectionPoint->acopio_id); 
+        // Enviando mensaje de estado
+        Session::flash('exito' , 'El punto de acopio fue exitosamente actualizado');
+
+
+        // Redireccionando a otra vista
+        return redirect()->route('puntos-de-acopio.show', $collectionPoint->acopio_id);
         //return back(); retorna a la ubicación previa
-    } 
- 
-    /** 
-     * Remove the specified resource from storage. 
-     * 
-     * @param  int  $id 
-     * @return \Illuminate\Http\Response 
-     */ 
-    public function destroy($id) 
-    { 
-       //ubicar el objeto 
-        $collectionPoint = CollectionPoint::find($id); 
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+       //ubicar el objeto
+        $collectionPoint = CollectionPoint::find($id);
 
         if (is_null($collectionPoint)) {
             abort(404, "El punto de acopio no existe ");
         }
-        
+
         $this->changeStatus($collectionPoint->acopio_id);
 
-        //setear el mensaje FLASH de exito 
-        Session::flash('exito', 'El punto de acopio fue exitósamente desactivado'); 
-        // redirigir hacia collection-points.index 
-        return  redirect()->route('puntos-de-acopio.index', [ 'estado' => 'activo']); 
-    } 
+        //setear el mensaje FLASH de exito
+        Session::flash('exito', 'El punto de acopio fue exitósamente desactivado');
+        // redirigir hacia collection-points.index
+        return  redirect()->route('puntos-de-acopio.index', [ 'estado' => 'activo']);
+    }
 
     /**
      * Acción para resetear a 0 el contador de desechos de los puntos de venta seleccionados.
@@ -271,8 +271,8 @@ class CollectionPointController extends Controller
         $vidrio->save();
         $plastico->save();
 
-        $collectionPoints = CollectionPoint::where('estado', 1)->orderBy('acopio_id', 'ACS')->paginate(10); 
-        return view('puntos-de-acopio.punto-de-acopio-activo',compact('collectionPoints')); 
+        $collectionPoints = CollectionPoint::where('estado', 1)->orderBy('acopio_id', 'ACS')->paginate(10);
+        return view('puntos-de-acopio.punto-de-acopio-activo',compact('collectionPoints'));
     }
 
     public function changeStatus($id)
@@ -285,4 +285,4 @@ class CollectionPointController extends Controller
         return;
     }
 
-} 
+}
