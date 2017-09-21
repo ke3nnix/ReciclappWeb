@@ -20,7 +20,7 @@
                                <label class="input-group" style="width: 130px">Nombre:</label>
                              </td>
                              <td>
-                               <label name="nombre" class="form-control" type="text">{{$collectionPoint->nombre}}</label>
+                               <label style="border:none" name="nombre" class="form-control" type="text">{{$collectionPoint->nombre}}</label>
                              </td>
                            </tr>
                            <tr>
@@ -28,7 +28,7 @@
                                <label class="input-group">Dirección: </label>
                              </td>
                              <td>
-                               <label name="direccion" class="form-control cortar-direcc" type="text">{{$collectionPoint->direccion}}</label>
+                               <label name="direccion" style="border:none" class="form-control cortar-direcc" type="text">{{$collectionPoint->direccion}}</label>
                              </td>
                            </tr>
                            <tr>
@@ -36,7 +36,7 @@
                                <label class="input-group">Distrito: </label>
                              </td>
                              <td>
-                               <label name="distrito" class="form-control"  type="text">{{$collectionPoint->distrito}}</label>
+                               <label name="distrito" class="form-control" style="border:none" type="text">{{$collectionPoint->distrito}}</label>
                              </td>
                            </tr>
                             <tr>
@@ -44,7 +44,7 @@
                                 <label class="input-group">Papel máximo: </label>
                               </td>
                               <td>
-                                <label name="papel_max" class="form-control"  type="text">{{$collectionPoint->papel_max}}</label>
+                                <label name="papel_max" class="form-control" style="border:none" type="text">{{$collectionPoint->papel_max}}</label>
                               </td>
                             </tr>
                              <tr>
@@ -52,7 +52,7 @@
                                   <label class="input-group">Pástico máximo: </label>
                                </td>
                                <td>
-                                  <label name="plastico_max" class="form-control"  type="text">{{$collectionPoint->plastico_max}}</label>
+                                  <label name="plastico_max" class="form-control" style="border:none"  type="text">{{$collectionPoint->plastico_max}}</label>
                                </td>
                              </tr>
                              <tr>
@@ -60,7 +60,7 @@
                                     <label class="input-group">Vidrio máximo: </label>
                                </td>
                                <td>
-                                    <label name="vidrio_max" class="form-control"  type="text">{{$collectionPoint->vidrio_max}}</label>
+                                    <label name="vidrio_max" class="form-control" style="border:none" type="text">{{$collectionPoint->vidrio_max}}</label>
                                </td>
                              </tr>
                            </table>

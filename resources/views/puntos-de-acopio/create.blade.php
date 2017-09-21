@@ -64,7 +64,7 @@
                              <tr>
                                <td>
                                  <div class="group">
-                                   <input name="vidrio_max" class="form-control" min="1" type="number" value="" required />
+                                   <input name="vidrio_max" class="form-control" min="1" type="number" value="" required/>
                                    <span class="highlight"></span>
                                    <span class="bar"></span>
                                    <label><span class="span-input">Vidrio máximo: </span></label>
@@ -92,7 +92,7 @@
                  <tr>
                   <td>
                       <div class="group">
-                        <input type="label" id="latitudScript" name="latitud" class="form-control" readonly="readonly" required />
+                        <input type="label" id="latitudScript" name="latitud" class="form-control" readonly="readonly" required/>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                       </div>
@@ -103,18 +103,20 @@
                       </div>
                   </td>
                  </tr>
+                 <tr>
+                   <td class="centrar-btn">
+                     <div>
+                            <button type="submit" class="btn btn-success">
+                              Agregar
+                            </button>
+                             <a href="/puntos-de-acopio?estado=activo" style="background-color: #FC5C5C;color: white" class="btn">Cancelar</a>
+                     </div>
+                   </td>
+                 </tr>
               </table>
-            </div><br>
+            </div>
 </div>
-             <div class="row"  style="margin-left: 10px;">
-                <div class="col-md-6 col-md-offset-9">
-                    <button type="submit" class="btn btn-success">
-                      Agregar
-                    </button>
-                     <a href="/puntos-de-acopio?estado=activo" style="background-color: #FC5C5C;color: white" class="btn">Cancelar</a>
 
-                  </div>
-             </div>
             <script>
 
               var map = null;

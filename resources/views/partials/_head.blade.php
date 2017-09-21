@@ -52,6 +52,9 @@
         .login-button, .bar:before, .bar:after{
             background:#29a72b;
         }
+        .bar2{
+          background:#29a72b;
+        }
         .flat-blue .side-menu .navbar-header, .widget .btn-primary, .widget .btn-primary:focus, .widget .btn-primary:hover, .widget .btn-primary:active, .widget .btn-primary.active, .widget .btn-primary:active:focus{
             background:#1ABC9C;
             border-color:#1ABC9C;
@@ -94,6 +97,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+        .centrar-btn{
+          display: flex;
+          justify-content: right;
+          align-items: right;
         }
         .centrado-div2{
             height: 460px;
