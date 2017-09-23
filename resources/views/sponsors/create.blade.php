@@ -4,90 +4,91 @@
    
      {{Form::open(['route'=>'sponsors.store', 'method'=>'post'])}}
 
-       <div>
+      <div class="centrado-div">
+       <div class="col-sm-5">
            {{csrf_field()}}
-      <dir style="position: relative;right: -100px">
-          <div class="row">
-           <div class="form-group">
-            <label  class="col-md-4 control-label">Contacto</label>  
-            <div class="col-md-6 inputGroupContainer">
-              <div class="input-group">
-                <span class="input-group-addon"></span>
-                <input  name="contacto" class="form-control" title="Se necesita un Contacto"  type="text" required>
-              </div>
-            </div>
-          </div>
-        </div> <br>
-             <div class="row">
-               <div class="form-group">
-                <label class="col-md-4 control-label">Razón Social</label>  
-                <div class="col-md-6 inputGroupContainer">
-                  <div class="input-group">
-                    <span class="input-group-addon"></span>
-                    <input name="razon_social" class="form-control" title="Se necesita uan Razón Social" type="text" required>
-                  </div>
+           <table>
+             <tr>
+               <td>
+                 <div class="group">
+                  <input  name="contacto" class="form-control" title="Se necesita un Contacto"  type="text" required>
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label><span class="span-input"> Contacto </span></label>
                 </div>
-              </div>
-             </div><br>
-             <div class="row">
-               <div class="form-group">
-                <label class="col-md-4 control-label">Ruc</label>  
-                <div class="col-md-6 inputGroupContainer">
-                  <div class="input-group">
-                    <span class="input-group-addon"></span>
-                    <input name="ruc" class="form-control" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" title="Se necesita RUC" placeholder="Número de 11 dígitos" minlength="11" maxlength="11" size="11" type="text" required>
-                  </div>
-                </div>
-              </div>
-             </div><br>
 
-             <div class="row">
-              <div class="form-group">
-              <label class="col-md-4 control-label">Direccion</label>  
-                <div class="col-md-6 inputGroupContainer">
-                  <div class="input-group">
-                    <span class="input-group-addon"></span>
-                    <input name="direccion" class="form-control" title="Se necesita una Dirección"  type="text" required>
-                  </div>
-                </div>
+              </td>
+            </tr>
+            <tr>
+             <td>
+               <div class="group">
+                <input name="razon_social" class="form-control" title="Se necesita uan Razón Social" type="text" required>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label><span class="span-input">Razón Social </span></label>
               </div>
-             </div><br>
-            <div class="row">
-                <div class="form-group">
-              <label class="col-md-4 control-label">Distrito</label>  
-                <div class="col-md-6 inputGroupContainer">
-                  <div class="input-group">
-                    <span class="input-group-addon"></span>
-                    <input name="distrito" class="form-control"  title="Se necesita un Distrito" type="text" required>
-                  </div>
-                </div>
+             </td>
+            </tr>
+            <tr>
+             <td>
+               <div class="group">
+                <input name="ruc" class="form-control" onKeypress="if (event.keyCode <= 45 || event.keyCode > 57) event.returnValue = false;" title="Se necesita RUC (11 digitos)" minlength="11" maxlength="11" size="11" type="text" required>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label><span class="span-input">Ruc </span></label>
               </div>
-             </div><br>
-             <div class="row">
-                <div class="form-group">
-              <label class="col-md-4 control-label">Telefono</label>  
-                <div class="col-md-6 inputGroupContainer">
-                  <div class="input-group">
-                    <span class="input-group-addon"></span>
-                    <input name="telefono" class="form-control" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" title="Se necesita un Teléfono" minlength="7" maxlength="9" size="9" type="text" required>
-                  </div>
-                </div>
-              </div>
-             </div><br>
 
-         
+             </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="group">
+                 <input name="direccion" class="form-control" title="Se necesita una Dirección"  type="text" required>
+                 <span class="highlight"></span>
+                 <span class="bar"></span>
+                 <label><span class="span-input">Dirección </span></label>
+               </div>
+              </td>
+            </tr>
+            <tr>
+             <td>
+               <div class="group">
+                <input name="distrito" class="form-control"  title="Se necesita un Distrito" type="text" required>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label><span class="span-input">Distrito </span></label>
+              </div>
+
+             </td>
+             </tr>
+              <tr>
+               <td>
+                 <div class="group">
+                   <input name="telefono" class="form-control" onKeypress="if (event.keyCode < =45 || event.keyCode > 57) event.returnValue = false;" title="Se necesita un Teléfono" minlength="7" maxlength="9" size="9" type="text" required>
+                   <span class="highlight"></span>
+                   <span class="bar"></span>
+                   <label><span class="span-input">Teléfono </span></label>
+                 </div>
+               </td>
+             </tr>
+             <tr>
+               <td >
+                        <div style="text-align:center;">
+                          <button type="submit" class="btn btn-success">
+                            Agregar
+                          </button>
+                           <a href="/sponsors?estado=activo"  style="background-color: #FC5C5C;color: white" class="btn">Cancelar</a>
+
+                        </div>
+                      
+               </td>
+             </tr>
+            </table>  
             
-      </dir>                
+      </div>                
             
-             <div class="row"  style="margin-left: 10px;">
-                <div class="col-md-6 col-md-offset-9">
-                    <button type="submit" class="btn btn-success">
-                      Agregar
-                    </button>
-                     <a href="/sponsors?estado=activo"  style="background-color: #FC5C5C;color: white" class="btn">Cancelar</a>
-
-                  </div>
-             </div>
+       
+     </div>        
             <script>
 
               var map = null;

@@ -2,14 +2,14 @@
 @section('title', 'Detalle del Administrador')
 @section('content')
 
-<div style="position: relative; left: 325px;">
+
 {{Form::open(['route'=>['usuarios.destroy',$user->usuario_id], 'method'=>'DELETE'])}}
   <div class="container">
-          <div class="row">
+          <div class="centrado-div">
                  
                  <div class="col-sm-5">
-                    <div class="well" style="width: 550px">
-                        <table style="height: 350px">
+                    <div >
+                        <table style="height: 450px" >
                           <tr>
                             <td>
                               <label class="input-group">Nombre: </label>       
@@ -82,6 +82,17 @@
                               <label name="nacimiento" class="form-control"  type="text">{{$user->nacimiento}}</label>
                             </td>
                           </tr>
+                          <table class="centrado-div">
+                          <tr >
+                            <td >
+                              <div>
+                               <button type="submit" style="background-color: #FC5C5C;color: white" class="btn">Desactivar</button>                           
+                                <a href="/usuarios?tipo=administradores&estado=activo" class="btn btn-primary">Cancelar</a>
+                              </div>
+                              {{Form::close()}}
+                            </td>
+                          </tr>
+                          </table>
                           
                         </table>
                           
@@ -90,13 +101,8 @@
 
           </div>   
    </div>
-                     <div class="col-md-6 col-md-offset-6" >
-                    
-                         <button type="submit" style="background-color: #FC5C5C;color: white" class="btn">Desactivar</button>                           
-                            <a href="/usuarios?tipo=administradores&estado=activo" class="btn btn-primary">Cancelar</a>
-                      </div>
-               {{Form::close()}}
-</div>
+                     
+
       
 
    

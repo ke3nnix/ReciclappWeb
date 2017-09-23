@@ -14,7 +14,7 @@
                                 <input name="nombre" class="form-control" title="Se necesita un nombre" value="" type="text" required/>
                                  <span class="highlight"></span>
                                  <span class="bar"></span>
-                                 <label><span class="span-input"> Nombre: </span></label>
+                                 <label><span class="span-input"> Nombre </span></label>
                                </div>
 
                              </td>
@@ -25,7 +25,7 @@
                                 <input name="direccion" class="form-control" title="Se necesita una Dirección" type="text" required />
                                  <span class="highlight"></span>
                                  <span class="bar"></span>
-                                 <label><span class="span-input">Dirección: </span></label>
+                                 <label><span class="span-input">Dirección </span></label>
                                </div>
                              </td>
                            </tr>
@@ -35,28 +35,28 @@
                                 <input name="distrito" class="form-control" title="Se necesita un Distrito" value=""  type="text" required />
                                  <span class="highlight"></span>
                                  <span class="bar"></span>
-                                 <label><span class="span-input">Distrito: </span></label>
+                                 <label><span class="span-input">Distrito </span></label>
                                </div>
 
                              </td>
                            </tr>
                             <tr>
                               <td>
-                                <div class="group">
-                                 <input name="papel_max" class="form-control" min="1" type="number" value="" required/>
+                                <div class="group">                                
+                                  <input name="papel_max"  class="form-control" onKeypress="if (event.keyCode <= 45 || event.keyCode > 57) event.returnValue = false;" type="text" required>
                                   <span class="highlight"></span>
                                   <span class="bar"></span>
-                                  <label><span class="span-input">Papel máximo: </span></label>
+                                  <label><span class="span-input">Papel máximo </span></label>
                                 </div>
                               </td>
                             </tr>
                              <tr>
                                <td>
                                  <div class="group">
-                                  <input name="plastico_max" class="form-control" min="1" type="number" value="" required/>
+                                   <input name="plastico_max"  class="form-control" onKeypress="if (event.keyCode <= 45 || event.keyCode > 57) event.returnValue = false;" type="text" required>
                                    <span class="highlight"></span>
                                    <span class="bar"></span>
-                                   <label><span class="span-input">Pástico máximo: </span></label>
+                                   <label><span class="span-input">Pástico máximo </span></label>
                                  </div>
 
                                </td>
@@ -64,10 +64,10 @@
                              <tr>
                                <td>
                                  <div class="group">
-                                   <input name="vidrio_max" class="form-control" min="1" type="number" value="" required/>
+                                   <input name="vidrio_max"  class="form-control" onKeypress="if (event.keyCode <= 45 || event.keyCode > 57) event.returnValue = false;" type="text" required>
                                    <span class="highlight"></span>
                                    <span class="bar"></span>
-                                   <label><span class="span-input">Vidrio máximo: </span></label>
+                                   <label><span class="span-input">Vidrio máximo </span></label>
                                  </div>
                                </td>
                              </tr>
@@ -104,8 +104,8 @@
                   </td>
                  </tr>
                  <tr>
-                   <td class="centrar-btn">
-                     <div>
+                   <td>
+                     <div style="text-align:right;">
                             <button type="submit" class="btn btn-success">
                               Agregar
                             </button>

@@ -39,12 +39,18 @@
          @foreach($collectionPoints as $row)
           @if($row->papel_actual>=0.8*$row->papel_max || $row->vidrio_actual>=0.8*$row->vidrio_max || $row->plastico_actual>=0.8*$row->plastico_max )
             <tr id="{{$row->acopio_id}}" style="background-color: #E5B3B3">
+              <td style="width: 20px">
+                    <button class="btn btn-default btn-xs"  data-toggle="modal" data-target="#myModalrecoger{{$row->acopio_id}}">Recoger</button>
+                </td>
               @include('puntos-de-acopio.tabla-acopio-inactivo')
             </tr>
           @endif
          @if($row->papel_actual<0.8*$row->papel_max && $row->vidrio_actual<0.8*$row->vidrio_max && $row->plastico_actual<0.8*$row->plastico_max)
-           <tr id="{{$row->acopio_id}}"> 
-           @include('puntos-de-acopio.tabla-acopio-inactivo')
+           <tr id="{{$row->acopio_id}}">
+                <td style="width: 20px">
+                    <button class="btn btn-default btn-xs"  data-toggle="modal" data-target="#myModalrecoger{{$row->acopio_id}}">Recoger</button>
+                </td>
+              @include('puntos-de-acopio.tabla-acopio-inactivo')
             </tr>
           @endif                                                    
           @endforeach     

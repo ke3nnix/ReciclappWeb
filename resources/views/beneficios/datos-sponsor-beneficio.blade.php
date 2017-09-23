@@ -8,7 +8,7 @@
           <label class="input-group" style="width: 130px">Contacto: </label>
         </td>
         <td>
-          <label name="contacto" class="form-control"  type="text">{{$sponsor->contacto}}</label>
+          <label style="border:none" name="contacto" class="form-control"  type="text">{{$sponsor->contacto}}</label>
         </td>
       </tr>
       <tr>
@@ -16,7 +16,7 @@
           <label class="input-group">Razón Social: </label>
         </td>
         <td>
-          <label name="razon_social" class="form-control" type="text">{{$sponsor->razon_social}}</label>
+          <label style="border:none" name="razon_social" class="form-control" type="text">{{$sponsor->razon_social}}</label>
         </td>
       </tr>
       <tr>
@@ -24,7 +24,7 @@
           <label class="input-group">RUC: </label>
         </td>
         <td>
-          <label name="ruc" class="form-control"  type="text">{{$sponsor->ruc}}</label>
+          <label style="border:none" name="ruc" class="form-control"  type="text">{{$sponsor->ruc}}</label>
         </td>
       </tr>
       <tr>
@@ -32,7 +32,7 @@
           <label class="input-group">Dirección: </label>
         </td>
         <td>
-          <label name="direccion" class="form-control cortar-direcc"  type="text">{{$sponsor->direccion}}</label>
+          <label style="border:none" name="direccion" class="form-control cortar-direcc"  type="text">{{$sponsor->direccion}}</label>
         </td>
       </tr>
       <tr>
@@ -40,7 +40,7 @@
           <label class="input-group">Distrito: </label>
         </td>
         <td>
-          <label name="distrito" class="form-control"  type="text">{{$sponsor->distrito}}</label>
+          <label style="border:none" name="distrito" class="form-control"  type="text">{{$sponsor->distrito}}</label>
         </td>
       </tr>
       <tr>
@@ -49,7 +49,7 @@
 
         </td>
         <td>
-          <label name="telefono" class="form-control"  type="text">{{$sponsor->telefono}}</label>
+          <label style="border:none" name="telefono" class="form-control"  type="text">{{$sponsor->telefono}}</label>
         </td>
       </tr>
     </table>

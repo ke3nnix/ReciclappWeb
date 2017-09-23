@@ -1,3 +1,26 @@
+              {{Form::open(['route'=>['puntos-de-acopio.recoger',$row->acopio_id], 'method'=>'POST'])}}
+              <!--modal para recojo-->
+              <div id="myModalrecoger{{$row->acopio_id}}" class="modal fade" role="dialog"> 
+                <div class="modal-dialog ">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Confirmar</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p>Punto de acopio a recoger: <b>{{$row->nombre}}</b></p>
+                    </div>
+
+                    <div class="modal-footer">
+
+                      <button type="submit" class="btn btn-danger" >SI</button>
+                    {{Form::close()}}
+                      <button type="button" class="btn btn-primary" data-dismiss="modal">NO</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <td style="width: 100px"> 
                 <p>{{$row->nombre}}</p> 
               </td> 

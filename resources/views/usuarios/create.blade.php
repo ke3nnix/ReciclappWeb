@@ -3,117 +3,117 @@
 @section('content')
    
      {{Form::open(['route'=>'usuarios.store', 'method'=>'post'])}}
+<div class="centrado-div">
 
-       <div>
            {{csrf_field()}}
-      <div style="position: relative;right: -100px">
-          <div class="row">
-           <div class="form-group">
-            <label  class="col-md-4 control-label">Nombre</label>  
-            <div class="col-md-6 inputGroupContainer">
-              <div class="input-group">
-                <span class="input-group-addon"></i></span>
-                <input  name="nombre" class="form-control" title="Se necesita un Nombre"  type="text" required>
-              </div>
+      <div class="col-sm-5">
+        <table>
+         <tr>
+           <td>
+             <div class="group">
+              <input  name="nombre" class="form-control" title="Se necesita un Nombre"  type="text" required>
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label><span class="span-input">Nombre </span></label>
             </div>
+           </td>
+          </tr>
+          <tr>
+           <td>
+             <div class="group">
+              <input name="apellido" class="form-control" title="Se necesita un Apellido" type="text" required>
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label><span class="span-input">Apellido </span></label>
+            </div>
+           </td>
+        </tr>
+        <tr>
+         <td>
+           <div class="group">
+            <input name="email" class="form-control" title="example@example.com" type="email" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label><span class="span-input">Email </span></label>
           </div>
-        </div> <br>
-             <div class="row">
-               <div class="form-group">
-                <label class="col-md-4 control-label">Apellido</label>  
-                <div class="col-md-6 inputGroupContainer">
-                  <div class="input-group">
-                    <span class="input-group-addon"></span>
-                    <input name="apellido" class="form-control" title="Se necesita un Apellido" type="text" required>
-                  </div>
-                </div>
-              </div>
-             </div><br>
-             <div class="row">
-               <div class="form-group">
-                <label class="col-md-4 control-label">Email</label>  
-                <div class="col-md-6 inputGroupContainer">
-                  <div class="input-group">
-                    <span class="input-group-addon"></span>
-                    <input name="email" class="form-control"  type="email" required>
-                  </div>
-                </div>
-              </div>
-             </div><br>
 
-             <div class="row">
-              <div class="form-group">
-              <label class="col-md-4 control-label">Contraseña</label>  
-                <div class="col-md-6 inputGroupContainer">
-                  <div class="input-group">
-                    <span class="input-group-addon"></span>
-                    <input name="password" class="form-control"  type="password" required>
-                  </div>
-                </div>
-              </div>
-             </div><br>
-            <div class="row">
-                <div class="form-group">
-              <label class="col-md-4 control-label">Tipo</label>  
-                <div class="col-md-6 inputGroupContainer">
-                  <div class="input-group">
-                    <span class="input-group-addon"></span>
-                    <select name="tipo" class="form-control" required>
+         </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="group">                                
+              <input name="password" class="form-control" title="Se necesita una contraseña"  type="password" required>
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label><span class="span-input">Contraseña</span></label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+         <td>
+           <div class="group">
+             <input name="dni" class="form-control"  onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" title="Se necesita DNI" minlength="8" maxlength="8" size="8" type="text" required>
+             <span class="highlight"></span>
+             <span class="bar"></span>
+             <label><span class="span-input">DNI </span></label>
+           </div>
+         </td>
+       </tr>
+      </table>
+    </div>
+
+    <div class="col-sm-5">
+      <br>
+      <table>
+       <tr>
+         <td>
+           <div class="group">
+             <input name="direccion" class="form-control" title="Se necesita una Dirección" type="text" required>
+             <span class="highlight"></span>
+             <span class="bar"></span>
+             <label><span class="span-input">Dirección </span></label>
+           </div>
+         </td>
+       </tr>
+       <tr>
+         <td>
+           <div class="group">
+             <input name="distrito" class="form-control" title="Se necesita un Distrito" type="text" required>
+             <span class="highlight"></span>
+             <span class="bar"></span>
+             <label><span class="span-input">Distrito </span></label>
+           </div>
+         </td>
+       </tr>
+        <tr>
+         <td>
+           <label><span class="span-input">Tipo </span></label>
+           <div class="group">
+             <select name="tipo" class="form-control" required>
                       <option value="0" selected="">--Seleccionar--</option>
                       <option value="3" >Adminsitrador</option>
                       <option value="2">Empleado</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-             </div><br>
-             <div class="row">
-                <div class="form-group">
-              <label class="col-md-4 control-label">DNI</label>  
-                <div class="col-md-6 inputGroupContainer">
-                  <div class="input-group">
-                    <span class="input-group-addon"></span>
-                    <input name="dni" class="form-control"  onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" title="Se necesita RUC" placeholder="Número de 8 dígitos" minlength="8" maxlength="8" size="8" type="text" required>
-                  </div>
-                </div>
-              </div>
-             </div><br>
-             <div class="row">
-                <div class="form-group">
-              <label class="col-md-4 control-label">Dirección</label>  
-                <div class="col-md-6 inputGroupContainer">
-                  <div class="input-group">
-                    <span class="input-group-addon"></span>
-                    <input name="direccion" class="form-control" title="Se necesita una Dirección" type="text" required>
-                  </div>
-                </div>
-              </div>
-             </div><br>
-             <div class="row">
-                <div class="form-group">
-              <label class="col-md-4 control-label">Distrito</label>  
-                <div class="col-md-6 inputGroupContainer">
-                  <div class="input-group">
-                    <span class="input-group-addon"></span>
-                    <input name="distrito" class="form-control" title="Se necesita un Distrito" type="text" required>
-                  </div>
-                </div>
-              </div>
-             </div><br>
-             <div class="row">
-                <div class="form-group">
-              <label class="col-md-4 control-label">Fecha de Nacimiento</label>  
-                <div class="col-md-6 inputGroupContainer">
-                  <div class="input-group">
-                    <span class="input-group-addon"></span>
-                    <input name="nacimiento" class="form-control"  type="date" required>
-                  </div>
-                </div>
-              </div>
-             </div>         
-      </div>                
-            
-             <div class="row"  style="margin-left: 10px;">
+              </select>
+             <span class="highlight"></span>
+             <span class="bar"></span>
+           </div>
+
+         </td>
+       </tr>
+       <tr>
+         <td>
+          <label><span class="span-input">Fecha de Nacimiento </span></label>
+           <div class="group">
+             <input name="nacimiento" class="form-control"  type="date" required>
+             <span class="highlight"></span>
+             <span class="bar"></span>
+             
+           </div>
+         </td>
+       </tr>
+       <tr>
+         <td>
+           <div style="text-align:right;">
                 <div class="col-md-6 col-md-offset-9">
                     <button type="submit" class="btn btn-success">
                       Agregar
@@ -122,9 +122,16 @@
 
                   </div>
              </div>
+         </td>
+       </tr>
+      </table>
+   
+      </div>                
+            
+             
            
 
-        </div>
+</div>
      {{Form::close()}}
 
 
